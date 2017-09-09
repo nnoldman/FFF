@@ -1,0 +1,365 @@
+Visual Leak Detector Version 2.5.1 installed.
+    Aggregating duplicate leaks.
+    Outputting the report to the debugger and to D:\src\FF\S\bin\Debug\memory_leak_report.txt
+    Using the "safe" (but slow) stack walking method.
+WARNING: Visual Leak Detector detected memory leaks!
+---------- Block 19 at 0x003F3910: 28 bytes ----------
+  Leak Hash: 0x362415E2, Count: 1, Total 28 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    game.loginapp.exe!google::protobuf::internal::InitEmptyString() + 0x1B bytes
+    d:\src\ff\s\include\google\protobuf\stubs\callback.h (129): game.loginapp.exe!google::protobuf::internal::FunctionClosure0::Run() + 0xA bytes
+    game.loginapp.exe!google::protobuf::GoogleOnceInitImpl() + 0x4B bytes
+    d:\src\ff\s\include\google\protobuf\stubs\once.h (128): game.loginapp.exe!google::protobuf::GoogleOnceInit() + 0xD bytes
+    d:\src\ff\s\include\google\protobuf\generated_message_util.h (90): game.loginapp.exe!google::protobuf::internal::GetEmptyString() + 0xF bytes
+    d:\src\ff\s\pkg\command.pb.cc (121): game.loginapp.exe!Cmd::ReqAccountOperation::SharedCtor()
+    d:\src\ff\s\pkg\command.pb.cc (106): game.loginapp.exe!Cmd::ReqAccountOperation::ReqAccountOperation()
+    d:\src\ff\s\pkg\command.pb.cc (38): game.loginapp.exe!Cmd::protobuf_AddDesc_Command_2eproto() + 0x2B bytes
+    d:\src\ff\s\pkg\command.pb.cc (58): game.loginapp.exe!Cmd::StaticDescriptorInitializer_Command_2eproto::StaticDescriptorInitializer_Command_2eproto()
+    d:\src\ff\s\pkg\command.pb.cc (59): game.loginapp.exe!Cmd::`dynamic initializer for 'static_descriptor_initializer_Command_2eproto_''() + 0x28 bytes
+    ucrtbased.dll!initterm() + 0x49 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (227): game.loginapp.exe!__scrt_common_main_seh() + 0xF bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    B8 A9 C2 00    00 CD CD CD    CD CD CD CD    CD CD CD CD     ........ ........
+    CD CD CD CD    00 00 00 00    0F 00 00 00                    ........ ........
+
+
+---------- Block 24 at 0x003F3958: 28 bytes ----------
+  Leak Hash: 0xBB011AAB, Count: 1, Total 28 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    game.loginapp.exe!google::protobuf::internal::Mutex::Mutex() + 0x1F bytes
+    game.loginapp.exe!google::protobuf::internal::InitShutdownFunctions() + 0x8A bytes
+    d:\src\ff\s\include\google\protobuf\stubs\callback.h (129): game.loginapp.exe!google::protobuf::internal::FunctionClosure0::Run() + 0xA bytes
+    game.loginapp.exe!google::protobuf::GoogleOnceInitImpl() + 0x4B bytes
+    d:\src\ff\s\include\google\protobuf\stubs\once.h (128): game.loginapp.exe!google::protobuf::GoogleOnceInit() + 0xD bytes
+    game.loginapp.exe!google::protobuf::internal::InitShutdownFunctionsOnce() + 0x12 bytes
+    game.loginapp.exe!google::protobuf::internal::OnShutdown() + 0x3F bytes
+    game.loginapp.exe!google::protobuf::internal::InitEmptyString() + 0x4D bytes
+    d:\src\ff\s\include\google\protobuf\stubs\callback.h (129): game.loginapp.exe!google::protobuf::internal::FunctionClosure0::Run() + 0xA bytes
+    game.loginapp.exe!google::protobuf::GoogleOnceInitImpl() + 0x4B bytes
+    d:\src\ff\s\include\google\protobuf\stubs\once.h (128): game.loginapp.exe!google::protobuf::GoogleOnceInit() + 0xD bytes
+    d:\src\ff\s\include\google\protobuf\generated_message_util.h (90): game.loginapp.exe!google::protobuf::internal::GetEmptyString() + 0xF bytes
+    d:\src\ff\s\pkg\command.pb.cc (121): game.loginapp.exe!Cmd::ReqAccountOperation::SharedCtor()
+    d:\src\ff\s\pkg\command.pb.cc (106): game.loginapp.exe!Cmd::ReqAccountOperation::ReqAccountOperation()
+    d:\src\ff\s\pkg\command.pb.cc (38): game.loginapp.exe!Cmd::protobuf_AddDesc_Command_2eproto() + 0x2B bytes
+    d:\src\ff\s\pkg\command.pb.cc (58): game.loginapp.exe!Cmd::StaticDescriptorInitializer_Command_2eproto::StaticDescriptorInitializer_Command_2eproto()
+    d:\src\ff\s\pkg\command.pb.cc (59): game.loginapp.exe!Cmd::`dynamic initializer for 'static_descriptor_initializer_Command_2eproto_''() + 0x28 bytes
+    ucrtbased.dll!initterm() + 0x49 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (227): game.loginapp.exe!__scrt_common_main_seh() + 0xF bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    60 0C C1 00    FF FF FF FF    00 00 00 00    00 00 00 00     `....... ........
+    00 00 00 00    00 00 00 00    00 00 00 00                    ........ ........
+
+
+---------- Block 21 at 0x003F7758: 16 bytes ----------
+  Leak Hash: 0x778B9AC5, Count: 1, Total 16 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    game.loginapp.exe!google::protobuf::internal::InitShutdownFunctions() + 0x40 bytes
+    d:\src\ff\s\include\google\protobuf\stubs\callback.h (129): game.loginapp.exe!google::protobuf::internal::FunctionClosure0::Run() + 0xA bytes
+    game.loginapp.exe!google::protobuf::GoogleOnceInitImpl() + 0x4B bytes
+    d:\src\ff\s\include\google\protobuf\stubs\once.h (128): game.loginapp.exe!google::protobuf::GoogleOnceInit() + 0xD bytes
+    game.loginapp.exe!google::protobuf::internal::InitShutdownFunctionsOnce() + 0x12 bytes
+    game.loginapp.exe!google::protobuf::internal::OnShutdown() + 0x3F bytes
+    game.loginapp.exe!google::protobuf::internal::InitEmptyString() + 0x4D bytes
+    d:\src\ff\s\include\google\protobuf\stubs\callback.h (129): game.loginapp.exe!google::protobuf::internal::FunctionClosure0::Run() + 0xA bytes
+    game.loginapp.exe!google::protobuf::GoogleOnceInitImpl() + 0x4B bytes
+    d:\src\ff\s\include\google\protobuf\stubs\once.h (128): game.loginapp.exe!google::protobuf::GoogleOnceInit() + 0xD bytes
+    d:\src\ff\s\include\google\protobuf\generated_message_util.h (90): game.loginapp.exe!google::protobuf::internal::GetEmptyString() + 0xF bytes
+    d:\src\ff\s\pkg\command.pb.cc (121): game.loginapp.exe!Cmd::ReqAccountOperation::SharedCtor()
+    d:\src\ff\s\pkg\command.pb.cc (106): game.loginapp.exe!Cmd::ReqAccountOperation::ReqAccountOperation()
+    d:\src\ff\s\pkg\command.pb.cc (38): game.loginapp.exe!Cmd::protobuf_AddDesc_Command_2eproto() + 0x2B bytes
+    d:\src\ff\s\pkg\command.pb.cc (58): game.loginapp.exe!Cmd::StaticDescriptorInitializer_Command_2eproto::StaticDescriptorInitializer_Command_2eproto()
+    d:\src\ff\s\pkg\command.pb.cc (59): game.loginapp.exe!Cmd::`dynamic initializer for 'static_descriptor_initializer_Command_2eproto_''() + 0x28 bytes
+    ucrtbased.dll!initterm() + 0x49 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (227): game.loginapp.exe!__scrt_common_main_seh() + 0xF bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    F0 A9 C2 00    28 AA C2 00    30 AA C2 00    30 AA C2 00     ....(... 0...0...
+
+
+---------- Block 35 at 0x003FD720: 48 bytes ----------
+  Leak Hash: 0x250E4DF0, Count: 1, Total 48 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    d:\src\ff\s\common\delegate.h (166): game.loginapp.exe!Delegate2<void,ProtocoBuffer *,Connection *>::add<LoginNetAgent>() + 0x7 bytes
+    d:\src\ff\s\loginapp\loginnetagent.cpp (19): game.loginapp.exe!LoginNetAgent::initialize()
+    d:\src\ff\s\loginapp\loginapp.cpp (47): game.loginapp.exe!LoginApp::onInitializeNet() + 0xB bytes
+    d:\src\ff\s\core\app.cpp (48): Core.dll!App::initialize() + 0xF bytes
+    d:\src\ff\s\core\app.cpp (124): Core.dll!App::Main() + 0x8 bytes
+    d:\src\ff\s\loginapp\main.cpp (23): game.loginapp.exe!main() + 0xC bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (64): game.loginapp.exe!invoke_main() + 0x1B bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (259): game.loginapp.exe!__scrt_common_main_seh() + 0x5 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    84 F4 31 00    90 C8 41 00    70 8A D5 00    B6 98 CF 00     ..1...A. p.......
+    84 F4 00 00    90 C8 41 00    00 00 00 00    00 00 00 00     ......A. ........
+    00 00 00 00    00 00 00 00    00 00 00 00    28 D7 3F 00     ........ ....(.?.
+
+
+---------- Block 18 at 0x00413338: 32 bytes ----------
+  Leak Hash: 0xA4164401, Count: 1, Total 32 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    d:\src\ff\s\pkg\command.pb.cc (38): game.loginapp.exe!Cmd::protobuf_AddDesc_Command_2eproto() + 0x7 bytes
+    d:\src\ff\s\pkg\command.pb.cc (58): game.loginapp.exe!Cmd::StaticDescriptorInitializer_Command_2eproto::StaticDescriptorInitializer_Command_2eproto()
+    d:\src\ff\s\pkg\command.pb.cc (59): game.loginapp.exe!Cmd::`dynamic initializer for 'static_descriptor_initializer_Command_2eproto_''() + 0x28 bytes
+    ucrtbased.dll!initterm() + 0x49 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (227): game.loginapp.exe!__scrt_common_main_seh() + 0xF bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    DC 97 D5 00    10 39 3F 00    00 00 00 00    00 00 00 00     .....9?. ........
+    00 00 00 00    10 39 3F 00    10 39 3F 00    00 00 00 00     .....9?. .9?.....
+
+
+---------- Block 26 at 0x00413388: 32 bytes ----------
+  Leak Hash: 0xC336D335, Count: 1, Total 32 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    d:\src\ff\s\pkg\command.pb.cc (39): game.loginapp.exe!Cmd::protobuf_AddDesc_Command_2eproto() + 0x7 bytes
+    d:\src\ff\s\pkg\command.pb.cc (58): game.loginapp.exe!Cmd::StaticDescriptorInitializer_Command_2eproto::StaticDescriptorInitializer_Command_2eproto()
+    d:\src\ff\s\pkg\command.pb.cc (59): game.loginapp.exe!Cmd::`dynamic initializer for 'static_descriptor_initializer_Command_2eproto_''() + 0x28 bytes
+    ucrtbased.dll!initterm() + 0x49 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (227): game.loginapp.exe!__scrt_common_main_seh() + 0xF bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    30 98 D5 00    10 39 3F 00    00 00 00 00    00 00 00 00     0....9?. ........
+    00 00 00 00    10 39 3F 00    00 00 00 00    00 00 00 00     .....9?. ........
+
+
+---------- Block 23 at 0x0041C7D0: 4 bytes ----------
+  Leak Hash: 0xB2336B2F, Count: 1, Total 4 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    game.loginapp.exe!google::protobuf::internal::InitShutdownFunctions() + 0x6F bytes
+    d:\src\ff\s\include\google\protobuf\stubs\callback.h (129): game.loginapp.exe!google::protobuf::internal::FunctionClosure0::Run() + 0xA bytes
+    game.loginapp.exe!google::protobuf::GoogleOnceInitImpl() + 0x4B bytes
+    d:\src\ff\s\include\google\protobuf\stubs\once.h (128): game.loginapp.exe!google::protobuf::GoogleOnceInit() + 0xD bytes
+    game.loginapp.exe!google::protobuf::internal::InitShutdownFunctionsOnce() + 0x12 bytes
+    game.loginapp.exe!google::protobuf::internal::OnShutdown() + 0x3F bytes
+    game.loginapp.exe!google::protobuf::internal::InitEmptyString() + 0x4D bytes
+    d:\src\ff\s\include\google\protobuf\stubs\callback.h (129): game.loginapp.exe!google::protobuf::internal::FunctionClosure0::Run() + 0xA bytes
+    game.loginapp.exe!google::protobuf::GoogleOnceInitImpl() + 0x4B bytes
+    d:\src\ff\s\include\google\protobuf\stubs\once.h (128): game.loginapp.exe!google::protobuf::GoogleOnceInit() + 0xD bytes
+    d:\src\ff\s\include\google\protobuf\generated_message_util.h (90): game.loginapp.exe!google::protobuf::internal::GetEmptyString() + 0xF bytes
+    d:\src\ff\s\pkg\command.pb.cc (121): game.loginapp.exe!Cmd::ReqAccountOperation::SharedCtor()
+    d:\src\ff\s\pkg\command.pb.cc (106): game.loginapp.exe!Cmd::ReqAccountOperation::ReqAccountOperation()
+    d:\src\ff\s\pkg\command.pb.cc (38): game.loginapp.exe!Cmd::protobuf_AddDesc_Command_2eproto() + 0x2B bytes
+    d:\src\ff\s\pkg\command.pb.cc (58): game.loginapp.exe!Cmd::StaticDescriptorInitializer_Command_2eproto::StaticDescriptorInitializer_Command_2eproto()
+    d:\src\ff\s\pkg\command.pb.cc (59): game.loginapp.exe!Cmd::`dynamic initializer for 'static_descriptor_initializer_Command_2eproto_''() + 0x28 bytes
+    ucrtbased.dll!initterm() + 0x49 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (227): game.loginapp.exe!__scrt_common_main_seh() + 0xF bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    58 39 3F 00                                                  X9?..... ........
+
+
+---------- Block 20 at 0x00C2A9B8: 8 bytes ----------
+  Leak Hash: 0xC6690310, Count: 1, Total 8 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xmemory0 (87): game.loginapp.exe!std::_Allocate() + 0x9 bytes
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xmemory0 (828): game.loginapp.exe!std::allocator<std::_Container_proxy>::allocate() + 0xD bytes
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xmemory0 (1078): game.loginapp.exe!std::_Wrap_alloc<std::allocator<std::_Container_proxy> >::allocate()
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xstring (1776): game.loginapp.exe!std::_String_alloc<std::_String_base_types<char,std::allocator<char> > >::_Alloc_proxy() + 0xA bytes
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xstring (1722): game.loginapp.exe!std::_String_alloc<std::_String_base_types<char,std::allocator<char> > >::_String_alloc<std::_String_base_types<char,std::allocator<char> > >()
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xstring (1940): game.loginapp.exe!std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >()
+    game.loginapp.exe!google::protobuf::internal::InitEmptyString() + 0x2F bytes
+    d:\src\ff\s\include\google\protobuf\stubs\callback.h (129): game.loginapp.exe!google::protobuf::internal::FunctionClosure0::Run() + 0xA bytes
+    game.loginapp.exe!google::protobuf::GoogleOnceInitImpl() + 0x4B bytes
+    d:\src\ff\s\include\google\protobuf\stubs\once.h (128): game.loginapp.exe!google::protobuf::GoogleOnceInit() + 0xD bytes
+    d:\src\ff\s\include\google\protobuf\generated_message_util.h (90): game.loginapp.exe!google::protobuf::internal::GetEmptyString() + 0xF bytes
+    d:\src\ff\s\pkg\command.pb.cc (121): game.loginapp.exe!Cmd::ReqAccountOperation::SharedCtor()
+    d:\src\ff\s\pkg\command.pb.cc (106): game.loginapp.exe!Cmd::ReqAccountOperation::ReqAccountOperation()
+    d:\src\ff\s\pkg\command.pb.cc (38): game.loginapp.exe!Cmd::protobuf_AddDesc_Command_2eproto() + 0x2B bytes
+    d:\src\ff\s\pkg\command.pb.cc (58): game.loginapp.exe!Cmd::StaticDescriptorInitializer_Command_2eproto::StaticDescriptorInitializer_Command_2eproto()
+    d:\src\ff\s\pkg\command.pb.cc (59): game.loginapp.exe!Cmd::`dynamic initializer for 'static_descriptor_initializer_Command_2eproto_''() + 0x28 bytes
+    ucrtbased.dll!initterm() + 0x49 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (227): game.loginapp.exe!__scrt_common_main_seh() + 0xF bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    10 39 3F 00    00 00 00 00                                   .9?..... ........
+
+
+---------- Block 22 at 0x00C2A9F0: 8 bytes ----------
+  Leak Hash: 0xD5F9E68F, Count: 1, Total 8 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xmemory0 (87): game.loginapp.exe!std::_Allocate() + 0x9 bytes
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xmemory0 (828): game.loginapp.exe!std::allocator<std::_Container_proxy>::allocate() + 0xD bytes
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xmemory0 (1078): game.loginapp.exe!std::_Wrap_alloc<std::allocator<std::_Container_proxy> >::allocate()
+    game.loginapp.exe!std::_Vector_alloc<std::_Vec_base_types<void (__cdecl*)(void),std::allocator<void (__cdecl*)(void)> > >::_Alloc_proxy() + 0x3C bytes
+    game.loginapp.exe!std::_Vector_alloc<std::_Vec_base_types<void (__cdecl*)(void),std::allocator<void (__cdecl*)(void)> > >::_Vector_alloc<std::_Vec_base_types<void (__cdecl*)(void),std::allocator<void (__cdecl*)(void)> > >() + 0x52 bytes
+    game.loginapp.exe!std::vector<void (__cdecl*)(void),std::allocator<void (__cdecl*)(void)> >::vector<void (__cdecl*)(void),std::allocator<void (__cdecl*)(void)> >() + 0x35 bytes
+    game.loginapp.exe!google::protobuf::internal::InitShutdownFunctions() + 0x54 bytes
+    d:\src\ff\s\include\google\protobuf\stubs\callback.h (129): game.loginapp.exe!google::protobuf::internal::FunctionClosure0::Run() + 0xA bytes
+    game.loginapp.exe!google::protobuf::GoogleOnceInitImpl() + 0x4B bytes
+    d:\src\ff\s\include\google\protobuf\stubs\once.h (128): game.loginapp.exe!google::protobuf::GoogleOnceInit() + 0xD bytes
+    game.loginapp.exe!google::protobuf::internal::InitShutdownFunctionsOnce() + 0x12 bytes
+    game.loginapp.exe!google::protobuf::internal::OnShutdown() + 0x3F bytes
+    game.loginapp.exe!google::protobuf::internal::InitEmptyString() + 0x4D bytes
+    d:\src\ff\s\include\google\protobuf\stubs\callback.h (129): game.loginapp.exe!google::protobuf::internal::FunctionClosure0::Run() + 0xA bytes
+    game.loginapp.exe!google::protobuf::GoogleOnceInitImpl() + 0x4B bytes
+    d:\src\ff\s\include\google\protobuf\stubs\once.h (128): game.loginapp.exe!google::protobuf::GoogleOnceInit() + 0xD bytes
+    d:\src\ff\s\include\google\protobuf\generated_message_util.h (90): game.loginapp.exe!google::protobuf::internal::GetEmptyString() + 0xF bytes
+    d:\src\ff\s\pkg\command.pb.cc (121): game.loginapp.exe!Cmd::ReqAccountOperation::SharedCtor()
+    d:\src\ff\s\pkg\command.pb.cc (106): game.loginapp.exe!Cmd::ReqAccountOperation::ReqAccountOperation()
+    d:\src\ff\s\pkg\command.pb.cc (38): game.loginapp.exe!Cmd::protobuf_AddDesc_Command_2eproto() + 0x2B bytes
+    d:\src\ff\s\pkg\command.pb.cc (58): game.loginapp.exe!Cmd::StaticDescriptorInitializer_Command_2eproto::StaticDescriptorInitializer_Command_2eproto()
+    d:\src\ff\s\pkg\command.pb.cc (59): game.loginapp.exe!Cmd::`dynamic initializer for 'static_descriptor_initializer_Command_2eproto_''() + 0x28 bytes
+    ucrtbased.dll!initterm() + 0x49 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (227): game.loginapp.exe!__scrt_common_main_seh() + 0xF bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    58 77 3F 00    00 00 00 00                                   Xw?..... ........
+
+
+---------- Block 28 at 0x00C2AA28: 8 bytes ----------
+  Leak Hash: 0x19B14F81, Count: 1, Total 8 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xmemory0 (87): game.loginapp.exe!std::_Allocate() + 0x9 bytes
+    game.loginapp.exe!std::allocator<void (__cdecl*)(void)>::allocate() + 0x1B bytes
+    game.loginapp.exe!std::_Wrap_alloc<std::allocator<void (__cdecl*)(void)> >::allocate() + 0x1A bytes
+    game.loginapp.exe!std::vector<void (__cdecl*)(void),std::allocator<void (__cdecl*)(void)> >::_Reallocate() + 0x57 bytes
+    game.loginapp.exe!std::vector<void (__cdecl*)(void),std::allocator<void (__cdecl*)(void)> >::_Reserve() + 0x5A bytes
+    game.loginapp.exe!std::vector<void (__cdecl*)(void),std::allocator<void (__cdecl*)(void)> >::push_back() + 0x114 bytes
+    game.loginapp.exe!google::protobuf::internal::OnShutdown() + 0x63 bytes
+    d:\src\ff\s\pkg\command.pb.cc (44): game.loginapp.exe!Cmd::protobuf_AddDesc_Command_2eproto() + 0xA bytes
+    d:\src\ff\s\pkg\command.pb.cc (58): game.loginapp.exe!Cmd::StaticDescriptorInitializer_Command_2eproto::StaticDescriptorInitializer_Command_2eproto()
+    d:\src\ff\s\pkg\command.pb.cc (59): game.loginapp.exe!Cmd::`dynamic initializer for 'static_descriptor_initializer_Command_2eproto_''() + 0x28 bytes
+    ucrtbased.dll!initterm() + 0x49 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (227): game.loginapp.exe!__scrt_common_main_seh() + 0xF bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    92 A8 CF 00    D7 A4 CF 00                                   ........ ........
+
+
+---------- Block 27 at 0x01BA8C20: 24 bytes ----------
+  Leak Hash: 0xC4DCE21A, Count: 1, Total 24 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    d:\src\ff\s\pkg\command.pb.cc (40): game.loginapp.exe!Cmd::protobuf_AddDesc_Command_2eproto() + 0x7 bytes
+    d:\src\ff\s\pkg\command.pb.cc (58): game.loginapp.exe!Cmd::StaticDescriptorInitializer_Command_2eproto::StaticDescriptorInitializer_Command_2eproto()
+    d:\src\ff\s\pkg\command.pb.cc (59): game.loginapp.exe!Cmd::`dynamic initializer for 'static_descriptor_initializer_Command_2eproto_''() + 0x28 bytes
+    ucrtbased.dll!initterm() + 0x49 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (227): game.loginapp.exe!__scrt_common_main_seh() + 0xF bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    84 98 D5 00    10 39 3F 00    00 00 00 00    00 00 00 00     .....9?. ........
+    00 00 00 00    00 00 00 00                                   ........ ........
+
+
+---------- Block 36 at 0x01F34898: 4 bytes ----------
+  Leak Hash: 0xF3ABB8A4, Count: 1, Total 4 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xmemory0 (87): game.loginapp.exe!std::_Allocate() + 0x9 bytes
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xmemory0 (828): game.loginapp.exe!std::allocator<Delegate2<void,ProtocoBuffer *,Connection *>::Functor *>::allocate() + 0xD bytes
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\xmemory0 (1078): game.loginapp.exe!std::_Wrap_alloc<std::allocator<Delegate2<void,ProtocoBuffer *,Connection *>::Functor *> >::allocate()
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\vector (925): game.loginapp.exe!std::vector<Delegate2<void,ProtocoBuffer *,Connection *>::Functor *,std::allocator<Delegate2<void,ProtocoBuffer *,Connection *>::Functor *> >::emplace_back<Delegate2<void,ProtocoBuffer *,Connection *>::Functor * const &>() + 0x13 bytes
+    d:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\vector (948): game.loginapp.exe!std::vector<Delegate2<void,ProtocoBuffer *,Connection *>::Functor *,std::allocator<Delegate2<void,ProtocoBuffer *,Connection *>::Functor *> >::push_back()
+    d:\src\ff\s\common\delegate.h (171): game.loginapp.exe!Delegate2<void,ProtocoBuffer *,Connection *>::add<LoginNetAgent>()
+    d:\src\ff\s\loginapp\loginnetagent.cpp (19): game.loginapp.exe!LoginNetAgent::initialize()
+    d:\src\ff\s\loginapp\loginapp.cpp (47): game.loginapp.exe!LoginApp::onInitializeNet() + 0xB bytes
+    d:\src\ff\s\core\app.cpp (48): Core.dll!App::initialize() + 0xF bytes
+    d:\src\ff\s\core\app.cpp (124): Core.dll!App::Main() + 0x8 bytes
+    d:\src\ff\s\loginapp\main.cpp (23): game.loginapp.exe!main() + 0xC bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (64): game.loginapp.exe!invoke_main() + 0x1B bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (259): game.loginapp.exe!__scrt_common_main_seh() + 0x5 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    20 D7 3F 00                                                  ..?..... ........
+
+
+---------- Block 37 at 0x02114F00: 48 bytes ----------
+  Leak Hash: 0x6E5126E6, Count: 1, Total 48 bytes
+  Call Stack (TID 7252):
+    ucrtbased.dll!malloc()
+    f:\dd\vctools\crt\vcstartup\src\heap\new_scalar.cpp (19): game.loginapp.exe!operator new() + 0x9 bytes
+    d:\src\ff\s\common\delegate.h (98): game.loginapp.exe!Delegate1<void,Connection *>::add<LoginNetAgent>() + 0x7 bytes
+    d:\src\ff\s\loginapp\loginnetagent.cpp (20): game.loginapp.exe!LoginNetAgent::initialize()
+    d:\src\ff\s\loginapp\loginapp.cpp (47): game.loginapp.exe!LoginApp::onInitializeNet() + 0xB bytes
+    d:\src\ff\s\core\app.cpp (48): Core.dll!App::initialize() + 0xF bytes
+    d:\src\ff\s\core\app.cpp (124): Core.dll!App::Main() + 0x8 bytes
+    d:\src\ff\s\loginapp\main.cpp (23): game.loginapp.exe!main() + 0xC bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (64): game.loginapp.exe!invoke_main() + 0x1B bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (259): game.loginapp.exe!__scrt_common_main_seh() + 0x5 bytes
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_common.inl (302): game.loginapp.exe!__scrt_common_main()
+    f:\dd\vctools\crt\vcstartup\src\startup\exe_main.cpp (17): game.loginapp.exe!mainCRTStartup()
+    kernel32.dll!BaseThreadInitThunk() + 0x12 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x63 bytes
+    ntdll.dll!RtlInitializeExceptionChain() + 0x36 bytes
+  Data:
+    84 F4 31 00    90 C8 41 00    94 8A D5 00    CB A1 CF 00     ..1...A. ........
+    84 00 00 00    90 C8 41 00    00 00 00 00    00 00 00 00     ......A. ........
+    00 00 00 00    00 00 00 00    00 00 00 00    08 4F 11 02     ........ .....O..
+
+
+Visual Leak Detector detected 13 memory leaks (756 bytes).
+Largest number used: 1893 bytes.
+Total allocations: 2489 bytes.
+Visual Leak Detector is now exiting.

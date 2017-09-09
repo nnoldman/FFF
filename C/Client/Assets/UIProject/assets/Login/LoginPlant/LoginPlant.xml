@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="576,1024" pivot="0.5,0.5" adaptationTest="FitWidthAndSetMiddle">
+  <displayList>
+    <image id="n0_kr71" name="n0" src="kpev61" pkg="9leh0eyf" xy="67,395" pivot="0.5,0.5" size="442,234"/>
+    <text id="n1_kr71" name="n1" xy="109,433" size="56,24" fontSize="20" color="#ffffff" autoSize="height" text="账号"/>
+    <text id="n2_kr71" name="n2" xy="110,483" size="56,24" fontSize="20" color="#ffffff" autoSize="height" text="密码"/>
+    <text id="n3_kr71" name="user" xy="192,431" size="284,24" input="true" fontSize="20" color="#ffffff" autoSize="height" text="123"/>
+    <text id="n4_kr71" name="psw" xy="194,482" size="284,24" input="true" fontSize="20" color="#ffffff" autoSize="height" text="456"/>
+    <component id="n5_kr71" name="login" src="rpmb17" pkg="9leh0eyf" xy="105,539">
+      <Button title="登录"/>
+    </component>
+    <component id="n6_kr71" name="exit" src="rpmb17" pkg="9leh0eyf" xy="321,537">
+      <Button title="退出"/>
+    </component>
+  </displayList>
+</component>

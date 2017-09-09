@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectView>ProjectFiles</ProjectView>
+    <PublishUrlHistory>publish\</PublishUrlHistory>
+    <InstallUrlHistory />
+    <SupportUrlHistory />
+    <UpdateUrlHistory />
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>zh-CN</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartAction>Project</StartAction>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+    <EnableSQLServerDebugging>false</EnableSQLServerDebugging>
+    <StartArguments>mono --debug --debugger-agent=transport=dt_socket,address=127.0.0.1:8088,server=y,suspend=y centerapp</StartArguments>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,111 @@
+
+
+syntax = "proto2";
+
+package Cmd;
+
+option csharp_namespace = "Google.Protobuf.WellKnownTypes";
+option go_package = "github.com/golang/protobuf/ptypes/duration";
+option java_package = "com.google.protobuf";
+option java_outer_classname = "DurationProto";
+option java_multiple_files = true;
+option java_generate_equals_and_hash = true;
+option objc_class_prefix = "GPB";
+
+option optimize_for = LITE_RUNTIME;
+
+enum AccountAction {
+    AccountAction_None=0;
+    AccountAction_Create=1;
+    AccountAction_Rename=2;
+    AccountAction_Delete=3;
+    AccountAction_Login=4;
+};
+
+enum AccountErrorCode {
+    AccountErrorCode_None=0;
+    AccountErrorCode_CreateSucessed=1;
+    AccountErrorCode_NameRepeated=2;
+    AccountErrorCode_UserCantFind=3;
+    AccountErrorCode_PasswordError=4;
+    AccountErrorCode_LoginSucessed=5;
+};
+
+message ReqAccountOperation
+{
+    required AccountAction action=1;
+    required string user=2;
+    required string password=3;
+};
+
+message RetAccountOperation
+{
+    required AccountErrorCode error=1;
+    required int32 accountid=2;
+	required int32 time=3;
+	required string token=4;
+	repeated int32 late_serverids=5;
+};
+
+
+message ReqLoginGameServer
+{
+    required int32 accountid=1;
+	required int32 time=2;
+	required string token=3;
+};
+
+enum LoginGameServerErrorCode
+{
+	Sucess=0;
+	Overdue=1;
+	Invalid=2;
+}
+
+message GameRole
+{
+	required int32 id=1;
+	optional int32 level=2;
+	optional string name=3;
+	optional int32 sex=4;
+	optional int32 job=5;
+	optional int32 vip=6;
+}
+
+message RetLoginGameServer
+{
+	required LoginGameServerErrorCode error=1;
+	required GameRole role=2;
+};
+
+message ReqCreateRole
+{
+	required int32 sex=1;
+	required int32 job=2;
+	required string name=3;
+}
+
+enum CreateRoleError
+{
+	CreateRoleError_Sucess=0;
+	CreateRoleError_NameRepeated=1;
+}
+
+message RetCreateRole
+{
+	required CreateRoleError error=1;
+	required int32 roleID=2;
+	required string name=3;
+	required int32 sex=4;
+	required int32 job=5;
+	required int32 vip=6;
+}
+
+message RTMainUser
+{
+	required int32 charID=1;
+	required int32 job=2;
+	required int32 sex=3;
+	required string name=4;
+	required int32 vip=5;
+}

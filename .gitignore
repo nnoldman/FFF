@@ -1,32 +1,21 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+/C/Client/Library/metadata/00
+/C/Client/Library
+/C/Client/Temp
+/C/Client/*.csproj
+/C/ClientLib/AppCore/obj/Debug/*.cache
+/C/ClientLib/.vs/App/v14/*.suo
+/C/ClientLib/.vs/ClientLib/v14/*.suo
+/C/Client/.vs/Client/v14/*.suo
+/Projects
+/Libs/Source
+/Libs/protoc-3.0.0-win32
+/Libs/Projects
+/Libs/src/protobuf-cpp-3.0.0/protobuf-3.0.0
+/Libs/project/protobuf-cpp-3.0.0/protobuf-3.0.0
+/Libs/project
+/Libs/src
+/Libs/Release
+/S/thread/*.filters
+/S/Client/Application/Application/bin/Debug/*.config
+/S/Client/Application/Application/bin
+/S/Scripts/*.userprefs

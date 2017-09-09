@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{24AEFD1F-F3B9-42A9-B9E8-7BE0CE715292}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Scripts</RootNamespace>
+    <AssemblyName>Scripts</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\scripts\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClientPlugins, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\ClientPlugins.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CSharp" />
+    <Reference Include="ProtoBuf">
+      <HintPath>libs\ProtoBuf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Command\BaseCommand.cs" />
+    <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Command\LogonUserCmd.cs" />
+    <Compile Include="Command\MoibleUserCmd.cs" />
+    <Compile Include="Command\SelectUserCmd.cs" />
+    <Compile Include="Command\TimerUserCmd.cs" />
+    <Compile Include="DataBase\DBDefiner.cs" />
+    <Compile Include="Entity\S_Role.cs" />
+    <Compile Include="Infomation\ArmyData.cs" />
+    <Compile Include="Infomation\ChargeData.cs" />
+    <Compile Include="Infomation\ColorString.cs" />
+    <Compile Include="Infomation\Condtion.cs" />
+    <Compile Include="Infomation\DailyTaskData.cs" />
+    <Compile Include="Infomation\DungeonData.cs" />
+    <Compile Include="Infomation\DungeonMgr.cs" />
+    <Compile Include="Infomation\DungeonWar.cs" />
+    <Compile Include="Infomation\DungeonWarChapterData.cs" />
+    <Compile Include="Infomation\EquipData.cs" />
+    <Compile Include="Infomation\GeneralData.cs" />
+    <Compile Include="Infomation\GMData.cs" />
+    <Compile Include="Infomation\IconData.cs" />
+    <Compile Include="Infomation\Informations.cs" />
+    <Compile Include="Infomation\ItemMgr.cs" />
+    <Compile Include="Infomation\ItemType.cs" />
+    <Compile Include="Infomation\LanguageData.cs" />
+    <Compile Include="Infomation\LoadingTip.cs" />
+    <Compile Include="Infomation\MapData.cs" />
+    <Compile Include="Infomation\MaterialData.cs" />
+    <Compile Include="Infomation\NpcData.cs" />
+    <Compile Include="Infomation\ObjectBase.cs" />
+    <Compile Include="Infomation\PostLoadingData.cs" />
+    <Compile Include="Infomation\PropertyHelper.cs" />
+    <Compile Include="Infomation\QualityColorData.cs" />
+    <Compile Include="Infomation\SignData.cs" />
+    <Compile Include="Infomation\SkillData.cs" />
+    <Compile Include="Infomation\SoldierPropertyData.cs" />
+    <Compile Include="Infomation\SoliderSkillData.cs" />
+    <Compile Include="Infomation\Source.cs" />
+    <Compile Include="Infomation\Stat.cs" />
+    <Compile Include="Infomation\TaskState.cs" />
+    <Compile Include="Infomation\TitleData.cs" />
+    <Compile Include="Infomation\VipData.cs" />
+    <Compile Include="Infomation\WarMapData.cs" />
+    <Compile Include="Localization.cs" />
+    <Compile Include="Net\Net.cs" />
+    <Compile Include="Terminal\DBPkg.cs" />
+    <Compile Include="Entity\ScriptObject.cs" />
+    <Compile Include="DataBase\DBSerializer.cs" />
+    <Compile Include="main.cs" />
+    <Compile Include="Terminal\DB.cs" />
+    <Compile Include="Entity\S_Account.cs" />
+    <Compile Include="DataInitializer.cs" />
+    <Compile Include="DataBase\DBDefines.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>cmd mono</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

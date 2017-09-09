@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="loginapp" />
+		<Option pch_mode="2" />
+		<Option compiler="msvc10" />
+		<Build>
+			<Target title="Debug Win32">
+				<Option output="loginapp" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="msvc10" />
+				<Compiler>
+					<Add option="/DWIN32" />
+					<Add option="/D_DEBUG" />
+					<Add option="/D_CONSOLE" />
+					<Add directory="../Default" />
+					<Add directory="../" />
+					<Add directory="../Common" />
+					<Add directory="../PKG" />
+					<Add directory="../Core" />
+				</Compiler>
+				<Linker>
+					<Add option="/debug" />
+					<Add library="mono-2.0.lib" />
+					<Add library="Core.lib" />
+					<Add library="PKG.lib" />
+					<Add library="Common.lib" />
+					<Add directory="../bin/$(Configuration)" />
+				</Linker>
+			</Target>
+			<Target title="Debug x64">
+				<Option output="loginapp" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="msvc10" />
+				<Compiler>
+					<Add option="/D_DEBUG" />
+					<Add option="/D_CONSOLE" />
+					<Add directory="../Default" />
+					<Add directory="../" />
+					<Add directory="../Common" />
+					<Add directory="../PKG" />
+					<Add directory="../Core" />
+				</Compiler>
+				<Linker>
+					<Add option="/debug" />
+					<Add library="mono-2.0.lib" />
+					<Add library="Core.lib" />
+					<Add library="PKG.lib" />
+					<Add library="Common.lib" />
+					<Add directory="../bin/$(Configuration)" />
+				</Linker>
+			</Target>
+			<Target title="Release x64">
+				<Option output="loginapp" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="msvc10" />
+				<Compiler>
+					<Add option="/DNDEBUG" />
+					<Add option="/D_CONSOLE" />
+				</Compiler>
+				<Linker>
+					<Add option="/debug" />
+				</Linker>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="loginapp" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="msvc10" />
+				<Compiler>
+					<Add option="/DWIN32" />
+					<Add option="/DNDEBUG" />
+					<Add option="/D_CONSOLE" />
+				</Compiler>
+				<Linker>
+					<Add option="/debug" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="LoginApp.cpp" />
+		<Unit filename="LoginApp.h" />
+		<Unit filename="NetAgent.cpp" />
+		<Unit filename="NetAgent.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

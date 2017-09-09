@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="576,1024">
+  <displayList>
+    <graph id="n0_fl9n" name="n0" xy="0,0" size="576,1024" type="rect" fillColor="#ff333333"/>
+    <list id="n1_fl9n" name="serverList" xy="88,115" size="399,527" overflow="hidden" defaultItem="ui://3aca1ugufl9n3" align="center">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <graph id="n3_fpms" name="n3" xy="131,677" size="334,61" group="n11_fpms" type="rect" fillColor="#ff006666"/>
+    <text id="n4_fpms" name="currentServer" xy="195,696" size="213,24" group="n11_fpms" fontSize="20" color="#ffffff" align="center" autoSize="height" text="天涯"/>
+    <group id="n11_fpms" name="n11" xy="131,677" size="334,61"/>
+    <component id="n15_fpms" name="enterGame" src="fpms8" xy="204,854"/>
+  </displayList>
+</component>

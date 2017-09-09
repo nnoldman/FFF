@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="gx77j113" jpegQuality="80" compressPNG="true">
+  <resources>
+    <image id="jce80" name="按钮g.png" path="/images/" exported="true"/>
+    <component id="jce84" name="commonButton1.xml" path="/buttons/" exported="true"/>
+  </resources>
+  <publish name="Common" genCode="true" maxAtlasSize="1024" square="true" extractAlpha="true">
+    <atlas name="默认" index="0"/>
+  </publish>
+</packageDescription>

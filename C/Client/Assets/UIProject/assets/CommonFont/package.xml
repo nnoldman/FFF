@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="lpbj23gq" jpegQuality="80" compressPNG="true">
+  <resources>
+    <font id="i7ji0" name="CommonFont.fnt" path="/" exported="true"/>
+  </resources>
+  <publish name="CommonFont" genCode="true"/>
+</packageDescription>

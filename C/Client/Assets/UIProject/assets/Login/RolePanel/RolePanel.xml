@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="576,1024">
+  <displayList>
+    <image id="n0_jce8" name="n0" src="jce8o" xy="118,881" aspect="true"/>
+    <text id="n1_jce8" name="name1" xy="232,884" size="161,28" input="true" fontSize="24" color="#00cc00" autoSize="none" singleLine="true" text="456789"/>
+    <component id="n2_jce8" name="enterGame2" src="jce84" pkg="gx77j113" xy="210,941" size="162,50">
+      <Button title="进入游戏"/>
+    </component>
+  </displayList>
+</component>

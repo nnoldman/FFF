@@ -1,0 +1,2 @@
+mcs.exe  -debug  -reference:.\libs\ClientPlugins.dll,.\libs\Mono.CSharp.dll,.\libs\ProtoBuf.dll *.cs .\Command\*.cs .\DataBase\*.cs .\Entity\*.cs .\Infomation\*.cs    .\Terminal\*.cs -t:library -out:Scripts_mono.dll
+copy *.dll ..\bin\scripts

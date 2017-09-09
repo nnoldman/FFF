@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <login >
+	<db dbname="ff" user="root" passwrod="ni2handan" host="127.0.0.1" port="3306" autoCreateAccount="true"/>
+    <net ip="127.0.0.1" port="15299" threadCount="4"/>
+	<script open="false"/>	
+  </login>
+  <center >
+    <db dbname="ff" user="root" passwrod="ni2handan" host="127.0.0.1" port="3306" autoCreateAccount="true"/>
+    <script open="true"/>	
+    <net id="1" ip="127.0.0.1" port="7800" threadCount="4" name="XX1"/>
+    <net id="2" ip="127.0.0.1" port="7801" threadCount="4" name="XX2"/>
+    <net id="3" ip="127.0.0.1" port="7802" threadCount="4" name="XX3"/>
+    <net id="4" ip="127.0.0.1" port="7803" threadCount="4" name="XX4"/>
+    <net id="5" ip="127.0.0.1" port="7804" threadCount="4" name="XX5"/>
+    <net id="6" ip="127.0.0.1" port="7805" threadCount="4" name="XX6"/>
+    <net id="7" ip="127.0.0.1" port="7806" threadCount="4" name="XX7"/>
+  </center>
+</Config>

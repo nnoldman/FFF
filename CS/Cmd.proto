@@ -1,0 +1,37 @@
+syntax = "proto2";
+
+package Cmd;
+option csharp_namespace = "Cmd";
+option go_package = "github.com/golang/protobuf/ptypes/duration";
+option java_package = "com.google.protobuf";
+option java_outer_classname = "DurationProto";
+option java_multiple_files = true;
+option java_generate_equals_and_hash = true;
+option objc_class_prefix = "GPB";
+
+
+option optimize_for = LITE_RUNTIME;
+
+//test ceshi
+enum CLIENTID
+{
+	// xxx
+	RQLoginGameServer=100;
+
+	RQAccountOperation=300;
+	
+	RQLoginGame=400;
+	
+	RQCreateRole=500;
+	
+	RQEnterGame=600;
+};
+
+enum SERVERID
+{
+	RTLoginGameServer=100;
+	RTAccountOperation=300;
+	RTLoginGame=400;
+	RTCreateRole=500;
+	RTMainUser=600;
+};

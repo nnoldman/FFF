@@ -1,0 +1,6 @@
+D:\project\Monos\Client\Application\Application\bin\Debug\Application.exe.config
+D:\project\Monos\Client\Application\Application\bin\Debug\Application.exe
+D:\project\Monos\Client\Application\Application\bin\Debug\Application.pdb
+D:\project\Monos\Client\Application\Application\obj\Debug\Application.csprojResolveAssemblyReference.cache
+D:\project\Monos\Client\Application\Application\obj\Debug\Application.exe
+D:\project\Monos\Client\Application\Application\obj\Debug\Application.pdb
