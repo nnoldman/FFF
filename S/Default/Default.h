@@ -6,10 +6,12 @@ namespace Default
 
 enum Const
 {
+    TimeSize = 20,
     NameSize = 64,
     PasswordSize = 24,
     HostSize = 256,
     DataSize = 1024,
+    EventName = 128,
 };
 
 template<typename T>

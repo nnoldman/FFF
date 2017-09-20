@@ -35,7 +35,7 @@ void World::reclaimAccount(Connection* connection)
 {
     string key = connection->getSocket().address().toString();
     //onAccountLeaveWorld.invoke(account);
-    DBObject* ret;
+    DBObject* ret = nullptr;
     accounts_.Get(key, ret);
     assert(ret);
     accounts_.erase(key);

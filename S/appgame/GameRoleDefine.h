@@ -2,6 +2,7 @@
 #include "DBDefine.h"
 #include "CharBuffer.h"
 #include "DBTableDefine.h"
+#include "RoleInfoDefine.h"
 
 class GameRoleDefine :
     public DBDefine
@@ -19,8 +20,10 @@ public:
                 { "level",enum_field_types::MYSQL_TYPE_LONG,0,false,false,1 },
                 { "sex",enum_field_types::MYSQL_TYPE_BIT,0,false,false },
                 { "job",enum_field_types::MYSQL_TYPE_SHORT,0,false,false },
+                { "borntime",enum_field_types::MYSQL_TYPE_DATETIME,0,false,false },
             },
         };
+
         return TheTable;
     }
 
@@ -28,12 +31,23 @@ public:
     {
         return GetDefine().tableName();
     }
-public:
-    CharBuffer<Default::NameSize> name;
-    int vip;
-    int level;
-    int sex;
-    int job;
+
+public://游戏基本系统
+    RoleStat::Base base;
+    RoleStat::Bag bag;
+    RoleStat::Equip equip;
+    RoleStat::Store store;
+    RoleStat::Mail mail;
+
+public://游戏内容
+    RoleStat::Env env;
+    RoleStat::Member member;
+    RoleStat::Group group;
+    RoleStat::Awareness awareness;
+    RoleStat::Gene gene;
+    RoleStat::MileStone mileStone;
+    RoleStat::Teachnology teachnology;
+
 public:
     virtual const char* key() override
     {
@@ -43,34 +57,39 @@ public:
     {
         return GetDefine().key2();
     }
+
+
     virtual void serializeForUpdate(stringstream& ss) override
     {
         startConcat(ss, GetDefine(), id);
-        concat(ss, GetDefine(), name);
-        concat(ss, GetDefine(), vip);
-        concat(ss, GetDefine(), level);
-        concat(ss, GetDefine(), sex);
-        concat(ss, GetDefine(), job);
+        concat(ss, GetDefine(), base.name);
+        concat(ss, GetDefine(), base.vip);
+        concat(ss, GetDefine(), base.level);
+        concat(ss, GetDefine(), base.sex);
+        concat(ss, GetDefine(), base.job);
+        concat(ss, GetDefine(), base.borntime);
     }
 
     virtual void deserializeMe() override
     {
         stream() >> id;
-        stream() >> name;
-        stream() >> vip;
-        stream() >> level;
-        stream() >> sex;
-        stream() >> job;
+        stream() >> base.name;
+        stream() >> base.vip;
+        stream() >> base.level;
+        stream() >> base.sex;
+        stream() >> base.job;
+        stream() >> base.borntime;
     }
 
     virtual void serializeMe() override
     {
         stream() << id;
-        stream() << name;
-        stream() << vip;
-        stream() << level;
-        stream() << sex;
-        stream() << job;
+        stream() << base.name;
+        stream() << base.vip;
+        stream() << base.level;
+        stream() << base.sex;
+        stream() << base.job;
+        stream() << base.borntime;
     }
 };
 

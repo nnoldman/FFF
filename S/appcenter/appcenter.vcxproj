@@ -22,7 +22,7 @@
     <ProjectGuid>{8D2A0865-5F2C-48A7-85BA-1A5488C0D410}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>loginapp</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
     <ProjectName>appcenter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

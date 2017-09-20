@@ -1,0 +1,66 @@
+syntax = "proto2";
+
+package GameDefine;
+option csharp_namespace = "GameDefine";
+option go_package = "github.com/golang/protobuf/ptypes/duration";
+option java_package = "com.google.protobuf";
+option java_outer_classname = "DurationProto";
+option java_multiple_files = true;
+option java_generate_equals_and_hash = true;
+option objc_class_prefix = "GPB";
+
+
+option optimize_for = LITE_RUNTIME;
+
+//容量
+enum Capcity
+{
+	option allow_alias = true;
+	
+	BagLimit=180;//包裹最大数量
+	
+	//包裹容量
+	Bag=50;
+	
+	//附属族群容量
+	ChildGroup=5;
+	
+	Equip=30;
+	
+	//仓库
+	Store=50;
+	
+	//邮件
+	Mail=100;
+	//功能
+	Function=160;
+};
+
+enum ItemDeleteReason
+{
+	Invalid=0;
+	Client=1;
+	Move=2;
+	Combine=3;
+	
+}
+
+enum ItemRefreshReason
+{
+	ItemRefreshReason_None=0;
+}
+
+enum ItemLocation
+{
+	ItemLocation_None=0;
+	ItemLocation_Bag=1;
+	ItemLocation_Equip=2;
+}
+
+enum ItemSellSource
+{
+	ItemSellSource_Invalid=0;
+}
+
+
+        

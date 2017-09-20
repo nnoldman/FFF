@@ -2,14 +2,17 @@
 #include "MySqlExecuter.h"
 
 
-MySQLExecuter::MySQLExecuter() {
+MySQLExecuter::MySQLExecuter()
+{
 }
 
 
-MySQLExecuter::~MySQLExecuter() {
+MySQLExecuter::~MySQLExecuter()
+{
 }
 
-bool MySQLExecuter::initialize(const DBConfig& config) {
+bool MySQLExecuter::initialize(const DBConfig& config)
+{
     mConfig = config;
 
     mConnection = mysql_init(0);
@@ -26,7 +29,8 @@ bool MySQLExecuter::initialize(const DBConfig& config) {
 }
 
 
-void MySQLExecuter::queryBegin(const char* cmd) const {
+void MySQLExecuter::queryBegin(const char* cmd) const
+{
     assert(cmd);
     int res = mysql_real_query(mConnection, cmd, static_cast<unsigned long>(strlen(cmd)));
     printf("QUERY=>%s\n", cmd);
@@ -34,24 +38,31 @@ void MySQLExecuter::queryBegin(const char* cmd) const {
 
 
 
-bool MySQLExecuter::queryEnd() {
+bool MySQLExecuter::queryEnd()
+{
     return  mysql_affected_rows(mConnection) > 0;
 }
 
 
-bool MySQLExecuter::queryEnd(stringVector& result) {
+bool MySQLExecuter::queryEnd(stringVector& result)
+{
     MYSQL_RES* records = mysql_store_result(mConnection);
-    if (records) {
+    if (records)
+    {
         auto columns = mysql_num_fields(records);
         assert(records->row_count <= 1);
         MYSQL_ROW row = mysql_fetch_row(records);
-        if (row) {
-            for (int j = columns - 1; j >=0; --j) {
+        if (row)
+        {
+            for (int j = columns - 1; j >=0; --j)
+            {
                 result.push_back(row[j]);
             }
         }
         return result.size() > 0;
-    } else {
+    }
+    else
+    {
         return false;
     }
 
@@ -59,16 +70,21 @@ bool MySQLExecuter::queryEnd(stringVector& result) {
 }
 
 
-bool MySQLExecuter::queryEnd(stringVectorVector& result) {
+bool MySQLExecuter::queryEnd(stringVectorVector& result)
+{
     MYSQL_RES* records = mysql_store_result(mConnection);
 
-    if (records) {
+    if (records)
+    {
         auto columns = mysql_num_fields(records);
-        for (auto i = 0; i < records->row_count; ++i) {
+        for (auto i = 0; i < records->row_count; ++i)
+        {
             MYSQL_ROW row = mysql_fetch_row(records);
-            if (row) {
+            if (row)
+            {
                 stringVector record;
-                for (auto j = 0; j < columns; ++j) {
+                for (auto j = 0; j < columns; ++j)
+                {
                     record.push_back(row[j]);
                 }
                 result.push_back(record);
@@ -80,7 +96,8 @@ bool MySQLExecuter::queryEnd(stringVectorVector& result) {
     return result.size() > 0;
 }
 
-unsigned long MySQLExecuter::count() {
+unsigned long MySQLExecuter::count()
+{
     MYSQL_RES* ress = mysql_store_result(mConnection);
     if (ress == nullptr)
         return 0;
@@ -90,7 +107,8 @@ unsigned long MySQLExecuter::count() {
     return 0;
 }
 
-void MySQLExecuter::use(const char* dataBaseName) const {
+void MySQLExecuter::use(const char* dataBaseName) const
+{
     stringstream cmd;
     cmd << "use database " << dataBaseName << ";";
     queryBegin(cmd.str().c_str());

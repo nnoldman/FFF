@@ -35,104 +35,108 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
     switch (pb->opcode)
     {
     case Cmd::CLIENTID::RQLoginGame:
+    {
+        auto req = pb->parse<Cmd::ReqLoginGameServer>();
+
+        Cmd::RetLoginGameServer ret;
+
+        if (Encrypt::makeLoginToken(req->accountid(), req->time()) != req->token())
         {
-            auto req = pb->parse<Cmd::ReqLoginGameServer>();
-
-            Cmd::RetLoginGameServer ret;
-
-            if (Encrypt::makeLoginToken(req->accountid(), req->time()) != req->token())
-            {
-                ret.set_error(Cmd::LoginGameError::LoginGameInvalid);
-            }
-            else if (req->time() + 600<Basic::Time_::utc())
-            {
-                ret.set_error(Cmd::LoginGameError::LoginGameOverdue);
-            }
-            else
-            {
-                auto user = new GameUser();
-                user->initialize();
-                user->setGlobalID(req->accountid());
-                user->getDefine()->setGlobalID(req->accountid());
-                user->onEnterGate();
-
-                auto role = user->getRole();
-                auto gameRole = ret.mutable_role();
-                auto def = role->getDefine();
-                gameRole->set_id(def->id);
-                if (role->valid())
-                {
-                    gameRole->set_vip(def->vip);
-                    gameRole->set_level(def->level);
-                    gameRole->set_job(def->job);
-                    gameRole->set_sex(def->sex);
-                    gameRole->set_name(def->name.c_str());
-                }
-
-                App::World.onEnterWorld(connect,user);
-                ret.set_error(Cmd::LoginGameError::LoginGameSucess);
-            }
-            SendProtoBuffer(connect->getSocket(), Cmd::RTLoginGame, ret);
+            ret.set_error(Cmd::LoginGameError::LoginGameInvalid);
         }
-        break;
-    case Cmd::CLIENTID::RQCreateRole:
+        else if (req->time() + 600<Basic::Time_::utc())
         {
-            auto req = pb->parse<Cmd::ReqCreateRole>();
-            auto user = (GameUser*)App::World.get(connect);
-            if (user)
-            {
-                auto role = user->getRole();
-                if (role)
-                {
-                    Cmd::RetCreateRole ret;
-                    auto gameRole = ret.mutable_role();
+            ret.set_error(Cmd::LoginGameError::LoginGameOverdue);
+        }
+        else
+        {
+            auto user = new GameUser();
+            user->initialize();
+            user->setGlobalID(req->accountid());
+            user->getDefine()->setGlobalID(req->accountid());
+            user->onEnterGate();
 
-                    auto def = role->getDefine();
-                    def->name = req->name().c_str();
-                    if (def->exist(def->key2(), def->name.c_str()))
+            auto role = user->getRole();
+            auto gameRole = ret.mutable_role();
+            auto def = role->getDefine();
+            gameRole->set_id(def->id);
+            if (role->valid())
+            {
+                gameRole->set_vip(def->base.vip);
+                gameRole->set_level(def->base.level);
+                gameRole->set_job(def->base.job);
+                gameRole->set_sex(def->base.sex);
+                gameRole->set_name(def->base.name.c_str());
+            }
+
+            App::World.onEnterWorld(connect,user);
+            ret.set_error(Cmd::LoginGameError::LoginGameSucess);
+        }
+        SendProtoBuffer(connect->getSocket(), Cmd::RTLoginGame, ret);
+    }
+    break;
+    case Cmd::CLIENTID::RQCreateRole:
+    {
+        auto req = pb->parse<Cmd::ReqCreateRole>();
+        auto user = (GameUser*)App::World.get(connect);
+        if (user)
+        {
+            auto role = user->getRole();
+            if (role)
+            {
+                Cmd::RetCreateRole ret;
+                auto gameRole = ret.mutable_role();
+
+                auto def = role->getDefine();
+                def->base.name = req->name().c_str();
+                def->base.borntime = Basic::Time_::utcTimeString().c_str();
+                uString utf8Name(Encoding::Encoding_UTF8);
+                utf8Name = def->base.name.c_str();
+                string stdName = utf8Name.ansi();
+                if (def->exist(def->key2(), def->base.name.c_str()))
+                {
+                    ret.set_error(Cmd::CreateRoleError::CreateRoleNameRepeated);
+                    SendProtoBuffer(connect->getSocket(), Cmd::RTCreateRole, ret);
+                }
+                else
+                {
+                    def->base.sex = req->sex();
+                    def->base.job = req->job();
+                    //if (!def->insertAndQuery(def->key2(), def->name.c_str()))
+                    if (!def->insertAndQuery(def->key2(), def->base.name.c_str()))
                     {
-                        ret.set_error(Cmd::CreateRoleError::CreateRoleNameRepeated);
-                        SendProtoBuffer(connect->getSocket(), Cmd::RTCreateRole, ret);
+                        assert(false);
                     }
                     else
                     {
-                        def->sex = req->sex();
-                        def->job = req->job();
-                        //if (!def->insertAndQuery(def->key2(), def->name.c_str()))
-                        if (!def->insertAndQuery(def->key2(), def->name.c_str()))
+                        user->getDefine()->role = def->id;
+                        if (!user->getDefine()->commit())
                         {
                             assert(false);
                         }
-                        else
+                        gameRole->set_id(def->id);
+                        if (role->valid())
                         {
-                            user->getDefine()->role = def->id;
-                            if (!user->getDefine()->commit())
-                            {
-                                assert(false);
-                            }
-                            gameRole->set_id(def->id);
-                            if (role->valid())
-                            {
-                                gameRole->set_vip(def->vip);
-                                gameRole->set_level(def->level);
-                                gameRole->set_job(def->job);
-                                gameRole->set_sex(def->sex);
-                                gameRole->set_name(def->name.c_str());
-                            }
-                            ret.set_error(Cmd::CreateRoleError::CreateRoleSucess);
-                            SendProtoBuffer(connect->getSocket(), Cmd::RTCreateRole, ret);
+                            gameRole->set_vip(def->base.vip);
+                            gameRole->set_level(def->base.level);
+                            gameRole->set_job(def->base.job);
+                            gameRole->set_sex(def->base.sex);
+                            gameRole->set_name(def->base.name.c_str());
                         }
+                        ret.set_error(Cmd::CreateRoleError::CreateRoleSucess);
+                        SendProtoBuffer(connect->getSocket(), Cmd::RTCreateRole, ret);
                     }
                 }
             }
         }
-        break;
+    }
+    break;
     case Cmd::CLIENTID::RQEnterGame:
-        {
-            auto user = (GameUser*)App::World.get(connect);
-            user->activeRole();
-        }
-        break;
+    {
+        auto user = (GameUser*)App::World.get(connect);
+        user->activeRole();
+    }
+    break;
     default:
         break;
     }

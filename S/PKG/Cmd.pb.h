@@ -36,26 +36,26 @@ void protobuf_ShutdownFile_Cmd_2eproto();
 
 
 enum CLIENTID {
-  RQLoginCenter = 100,
+  RQLoginGameServer = 100,
   RQAccountOperation = 300,
   RQLoginGame = 400,
   RQCreateRole = 500,
   RQEnterGame = 600
 };
 bool CLIENTID_IsValid(int value);
-const CLIENTID CLIENTID_MIN = RQLoginCenter;
+const CLIENTID CLIENTID_MIN = RQLoginGameServer;
 const CLIENTID CLIENTID_MAX = RQEnterGame;
 const int CLIENTID_ARRAYSIZE = CLIENTID_MAX + 1;
 
 enum SERVERID {
-  RTLoginCenter = 100,
+  RTLoginGameServer = 100,
   RTAccountOperation = 300,
   RTLoginGame = 400,
   RTCreateRole = 500,
   RTMainUser = 600
 };
 bool SERVERID_IsValid(int value);
-const SERVERID SERVERID_MIN = RTLoginCenter;
+const SERVERID SERVERID_MIN = RTLoginGameServer;
 const SERVERID SERVERID_MAX = RTMainUser;
 const int SERVERID_ARRAYSIZE = SERVERID_MAX + 1;
 

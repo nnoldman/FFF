@@ -3,5 +3,6 @@
 #include "Core.h"
 #include "ProtocoBuffer.h"
 #include "Bundle.h"
+#include "GameDefine.pb.h"
 #include "vld.h"
 #endif // stdafx_h__

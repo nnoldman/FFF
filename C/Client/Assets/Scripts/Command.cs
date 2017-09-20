@@ -122,9 +122,8 @@ namespace Cmd
   {
     public GameRole() {}
     
-    private int _id = default(int);
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private int _id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int id
     {
       get { return _id; }
@@ -180,10 +179,68 @@ namespace Cmd
   {
     public RetLoginGameServer() {}
     
-    private Cmd.LoginGameError _error = Cmd.LoginGameError.LoginGameSucess;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"error", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(Cmd.LoginGameError.LoginGameSucess)]
+    private Cmd.LoginGameError _error;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"error", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public Cmd.LoginGameError error
+    {
+      get { return _error; }
+      set { _error = value; }
+    }
+    private Cmd.GameRole _role;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"role", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public Cmd.GameRole role
+    {
+      get { return _role; }
+      set { _role = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ReqCreateRole")]
+  public partial class ReqCreateRole : global::ProtoBuf.IExtensible
+  {
+    public ReqCreateRole() {}
+    
+    private int _sex = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"sex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int sex
+    {
+      get { return _sex; }
+      set { _sex = value; }
+    }
+    private int _job = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"job", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int job
+    {
+      get { return _job; }
+      set { _job = value; }
+    }
+    private string _name = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string name
+    {
+      get { return _name; }
+      set { _name = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RetCreateRole")]
+  public partial class RetCreateRole : global::ProtoBuf.IExtensible
+  {
+    public RetCreateRole() {}
+    
+    private Cmd.CreateRoleError _error = Cmd.CreateRoleError.CreateRoleSucess;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"error", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Cmd.CreateRoleError.CreateRoleSucess)]
+    public Cmd.CreateRoleError error
     {
       get { return _error; }
       set { _error = value; }
@@ -201,96 +258,46 @@ namespace Cmd
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ReqCreateRole")]
-  public partial class ReqCreateRole : global::ProtoBuf.IExtensible
-  {
-    public ReqCreateRole() {}
-    
-    private int _sex;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"sex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int sex
-    {
-      get { return _sex; }
-      set { _sex = value; }
-    }
-    private int _job;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"job", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int job
-    {
-      get { return _job; }
-      set { _job = value; }
-    }
-    private string _name;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string name
-    {
-      get { return _name; }
-      set { _name = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RetCreateRole")]
-  public partial class RetCreateRole : global::ProtoBuf.IExtensible
-  {
-    public RetCreateRole() {}
-    
-    private Cmd.CreateRoleError _error;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"error", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public Cmd.CreateRoleError error
-    {
-      get { return _error; }
-      set { _error = value; }
-    }
-    private Cmd.GameRole _role;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"role", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public Cmd.GameRole role
-    {
-      get { return _role; }
-      set { _role = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RTMainUser")]
   public partial class RTMainUser : global::ProtoBuf.IExtensible
   {
     public RTMainUser() {}
     
-    private int _charID;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"charID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    private int _charID = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"charID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
     public int charID
     {
       get { return _charID; }
       set { _charID = value; }
     }
-    private int _job;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"job", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    private int _job = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"job", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
     public int job
     {
       get { return _job; }
       set { _job = value; }
     }
-    private int _sex;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"sex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    private int _sex = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"sex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
     public int sex
     {
       get { return _sex; }
       set { _sex = value; }
     }
-    private string _name;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private string _name = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
     public string name
     {
       get { return _name; }
       set { _name = value; }
     }
-    private int _vip;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"vip", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    private int _vip = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"vip", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
     public int vip
     {
       get { return _vip; }
@@ -348,14 +355,14 @@ namespace Cmd
     public enum LoginGameError
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"LoginGameSucess", Value=0)]
-      LoginGameSucess = 0,
+      [global::ProtoBuf.ProtoEnum(Name=@"LoginGameSucess", Value=100)]
+      LoginGameSucess = 100,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"LoginGameOverdue", Value=1)]
-      LoginGameOverdue = 1,
+      [global::ProtoBuf.ProtoEnum(Name=@"LoginGameOverdue", Value=300)]
+      LoginGameOverdue = 300,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"LoginGameInvalid", Value=2)]
-      LoginGameInvalid = 2
+      [global::ProtoBuf.ProtoEnum(Name=@"LoginGameInvalid", Value=400)]
+      LoginGameInvalid = 400
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"CreateRoleError")]

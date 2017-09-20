@@ -22,7 +22,7 @@
     <ProjectGuid>{9BFE1D21-01C4-4DA6-9786-3E33A9361462}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>TestEmbedding</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
     <ProjectName>appbase</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

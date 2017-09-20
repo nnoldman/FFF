@@ -35,3 +35,4 @@ enum SERVERID
 	RTCreateRole=500;
 	RTMainUser=600;
 };
+
