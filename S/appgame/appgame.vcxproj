@@ -91,7 +91,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\Default;..\;..\Common;..\PKG;..\Core;..\include;..\include\MySql\include\mysql;..\include\MySql\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\default;..\;..\basic;..\pkg;..\appbase;..\include;..\include\MySql\include\mysql;..\include\MySql\include\</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4200;4005</DisableSpecificWarnings>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>

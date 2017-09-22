@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="EnvironmentConfig.cpp" />
+    <ClCompile Include="Connection.cpp" />
+    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Gate.cpp" />
+    <ClCompile Include="NetWork.cpp" />
+    <ClCompile Include="ServerID.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="World.cpp" />
+    <ClCompile Include="DBDefine.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DBExecuter.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DBObject.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DBQuery.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DBReturn.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DBStream.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DBTable.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DBTableDefine.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DataBase.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Encrypt.cpp">
+      <Filter>Encrpty</Filter>
+    </ClCompile>
+    <ClCompile Include="MySqlExecuter.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLHelper.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DataLoader.cpp">
+      <Filter>DataLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="RecordBase.cpp">
+      <Filter>DataLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelBase.cpp">
+      <Filter>DataLoader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.h" />
+    <ClInclude Include="EnvironmentConfig.h" />
+    <ClInclude Include="Connection.h" />
+    <ClInclude Include="Core.h" />
+    <ClInclude Include="Gate.h" />
+    <ClInclude Include="NetWork.h" />
+    <ClInclude Include="ServerID.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="World.h" />
+    <ClInclude Include="DBDefine.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DBExecuter.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DBObject.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DBQuery.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DBReturn.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DBStream.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DBTable.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DBTableDefine.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DataBase.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Encrypt.h">
+      <Filter>Encrpty</Filter>
+    </ClInclude>
+    <ClInclude Include="MySqlExecuter.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLHelper.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DataLoader.h">
+      <Filter>DataLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="RecordBase.h">
+      <Filter>DataLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelBase.h">
+      <Filter>DataLoader</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="DataBase">
+      <UniqueIdentifier>{c3522967-e3e2-4690-b408-0a97717af0d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Encrpty">
+      <UniqueIdentifier>{fd0bdd8d-e91c-4169-93e8-4f01ed914dd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataLoader">
+      <UniqueIdentifier>{64d4cb2e-83a2-475a-a91a-cfcd334cd242}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

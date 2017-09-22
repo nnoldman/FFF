@@ -4,7 +4,7 @@ class GameApp :
     public App
 {
 public:
-    GameApp(int narg, const char** args);
+    GameApp(int argc, char* argv[]);
     ~GameApp();
     virtual const NetConfig& getNetConfig() override;
 

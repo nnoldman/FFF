@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Bundle.h"
-#include "Core\Connection.h"
+#include "appbase\Connection.h"
 
 BundleReceiver::BundleReceiver(Connection* ss, char* data, u16 len)
     : mSocket(&ss->getSocket())

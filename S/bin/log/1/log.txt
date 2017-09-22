@@ -1,0 +1,4 @@
+2017/09/22 13:07:06 Application(6): Initialize Logger Sucessfully!
+2017/09/22 13:07:06 Application(6): Initialize Net Sucessfully!
+2017/09/22 13:07:06 Application(6): Initialize DataBase Sucessfully!
+2017/09/22 13:07:06 Application(6): Initialize World Sucessfully!

@@ -4,8 +4,8 @@
 #include "GameUserDefine.h"
 #include "GameRoleDefine.h"
 
-GameApp::GameApp(int narg, const char** args)
-    : App(narg, args)
+GameApp::GameApp(int argc, char* argv[])
+    :App(argc, argv)
     , netAgent_(nullptr)
 {
 

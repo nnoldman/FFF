@@ -6,8 +6,8 @@
 #include "GlobalAccountDefine.h"
 #include "HServer.h"
 
-CenterApp::CenterApp(int narg, const char** args)
-    : App(narg, args)
+CenterApp::CenterApp(int narg, char* argv[])
+    : App(narg,argv)
     , mNetAgent(nullptr)
     , hServer_(nullptr)
 {

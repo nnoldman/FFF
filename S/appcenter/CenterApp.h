@@ -5,7 +5,7 @@ class CenterApp :
     public App
 {
 public:
-    CenterApp(int narg, const char** args);
+    CenterApp(int narg, char* argv[]);
     ~CenterApp();
     virtual const NetConfig& getNetConfig() override;
     virtual const DBConfig& getDataBaseConfig() override;

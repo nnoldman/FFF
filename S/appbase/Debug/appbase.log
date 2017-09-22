@@ -1,0 +1,51 @@
+﻿生成启动时间为 2017/9/22 21:06:12。
+     1>项目“C:\Src\FFF\S\appbase\appbase.vcxproj”在节点 2 上(Build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“Debug\appbase.tlog\unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         所有输出均为最新。
+         所有输出均为最新。
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"..\bin\Debug\appbase.dll" /INCREMENTAL /NOLOGO /LIBPATH:..\bin\Debug /LIBPATH:..\libs /LIBPATH:..\LiteLibs pkg.lib basic.lib libmysql.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"..\bin\Debug\appbase.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\bin\Debug\appbase.lib" /MACHINE:X86 /DLL Debug\App.obj
+         Debug\DataLoader.obj
+         Debug\DBObject.obj
+         Debug\EnvironmentConfig.obj
+         Debug\Connection.obj
+         Debug\Core.obj
+         Debug\DataBase.obj
+         Debug\DBDefine.obj
+         Debug\DBQuery.obj
+         Debug\DBReturn.obj
+         Debug\DBStream.obj
+         Debug\DBTableDefine.obj
+         Debug\Encrypt.obj
+         Debug\Gate.obj
+         Debug\LevelBase.obj
+         Debug\MySqlExecuter.obj
+         Debug\NetWork.obj
+         Debug\DBExecuter.obj
+         Debug\RecordBase.obj
+         Debug\ServerID.obj
+         Debug\SQLHelper.obj
+         Debug\DBTable.obj
+         Debug\stdafx.obj
+         Debug\World.obj
+           正在创建库 ..\bin\Debug\appbase.lib 和对象 ..\bin\Debug\appbase.exp
+     1>pkg.lib(Bundle.obj) : warning LNK4217: 本地定义的符号 ?getSocket@Connection@@QAEAAVStreamSocket@Net@Poco@@XZ (public: class Poco::Net::StreamSocket & __thiscall Connection::getSocket(void)) 在函数 "public: __thiscall BundleReceiver::BundleReceiver(class Connection *,char *,unsigned short)" (??0BundleReceiver@@QAE@PAVConnection@@PADG@Z) 中导入
+     1>pkg.lib(stringpiece.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(stringpiece.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>pkg.lib(status.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(status.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>pkg.lib(once.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(once.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>pkg.lib(int128.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(int128.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>pkg.lib(common.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(common.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>pkg.lib(atomicops_internals_x86_msvc.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(atomicops_internals_x86_msvc.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>pkg.lib(message_lite.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(message_lite.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>pkg.lib(zero_copy_stream_impl_lite.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(zero_copy_stream_impl_lite.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>pkg.lib(zero_copy_stream.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(zero_copy_stream.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>pkg.lib(coded_stream.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(coded_stream.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+     1>pkg.lib(arena.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(arena.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+         appbase.vcxproj -> C:\Src\FFF\S\appbase\..\bin\Debug\appbase.dll
+         appbase.vcxproj -> ..\bin\Debug\appbase.pdb (Partial PDB)
+       FinalizeBuildStatus:
+         正在删除文件“Debug\appbase.tlog\unsuccessfulbuild”。
+         正在对“Debug\appbase.tlog\appbase.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Src\FFF\S\appbase\appbase.vcxproj”(Build 个目标)的操作。

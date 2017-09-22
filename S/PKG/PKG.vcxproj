@@ -82,7 +82,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_USING_V110_SDK71_;WIN32;_LIBARRY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>false</SDLCheck>
-      <AdditionalIncludeDirectories>..\Default;..\;..\Common;..\Core;..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\default;..\;..\basic;..\appbase;..\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>

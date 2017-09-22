@@ -1,0 +1,18 @@
+﻿  NetWork.cpp
+  Core.cpp
+  正在生成代码...
+    正在创建库 ..\bin\Debug\appbase.lib 和对象 ..\bin\Debug\appbase.exp
+pkg.lib(Bundle.obj) : warning LNK4217: 本地定义的符号 ?getSocket@Connection@@QAEAAVStreamSocket@Net@Poco@@XZ (public: class Poco::Net::StreamSocket & __thiscall Connection::getSocket(void)) 在函数 "public: __thiscall BundleReceiver::BundleReceiver(class Connection *,char *,unsigned short)" (??0BundleReceiver@@QAE@PAVConnection@@PADG@Z) 中导入
+pkg.lib(stringpiece.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(stringpiece.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+pkg.lib(status.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(status.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+pkg.lib(once.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(once.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+pkg.lib(int128.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(int128.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+pkg.lib(common.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(common.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+pkg.lib(atomicops_internals_x86_msvc.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(atomicops_internals_x86_msvc.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+pkg.lib(message_lite.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(message_lite.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+pkg.lib(zero_copy_stream_impl_lite.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(zero_copy_stream_impl_lite.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+pkg.lib(zero_copy_stream.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(zero_copy_stream.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+pkg.lib(coded_stream.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(coded_stream.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+pkg.lib(arena.obj) : warning LNK4099: 未找到 PDB“libprotobuf-lite.pdb”(使用“pkg.lib(arena.obj)”或在“C:\Src\FFF\S\bin\Debug\libprotobuf-lite.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+  Core.vcxproj -> C:\Src\FFF\S\Core\..\bin\Debug\appbase.dll
+  Core.vcxproj -> ..\bin\Debug\appbase.pdb (Partial PDB)
