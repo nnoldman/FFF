@@ -174,11 +174,9 @@
     <ClInclude Include="DBStream.h" />
     <ClInclude Include="Encrypt.h" />
     <ClInclude Include="Gate.h" />
-    <ClInclude Include="LevelBase.h" />
     <ClInclude Include="MySqlExecuter.h" />
     <ClInclude Include="NetWork.h" />
     <ClInclude Include="DBExecuter.h" />
-    <ClInclude Include="RecordBase.h" />
     <ClInclude Include="ServerID.h" />
     <ClInclude Include="SQLHelper.h" />
     <ClInclude Include="DBTable.h" />
@@ -201,11 +199,9 @@
     <ClCompile Include="DBTableDefine.cpp" />
     <ClCompile Include="Encrypt.cpp" />
     <ClCompile Include="Gate.cpp" />
-    <ClCompile Include="LevelBase.cpp" />
     <ClCompile Include="MySqlExecuter.cpp" />
     <ClCompile Include="NetWork.cpp" />
     <ClCompile Include="DBExecuter.cpp" />
-    <ClCompile Include="RecordBase.cpp" />
     <ClCompile Include="ServerID.cpp" />
     <ClCompile Include="SQLHelper.cpp" />
     <ClCompile Include="DBTable.cpp" />

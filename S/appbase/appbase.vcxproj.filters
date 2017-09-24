@@ -49,12 +49,6 @@
     <ClCompile Include="DataLoader.cpp">
       <Filter>DataLoader</Filter>
     </ClCompile>
-    <ClCompile Include="RecordBase.cpp">
-      <Filter>DataLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="LevelBase.cpp">
-      <Filter>DataLoader</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
@@ -104,12 +98,6 @@
       <Filter>DataBase</Filter>
     </ClInclude>
     <ClInclude Include="DataLoader.h">
-      <Filter>DataLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="RecordBase.h">
-      <Filter>DataLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelBase.h">
       <Filter>DataLoader</Filter>
     </ClInclude>
   </ItemGroup>

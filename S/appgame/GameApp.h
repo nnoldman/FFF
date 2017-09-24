@@ -26,5 +26,8 @@ protected:
     virtual bool onInitializeNet() override;
 
     virtual const vector<const DBTableDefine*>& getTableDefines() const override;
+
+    virtual bool loadGameConfig() override;
+
 };
 

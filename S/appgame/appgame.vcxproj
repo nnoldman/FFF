@@ -170,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BagDefine.h" />
+    <ClInclude Include="Config\TimeTable.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameRoleDefine.h" />
     <ClInclude Include="GameUser.h" />
@@ -185,6 +186,9 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="vld.h" />
     <ClInclude Include="vld_def.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\TimeTable.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

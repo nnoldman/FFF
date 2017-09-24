@@ -66,6 +66,16 @@ bool App::initialize()
     if (!isCenter_ && !connectCenter())
         return false;
 
+    if (!loadGameConfig())
+    {
+        LOG_INFO_A("loadGameConfig Failed!");
+        return false;
+    }
+    else
+    {
+        LOG_INFO_A("loadGameConfig Sucessfully!");
+    }
+
     if (!World.initialize())
         return false;
     else
@@ -101,6 +111,11 @@ void App::uninitialize()
 void App::reinitialize(Application& app)
 {
     return __super::reinitialize(app);
+}
+
+bool App::loadGameConfig()
+{
+    return true;
 }
 
 bool App::initializeDataBase()

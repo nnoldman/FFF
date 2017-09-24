@@ -3,6 +3,7 @@
 #include "CenterNetAgent.h"
 #include "GameUserDefine.h"
 #include "GameRoleDefine.h"
+#include "Config\TimeTable.h"
 
 GameApp::GameApp(int argc, char* argv[])
     :App(argc, argv)
@@ -60,4 +61,12 @@ const vector<const DBTableDefine*>& GameApp::getTableDefines() const
         &GameRoleDefine::GetDefine(),
     };
     return ret;
+}
+
+bool GameApp::loadGameConfig()
+{
+    TimeTable::getInstance()->reload();
+    auto record = TimeTable::getInstance()->get(40);
+    auto all = TimeTable::getInstance()->all();
+    return true;
 }

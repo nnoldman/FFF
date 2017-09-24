@@ -42,7 +42,7 @@ protected:
     virtual void initialize(Application& app) override;
     virtual void uninitialize() override;
     virtual void reinitialize(Application& app) override;
-
+    virtual bool loadGameConfig();
 private:
     //void run();
     virtual bool initializeDataBase()final;
