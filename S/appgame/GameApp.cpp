@@ -67,6 +67,7 @@ bool GameApp::loadGameConfig()
 {
     TimeTable::getInstance()->reload();
     auto record = TimeTable::getInstance()->get(40);
+    record = TimeTable::getInstance()->get(20);
     auto all = TimeTable::getInstance()->all();
     return true;
 }

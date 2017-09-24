@@ -7,47 +7,80 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: Cmd.proto
-namespace Cmd
+// Generated from: GameDefine.proto
+namespace GameDefine
 {
-    [global::ProtoBuf.ProtoContract(Name=@"CLIENTID")]
-    public enum CLIENTID
+    [global::ProtoBuf.ProtoContract(Name=@"Capcity")]
+    public enum Capcity
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"RQLoginGameServer", Value=100)]
-      RQLoginGameServer = 100,
+      [global::ProtoBuf.ProtoEnum(Name=@"BagLimit", Value=180)]
+      BagLimit = 180,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"RQAccountOperation", Value=300)]
-      RQAccountOperation = 300,
+      [global::ProtoBuf.ProtoEnum(Name=@"Bag", Value=50)]
+      Bag = 50,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"RQLoginGame", Value=400)]
-      RQLoginGame = 400,
+      [global::ProtoBuf.ProtoEnum(Name=@"ChildGroup", Value=5)]
+      ChildGroup = 5,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"RQCreateRole", Value=500)]
-      RQCreateRole = 500,
+      [global::ProtoBuf.ProtoEnum(Name=@"Equip", Value=30)]
+      Equip = 30,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"RQEnterGame", Value=600)]
-      RQEnterGame = 600
+      [global::ProtoBuf.ProtoEnum(Name=@"Store", Value=50)]
+      Store = 50,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Mail", Value=100)]
+      Mail = 100,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"Function", Value=160)]
+      Function = 160
     }
   
-    [global::ProtoBuf.ProtoContract(Name=@"SERVERID")]
-    public enum SERVERID
+    [global::ProtoBuf.ProtoContract(Name=@"ItemDeleteReason")]
+    public enum ItemDeleteReason
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"RTLoginGameServer", Value=100)]
-      RTLoginGameServer = 100,
+      [global::ProtoBuf.ProtoEnum(Name=@"Invalid", Value=0)]
+      Invalid = 0,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"RTAccountOperation", Value=300)]
-      RTAccountOperation = 300,
+      [global::ProtoBuf.ProtoEnum(Name=@"Client", Value=1)]
+      Client = 1,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"RTLoginGame", Value=400)]
-      RTLoginGame = 400,
+      [global::ProtoBuf.ProtoEnum(Name=@"Move", Value=2)]
+      Move = 2,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"RTCreateRole", Value=500)]
-      RTCreateRole = 500,
+      [global::ProtoBuf.ProtoEnum(Name=@"Combine", Value=3)]
+      Combine = 3
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ItemRefreshReason")]
+    public enum ItemRefreshReason
+    {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"RTMainUser", Value=600)]
-      RTMainUser = 600
+      [global::ProtoBuf.ProtoEnum(Name=@"ItemRefreshReason_None", Value=0)]
+      ItemRefreshReason_None = 0
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ItemLocation")]
+    public enum ItemLocation
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ItemLocation_None", Value=0)]
+      ItemLocation_None = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ItemLocation_Bag", Value=1)]
+      ItemLocation_Bag = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ItemLocation_Equip", Value=2)]
+      ItemLocation_Equip = 2
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ItemSellSource")]
+    public enum ItemSellSource
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ItemSellSource_Invalid", Value=0)]
+      ItemSellSource_Invalid = 0
     }
   
 }

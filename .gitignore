@@ -21,3 +21,6 @@
 /S/Scripts/*.userprefs
 /S/bin/Debug/appbase.lib
 /S/bin/Debug/basic.lib
+/S/appcenter/Debug/*.idb
+/S/appgame/Debug/vc141.idb
+/S/bin/Debug/appgame.exe

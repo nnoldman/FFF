@@ -72,10 +72,12 @@ bool DataLoader<T>::reload()
                 std::vector<string> values;
                 while (fileBuffer.getline(lineBuffer.getBuffer(), lineBuffer.capacity()))
                 {
+                    values.clear();
                     Basic::split(lineBuffer.c_str(), "\t", values);
                     T* t = new T();
                     t->from(values);
                     sourceRecords_.push_back(t);
+                    lineBuffer.clear();
                 }
 
                 for (auto i : sourceRecords_)

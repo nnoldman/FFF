@@ -48,6 +48,7 @@ public class LoginSystem: SystemBase
 
     public void LoginPlant(string host,int port,string user, string psw)
     {
+        var record = TimeTable.Instance.Get(5);
         user_ = user;
         password_ = psw;
         accountConnection_ = new Connection();

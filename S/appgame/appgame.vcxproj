@@ -187,9 +187,6 @@
     <ClInclude Include="vld.h" />
     <ClInclude Include="vld_def.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Config\TimeTable.inl" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

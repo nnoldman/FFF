@@ -6,19 +6,24 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 
-namespace AppCore {
-public class Game {
+namespace AppCore
+{
+public class Game
+{
     private SceneParam mSceneParam;
 
-    public IEnumerator Start() {
+    public IEnumerator Start()
+    {
         yield return 0;
     }
 
-    public IEnumerator Close() {
-        yield return SystemBase.CloseGameSystems();
+    public IEnumerator Close()
+    {
+        yield return null;
     }
 
-    public IEnumerator LoadScene(SceneParam param) {
+    public IEnumerator LoadScene(SceneParam param)
+    {
         mSceneParam = param;
         OnSceneClose();
         yield return null;
@@ -27,13 +32,17 @@ public class Game {
     }
 
 
-    public void OnSceneOpen() {
+    public void OnSceneOpen()
+    {
     }
-    public void OnSceneClose() {
+    public void OnSceneClose()
+    {
     }
-    public void OnMapLoaded() {
+    public void OnMapLoaded()
+    {
     }
-    public void OnHeroReady() {
+    public void OnHeroReady()
+    {
     }
 
 }

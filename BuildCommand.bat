@@ -6,5 +6,5 @@ protoc  --cpp_out=../S/PKG Cmd.proto
 protoc  --cpp_out=../S/PKG GameDefine.proto
 protogen  -i:Command.proto -o:../C/Client/Assets/Scripts/Command.cs 
 protogen  -i:Cmd.proto -o:../C/Client/Assets/Scripts/Cmd.cs
-protogen  -i:Cmd.proto -o:../C/Client/Assets/Scripts/GameDefine.cs
+protogen  -i:GameDefine.proto -o:../C/Client/Assets/Scripts/GameDefine.cs
 pause 
