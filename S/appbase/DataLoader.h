@@ -5,6 +5,7 @@
 #include "Buffer.h"
 struct RecordBase
 {
+    virtual ~RecordBase() {}
 };
 template<typename T>
 class DataLoader

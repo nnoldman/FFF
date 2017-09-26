@@ -4,6 +4,10 @@
 #include "Poco/FormattingChannel.h"
 #include "Poco/FileChannel.h"
 
+#ifdef WIN32
+#pragma comment(lib,"User32.lib")
+#endif
+
 App* App::Instance = nullptr;
 
 EnvironmentConfig App::Config;
@@ -87,11 +91,18 @@ int App::main(const std::vector<std::string>& args)
 {
     if (!initialize())
         return EXIT_CONFIG;
-
+    int bIsCtrl = 0;
+#ifdef WIN32
+    while (!bIsCtrl)
+#else
     while (!quiting_)
+#endif
     {
         Net.prosess();
         Platform::sleep(5);
+#ifdef WIN32
+        bIsCtrl = (::GetAsyncKeyState(VK_RETURN) & 0x8000);
+#endif
     }
 
     this->onQuit();

@@ -152,7 +152,6 @@
     <ClInclude Include="CharBuffer.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="CommandLine.h" />
-    <ClInclude Include="ConstVariable.h" />
     <ClInclude Include="Delegate.h" />
     <ClInclude Include="Easer.h" />
     <ClInclude Include="EncodingHelper.h" />

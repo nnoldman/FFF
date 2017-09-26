@@ -1,11 +1,11 @@
-﻿生成启动时间为 2017/9/23 20:25:48。
+﻿生成启动时间为 2017/9/26 9:25:22。
      1>项目“C:\Src\FFF\S\appbase\appbase.vcxproj”在节点 2 上(Build 个目标)。
      1>InitializeBuildStatus:
-         正在对“Debug\appbase.tlog\unsuccessfulbuild”执行 Touch 任务。
+         正在创建“Debug\appbase.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
          所有输出均为最新。
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /I..\default /I..\basic /I..\ /I..\pkg /I.\include\MySql\include\mysql /I..\include\MySql\include /I..\include /ZI /nologo /W3 /WX- /diagnostics:classic /sdl /Od /Oy- /D _USING_V110_SDK71_ /D CHECK_EMBEDDED_DIFFERENCES /D EMBEDDED_LIBRARY /D _LIBRARY /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\appbase.pch" /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TP /wd4200 /wd4005 /analyze- /errorReport:prompt DataLoader.cpp
-         DataLoader.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /I..\default /I..\basic /I..\ /I..\pkg /I.\include\MySql\include\mysql /I..\include\MySql\include /I..\include /ZI /nologo /W3 /WX- /diagnostics:classic /sdl /Od /Oy- /D _USING_V110_SDK71_ /D CHECK_EMBEDDED_DIFFERENCES /D EMBEDDED_LIBRARY /D _LIBRARY /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\appbase.pch" /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TP /wd4200 /wd4005 /analyze- /errorReport:prompt App.cpp
+         App.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"..\bin\Debug\appbase.dll" /INCREMENTAL /NOLOGO /LIBPATH:..\bin\Debug /LIBPATH:..\libs /LIBPATH:..\LiteLibs pkg.lib basic.lib libmysql.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"..\bin\Debug\appbase.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\bin\Debug\appbase.lib" /MACHINE:X86 /DLL Debug\App.obj
          Debug\DataLoader.obj
