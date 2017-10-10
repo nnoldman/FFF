@@ -9,7 +9,7 @@ class GlobalAccountDefine :
 public:
     static const DBTableDefine& GetDefine()
     {
-        static const DBTableDefine TheTable
+        static const DBTableDefine TheTable =
         {
             "global_account",true,"id","user",
             {

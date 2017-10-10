@@ -1,0 +1,7 @@
+﻿生成启动时间为 2017/10/10 15:54:21。
+     1>项目“C:\Src\FFF\SLinux\Servers\appgame\appgame.vcxproj”在节点 2 上(Clean 个目标)。
+     1>_PrepareForClean:
+         正在删除文件“C:\Src\FFF\SLinux\Servers\appgame\obj\x64\Debug\appgame.tlog\appgame.lastbuildstate”。
+       _RemoteClean:
+         Cleaning remote project directory
+     1>已完成生成项目“C:\Src\FFF\SLinux\Servers\appgame\appgame.vcxproj”(Clean 个目标)的操作。

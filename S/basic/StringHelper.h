@@ -125,7 +125,7 @@ namespace Basic
 
     inline void StringHelper::setValue(const char* val, long* var)
     {
-        *var = stol(val);
+        *var = std::stol(val);
     }
 
     inline void StringHelper::setValue(const char* val, char* var)
@@ -135,28 +135,28 @@ namespace Basic
 
     inline void StringHelper::setValue(const char* val, u8* var)
     {
-        *var = (u8)stoi(val);
+        *var = (u8)std::stoi(val);
     }
 
     inline void StringHelper::setValue(const char* val, u16* var)
     {
-        *var = (u16)stoi(val);
+        *var = (u16)std::stoi(val);
     }
     inline void StringHelper::setValue(const char* val, u64* var)
     {
-        *var = (u64)stoull(val);
+        *var = (u64)std::stoull(val);
     }
     inline void StringHelper::setValue(const char* val, double* var)
     {
-        *var = stod(val);
+        *var = std::stod(val);
     }
     inline void StringHelper::setValue(const char* val, s16* var)
     {
-        *var = (s16)stoi(val);
+        *var = (s16)std::stoi(val);
     }
     inline void StringHelper::setValue(const char* val, s64* var)
     {
-        *var = (s64)stoll(val);
+        *var = (s64)std::stoll(val);
     }
 
 #pragma warning(pop)

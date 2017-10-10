@@ -31,16 +31,16 @@ public:
     bool queryRecord(string table, string key, const char* value, std::vector<string>& result);
     bool queryRecord(const char* cmd, std::vector<string>& result);
 
-    bool pull(Value keyvalue, OUT DBDefine* def);
-    bool pull(const char* key, Value keyvalue, OUT DBDefine* def);
+    bool pull(Any keyvalue, OUT DBDefine* def);
+    bool pull(const char* key, Any keyvalue, OUT DBDefine* def);
     bool commit(OUT DBDefine* def);
-    bool commit(Value keyvalue, OUT DBDefine* def);
+    bool commit(Any keyvalue, OUT DBDefine* def);
     bool insert(OUT DBDefine* def);
     /*
      *	insert and record ,then execute query
      */
-    bool insertAndQuery(Value keyvalue, OUT DBDefine* def);
-    bool insertAndQuery(const char* key, Value keyvalue, OUT DBDefine* def);
+    bool insertAndQuery(Any keyvalue, OUT DBDefine* def);
+    bool insertAndQuery(const char* key, Any keyvalue, OUT DBDefine* def);
 
     bool insertDefaultByGUID(const char* table, const char* guid);
 

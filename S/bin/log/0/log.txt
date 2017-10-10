@@ -1,0 +1,15 @@
+2017/09/26 01:30:42 Application(6): Initialize Logger Sucessfully!
+2017/09/26 01:30:42 Application(6): Initialize Net Sucessfully!
+2017/09/26 01:30:42 Application(6): Initialize DataBase Sucessfully!
+2017/09/26 01:30:42 Application(6): loadGameConfig Sucessfully!
+2017/09/26 01:30:42 Application(6): Initialize World Sucessfully!
+2017/10/05 06:42:41 Application(6): Initialize Logger Sucessfully!
+2017/10/05 06:42:41 Application(6): Initialize Net Sucessfully!
+2017/10/05 06:42:42 Application(6): Initialize DataBase Sucessfully!
+2017/10/05 06:42:42 Application(6): loadGameConfig Sucessfully!
+2017/10/05 06:42:42 Application(6): Initialize World Sucessfully!
+2017/10/05 06:43:52 Application(6): Initialize Logger Sucessfully!
+2017/10/05 06:43:52 Application(6): Initialize Net Sucessfully!
+2017/10/05 06:43:52 Application(6): Initialize DataBase Sucessfully!
+2017/10/05 06:43:52 Application(6): loadGameConfig Sucessfully!
+2017/10/05 06:43:52 Application(6): Initialize World Sucessfully!

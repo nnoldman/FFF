@@ -18,6 +18,7 @@
 #include "Basic.h"
 #include "Poco\Dynamic\Var.h"
 #include "Poco\Net\NetException.h"
+#include "Poco\Any.h"
 using namespace Poco;
 using namespace Poco::Net;
 #include "Default.h"

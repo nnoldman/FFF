@@ -120,16 +120,19 @@ bool DataBase::queryRecord(string table, string key, const char* value, OUT DBDe
     return ret;
 }
 
-bool DataBase::pull(Value keyvalue, OUT DBDefine* def)
+bool DataBase::pull(Any keyvalue, OUT DBDefine* def)
 {
     return pull(def->key(), keyvalue, def);
 }
 
-bool DataBase::pull(const char* key, Value keyvalue, OUT DBDefine* def)
+bool DataBase::pull(const char* key, Any keyvalue, OUT DBDefine* def)
 {
     stringstream ss;
-    if (keyvalue.type()==Basic::ValueType::String)
-        ss << "SELECT * FROM " << def->table() << " WHERE " << key << " = '" << keyvalue.toString() << "'";
+	if (keyvalue.type() == typeid(std::string))
+	{
+		auto ret = Poco::AnyCast<std::string>(&keyvalue);
+		ss << "SELECT * FROM " << def->table() << " WHERE " << key << " = '" << ret->c_str() << "'";
+	}
     else
         ss << "SELECT * FROM " << def->table() << " WHERE " << key << " = " << keyvalue.toString();
     mExecuter->queryBegin(ss.str().c_str());
@@ -143,7 +146,7 @@ bool DataBase::pull(const char* key, Value keyvalue, OUT DBDefine* def)
     return ret;
 }
 
-bool DataBase::commit(Value keyvalue, OUT DBDefine* def)
+bool DataBase::commit(Any keyvalue, OUT DBDefine* def)
 {
     return false;
 }
@@ -169,7 +172,7 @@ bool DataBase::insert(OUT DBDefine* def)
     return mExecuter->queryEnd();
 }
 
-bool DataBase::insertAndQuery(Value keyvalue, OUT DBDefine* def)
+bool DataBase::insertAndQuery(Any keyvalue, OUT DBDefine* def)
 {
     bool ret = insert(def);
     if (ret)
@@ -179,7 +182,7 @@ bool DataBase::insertAndQuery(Value keyvalue, OUT DBDefine* def)
     return ret;
 }
 
-bool DataBase::insertAndQuery(const char* key, Value keyvalue, OUT DBDefine* def)
+bool DataBase::insertAndQuery(const char* key, Any keyvalue, OUT DBDefine* def)
 {
     bool ret = insert(def);
     if (ret)

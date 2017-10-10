@@ -25,14 +25,14 @@ public:
 
     void set(vector<string>& values);
     //use key()
-    bool pull(Value keyvalue);
+    bool pull(Any keyvalue);
     //use key()
     bool commit();
-    bool insertAndQuery(Value keyvalue);
-    bool insertAndQuery(const char* key, Value keyvalue);
+    bool insertAndQuery(Any keyvalue);
+    bool insertAndQuery(const char* key, Any keyvalue);
 
     bool getValues(stringstream& ss);
-    bool exist(const char* key, Value value);
+    bool exist(const char* key, Any value);
 public:
     inline DBStream& stream()
     {

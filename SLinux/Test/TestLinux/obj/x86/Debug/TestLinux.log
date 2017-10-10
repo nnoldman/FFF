@@ -1,0 +1,7 @@
+﻿生成启动时间为 2017/10/10 16:13:31。
+     1>项目“C:\Src\FFF\SLinux\Test\TestLinux\TestLinux.vcxproj”在节点 2 上(Clean 个目标)。
+     1>_PrepareForClean:
+         正在删除文件“C:\Src\FFF\SLinux\Test\TestLinux\obj\x86\Debug\TestLinux.tlog\TestLinux.lastbuildstate”。
+       _RemoteClean:
+         Cleaning remote project directory
+     1>已完成生成项目“C:\Src\FFF\SLinux\Test\TestLinux\TestLinux.vcxproj”(Clean 个目标)的操作。
