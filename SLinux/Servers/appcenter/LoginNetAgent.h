@@ -22,6 +22,6 @@ protected:
 protected:
     bool createAccount(string user, string psd, Connection* con);
 private:
-    Map<Connection*, int> mClients;
+    map<Connection*, int> mClients;
 };
 

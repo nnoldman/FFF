@@ -72,7 +72,7 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
             App::World.onEnterWorld(connect,user);
             ret.set_error(Cmd::LoginGameError::LoginGameSucess);
         }
-        SendProtoBuffer(connect->getSocket(), Cmd::RTLoginGame, ret);
+        SendProtoBuffer(connect, Cmd::RTLoginGame, ret);
     }
     break;
     case Cmd::CLIENTID::RQCreateRole:
@@ -93,7 +93,7 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
                 if (def->exist(def->key2(), def->base.name.c_str()))
                 {
                     ret.set_error(Cmd::CreateRoleError::CreateRoleNameRepeated);
-                    SendProtoBuffer(connect->getSocket(), Cmd::RTCreateRole, ret);
+                    SendProtoBuffer(connect, Cmd::RTCreateRole, ret);
                 }
                 else
                 {
@@ -121,7 +121,7 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
                             gameRole->set_name(def->base.name.c_str());
                         }
                         ret.set_error(Cmd::CreateRoleError::CreateRoleSucess);
-                        SendProtoBuffer(connect->getSocket(), Cmd::RTCreateRole, ret);
+                        SendProtoBuffer(connect, Cmd::RTCreateRole, ret);
                     }
                 }
             }

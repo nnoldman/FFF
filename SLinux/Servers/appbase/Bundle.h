@@ -3,6 +3,7 @@
 
 
 #include "Poco/Net/StreamSocket.h"
+#include "Poco/Net/StreamSocket.h"
 #include "ProtocoBuffer.h"
 #include "google/protobuf/message_lite.h"
 
@@ -35,6 +36,8 @@ private:
 
 class COREAPI BundleSender
 {
+public:
+	Delegate1<void, Poco::Net::StreamSocket&> onException;
 private:
     BundleSender();
 public:
@@ -43,14 +46,15 @@ public:
         static BundleSender sender;
         return sender;
     }
-    void setConnection(Poco::Net::StreamSocket& ss);
+    void setConnection(Connection* ss);
     void send(ProtocoBuffer* pkg, int len);
     void sendFlatbuffer(u32 opcode, u32 length, char* data);
     void sendProtoBuffer(u32 opcode, google::protobuf::MessageLite* message);
 private:
-    Poco::Net::StreamSocket* mSocket;
+	Connection* connection_;
     Basic::Buffer mBuffer;
     u32 mLength;
+	Poco::FastMutex locker;
 };
 #define SendPKG(streamSocket,pkg) {BundleSender sender(streamSocket);sender.send(&pkg,sizeof(pkg));}
 #define SendFlatbuffer(streamSocket,opcode,length,data) {BundleSender sender(streamSocket);sender.sendFlatbuffer(opcode,length,(char*)data);}

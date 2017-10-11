@@ -13,11 +13,14 @@ public:
     inline Poco::Net::StreamSocket& getSocket();
 
     void disconnect();
+
+	bool valid() const;
 private:
     Basic::Buffer buffer_;
     int targetLength_;
     int header_ = 0;
     bool closed_;
+	bool valid_;
 };
 inline Poco::Net::StreamSocket& Connection::getSocket()
 {

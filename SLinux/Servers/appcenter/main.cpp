@@ -34,9 +34,6 @@ int main(int narg, char* argv[])
 	printf(exception.c_str());
 
 
-
-
-
 	return 0;
 }
 

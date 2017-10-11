@@ -38,7 +38,10 @@
     <ClCompile Include="Installer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Test_construct.cpp">
+    <ClCompile Include="Test_stringstream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_any.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -2,6 +2,7 @@
 #define World_h__
 class DBObject;
 class Connection;
+#include "Poco/Net/StreamSocket.h"
 
 class COREAPI World
 {
@@ -23,6 +24,8 @@ public:
     void onEnterWorld(Connection* connection, DBObject* account);
 
     virtual void onDisconnect(Connection* connection);
+
+	void onNetException(Poco::Net::StreamSocket& ss);
 private:
     map<string, DBObject*> accounts_;
 };

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "Installer.h"
 #include <cstdio>
 
@@ -16,16 +16,11 @@ void Installer::run()
 		try
 		{
 			it.second();
-
-			std::cout << std::endl << "Sucessed: " << it.first.c_str();
+			std::cout << std::endl << "V: " << it.first.c_str();
 		}
 		catch (std::exception exc)
 		{
-			std::cout << exc.what() << std::endl;
-		}
-		catch (...)
-		{
-			std::cout << "Failed: " << it.first.c_str() << std::endl;
+			std::cout << "X: " << it.first.c_str() << " Info:" << exc.what() << std::endl;
 		}
 	}
 }

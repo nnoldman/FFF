@@ -65,12 +65,29 @@ void Connection::disconnect()
 {
     printf("~disconnect()\n");
     this->closed_ = true;
-    this->socket().shutdown();
+	if (this->valid())
+	{
+		try
+		{
+			this->socket().shutdown();
+		}
+		catch (std::exception exc)
+		{
+			LOG_DEBUG_A(exc.what());
+		}
+	}
+}
+
+bool Connection::valid() const
+{
+	return this->valid_;
 }
 
 Connection::Connection(const Poco::Net::StreamSocket& s) : TCPServerConnection(s)
     , buffer_(Default::ReceiveBufferSize)
     , targetLength_(kHeaderLength_)
+	, closed_(false)
+	, valid_(true)
 {
     this->socket().setBlocking(true);
     App::Net.onConnect.invoke(this);
@@ -78,8 +95,9 @@ Connection::Connection(const Poco::Net::StreamSocket& s) : TCPServerConnection(s
 
 Connection::~Connection()
 {
-    printf("~Connection()\n");
+	printf("~Connection()\n");
     App::Net.onDisconnect.invoke(this);
+	valid_ = false;
 }
 
 

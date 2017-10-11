@@ -6,9 +6,9 @@ namespace Basic
     class Variable
     {
     public:
-        static const char* space()
+        static const char space()
         {
-            return " ";
+            return ' ';
         }
     };
 }

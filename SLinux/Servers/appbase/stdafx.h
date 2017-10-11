@@ -23,6 +23,8 @@
 #include "Poco/Dynamic/Var.h"
 #include "Poco/Any.h"
 #include "Poco/Net/Socket.h"
+#include "Poco/Util/Application.h"
+#include "Poco/Logger.h"
 #include "Default.h"
 
 using namespace Poco;

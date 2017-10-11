@@ -3,6 +3,7 @@
 #include "App.h"
 #include "DBObject.h"
 #include "Connection.h"
+#include "Bundle.h"
 
 
 World::World()
@@ -19,14 +20,15 @@ World::~World()
 bool World::initialize()
 {
     App::Net.onDisconnect.add(&World::onDisconnect, this);
-    return true;
+	BundleSender::GetInstance().onException.add(&World::onNetException, this);
+	return true;
 }
 
 
 DBObject* World::get(Connection* connection)
 {
     string key = connection->getSocket().address().toString();
-	auto it=accounts_.find(key);
+	auto it = accounts_.find(key);
 	if (it != accounts_.end())
 		return it->second;
     return nullptr;
@@ -39,7 +41,7 @@ void World::reclaimAccount(Connection* connection)
 	DBObject* ret = nullptr;
 	if (!Basic::getValue(accounts_, key, ret))
 	{
-		assert(false);
+		return;
 	}
     assert(ret);
     accounts_.erase(key);
@@ -80,4 +82,15 @@ void World::onDisconnect(Connection* connection)
             return;
         }
     }
+}
+
+void World::onNetException(Poco::Net::StreamSocket& ss)
+{
+	auto key = ss.address().toString();
+	DBObject* ret = nullptr;
+	if (Basic::getValue(accounts_, key, ret))
+	{
+		auto net = ret->getNetInterface();
+		net->disconnect();
+	}
 }

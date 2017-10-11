@@ -70,7 +70,7 @@ bool LoginNetAgent::on_rqLoginAccount(const string& user, const string& password
         {
             Cmd::RetAccountOperation ret;
             ret.set_error(Cmd::AccountErrorCode::AccountErrorCode_PasswordError);
-            SendProtoBuffer(con->getSocket(), Cmd::SERVERID::RTAccountOperation, ret);
+            SendProtoBuffer(con, Cmd::SERVERID::RTAccountOperation, ret);
             dSafeDelete(gateAccount);
             return false;
         }
@@ -93,7 +93,7 @@ bool LoginNetAgent::on_rqLoginAccount(const string& user, const string& password
         {
             Cmd::RetAccountOperation ret;
             ret.set_error(Cmd::AccountErrorCode::AccountErrorCode_UserCantFind);
-            SendProtoBuffer(con->getSocket(), Cmd::SERVERID::RTAccountOperation, ret);
+            SendProtoBuffer(con, Cmd::SERVERID::RTAccountOperation, ret);
             dSafeDelete(gateAccount);
             return false;
         }
@@ -110,7 +110,7 @@ bool LoginNetAgent::on_rqCreateAccount(const string& user, const string& passwor
     {
         Cmd::RetAccountOperation ret;
         ret.set_error(Cmd::AccountErrorCode::AccountErrorCode_NameRepeated);
-        SendProtoBuffer(con->getSocket(), Cmd::SERVERID::RTAccountOperation, ret);
+        SendProtoBuffer(con, Cmd::SERVERID::RTAccountOperation, ret);
         dSafeDelete(gateAccount);
         return false;
     }
@@ -125,7 +125,7 @@ bool LoginNetAgent::on_rqCreateAccount(const string& user, const string& passwor
         Cmd::RetAccountOperation ret;
         ret.set_error(Cmd::AccountErrorCode::AccountErrorCode_CreateSucessed);
         ret.set_accountid(def->id);
-        SendProtoBuffer(con->getSocket(), Cmd::SERVERID::RTAccountOperation, ret);
+        SendProtoBuffer(con, Cmd::SERVERID::RTAccountOperation, ret);
 
         dSafeDelete(gateAccount);
         //App::Gate.onEnter(gateAccount);
@@ -155,7 +155,7 @@ void LoginNetAgent::onLoginSucess(Account* account, Connection* con)
     ret.add_late_serverids(def->late_serverid1);
     ret.add_late_serverids(def->late_serverid2);
     ret.add_late_serverids(def->late_serverid3);
-    SendProtoBuffer(con->getSocket(), Cmd::SERVERID::RTAccountOperation, ret);
+    SendProtoBuffer(con, Cmd::SERVERID::RTAccountOperation, ret);
     dSafeDelete(account);
 }
 

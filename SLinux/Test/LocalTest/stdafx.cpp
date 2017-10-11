@@ -6,3 +6,9 @@
 
 // TODO: 在 STDAFX.H 中引用任何所需的附加头文件，
 //而不是在此文件中引用
+string Assert__(const char* exp, const char* file, unsigned int line)
+{
+	stringstream stream;
+	stream << "Assert Failed:" << exp << " File:" << file << '(' << line << ')' ;
+	return stream.str();
+}

@@ -30,9 +30,9 @@ BundleSender::BundleSender()
 {
 }
 
-void BundleSender::setConnection(Poco::Net::StreamSocket& ss)
+void BundleSender::setConnection(Connection* con)
 {
-    mSocket = &ss;
+    connection_ = con;
 }
 
 void BundleSender::send(ProtocoBuffer* pkg, int len)
@@ -45,6 +45,7 @@ void BundleSender::sendFlatbuffer(u32 opcode, u32 length, char* data)
 
 void BundleSender::sendProtoBuffer(u32 opcode, google::protobuf::MessageLite* message)
 {
+	locker.lock();
     mBuffer.clear();
     u32 len = message->ByteSize();
     u32 allsize = kHeaderLength + len;
@@ -60,6 +61,19 @@ void BundleSender::sendProtoBuffer(u32 opcode, google::protobuf::MessageLite* me
         printf(exc.what());
     }
     mBuffer.forwardPosition(len);
-    int ret = mSocket->sendBytes(mBuffer.getBuffer(), mBuffer.getPosition());
+	try
+	{
+		if (connection_&&connection_->valid())
+		{
+			int ret = connection_->getSocket().sendBytes(mBuffer.getBuffer(), mBuffer.getPosition());
+		}
+	}
+	catch (std::exception exc)
+	{
+		if (connection_&&connection_->valid())
+			this->onException.invoke(connection_->getSocket());
+		//LOG_TRACE_A(exc.what());
+	}
+	locker.unlock();
 }
 
