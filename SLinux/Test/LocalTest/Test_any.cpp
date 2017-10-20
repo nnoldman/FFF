@@ -138,5 +138,5 @@ Function(Test_Construct)
 	AssertTrue(var_int3.get<int>() == 3);
 	var_int3 = var_int5;
 	AssertTrue(var_int3.get<int>() == 5);
-	AssertTrue(var_int5.get<int>() == 15);
+	AssertTrue(var_int5.get<int>() == 5);
 }

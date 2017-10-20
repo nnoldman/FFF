@@ -24,7 +24,10 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Installer.h">
+    <ClInclude Include="Timer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Timers.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,19 +35,13 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="LocalTest.cpp">
+    <ClCompile Include="Timer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Installer.cpp">
+    <ClCompile Include="Timers.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Test_stringstream.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Test_any.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Test_Heap.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
