@@ -55,6 +55,9 @@ bool CLIENTID_IsValid(int value) {
     case 400:
     case 500:
     case 600:
+    case 5000:
+    case 5100:
+    case 50000:
       return true;
     default:
       return false;
@@ -68,6 +71,12 @@ bool SERVERID_IsValid(int value) {
     case 400:
     case 500:
     case 600:
+    case 700:
+    case 800:
+    case 900:
+    case 901:
+    case 902:
+    case 903:
       return true;
     default:
       return false;

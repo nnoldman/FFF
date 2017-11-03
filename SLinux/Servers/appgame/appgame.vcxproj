@@ -67,33 +67,46 @@
   <ItemGroup>
     <ClCompile Include="CenterNetAgent.cpp" />
     <ClCompile Include="GameApp.cpp" />
+    <ClCompile Include="GameSystems\GameControllerBase.cpp" />
+    <ClCompile Include="GameSystems\GameControllers.cpp" />
     <ClCompile Include="GameUser.cpp" />
-    <ClCompile Include="GameUserLogic.cpp" />
+    <ClCompile Include="RoleSystems\RewardSystem.cpp" />
+    <ClCompile Include="RoleSystems\LevelSystem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Role.cpp" />
-    <ClCompile Include="RoleInfoDefine.cpp" />
     <ClCompile Include="RoleSystems\ItemSystem.cpp" />
     <ClCompile Include="RoleSystems\PaySystem.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="RoleSystems\SystemBase.cpp" />
+    <ClCompile Include="RoleSystems\TaskSystem.cpp" />
+    <ClCompile Include="GameSystems\MessageController.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BagDefine.h" />
+    <ClInclude Include="Config\Language.h" />
+    <ClInclude Include="GameSystems\GameControllerBase.h" />
+    <ClInclude Include="GameSystems\GameControllers.h" />
+    <ClInclude Include="RoleSystems\RewardSystem.h" />
+    <ClInclude Include="GameSystems\MessageController.h" />
+    <ClInclude Include="TableDefine\BagDefine.h" />
     <ClInclude Include="CenterNetAgent.h" />
     <ClInclude Include="Config\TimeTable.h" />
     <ClInclude Include="GameApp.h" />
-    <ClInclude Include="GameRoleDefine.h" />
+    <ClInclude Include="TableDefine\GameRoleDefine.h" />
     <ClInclude Include="GameUser.h" />
-    <ClInclude Include="GameUserDefine.h" />
-    <ClInclude Include="GameUserLogic.h" />
-    <ClInclude Include="ItemDefine.h" />
+    <ClInclude Include="TableDefine\GameUserDefine.h" />
+    <ClInclude Include="TableDefine\ItemDefine.h" />
+    <ClInclude Include="RoleSystems\LevelSystem.h" />
     <ClInclude Include="Role.h" />
-    <ClInclude Include="RoleInfoDefine.h" />
+    <ClInclude Include="TableDefine\RoleInfoDefine.h" />
     <ClInclude Include="RoleSystems\ItemSystem.h" />
     <ClInclude Include="RoleSystems\PaySystem.h" />
     <ClInclude Include="ServerDefine.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="RoleSystems\SystemBase.h" />
+    <ClInclude Include="RoleSystems\TaskSystem.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Config\Language.inl" />
     <None Include="Config\TimeTable.inl" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

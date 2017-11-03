@@ -19,15 +19,17 @@ public:
 
     DBObject* get(Connection* connection);
 
+    const map<Connection*, DBObject*>& getAcccounts() const;
+
 public:
     void reclaimAccount(Connection* connection);
     void onEnterWorld(Connection* connection, DBObject* account);
 
     virtual void onDisconnect(Connection* connection);
 
-	void onNetException(Poco::Net::StreamSocket& ss);
+    void onNetException(Connection* connection);
 private:
-    map<string, DBObject*> accounts_;
+    map<Connection*, DBObject*> accounts_;
 };
 
 #endif // World_h__

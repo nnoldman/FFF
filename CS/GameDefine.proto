@@ -34,6 +34,9 @@ enum Capcity
 	Mail=100;
 	//功能
 	Function=160;
+	
+	//基本属性
+	ProertyCount=100;
 };
 
 enum ItemDeleteReason

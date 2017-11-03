@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1113557544
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ab_scripts
+      Dependencies: {}

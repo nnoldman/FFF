@@ -1,5 +1,6 @@
 #pragma once
 #include <list>
+#include <sstream>
 class COREAPI DBStream
 {
 public:
@@ -51,7 +52,7 @@ public:
     }
 private:
     std::vector<string> contents_;
-    u32 position_;
+    ::size_t position_;
 };
 
 template<int N>

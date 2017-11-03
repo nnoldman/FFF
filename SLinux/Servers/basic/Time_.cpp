@@ -7,13 +7,78 @@ time_t Basic::Time_::utc()
     return time(nullptr);
 }
 
-bool Basic::Time_::localTime(tm& ret)
+time_t Basic::Time_::local()
+{
+    tm st;
+    if (localTime(st))
+        return mktime(&st);
+    return 0;
+}
+
+
+time_t Basic::Time_::fromUTCTime(const char* time)
+{
+    int tm_sec;			/* Seconds.	[0-60] (1 leap second) */
+    int tm_min;			/* Minutes.	[0-59] */
+    int tm_hour;			/* Hours.	[0-23] */
+    int tm_mday;			/* Day.		[1-31] */
+    int tm_mon;			/* Month.	[0-11] */
+    int tm_year;			/* Year	- 1900.  */
+    //int tm_wday;			/* Day of week.	[0-6] */
+    //int tm_yday;			/* Days in year.[0-365]	*/
+    //int tm_isdst;			/* DST.		[-1/0/1]*/
+
+    try
+    {
+        sscanf(time, "%d-%d-%d %d:%d:%d", &tm_year, &tm_mon, &tm_mday, &tm_hour, &tm_min, &tm_sec);
+    }
+    catch (...)
+    {
+    }
+    tm st;
+
+    dMemoryZero(&st, sizeof(tm));
+
+    st.tm_year = tm_year - 1900;
+    st.tm_mon = tm_mon - 1;
+    st.tm_mday = tm_mday;
+    st.tm_hour = tm_hour;
+    st.tm_min = tm_min;
+    st.tm_sec = tm_sec;
+
+    return ::mktime(&st);
+}
+
+
+time_t Basic::Time_::fromLocalTime(const char* time)
+{
+    time_t ret = 0;
+    try
+    {
+        ret = fromUTCTime(time);
+    }
+    catch (...)
+    {
+    }
+    tm st;
+    if (localTime(st, &ret))
+        return ::mktime(&st);
+    return 0;
+}
+
+
+std::time_t Basic::Time_::nowMinusLocalTime(const char* localTime)
+{
+    return local() - fromLocalTime(localTime);
+}
+
+bool Basic::Time_::localTime(tm& ret, time_t* tm /*= nullptr*/)
 {
     const time_t t = time(nullptr);
 #ifdef WIN32
-    return localtime_s(&ret, &t) == 0;
+    return tm == nullptr ? localtime_s(&ret, &t) != nullptr : localtime_s(&ret, tm) != nullptr;
 #elif __GNUC__
-    return localtime_r(&t, &ret) != nullptr;
+    return tm == nullptr ? localtime_r(&t, &ret) != nullptr : localtime_r(tm, &ret) != nullptr;
 #endif
 }
 

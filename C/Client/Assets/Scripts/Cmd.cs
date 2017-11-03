@@ -27,7 +27,16 @@ namespace Cmd
       RQCreateRole = 500,
             
       [global::ProtoBuf.ProtoEnum(Name=@"RQEnterGame", Value=600)]
-      RQEnterGame = 600
+      RQEnterGame = 600,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RQRoleBaseOperation", Value=5000)]
+      RQRoleBaseOperation = 5000,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RQUseItem", Value=5100)]
+      RQUseItem = 5100,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RQRoleBaseOperationEnd", Value=50000)]
+      RQRoleBaseOperationEnd = 50000
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"SERVERID")]
@@ -47,7 +56,25 @@ namespace Cmd
       RTCreateRole = 500,
             
       [global::ProtoBuf.ProtoEnum(Name=@"RTMainUser", Value=600)]
-      RTMainUser = 600
+      RTMainUser = 600,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RTTimeLine", Value=700)]
+      RTTimeLine = 700,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RTMessage", Value=800)]
+      RTMessage = 800,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RTObject_Add", Value=900)]
+      RTObject_Add = 900,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RTObject_Sync", Value=901)]
+      RTObject_Sync = 901,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RTObject_Delete", Value=902)]
+      RTObject_Delete = 902,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RTObject_Use", Value=903)]
+      RTObject_Use = 903
     }
   
 }

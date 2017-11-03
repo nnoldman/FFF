@@ -21,10 +21,10 @@ typedef float f32;
 
 ///params
 #ifndef IN
-#define IN
+    #define IN
 #endif
 #ifndef OUT
-#define OUT
+    #define OUT
 #endif
 
 #define U_UNUSE(v) (void)v;
@@ -32,27 +32,27 @@ typedef float f32;
 ///assert
 #include <assert.h>
 #if _DEBUG
-#define assert_false(exp)			assert(!(exp))
-#define assert_equal(a,b)			assert((a)==(b))
-#define CXASSERT(exp)				if(!(exp)){assert(0);}
-#define CXASSERT_RETURN(exp)		if(!(exp)){assert(0);return;}
-#define CXASSERT_RETURN_FALSE(exp)	if(!(exp)){assert(0);return false;}
+    #define assert_false(exp)			assert(!(exp))
+    #define assert_equal(a,b)			assert((a)==(b))
+    #define CXASSERT(exp)				if(!(exp)){assert(0);}
+    #define CXASSERT_RETURN(exp)		if(!(exp)){assert(0);return;}
+    #define CXASSERT_RETURN_FALSE(exp)	if(!(exp)){assert(0);return false;}
 
-#define CXCheck(exp) assert(exp)
+    #define CXCheck(exp) assert(exp)
 
-#define CXASSERT_RESULT(exp)		if(FAILED(exp)){__debugbreak();return;}
-#define CXASSERT_RESULT_FALSE(exp)	if(FAILED((exp))) {__debugbreak();return false;}
+    #define CXASSERT_RESULT(exp)		if(FAILED(exp)){__debugbreak();return;}
+    #define CXASSERT_RESULT_FALSE(exp)	if(FAILED((exp))) {__debugbreak();return false;}
 #else
-#define assert_false(exp)			assert(!(exp))
-#define assert_equal(a,b)			assert((a)==(b))
-#define CXASSERT(exp)
-#define CXASSERT_RETURN(exp)		if(!(exp)){assert(0);return;}
-#define CXASSERT_RETURN_FALSE(exp)	if(!(exp)){assert(0);return false;}
+    #define assert_false(exp)			assert(!(exp))
+    #define assert_equal(a,b)			assert((a)==(b))
+    #define CXASSERT(exp)
+    #define CXASSERT_RETURN(exp)		if(!(exp)){assert(0);return;}
+    #define CXASSERT_RETURN_FALSE(exp)	if(!(exp)){assert(0);return false;}
 
-#define CXCheck(exp) assert(exp)
+    #define CXCheck(exp) assert(exp)
 
-#define CXASSERT_RESULT(exp)		if(FAILED(exp)){__debugbreak();return;}
-#define CXASSERT_RESULT_FALSE(exp)	if(FAILED((exp))) {__debugbreak();return false;}
+    #define CXASSERT_RESULT(exp)		if(FAILED(exp)){__debugbreak();return;}
+    #define CXASSERT_RESULT_FALSE(exp)	if(FAILED((exp))) {__debugbreak();return false;}
 #endif
 
 ///stl
@@ -65,8 +65,10 @@ typedef float f32;
 #include <list>
 #include <string.h>
 #include <string>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 //--------------------------------------------------------------------------------------------------
 #define QUOTE_NONE_STRING ""
 
@@ -76,39 +78,46 @@ using namespace std;
 
 ///project type
 #ifdef WIN32
-#ifdef _LIBRARY
-#define COREAPI	__declspec(dllexport)
-#else
-#define COREAPI  __declspec(dllimport)
-#endif
+    #ifdef _LIBRARY
+        #define COREAPI	__declspec(dllexport)
+    #else
+        #define COREAPI  __declspec(dllimport)
+    #endif
 #elif __GNUC__
-#ifdef _LIBRARY
-#define COREAPI
-#else
-#define COREAPI
-#endif
+    #ifdef _LIBRARY
+        #define COREAPI
+    #else
+        #define COREAPI
+    #endif
 #endif
 
 
 #ifdef _LIBRARY
-#define API	extern "C" __declspec(dllexport)
+    #define CAPI extern "C" __declspec(dllexport)
 #else
-#define API  extern "C" __declspec(dllimport)
+    #define CAPI extern "C" __declspec(dllimport)
 #endif
+
+
 
 ///platform
 #ifdef WIN32
-#define declare_once __declspec(selectany)
-#define warning_push
-#define warning_pop
-#define warning_disable(c) #pragma warning(disable:c)
+    #define declare_once __declspec(selectany)
+    #define warning_push
+    #define warning_pop
+    #define warning_disable(c) #pragma warning(disable:c)
+    #define stdcall _stdcall
 #elif __GNUC__
-#define declare_once __attribute__((weakref))
-#define warning_push #pragma GCC diagnostic push
-#define warning_pop #pragma GCC diagnostic pop
-#define warning_disable(c)
-//#define pack(n) __attribute__((aligned(n)))
-//#define pack_pop __attribute__((packed))
+    #define declare_once __attribute__((weakref))
+    #define declare_var_once __attribute__((weak))
+
+    #define warning_push #pragma GCC diagnostic push
+    #define warning_pop #pragma GCC diagnostic pop
+    #define warning_disable(c)
+    #define stdcall
+    //#define stdcall __attribute__((__stdcall__))
+    //#define pack(n) __attribute__((aligned(n)))
+    //#define pack_pop __attribute__((packed))
 #endif
 
 ///memory
@@ -119,7 +128,7 @@ using namespace std;
 #define dSafeRelease(v) if(v){v->Release();v=nullptr;}
 
 #define dMemberOffset(ClassName,memberName)\
-	((int)&((ClassName*)0)->memberName)
+    ((int)&((ClassName*)0)->memberName)
 
 ///math
 #define dSequare(x) (x)*(x)
@@ -148,35 +157,35 @@ void dRemoveChild(T& v, E* e)
 }
 
 #define dSafeDeleteVector(vec) \
-{\
-	if (vec.size() > 0)\
-	{\
-		auto it = vec.begin();\
-		auto end = vec.end();\
-		for (; it != end; ++it)\
-		{\
-			dSafeDelete(*it);\
-		}\
-		vec.clear();\
-	}\
-}
+    {\
+        if (vec.size() > 0)\
+        {\
+            auto it = vec.begin();\
+            auto end = vec.end();\
+            for (; it != end; ++it)\
+            {\
+                dSafeDelete(*it);\
+            }\
+            vec.clear();\
+        }\
+    }
 
 #define dSafeDeleteArray(arr) \
-{\
-	for (auto& i : arr)\
-		dSafeDelete(i);\
-}
+    {\
+        for (auto& i : arr)\
+            dSafeDelete(i);\
+    }
 
 #define dSafeDeleteMap2(v) \
-{\
-	auto it = v.begin();\
-	auto end = v.end();\
-	for (; it != end; ++it)\
-	{\
-		dSafeDelete(it->second);\
-	}\
-	v.clear();\
-}
+    {\
+        auto it = v.begin();\
+        auto end = v.end();\
+        for (; it != end; ++it)\
+        {\
+            dSafeDelete(it->second);\
+        }\
+        v.clear();\
+    }
 
 inline void dMemoryZero(void* p, size_t len)
 {

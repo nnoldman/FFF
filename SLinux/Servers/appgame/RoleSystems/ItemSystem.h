@@ -1,11 +1,12 @@
 #pragma once
-#include "../ItemDefine.h"
-class ItemSystem
+#include "TableDefine/ItemDefine.h"
+#include "SystemBase.h"
+class ItemSystem : public SystemBase
 {
 public:
     ItemSystem();
     ~ItemSystem();
-
+    virtual void initialize(Role* role) override;
 public:
 
     /*
@@ -16,7 +17,7 @@ public:
     /*
     生成道具
     */
-    ItemDefine* create(int itemID,GameDefine::ItemLocation location,int x);
+    ItemDefine* create(int itemID, GameDefine::ItemLocation location, int x);
 
     /*
     刷新道具数量

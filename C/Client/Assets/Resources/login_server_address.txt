@@ -1,0 +1,5 @@
+http://192.168.1.244/test/config/urlconfig.json
+http://yjqk.ts1.tianyouxi.com/version/sword20170325/config/urlconfig.json
+--
+http://47.93.118.30/version/sword20170325/config/urlconfig.json
+http://192.168.1.106/test/config/urlconfig.json

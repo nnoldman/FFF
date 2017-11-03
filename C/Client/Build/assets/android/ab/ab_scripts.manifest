@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1214561636
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0acaa41c0c2d006b454bc7c1c904428f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1033bf7ddfd4c6d43e7a6382c0a0a61a
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources2/Config/TimeTable.txt
+- Assets/Resources2/Config/Language.txt
+Dependencies: []

@@ -1,20 +1,23 @@
 #include "stdafx.h"
 #include "GameApp.h"
 #include "CenterNetAgent.h"
-#include "GameUserDefine.h"
-#include "GameRoleDefine.h"
+#include "TableDefine/GameUserDefine.h"
+#include "TableDefine/GameRoleDefine.h"
 #include "Config/TimeTable.h"
+#include "Config/Language.h"
+#include "GameSystems/GameControllers.h"
 
 GameApp::GameApp(int argc, char* argv[])
-    :App(argc, argv)
+    : App(argc, argv)
     , netAgent_(nullptr)
+    , controllers_(nullptr)
 {
-
 }
 
 GameApp::~GameApp()
 {
     dSafeDelete(netAgent_);
+    dSafeDelete(controllers_);
 }
 
 const NetConfig& GameApp::getNetConfig()
@@ -39,10 +42,13 @@ bool GameApp::parseCommandLine()
 
 void GameApp::archive()
 {
+
 }
 
 bool GameApp::onInitializeEnd()
 {
+    controllers_ = new GameControllers();
+    controllers_->start();
     return true;
 }
 
@@ -66,8 +72,12 @@ const vector<const DBTableDefine*>& GameApp::getTableDefines() const
 bool GameApp::loadGameConfig()
 {
     TimeTable::getInstance()->reload();
-    auto record = TimeTable::getInstance()->get(40);
-    record = TimeTable::getInstance()->get(20);
-    auto all = TimeTable::getInstance()->all();
+    Language::getInstance()->reload();
     return true;
+}
+
+void GameApp::mainLoop()
+{
+    App::mainLoop();
+    controllers_->update();
 }

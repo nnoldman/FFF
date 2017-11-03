@@ -47,5 +47,14 @@
     <ClCompile Include="Test_Heap.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Test_PureCall.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Patch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Lambda.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

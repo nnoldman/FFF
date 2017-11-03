@@ -37,7 +37,7 @@ private:
 class COREAPI BundleSender
 {
 public:
-	Delegate1<void, Poco::Net::StreamSocket&> onException;
+    Delegate1<void, Connection*> onException;
 private:
     BundleSender();
 public:
@@ -50,18 +50,18 @@ public:
     void send(ProtocoBuffer* pkg, int len);
     void sendFlatbuffer(u32 opcode, u32 length, char* data);
     void sendProtoBuffer(u32 opcode, google::protobuf::MessageLite* message);
+    void sendProtoBuffer(u32 opcode, google::protobuf::MessageLite* message, Connection* ss);
 private:
-	Connection* connection_;
+    Connection* connection_;
     Basic::Buffer mBuffer;
     u32 mLength;
-	Poco::FastMutex locker;
+    Poco::FastMutex locker;
 };
 #define SendPKG(streamSocket,pkg) {BundleSender sender(streamSocket);sender.send(&pkg,sizeof(pkg));}
 #define SendFlatbuffer(streamSocket,opcode,length,data) {BundleSender sender(streamSocket);sender.sendFlatbuffer(opcode,length,(char*)data);}
 #define SendProtoBuffer(connection,opcode,data) \
-{\
-	BundleSender::GetInstance().setConnection(connection);\
-	BundleSender::GetInstance().sendProtoBuffer(opcode, &data);\
-}
+    {\
+        BundleSender::GetInstance().sendProtoBuffer(opcode, &data,connection);\
+    }
 
 #endif // Bundle_h__

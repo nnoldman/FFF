@@ -1,7 +1,67 @@
-﻿生成启动时间为 2017/10/10 16:13:40。
-     1>项目“C:\Src\FFF\SLinux\Test\TestLinux\TestLinux.vcxproj”在节点 2 上(Clean 个目标)。
-     1>_PrepareForClean:
-         正在删除文件“C:\Src\FFF\SLinux\Test\TestLinux\obj\x64\Debug\TestLinux.tlog\TestLinux.lastbuildstate”。
-       _RemoteClean:
-         Cleaning remote project directory
-     1>已完成生成项目“C:\Src\FFF\SLinux\Test\TestLinux\TestLinux.vcxproj”(Clean 个目标)的操作。
+﻿生成启动时间为 2017/11/1 15:08:52。
+     1>项目“C:\Src\FFF\SLinux\Test\TestLinux\TestLinux.vcxproj”在节点 2 上(Build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“C:\Src\FFF\SLinux\Test\TestLinux\obj\x64\Debug\TestLinux.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       CreateRecipeFile:
+       正在跳过目标“CreateRecipeFile”，因为所有输出文件相对于输入文件而言都是最新的。
+       _ValidateValidArchitecture:
+         Validating architecture
+         Current project architecture 'x64' is compatible with the remote system architecture 'x64' ('x64').
+       _ValidateSources:
+         Validating sources
+       _CopySources:
+         Copying sources remotely to '43.248.102.164'
+         Copying file 'C:\Src\FFF\SLinux\Test\TestLinux\main.cpp' to '/root/projects/TestLinux/main.cpp'
+         Skipping 'C:\Src\FFF\SLinux\Test\TestLinux\Installer.cpp', as it is up to date.
+         Copying file 'C:\Src\FFF\SLinux\Test\TestLinux\test_crash.cpp' to '/root/projects/TestLinux/test_crash.cpp'
+         Skipping 'C:\Src\FFF\SLinux\Test\TestLinux\test_path.cpp', as it is up to date.
+         Skipping 'C:\Src\FFF\SLinux\Test\TestLinux\Installer.h', as it is up to date.
+       ClCompile:
+         Starting remote build
+         Compiling sources:
+         Invoking g++
+         g++ -c -x c++ /root/projects/TestLinux/main.cpp -g2 -gdwarf-2 -o "/root/projects/TestLinux/obj/x64/Debug/main.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         main.cpp
+         /root/projects/TestLinux/main.cpp:24:33: warning: multi-character character constant [-Wmultichar]
+              if (buf[strlen(buf) - 1] == '/n')
+                                          ^
+         /root/projects/TestLinux/main.cpp:25:32: warning: multi-character character constant [-Wmultichar]
+                  buf[strlen(buf) - 1] = '/0';
+                                         ^
+         /root/projects/TestLinux/main.cpp:24:33: warning: multi-character character constant [-Wmultichar]
+              if (buf[strlen(buf) - 1] == '/n')
+                                          ^
+         /root/projects/TestLinux/main.cpp:25:32: warning: multi-character character constant [-Wmultichar]
+                  buf[strlen(buf) - 1] = '/0';
+                                         ^
+         
+         /root/projects/TestLinux/main.cpp: In function ‘void crash_dump(int)’:
+         /root/projects/TestLinux/main.cpp:25:30: warning: overflow in implicit constant conversion [-Woverflow]
+                  buf[strlen(buf) - 1] = '/0';
+                                       ^
+         /root/projects/TestLinux/main.cpp: In function ‘void crash_dump(int)’:
+         /root/projects/TestLinux/main.cpp:25:30: warning: overflow in implicit constant conversion [-Woverflow]
+                  buf[strlen(buf) - 1] = '/0';
+                                       ^
+         
+     1>C:\Src\FFF\SLinux\Test\TestLinux\main.cpp(24,33): warning : multi-character character constant [-Wmultichar]
+     1>C:\Src\FFF\SLinux\Test\TestLinux\main.cpp(25,32): warning : multi-character character constant [-Wmultichar]
+     1>C:\Src\FFF\SLinux\Test\TestLinux\main.cpp(25,30): warning : overflow in implicit constant conversion [-Woverflow]
+         Done compiling '/root/projects/TestLinux/main.cpp'
+         Skipping 'C:\Src\FFF\SLinux\Test\TestLinux\Installer.cpp', as it is up to date.
+         Invoking g++
+         g++ -c -x c++ /root/projects/TestLinux/test_crash.cpp -g2 -gdwarf-2 -o "/root/projects/TestLinux/obj/x64/Debug/test_crash.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         test_crash.cpp
+         Done compiling '/root/projects/TestLinux/test_crash.cpp'
+         Skipping 'C:\Src\FFF\SLinux\Test\TestLinux\test_path.cpp', as it is up to date.
+       Link:
+         Linking objects
+         Invoking ld
+         g++ -o "/root/projects/TestLinux/../bin/Debug/TestLinux.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /root/projects/TestLinux/obj/x64/Debug/main.o /root/projects/TestLinux/obj/x64/Debug/Installer.o /root/projects/TestLinux/obj/x64/Debug/test_crash.o /root/projects/TestLinux/obj/x64/Debug/test_path.o
+         Done linking, output file name: '/root/projects/TestLinux/../bin/Debug/TestLinux.out'
+         Copying file '/root/projects/TestLinux/../bin/Debug/TestLinux.out' to '..\bin\Debug\TestLinux.out'
+         TestLinux.vcxproj -> ..\bin\Debug\TestLinux.out
+       FinalizeBuildStatus:
+         正在删除文件“C:\Src\FFF\SLinux\Test\TestLinux\obj\x64\Debug\TestLinux.tlog\unsuccessfulbuild”。
+         正在对“C:\Src\FFF\SLinux\Test\TestLinux\obj\x64\Debug\TestLinux.tlog\TestLinux.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Src\FFF\SLinux\Test\TestLinux\TestLinux.vcxproj”(Build 个目标)的操作。

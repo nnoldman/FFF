@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GameUser.h"
-#include "GameUserDefine.h"
+#include "TableDefine/GameUserDefine.h"
 
 //ImplementObjectPoolN(GameUser, 3000);
 

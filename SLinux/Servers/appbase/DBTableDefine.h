@@ -12,7 +12,7 @@ struct DBColumn
     u16 length = 0;
     bool autoIncrement = false;
     bool canNull = false;
-	AnyObject defaultValue;
+    AnyObject defaultValue;
 
     DBColumn(const char* name, enum_field_types type, u16 length, bool autoIncrement, bool canNull, AnyObject defaultValue)
     {
@@ -32,10 +32,13 @@ public:
     DBTableDefine(const DBTableDefine& def);
     DBTableDefine(const char* name, bool isGlobal, const char* key1, const char* key2, const vector<DBColumn>& array);
     bool generateCreateTableString(stringstream& cmd)const;
+    void generateDropCloumnString(stringstream& cmd, string column) const;
+    bool generateAddCloumnString(stringstream& cmd, string pre, string column) const;
     const char* tableName() const;
     const char* key2() const;
     const char* key() const;
     const char* column(int index) const;
+    const vector<DBColumn>& columns() const;
 private:
     void generateName();
 private:

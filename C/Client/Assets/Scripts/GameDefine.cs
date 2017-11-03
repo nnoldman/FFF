@@ -33,7 +33,10 @@ namespace GameDefine
       Mail = 100,
             
       [global::ProtoBuf.ProtoEnum(Name=@"Function", Value=160)]
-      Function = 160
+      Function = 160,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ProertyCount", Value=100)]
+      ProertyCount = 100
     }
   
     [global::ProtoBuf.ProtoContract(Name=@"ItemDeleteReason")]

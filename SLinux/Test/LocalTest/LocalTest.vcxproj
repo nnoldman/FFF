@@ -161,6 +161,9 @@
     </ClCompile>
     <ClCompile Include="Test_any.cpp" />
     <ClCompile Include="Test_Heap.cpp" />
+    <ClCompile Include="Test_Lambda.cpp" />
+    <ClCompile Include="Test_Patch.cpp" />
+    <ClCompile Include="Test_PureCall.cpp" />
     <ClCompile Include="Test_stringstream.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,6 +1,7 @@
 #ifndef Buffer_h__
 #define Buffer_h__
-
+#include "stddef.h"
+#include "base.h"
 //-------------------------------------------------------------------------
 /**
 	@brief
@@ -153,14 +154,17 @@ namespace Basic
 
     inline bool Buffer::getline(char* buffer, size_t size)
     {
-        ok_ = true;
+        if (position_ == capacity_)
+            return false;
         char* dst = buffer;
         size_t count = 0;
-        while (position_ < capacity_&&count < size)
+        while (position_ < capacity_ && count < size)
         {
             auto ch = data_[position_];
             if (ch == '\n')
             {
+                if (position_ > 0 && data_[position_ - 1] == '\r')
+                    buffer[count - 1] = '\0';
                 position_++;
                 break;
             }
@@ -169,9 +173,7 @@ namespace Basic
             position_++;
             count++;
         }
-        if (position_ == capacity_)
-            ok_ = false;
-        return ok_;
+        return true;
     }
 
     inline size_t Buffer::capacity() const
@@ -190,7 +192,7 @@ namespace Basic
     {
         data_ = 0;
         elementCount_ = 0;
-		position_ = 0;
+        position_ = 0;
         capacity_ = 0;
         elementWidth_ = 1;
         ok_ = true;
@@ -199,8 +201,8 @@ namespace Basic
     {
         data_ = 0;
         elementCount_ = 0;
-		position_ = 0;
-		capacity_ = byteCnt;
+        position_ = 0;
+        capacity_ = byteCnt;
         elementWidth_ = 1;
         reallocate(capacity_);
     }

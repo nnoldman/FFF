@@ -1,0 +1,12 @@
+{
+    "defines": [
+        {
+            "abName": "ab_scripts",
+            "resources": [
+                "assets/resources2/config/language.txt",
+                "assets/resources2/config/timetable.txt"
+            ],
+            "persistent": true
+        }
+    ]
+}

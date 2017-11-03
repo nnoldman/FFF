@@ -2,9 +2,12 @@
 class DataBase;
 #include "DBStream.h"
 #include "Value.h"
+#include "Variable.h"
 #include "ServerID.h"
 #include "DBTableDefine.h"
 #include "AnyObject.h"
+#include "CharBuffer.h"
+#include <sstream>
 class COREAPI DBDefine
 {
 public:
@@ -48,20 +51,20 @@ protected:
         concatIndex_++;
     }
     template<int N>
-    void startConcat(stringstream& ss, const DBTableDefine& def, CharBuffer<N>& value)
+    void startConcat(stringstream& ss, const DBTableDefine& def, Basic::CharBuffer<N>& value)
     {
         concatIndex_ = 0;
-        ss << def.column(concatIndex_) << "='" << value.c_str() <<"'"<< Basic::Variable::space();
+        ss << def.column(concatIndex_) << "='" << value.c_str() << "'" << Basic::Variable::space();
         concatIndex_++;
     }
     template<typename T>
-    void concat(stringstream& ss, const DBTableDefine& def,T& value)
+    void concat(stringstream& ss, const DBTableDefine& def, T& value)
     {
         ss << "," << def.column(concatIndex_) << "=" << value << Basic::Variable::space();
         concatIndex_++;
     }
     template<int N>
-    void concat(stringstream& ss, const DBTableDefine& def, CharBuffer<N>& value)
+    void concat(stringstream& ss, const DBTableDefine& def, Basic::CharBuffer<N>& value)
     {
         ss << "," << def.column(concatIndex_) << "='" << value.c_str() << "'" << Basic::Variable::space();
         concatIndex_++;

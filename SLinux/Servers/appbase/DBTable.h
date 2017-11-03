@@ -1,13 +1,13 @@
 #pragma once
 #include "DBExecuter.h"
-class DBTable {
-  public:
+class DBTable
+{
+public:
     string dbName;
     string name;
-  private:
-    int mRecordCount;
-    DBExecuter* mExecuter;
-  public:
+private:
+    DBExecuter* executer_;
+public:
     DBTable();
     ~DBTable();
 
@@ -19,8 +19,11 @@ class DBTable {
 
     int refreshRecordCount();
 
-  private:
+    void fetchColumns();
 
-    std::vector<string> mcolumns;
+    const std::vector<string>& columns()const;
+private:
+
+    std::vector<string> columns_;
 };
 

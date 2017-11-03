@@ -8,7 +8,7 @@ DBTableDefine::~DBTableDefine()
 }
 
 inline DBTableDefine::DBTableDefine(const DBTableDefine& def)
-    :columns_(def.columns_)
+    : columns_(def.columns_)
 {
     this->tableName_ = def.tableName_;
     this->primaryKey1_ = def.primaryKey1_;
@@ -18,7 +18,7 @@ inline DBTableDefine::DBTableDefine(const DBTableDefine& def)
 }
 
 DBTableDefine::DBTableDefine(const char* name, bool isGlobal, const char* key1, const char* key2, const vector<DBColumn>& array)
-    :columns_(array)
+    : columns_(array)
 {
     this->isGlobal_ = isGlobal;
     tableName_ = name;
@@ -35,7 +35,7 @@ bool DBTableDefine::generateCreateTableString(stringstream& cmd) const
     for (auto column : this->columns_)
     {
         cmd << column.name << " ";
-        cmd << SQLHelper::getSQLType(column.type)<<" ";
+        cmd << SQLHelper::getSQLType(column.type) << " ";
         if (column.length > 0)
             cmd << "(" << column.length << ")";
         if (!column.canNull)
@@ -45,11 +45,44 @@ bool DBTableDefine::generateCreateTableString(stringstream& cmd) const
         cmd << ",";
     }
     if (this->primaryKey2_.length() > 0)
-        cmd << "primary key (" << this->primaryKey1_ <<","<< this->primaryKey2_ << ")";
+        cmd << "primary key (" << this->primaryKey1_ << "," << this->primaryKey2_ << ")";
     else
         cmd << "primary key (" << this->primaryKey1_ << ")";
 
     cmd << ");";
+    return true;
+}
+
+void DBTableDefine::generateDropCloumnString(stringstream& cmd, string column) const
+{
+    cmd << "ALTER TABLE " << this->finalName_ << " DROP COLUMN " << column << ";";
+}
+
+bool DBTableDefine::generateAddCloumnString(stringstream& cmd, string pre, string column) const
+{
+    auto columnDefine = std::find_if( this->columns_.begin(), this->columns_.end(), [column](const DBColumn it)
+    {
+        return column == it.name;
+    });
+
+    if (columnDefine == this->columns_.end())
+        return false;
+    cmd << "ALTER TABLE " << this->finalName_ << " ADD COLUMN " << column << " ";
+    cmd << SQLHelper::getSQLType(columnDefine->type) << " ";
+    if (columnDefine->length > 0)
+        cmd << "(" << columnDefine->length << ")";
+    if (!columnDefine->canNull)
+        cmd << " not null";
+    if (columnDefine->autoIncrement)
+        cmd << " auto_increment";
+
+    if(pre.length() == 0)
+        cmd << " FIRST ";
+    else
+        cmd << " AFTER " << pre << " ";
+    if (this->primaryKey1_ == columnDefine->name)
+        cmd << " add primary key(" << columnDefine->name << ")";
+    cmd << ";";
     return true;
 }
 
@@ -72,6 +105,11 @@ const char* DBTableDefine::column(int index) const
 {
     assert(index < columns_.size());
     return columns_[index].name;
+}
+
+const vector<DBColumn>& DBTableDefine::columns() const
+{
+    return this->columns_;
 }
 
 void DBTableDefine::generateName()

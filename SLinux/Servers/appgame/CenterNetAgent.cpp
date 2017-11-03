@@ -4,7 +4,7 @@
 #include "Cmd.pb.h"
 #include "md5.h"
 #include "GameUser.h"
-#include "GameUserDefine.h"
+#include "TableDefine/GameUserDefine.h"
 #include "Role.h"
 
 CenterNetAgent::CenterNetAgent()
@@ -44,7 +44,7 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
         {
             ret.set_error(Cmd::LoginGameError::LoginGameInvalid);
         }
-        else if (req->time() + 600<Basic::Time_::utc())
+        else if (req->time() + 600 < Basic::Time_::utc())
         {
             ret.set_error(Cmd::LoginGameError::LoginGameOverdue);
         }
@@ -69,7 +69,7 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
                 gameRole->set_name(def->base.name.c_str());
             }
 
-            App::World.onEnterWorld(connect,user);
+            App::World.onEnterWorld(connect, user);
             ret.set_error(Cmd::LoginGameError::LoginGameSucess);
         }
         SendProtoBuffer(connect, Cmd::RTLoginGame, ret);
@@ -89,7 +89,7 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
 
                 auto def = role->getDefine();
                 def->base.name = req->name().c_str();
-                def->base.borntime = Basic::Time_::utcTimeString().c_str();
+                def->base.borntime = Basic::Time_::localTimeString().c_str();
                 if (def->exist(def->key2(), def->base.name.c_str()))
                 {
                     ret.set_error(Cmd::CreateRoleError::CreateRoleNameRepeated);
@@ -131,26 +131,38 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
     case Cmd::CLIENTID::RQEnterGame:
     {
         auto user = (GameUser*)App::World.get(connect);
-        user->activeRole();
+        if(user)
+            user->activeRole();
     }
     break;
     default:
+    {
+        if (pb->opcode > Cmd::RQRoleBaseOperation && pb->opcode < Cmd::RQRoleBaseOperationEnd)
+        {
+            auto user = (GameUser*)App::World.get(connect);
+            auto activerole = user->getRole();
+            if (activerole != nullptr)
+            {
+                activerole->onNet((Cmd::CLIENTID)pb->opcode, pb);
+            }
+        }
         break;
+    }
     }
 }
 
-bool CenterNetAgent::on_rqCreateAccount(const string& user, const string& password, Connection* con)
+bool CenterNetAgent::on_rqCreateAccount(const string & user, const string & password, Connection * con)
 {
     return false;
 }
 
 
-bool CenterNetAgent::on_rqLoginAccount(string user, string psw, Connection* con)
+bool CenterNetAgent::on_rqLoginAccount(string user, string psw, Connection * con)
 {
     return false;
 }
 
-void CenterNetAgent::onLoginSucess(Account* account)
+void CenterNetAgent::onLoginSucess(Account * account)
 {
 }
 

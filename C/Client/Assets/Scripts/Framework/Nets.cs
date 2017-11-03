@@ -7,15 +7,9 @@ using System.Net.Sockets;
 using System.Text;
 using UnityEngine;
 
-public class Nets : BaseController
+public class Nets : GameController<Nets>
 {
-    public static Nets Instance
-    {
-        set;
-        get;
-    }
-
-    public override IEnumerator initialize()
+    public override IEnumerator Initialize()
     {
         InitSocket();
         yield return null;
@@ -61,15 +55,6 @@ public class Nets : BaseController
             return mSocketBase;
         }
     }
-    public bool connecting
-    {
-        get
-        {
-            return mSocketBase != null && mSocketBase.TryConnecting;
-        }
-    }
-
-
 
     public void OnTimeSet()
     {
@@ -77,17 +62,17 @@ public class Nets : BaseController
         mServerTimeMark = Time.realtimeSinceStartup;
     }
 
-    public uint serverTime
-    {
-        get
-        {
-            if (mSocketBase != null)
-            {
-                return (uint)(mSocketBase.lastServerTime + Time.realtimeSinceStartup - mServerTimeMark);
-            }
-            return 0;
-        }
-    }
+    //public uint serverTime
+    //{
+    //    get
+    //    {
+    //        if (mSocketBase != null)
+    //        {
+    //            return (uint)(mSocketBase.lastServerTime + Time.realtimeSinceStartup - mServerTimeMark);
+    //        }
+    //        return 0;
+    //    }
+    //}
 
 
     void InitSocket()
@@ -150,7 +135,7 @@ public class Nets : BaseController
         sSerializeBuffer.Position = 0;
         sSerializeBuffer.SetLength(0);
         cmd.serialize(sSerializeBuffer);
-        Instance.mSocketBase.send(sSerializeBuffer);
+        Instance.mSocketBase.Send(sSerializeBuffer);
     }
 
     public static void sendCommand(int msgid)
@@ -196,7 +181,7 @@ public class Nets : BaseController
             return;
         sSerializeBuffer.Position = 0;
         cmd.serialize(sSerializeBuffer);
-        Instance.mSocketBase.send(sSerializeBuffer);
+        Instance.mSocketBase.Send(sSerializeBuffer);
     }
 
     public static void Send<T>(Cmd.CLIENTID msgid, T protodata) where T : ProtoBuf.IExtensible

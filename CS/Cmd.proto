@@ -18,21 +18,35 @@ enum CLIENTID
 	// xxx
 	RQLoginGameServer=100;
 
-	RQAccountOperation=300;
+	RQAccountOperation=300;//ReqAccountOperation
 	
-	RQLoginGame=400;
+	RQLoginGame=400;//ReqLoginGameServer
 	
-	RQCreateRole=500;
+	RQCreateRole=500;//ReqCreateRole
 	
 	RQEnterGame=600;
+	
+	RQRoleBaseOperation=5000;
+	
+	RQUseItem=5100;//ReqUseObject
+	
+	RQRoleBaseOperationEnd=50000;
 };
 
 enum SERVERID
 {
-	RTLoginGameServer=100;
-	RTAccountOperation=300;
-	RTLoginGame=400;
+	RTLoginGameServer=100;//RetLoginGameServer
+	RTAccountOperation=300;//RetAccountOperation
+	RTLoginGame=400;//
 	RTCreateRole=500;
 	RTMainUser=600;
+	RTTimeLine=700;
+	
+	RTMessage=800;//消息（聊天、公告、提示）RetMessage
+	
+	RTObject_Add=900;//添加道具RetObjectAdd
+	RTObject_Sync=901;//刷新道具RetObjectSync
+	RTObject_Delete=902;//删除道具RetObjectDelete
+	RTObject_Use=903;//使用道具ReqUseObject
 };
 

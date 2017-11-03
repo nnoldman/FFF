@@ -98,12 +98,14 @@
     <ClInclude Include="StringHelper.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TimeDim.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Timers.h" />
     <ClInclude Include="Time_.h" />
     <ClInclude Include="Tree.h" />
     <ClInclude Include="Value.h" />
     <ClInclude Include="Variable.h" />
     <ClInclude Include="WeakPointer.h" />
-    <ClInclude Include="XIndex.h" />
+    <ClInclude Include="Index.h" />
     <ClInclude Include="XMath.h" />
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +113,8 @@
     <ClCompile Include="CommandLine.cpp" />
     <ClCompile Include="md5.cpp" />
     <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Timers.cpp" />
     <ClCompile Include="Time_.cpp" />
   </ItemGroup>
   <ItemGroup>

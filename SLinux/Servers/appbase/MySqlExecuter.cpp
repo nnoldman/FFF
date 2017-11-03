@@ -44,7 +44,7 @@ bool MySQLExecuter::queryEnd()
 }
 
 
-bool MySQLExecuter::queryEnd(vector<string>& result)
+bool MySQLExecuter::queryEnd(vector<string>& record)
 {
     MYSQL_RES* records = mysql_store_result(mConnection);
     if (records)
@@ -54,23 +54,23 @@ bool MySQLExecuter::queryEnd(vector<string>& result)
         MYSQL_ROW row = mysql_fetch_row(records);
         if (row)
         {
-            for (int j = columns - 1; j >=0; --j)
+            for (int j = columns - 1; j >= 0; --j)
             {
-                result.push_back(row[j]);
+                record.push_back(row[j]);
             }
         }
-        return result.size() > 0;
+        return record.size() > 0;
     }
     else
     {
         return false;
     }
 
-    return result.size() > 0;
+    return record.size() > 0;
 }
 
 
-bool MySQLExecuter::queryEnd(vector<vector<string>>& result)
+bool MySQLExecuter::queryEnd(vector<vector<string>>& ret_records)
 {
     MYSQL_RES* records = mysql_store_result(mConnection);
 
@@ -82,18 +82,18 @@ bool MySQLExecuter::queryEnd(vector<vector<string>>& result)
             MYSQL_ROW row = mysql_fetch_row(records);
             if (row)
             {
-				vector<string> record;
+                vector<string> record;
                 for (auto j = 0; j < columns; ++j)
                 {
                     record.push_back(row[j]);
                 }
-                result.push_back(record);
+                ret_records.push_back(record);
             }
         }
-        return result.size() > 0;
+        return ret_records.size() > 0;
     }
 
-    return result.size() > 0;
+    return ret_records.size() > 0;
 }
 
 unsigned long MySQLExecuter::count()

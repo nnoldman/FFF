@@ -1,9 +1,17 @@
 #pragma once
 #include "DBObject.h"
-#include "GameRoleDefine.h"
+#include "TableDefine/GameRoleDefine.h"
+#include "Cmd.pb.h"
+#include "Command.pb.h"
+#include "ServerDefine.h"
 
-class Role:public DBObject
+class LevelSystem;
+class ItemSystem;
+class TaskSystem;
+class SystemBase;
+class Role: public DBObject
 {
+
 public:
     Role();
     ~Role();
@@ -16,7 +24,9 @@ public:
     bool valid() const;
 
     virtual void syncToClient() override;
-
+    void onNet(Cmd::CLIENTID id, ProtocoBuffer* pb);
+public:
+    SystemBase* systems_[ServerDefine::SystemType_Count];
 };
 
 inline bool Role::valid() const

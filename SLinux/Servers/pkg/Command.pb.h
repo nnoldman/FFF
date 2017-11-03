@@ -35,14 +35,21 @@ void protobuf_AddDesc_Command_2eproto();
 void protobuf_AssignDesc_Command_2eproto();
 void protobuf_ShutdownFile_Command_2eproto();
 
+class CObject;
 class GameRole;
 class RTMainUser;
 class ReqAccountOperation;
 class ReqCreateRole;
 class ReqLoginGameServer;
+class ReqUseObject;
 class RetAccountOperation;
 class RetCreateRole;
 class RetLoginGameServer;
+class RetMessage;
+class RetObjectAdd;
+class RetObjectDelete;
+class RetObjectSync;
+class RetTimeLine;
 
 enum AccountAction {
   AccountAction_None = 0,
@@ -87,6 +94,33 @@ bool CreateRoleError_IsValid(int value);
 const CreateRoleError CreateRoleError_MIN = CreateRoleSucess;
 const CreateRoleError CreateRoleError_MAX = CreateRoleNameRepeated;
 const int CreateRoleError_ARRAYSIZE = CreateRoleError_MAX + 1;
+
+enum MessageSender {
+  MessageSender_System = 0,
+  MessageSender_User = 1
+};
+bool MessageSender_IsValid(int value);
+const MessageSender MessageSender_MIN = MessageSender_System;
+const MessageSender MessageSender_MAX = MessageSender_User;
+const int MessageSender_ARRAYSIZE = MessageSender_MAX + 1;
+
+enum MessageChannel {
+  MessageChannel_System_None = 0,
+  MessageChannel_System_Error = 1,
+  MessageChannel_System_Sucess = 2,
+  MessageChannel_System_TV = 3,
+  MessageChannel_System_Box = 4,
+  MessageChannel_System_Count = 5,
+  MessageChannel_User_None = 10,
+  MessageChannel_User_Normal = 11,
+  MessageChannel_User_World = 12,
+  MessageChannel_User_Louder = 13,
+  MessageChannel_User_Count = 14
+};
+bool MessageChannel_IsValid(int value);
+const MessageChannel MessageChannel_MIN = MessageChannel_System_None;
+const MessageChannel MessageChannel_MAX = MessageChannel_User_Count;
+const int MessageChannel_ARRAYSIZE = MessageChannel_MAX + 1;
 
 // ===================================================================
 
@@ -1192,6 +1226,840 @@ class RTMainUser : public ::google::protobuf::MessageLite /* @@protoc_insertion_
   void InitAsDefaultInstance();
   static RTMainUser* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class RetTimeLine : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Cmd.RetTimeLine) */ {
+ public:
+  RetTimeLine();
+  virtual ~RetTimeLine();
+
+  RetTimeLine(const RetTimeLine& from);
+
+  inline RetTimeLine& operator=(const RetTimeLine& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::std::string& unknown_fields() const {
+    return _unknown_fields_.GetNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  inline ::std::string* mutable_unknown_fields() {
+    return _unknown_fields_.MutableNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  static const RetTimeLine& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const RetTimeLine* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(RetTimeLine* other);
+
+  // implements Message ----------------------------------------------
+
+  inline RetTimeLine* New() const { return New(NULL); }
+
+  RetTimeLine* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const RetTimeLine& from);
+  void MergeFrom(const RetTimeLine& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(RetTimeLine* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 trun = 1;
+  bool has_trun() const;
+  void clear_trun();
+  static const int kTrunFieldNumber = 1;
+  ::google::protobuf::int32 trun() const;
+  void set_trun(::google::protobuf::int32 value);
+
+  // optional int32 leftSeconds = 2;
+  bool has_leftseconds() const;
+  void clear_leftseconds();
+  static const int kLeftSecondsFieldNumber = 2;
+  ::google::protobuf::int32 leftseconds() const;
+  void set_leftseconds(::google::protobuf::int32 value);
+
+  // optional int32 totalSeconds = 3;
+  bool has_totalseconds() const;
+  void clear_totalseconds();
+  static const int kTotalSecondsFieldNumber = 3;
+  ::google::protobuf::int32 totalseconds() const;
+  void set_totalseconds(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:Cmd.RetTimeLine)
+ private:
+  inline void set_has_trun();
+  inline void clear_has_trun();
+  inline void set_has_leftseconds();
+  inline void clear_has_leftseconds();
+  inline void set_has_totalseconds();
+  inline void clear_has_totalseconds();
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 trun_;
+  ::google::protobuf::int32 leftseconds_;
+  ::google::protobuf::int32 totalseconds_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_Command_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_Command_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_Command_2eproto();
+  friend void protobuf_ShutdownFile_Command_2eproto();
+
+  void InitAsDefaultInstance();
+  static RetTimeLine* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class CObject : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Cmd.CObject) */ {
+ public:
+  CObject();
+  virtual ~CObject();
+
+  CObject(const CObject& from);
+
+  inline CObject& operator=(const CObject& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::std::string& unknown_fields() const {
+    return _unknown_fields_.GetNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  inline ::std::string* mutable_unknown_fields() {
+    return _unknown_fields_.MutableNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  static const CObject& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const CObject* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(CObject* other);
+
+  // implements Message ----------------------------------------------
+
+  inline CObject* New() const { return New(NULL); }
+
+  CObject* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const CObject& from);
+  void MergeFrom(const CObject& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(CObject* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 dbID = 1;
+  bool has_dbid() const;
+  void clear_dbid();
+  static const int kDbIDFieldNumber = 1;
+  ::google::protobuf::int32 dbid() const;
+  void set_dbid(::google::protobuf::int32 value);
+
+  // optional int32 itemid = 2;
+  bool has_itemid() const;
+  void clear_itemid();
+  static const int kItemidFieldNumber = 2;
+  ::google::protobuf::int32 itemid() const;
+  void set_itemid(::google::protobuf::int32 value);
+
+  // optional int32 count = 3;
+  bool has_count() const;
+  void clear_count();
+  static const int kCountFieldNumber = 3;
+  ::google::protobuf::int32 count() const;
+  void set_count(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:Cmd.CObject)
+ private:
+  inline void set_has_dbid();
+  inline void clear_has_dbid();
+  inline void set_has_itemid();
+  inline void clear_has_itemid();
+  inline void set_has_count();
+  inline void clear_has_count();
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 dbid_;
+  ::google::protobuf::int32 itemid_;
+  ::google::protobuf::int32 count_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_Command_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_Command_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_Command_2eproto();
+  friend void protobuf_ShutdownFile_Command_2eproto();
+
+  void InitAsDefaultInstance();
+  static CObject* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RetObjectAdd : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Cmd.RetObjectAdd) */ {
+ public:
+  RetObjectAdd();
+  virtual ~RetObjectAdd();
+
+  RetObjectAdd(const RetObjectAdd& from);
+
+  inline RetObjectAdd& operator=(const RetObjectAdd& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::std::string& unknown_fields() const {
+    return _unknown_fields_.GetNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  inline ::std::string* mutable_unknown_fields() {
+    return _unknown_fields_.MutableNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  static const RetObjectAdd& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const RetObjectAdd* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(RetObjectAdd* other);
+
+  // implements Message ----------------------------------------------
+
+  inline RetObjectAdd* New() const { return New(NULL); }
+
+  RetObjectAdd* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const RetObjectAdd& from);
+  void MergeFrom(const RetObjectAdd& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(RetObjectAdd* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .Cmd.CObject objects = 1;
+  int objects_size() const;
+  void clear_objects();
+  static const int kObjectsFieldNumber = 1;
+  const ::Cmd::CObject& objects(int index) const;
+  ::Cmd::CObject* mutable_objects(int index);
+  ::Cmd::CObject* add_objects();
+  ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >*
+      mutable_objects();
+  const ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >&
+      objects() const;
+
+  // @@protoc_insertion_point(class_scope:Cmd.RetObjectAdd)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::Cmd::CObject > objects_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_Command_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_Command_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_Command_2eproto();
+  friend void protobuf_ShutdownFile_Command_2eproto();
+
+  void InitAsDefaultInstance();
+  static RetObjectAdd* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RetObjectSync : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Cmd.RetObjectSync) */ {
+ public:
+  RetObjectSync();
+  virtual ~RetObjectSync();
+
+  RetObjectSync(const RetObjectSync& from);
+
+  inline RetObjectSync& operator=(const RetObjectSync& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::std::string& unknown_fields() const {
+    return _unknown_fields_.GetNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  inline ::std::string* mutable_unknown_fields() {
+    return _unknown_fields_.MutableNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  static const RetObjectSync& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const RetObjectSync* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(RetObjectSync* other);
+
+  // implements Message ----------------------------------------------
+
+  inline RetObjectSync* New() const { return New(NULL); }
+
+  RetObjectSync* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const RetObjectSync& from);
+  void MergeFrom(const RetObjectSync& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(RetObjectSync* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .Cmd.CObject objects = 1;
+  int objects_size() const;
+  void clear_objects();
+  static const int kObjectsFieldNumber = 1;
+  const ::Cmd::CObject& objects(int index) const;
+  ::Cmd::CObject* mutable_objects(int index);
+  ::Cmd::CObject* add_objects();
+  ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >*
+      mutable_objects();
+  const ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >&
+      objects() const;
+
+  // @@protoc_insertion_point(class_scope:Cmd.RetObjectSync)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::Cmd::CObject > objects_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_Command_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_Command_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_Command_2eproto();
+  friend void protobuf_ShutdownFile_Command_2eproto();
+
+  void InitAsDefaultInstance();
+  static RetObjectSync* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RetObjectDelete : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Cmd.RetObjectDelete) */ {
+ public:
+  RetObjectDelete();
+  virtual ~RetObjectDelete();
+
+  RetObjectDelete(const RetObjectDelete& from);
+
+  inline RetObjectDelete& operator=(const RetObjectDelete& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::std::string& unknown_fields() const {
+    return _unknown_fields_.GetNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  inline ::std::string* mutable_unknown_fields() {
+    return _unknown_fields_.MutableNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  static const RetObjectDelete& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const RetObjectDelete* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(RetObjectDelete* other);
+
+  // implements Message ----------------------------------------------
+
+  inline RetObjectDelete* New() const { return New(NULL); }
+
+  RetObjectDelete* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const RetObjectDelete& from);
+  void MergeFrom(const RetObjectDelete& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(RetObjectDelete* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated int32 objects = 1;
+  int objects_size() const;
+  void clear_objects();
+  static const int kObjectsFieldNumber = 1;
+  ::google::protobuf::int32 objects(int index) const;
+  void set_objects(int index, ::google::protobuf::int32 value);
+  void add_objects(::google::protobuf::int32 value);
+  const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      objects() const;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_objects();
+
+  // @@protoc_insertion_point(class_scope:Cmd.RetObjectDelete)
+ private:
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > objects_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_Command_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_Command_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_Command_2eproto();
+  friend void protobuf_ShutdownFile_Command_2eproto();
+
+  void InitAsDefaultInstance();
+  static RetObjectDelete* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ReqUseObject : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Cmd.ReqUseObject) */ {
+ public:
+  ReqUseObject();
+  virtual ~ReqUseObject();
+
+  ReqUseObject(const ReqUseObject& from);
+
+  inline ReqUseObject& operator=(const ReqUseObject& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::std::string& unknown_fields() const {
+    return _unknown_fields_.GetNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  inline ::std::string* mutable_unknown_fields() {
+    return _unknown_fields_.MutableNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  static const ReqUseObject& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const ReqUseObject* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(ReqUseObject* other);
+
+  // implements Message ----------------------------------------------
+
+  inline ReqUseObject* New() const { return New(NULL); }
+
+  ReqUseObject* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const ReqUseObject& from);
+  void MergeFrom(const ReqUseObject& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(ReqUseObject* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 dbID = 1;
+  bool has_dbid() const;
+  void clear_dbid();
+  static const int kDbIDFieldNumber = 1;
+  ::google::protobuf::int32 dbid() const;
+  void set_dbid(::google::protobuf::int32 value);
+
+  // optional int32 count = 2;
+  bool has_count() const;
+  void clear_count();
+  static const int kCountFieldNumber = 2;
+  ::google::protobuf::int32 count() const;
+  void set_count(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:Cmd.ReqUseObject)
+ private:
+  inline void set_has_dbid();
+  inline void clear_has_dbid();
+  inline void set_has_count();
+  inline void clear_has_count();
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 dbid_;
+  ::google::protobuf::int32 count_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_Command_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_Command_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_Command_2eproto();
+  friend void protobuf_ShutdownFile_Command_2eproto();
+
+  void InitAsDefaultInstance();
+  static ReqUseObject* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RetMessage : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Cmd.RetMessage) */ {
+ public:
+  RetMessage();
+  virtual ~RetMessage();
+
+  RetMessage(const RetMessage& from);
+
+  inline RetMessage& operator=(const RetMessage& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::std::string& unknown_fields() const {
+    return _unknown_fields_.GetNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  inline ::std::string* mutable_unknown_fields() {
+    return _unknown_fields_.MutableNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  static const RetMessage& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const RetMessage* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(RetMessage* other);
+
+  // implements Message ----------------------------------------------
+
+  inline RetMessage* New() const { return New(NULL); }
+
+  RetMessage* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const RetMessage& from);
+  void MergeFrom(const RetMessage& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(RetMessage* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .Cmd.MessageChannel channel = 1;
+  bool has_channel() const;
+  void clear_channel();
+  static const int kChannelFieldNumber = 1;
+  ::Cmd::MessageChannel channel() const;
+  void set_channel(::Cmd::MessageChannel value);
+
+  // optional string sender = 2;
+  bool has_sender() const;
+  void clear_sender();
+  static const int kSenderFieldNumber = 2;
+  const ::std::string& sender() const;
+  void set_sender(const ::std::string& value);
+  void set_sender(const char* value);
+  void set_sender(const char* value, size_t size);
+  ::std::string* mutable_sender();
+  ::std::string* release_sender();
+  void set_allocated_sender(::std::string* sender);
+
+  // optional string content = 3;
+  bool has_content() const;
+  void clear_content();
+  static const int kContentFieldNumber = 3;
+  const ::std::string& content() const;
+  void set_content(const ::std::string& value);
+  void set_content(const char* value);
+  void set_content(const char* value, size_t size);
+  ::std::string* mutable_content();
+  ::std::string* release_content();
+  void set_allocated_content(::std::string* content);
+
+  // optional int32 localTime = 4;
+  bool has_localtime() const;
+  void clear_localtime();
+  static const int kLocalTimeFieldNumber = 4;
+  ::google::protobuf::int32 localtime() const;
+  void set_localtime(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:Cmd.RetMessage)
+ private:
+  inline void set_has_channel();
+  inline void clear_has_channel();
+  inline void set_has_sender();
+  inline void clear_has_sender();
+  inline void set_has_content();
+  inline void clear_has_content();
+  inline void set_has_localtime();
+  inline void clear_has_localtime();
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr sender_;
+  int channel_;
+  ::google::protobuf::int32 localtime_;
+  ::google::protobuf::internal::ArenaStringPtr content_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_Command_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_Command_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_Command_2eproto();
+  friend void protobuf_ShutdownFile_Command_2eproto();
+
+  void InitAsDefaultInstance();
+  static RetMessage* default_instance_;
+};
 // ===================================================================
 
 
@@ -2192,7 +3060,488 @@ inline void RTMainUser::set_vip(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:Cmd.RTMainUser.vip)
 }
 
+// -------------------------------------------------------------------
+
+// RetTimeLine
+
+// optional int32 trun = 1;
+inline bool RetTimeLine::has_trun() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RetTimeLine::set_has_trun() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RetTimeLine::clear_has_trun() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RetTimeLine::clear_trun() {
+  trun_ = 0;
+  clear_has_trun();
+}
+inline ::google::protobuf::int32 RetTimeLine::trun() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetTimeLine.trun)
+  return trun_;
+}
+inline void RetTimeLine::set_trun(::google::protobuf::int32 value) {
+  set_has_trun();
+  trun_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.RetTimeLine.trun)
+}
+
+// optional int32 leftSeconds = 2;
+inline bool RetTimeLine::has_leftseconds() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RetTimeLine::set_has_leftseconds() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RetTimeLine::clear_has_leftseconds() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RetTimeLine::clear_leftseconds() {
+  leftseconds_ = 0;
+  clear_has_leftseconds();
+}
+inline ::google::protobuf::int32 RetTimeLine::leftseconds() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetTimeLine.leftSeconds)
+  return leftseconds_;
+}
+inline void RetTimeLine::set_leftseconds(::google::protobuf::int32 value) {
+  set_has_leftseconds();
+  leftseconds_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.RetTimeLine.leftSeconds)
+}
+
+// optional int32 totalSeconds = 3;
+inline bool RetTimeLine::has_totalseconds() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RetTimeLine::set_has_totalseconds() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RetTimeLine::clear_has_totalseconds() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RetTimeLine::clear_totalseconds() {
+  totalseconds_ = 0;
+  clear_has_totalseconds();
+}
+inline ::google::protobuf::int32 RetTimeLine::totalseconds() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetTimeLine.totalSeconds)
+  return totalseconds_;
+}
+inline void RetTimeLine::set_totalseconds(::google::protobuf::int32 value) {
+  set_has_totalseconds();
+  totalseconds_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.RetTimeLine.totalSeconds)
+}
+
+// -------------------------------------------------------------------
+
+// CObject
+
+// optional int32 dbID = 1;
+inline bool CObject::has_dbid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void CObject::set_has_dbid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void CObject::clear_has_dbid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void CObject::clear_dbid() {
+  dbid_ = 0;
+  clear_has_dbid();
+}
+inline ::google::protobuf::int32 CObject::dbid() const {
+  // @@protoc_insertion_point(field_get:Cmd.CObject.dbID)
+  return dbid_;
+}
+inline void CObject::set_dbid(::google::protobuf::int32 value) {
+  set_has_dbid();
+  dbid_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.CObject.dbID)
+}
+
+// optional int32 itemid = 2;
+inline bool CObject::has_itemid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void CObject::set_has_itemid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void CObject::clear_has_itemid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void CObject::clear_itemid() {
+  itemid_ = 0;
+  clear_has_itemid();
+}
+inline ::google::protobuf::int32 CObject::itemid() const {
+  // @@protoc_insertion_point(field_get:Cmd.CObject.itemid)
+  return itemid_;
+}
+inline void CObject::set_itemid(::google::protobuf::int32 value) {
+  set_has_itemid();
+  itemid_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.CObject.itemid)
+}
+
+// optional int32 count = 3;
+inline bool CObject::has_count() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CObject::set_has_count() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void CObject::clear_has_count() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void CObject::clear_count() {
+  count_ = 0;
+  clear_has_count();
+}
+inline ::google::protobuf::int32 CObject::count() const {
+  // @@protoc_insertion_point(field_get:Cmd.CObject.count)
+  return count_;
+}
+inline void CObject::set_count(::google::protobuf::int32 value) {
+  set_has_count();
+  count_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.CObject.count)
+}
+
+// -------------------------------------------------------------------
+
+// RetObjectAdd
+
+// repeated .Cmd.CObject objects = 1;
+inline int RetObjectAdd::objects_size() const {
+  return objects_.size();
+}
+inline void RetObjectAdd::clear_objects() {
+  objects_.Clear();
+}
+inline const ::Cmd::CObject& RetObjectAdd::objects(int index) const {
+  // @@protoc_insertion_point(field_get:Cmd.RetObjectAdd.objects)
+  return objects_.Get(index);
+}
+inline ::Cmd::CObject* RetObjectAdd::mutable_objects(int index) {
+  // @@protoc_insertion_point(field_mutable:Cmd.RetObjectAdd.objects)
+  return objects_.Mutable(index);
+}
+inline ::Cmd::CObject* RetObjectAdd::add_objects() {
+  // @@protoc_insertion_point(field_add:Cmd.RetObjectAdd.objects)
+  return objects_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >*
+RetObjectAdd::mutable_objects() {
+  // @@protoc_insertion_point(field_mutable_list:Cmd.RetObjectAdd.objects)
+  return &objects_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >&
+RetObjectAdd::objects() const {
+  // @@protoc_insertion_point(field_list:Cmd.RetObjectAdd.objects)
+  return objects_;
+}
+
+// -------------------------------------------------------------------
+
+// RetObjectSync
+
+// repeated .Cmd.CObject objects = 1;
+inline int RetObjectSync::objects_size() const {
+  return objects_.size();
+}
+inline void RetObjectSync::clear_objects() {
+  objects_.Clear();
+}
+inline const ::Cmd::CObject& RetObjectSync::objects(int index) const {
+  // @@protoc_insertion_point(field_get:Cmd.RetObjectSync.objects)
+  return objects_.Get(index);
+}
+inline ::Cmd::CObject* RetObjectSync::mutable_objects(int index) {
+  // @@protoc_insertion_point(field_mutable:Cmd.RetObjectSync.objects)
+  return objects_.Mutable(index);
+}
+inline ::Cmd::CObject* RetObjectSync::add_objects() {
+  // @@protoc_insertion_point(field_add:Cmd.RetObjectSync.objects)
+  return objects_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >*
+RetObjectSync::mutable_objects() {
+  // @@protoc_insertion_point(field_mutable_list:Cmd.RetObjectSync.objects)
+  return &objects_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >&
+RetObjectSync::objects() const {
+  // @@protoc_insertion_point(field_list:Cmd.RetObjectSync.objects)
+  return objects_;
+}
+
+// -------------------------------------------------------------------
+
+// RetObjectDelete
+
+// repeated int32 objects = 1;
+inline int RetObjectDelete::objects_size() const {
+  return objects_.size();
+}
+inline void RetObjectDelete::clear_objects() {
+  objects_.Clear();
+}
+inline ::google::protobuf::int32 RetObjectDelete::objects(int index) const {
+  // @@protoc_insertion_point(field_get:Cmd.RetObjectDelete.objects)
+  return objects_.Get(index);
+}
+inline void RetObjectDelete::set_objects(int index, ::google::protobuf::int32 value) {
+  objects_.Set(index, value);
+  // @@protoc_insertion_point(field_set:Cmd.RetObjectDelete.objects)
+}
+inline void RetObjectDelete::add_objects(::google::protobuf::int32 value) {
+  objects_.Add(value);
+  // @@protoc_insertion_point(field_add:Cmd.RetObjectDelete.objects)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+RetObjectDelete::objects() const {
+  // @@protoc_insertion_point(field_list:Cmd.RetObjectDelete.objects)
+  return objects_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+RetObjectDelete::mutable_objects() {
+  // @@protoc_insertion_point(field_mutable_list:Cmd.RetObjectDelete.objects)
+  return &objects_;
+}
+
+// -------------------------------------------------------------------
+
+// ReqUseObject
+
+// optional int32 dbID = 1;
+inline bool ReqUseObject::has_dbid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ReqUseObject::set_has_dbid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ReqUseObject::clear_has_dbid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ReqUseObject::clear_dbid() {
+  dbid_ = 0;
+  clear_has_dbid();
+}
+inline ::google::protobuf::int32 ReqUseObject::dbid() const {
+  // @@protoc_insertion_point(field_get:Cmd.ReqUseObject.dbID)
+  return dbid_;
+}
+inline void ReqUseObject::set_dbid(::google::protobuf::int32 value) {
+  set_has_dbid();
+  dbid_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.ReqUseObject.dbID)
+}
+
+// optional int32 count = 2;
+inline bool ReqUseObject::has_count() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ReqUseObject::set_has_count() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ReqUseObject::clear_has_count() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ReqUseObject::clear_count() {
+  count_ = 0;
+  clear_has_count();
+}
+inline ::google::protobuf::int32 ReqUseObject::count() const {
+  // @@protoc_insertion_point(field_get:Cmd.ReqUseObject.count)
+  return count_;
+}
+inline void ReqUseObject::set_count(::google::protobuf::int32 value) {
+  set_has_count();
+  count_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.ReqUseObject.count)
+}
+
+// -------------------------------------------------------------------
+
+// RetMessage
+
+// optional .Cmd.MessageChannel channel = 1;
+inline bool RetMessage::has_channel() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RetMessage::set_has_channel() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RetMessage::clear_has_channel() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RetMessage::clear_channel() {
+  channel_ = 0;
+  clear_has_channel();
+}
+inline ::Cmd::MessageChannel RetMessage::channel() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetMessage.channel)
+  return static_cast< ::Cmd::MessageChannel >(channel_);
+}
+inline void RetMessage::set_channel(::Cmd::MessageChannel value) {
+  assert(::Cmd::MessageChannel_IsValid(value));
+  set_has_channel();
+  channel_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.RetMessage.channel)
+}
+
+// optional string sender = 2;
+inline bool RetMessage::has_sender() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RetMessage::set_has_sender() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RetMessage::clear_has_sender() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RetMessage::clear_sender() {
+  sender_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_sender();
+}
+inline const ::std::string& RetMessage::sender() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetMessage.sender)
+  return sender_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RetMessage::set_sender(const ::std::string& value) {
+  set_has_sender();
+  sender_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Cmd.RetMessage.sender)
+}
+inline void RetMessage::set_sender(const char* value) {
+  set_has_sender();
+  sender_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Cmd.RetMessage.sender)
+}
+inline void RetMessage::set_sender(const char* value, size_t size) {
+  set_has_sender();
+  sender_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Cmd.RetMessage.sender)
+}
+inline ::std::string* RetMessage::mutable_sender() {
+  set_has_sender();
+  // @@protoc_insertion_point(field_mutable:Cmd.RetMessage.sender)
+  return sender_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RetMessage::release_sender() {
+  // @@protoc_insertion_point(field_release:Cmd.RetMessage.sender)
+  clear_has_sender();
+  return sender_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RetMessage::set_allocated_sender(::std::string* sender) {
+  if (sender != NULL) {
+    set_has_sender();
+  } else {
+    clear_has_sender();
+  }
+  sender_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sender);
+  // @@protoc_insertion_point(field_set_allocated:Cmd.RetMessage.sender)
+}
+
+// optional string content = 3;
+inline bool RetMessage::has_content() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RetMessage::set_has_content() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RetMessage::clear_has_content() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RetMessage::clear_content() {
+  content_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_content();
+}
+inline const ::std::string& RetMessage::content() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetMessage.content)
+  return content_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RetMessage::set_content(const ::std::string& value) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Cmd.RetMessage.content)
+}
+inline void RetMessage::set_content(const char* value) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Cmd.RetMessage.content)
+}
+inline void RetMessage::set_content(const char* value, size_t size) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Cmd.RetMessage.content)
+}
+inline ::std::string* RetMessage::mutable_content() {
+  set_has_content();
+  // @@protoc_insertion_point(field_mutable:Cmd.RetMessage.content)
+  return content_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RetMessage::release_content() {
+  // @@protoc_insertion_point(field_release:Cmd.RetMessage.content)
+  clear_has_content();
+  return content_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RetMessage::set_allocated_content(::std::string* content) {
+  if (content != NULL) {
+    set_has_content();
+  } else {
+    clear_has_content();
+  }
+  content_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), content);
+  // @@protoc_insertion_point(field_set_allocated:Cmd.RetMessage.content)
+}
+
+// optional int32 localTime = 4;
+inline bool RetMessage::has_localtime() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RetMessage::set_has_localtime() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RetMessage::clear_has_localtime() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RetMessage::clear_localtime() {
+  localtime_ = 0;
+  clear_has_localtime();
+}
+inline ::google::protobuf::int32 RetMessage::localtime() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetMessage.localTime)
+  return localtime_;
+}
+inline void RetMessage::set_localtime(::google::protobuf::int32 value) {
+  set_has_localtime();
+  localtime_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.RetMessage.localTime)
+}
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -2220,6 +3569,8 @@ template <> struct is_proto_enum< ::Cmd::AccountAction> : ::google::protobuf::in
 template <> struct is_proto_enum< ::Cmd::AccountErrorCode> : ::google::protobuf::internal::true_type {};
 template <> struct is_proto_enum< ::Cmd::LoginGameError> : ::google::protobuf::internal::true_type {};
 template <> struct is_proto_enum< ::Cmd::CreateRoleError> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::Cmd::MessageSender> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::Cmd::MessageChannel> : ::google::protobuf::internal::true_type {};
 
 }  // namespace protobuf
 }  // namespace google

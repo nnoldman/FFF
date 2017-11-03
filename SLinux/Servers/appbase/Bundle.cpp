@@ -4,8 +4,8 @@
 
 BundleReceiver::BundleReceiver(Connection* ss, char* data, u16 len)
     : mSocket(&ss->getSocket())
-    , mLength(len)
     , mBuffer(data)
+    , mLength(len)
 {
 
 }
@@ -45,7 +45,13 @@ void BundleSender::sendFlatbuffer(u32 opcode, u32 length, char* data)
 
 void BundleSender::sendProtoBuffer(u32 opcode, google::protobuf::MessageLite* message)
 {
-	locker.lock();
+
+}
+
+void BundleSender::sendProtoBuffer(u32 opcode, google::protobuf::MessageLite * message, Connection * ss)
+{
+    connection_ = ss;
+    locker.lock();
     mBuffer.clear();
     u32 len = message->ByteSize();
     u32 allsize = kHeaderLength + len;
@@ -56,24 +62,24 @@ void BundleSender::sendProtoBuffer(u32 opcode, google::protobuf::MessageLite* me
     {
         message->SerializeToArray((void*)(mBuffer.currentPointer()), len);
     }
-    catch(google::protobuf::exception exc)
+    catch (google::protobuf::exception exc)
     {
         printf(exc.what());
     }
     mBuffer.forwardPosition(len);
-	try
-	{
-		if (connection_&&connection_->valid())
-		{
-			int ret = connection_->getSocket().sendBytes(mBuffer.getBuffer(), mBuffer.getPosition());
-		}
-	}
-	catch (std::exception exc)
-	{
-		if (connection_&&connection_->valid())
-			this->onException.invoke(connection_->getSocket());
-		//LOG_TRACE_A(exc.what());
-	}
-	locker.unlock();
+    try
+    {
+        if (connection_ && connection_->valid())
+        {
+            int ret = connection_->getSocket().sendBytes(mBuffer.getBuffer(), mBuffer.getPosition());
+        }
+    }
+    catch (std::exception exc)
+    {
+        if (connection_ && connection_->valid())
+            this->onException.invoke(connection_);
+        //LOG_TRACE_A(exc.what());
+    }
+    locker.unlock();
 }
 

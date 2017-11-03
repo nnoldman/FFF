@@ -1,7 +1,10 @@
-﻿生成启动时间为 2017/10/10 16:13:31。
-     1>项目“C:\Src\FFF\SLinux\Test\TestLinux\TestLinux.vcxproj”在节点 2 上(Clean 个目标)。
-     1>_PrepareForClean:
-         正在删除文件“C:\Src\FFF\SLinux\Test\TestLinux\obj\x86\Debug\TestLinux.tlog\TestLinux.lastbuildstate”。
-       _RemoteClean:
-         Cleaning remote project directory
-     1>已完成生成项目“C:\Src\FFF\SLinux\Test\TestLinux\TestLinux.vcxproj”(Clean 个目标)的操作。
+﻿生成启动时间为 2017/11/1 14:45:32。
+     1>项目“C:\Src\FFF\SLinux\Test\TestLinux\TestLinux.vcxproj”在节点 2 上(Build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“C:\Src\FFF\SLinux\Test\TestLinux\obj\x86\Debug\TestLinux.tlog\unsuccessfulbuild”执行 Touch 任务。
+       CreateRecipeFile:
+       正在跳过目标“CreateRecipeFile”，因为所有输出文件相对于输入文件而言都是最新的。
+       _ValidateValidArchitecture:
+         Validating architecture
+     1>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Application Type\Linux\1.0\Linux.targets(50,5): error : Current project architecture 'x86' is incompatible with the remote system architecture 'x64' ('x64'). Please switch the project architecture to 'x64' in Configuration Manager.
+     1>已完成生成项目“C:\Src\FFF\SLinux\Test\TestLinux\TestLinux.vcxproj”(Build 个目标)的操作 - 失败。

@@ -9,7 +9,7 @@ namespace Login
 	{
 		public GTextField name_;
 
-		public const string URL = "ui://3aca1ugufl9n3";
+		public const string URL = "ui://3aca1ugugvbhp";
 
 		public static ServerItem CreateInstance()
 		{

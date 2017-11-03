@@ -7,29 +7,22 @@ using UnityEngine;
 
 public class HomePageWindow: View
 {
-    string host = "127.0.0.1";
+    string host = "43.248.102.164";
     int ip = 15299;
 
-    Login.LoginPlant window
+    Login.LoginPlant window;
+    protected override string GetPackageName()
     {
-        get
-        {
-            return (Login.LoginPlant)this.panel.ui;
-        }
+        return "Login/LoginPlant";
     }
-
-    public HomePageWindow()
+    protected override void OnCreate()
     {
-        Login.LoginBinder.BindAll();
-    }
-
-    protected override void OnInit()
-    {
+        window = (Login.LoginPlant)this.contentPane;
         window.login.onClick.Add(LoginPlant);
     }
 
     void LoginPlant()
     {
-        LoginSystem.Instance.LoginPlant(host,ip,window.user.text, window.psw.text);
+        LoginSystem.Instance.LoginPlant(host, ip, window.user.text, window.psw.text);
     }
 }

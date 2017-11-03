@@ -2,7 +2,7 @@
 #define TimeTable_h__
 /*
 @author: nn
-@time:2017/9/24 17:25:57
+@time:2017/10/23 14:56:35
 */
 
 #include "DataLoader.h"
@@ -14,12 +14,13 @@ public:
 	string period;
 	string era;
 	s64 start;
+	int speed;
 	string intro;
 
 public:
 	static int* getColumnIndices()
 	{
-		static int columnIndices[5]={0,0,0,0,0};
+		static int columnIndices[6]={0,0,0,0,0,0};
 		return columnIndices;
 	}
 	static void initColumnIndices(const std::vector<string>& columns)
@@ -34,8 +35,10 @@ public:
 				getColumnIndices()[2] = i + 1;
 			else if (columns[i] == "start")
 				getColumnIndices()[3] = i + 1;
-			else if (columns[i] == "intro")
+			else if (columns[i] == "speed")
 				getColumnIndices()[4] = i + 1;
+			else if (columns[i] == "intro")
+				getColumnIndices()[5] = i + 1;
 		}
 	}
 	void from(const std::vector<string>& values)
@@ -49,7 +52,9 @@ public:
 		if (getColumnIndices()[3] > 0)
 			Basic::StringHelper::setValue(values[getColumnIndices()[3] - 1].c_str(), &start);
 		if (getColumnIndices()[4] > 0)
-			Basic::StringHelper::setValue(values[getColumnIndices()[4] - 1].c_str(), &intro);
+			Basic::StringHelper::setValue(values[getColumnIndices()[4] - 1].c_str(), &speed);
+		if (getColumnIndices()[5] > 0)
+			Basic::StringHelper::setValue(values[getColumnIndices()[5] - 1].c_str(), &intro);
 	}
 };
 

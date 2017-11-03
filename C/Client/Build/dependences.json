@@ -1,0 +1,20 @@
+{
+    "resources": [
+        {
+            "path": "Assets/Resources2/Config/Language.txt",
+            "guid": "099f7648ae1974b46bfabbf6fb53e83e",
+            "reference": 1,
+            "dependices": [
+                "Assets/Resources2/Config/Language.txt"
+            ]
+        },
+        {
+            "path": "Assets/Resources2/Config/TimeTable.txt",
+            "guid": "c70851072c0b8cc4792356cb6f67c8e9",
+            "reference": 1,
+            "dependices": [
+                "Assets/Resources2/Config/TimeTable.txt"
+            ]
+        }
+    ]
+}

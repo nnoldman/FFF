@@ -4,8 +4,9 @@
 #include "DBExecuter.h"
 #include "mysql.h"
 
-class MySQLExecuter:public DBExecuter {
-  public:
+class MySQLExecuter: public DBExecuter
+{
+public:
 
     MySQLExecuter();
 
@@ -18,12 +19,12 @@ class MySQLExecuter:public DBExecuter {
     /*
     	Only return first record or nothing.
     */
-    bool queryEnd(vector<string>& result);
+    bool queryEnd(vector<string>& record);
 
     /*
     	return all eligible records.
     */
-    bool queryEnd(vector<vector<string>>& result);
+    bool queryEnd(vector<vector<string>>& ret_records);
 
     bool queryEnd();
 
@@ -32,7 +33,7 @@ class MySQLExecuter:public DBExecuter {
 
     virtual void use(const char* dataBaseName) const override;
 
-  private:
+private:
 
     DBConfig mConfig;
 

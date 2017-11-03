@@ -66,6 +66,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Installer.cpp" />
+    <ClCompile Include="test_crash.cpp" />
     <ClCompile Include="test_path.cpp" />
   </ItemGroup>
   <ItemGroup>

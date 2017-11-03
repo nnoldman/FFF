@@ -6,17 +6,17 @@
 #include <fstream>
 #include <assert.h>
 #include <functional>
-Timer* pTimer = nullptr;
+Basic::Timer* pTimer = nullptr;
 int count = 0;
 
 int64_t PreTime = 0;
 
-void OnTimerEnd(Timer* timer)
+void OnTimerEnd(Basic::Timer* timer)
 {
-    std::cout << "OnTimerEnd:" << timer->leftMicroseconds() << std::endl;
-    std::cout << "OnTimerEnd:" << timer->life().count() << std::endl;
+    std::cout << "OnTimerEnd Left:" << timer->leftMicroseconds() << std::endl;
+    std::cout << "OnTimerEnd Life:" << timer->life().count() << std::endl;
 }
-void OnTimer(Timer* timer)
+void OnTimer(Basic::Timer* timer)
 {
     std::cout << "OnTimer:" << timer->leftMicroseconds() / 1000 << std::endl;
 }
@@ -31,18 +31,18 @@ public:
         id = 0;
     }
 public:
-    void OnTimerEnd(Timer* timer)
+    void OnTimerEnd(Basic::Timer* timer)
     {
-        std::cout << "OnTimerEnd:" << timer->leftMicroseconds() << std::endl;
-        std::cout << "OnTimerEnd:" << timer->life().count() << std::endl;
+        std::cout << "OnTimerEnd Left:" << timer->leftMicroseconds() << std::endl;
+        std::cout << "OnTimerEnd Life:" << timer->life().count() << std::endl;
     }
 public:
-    static void OnTimerEnd2(Timer* timer)
+    static void OnTimerEnd2(Basic::Timer* timer)
     {
         std::cout << "OnTimerEnd:" << timer->leftMicroseconds() << std::endl;
         std::cout << "OnTimerEnd:" << timer->life().count() << std::endl;
     }
-    void OnTimer(Timer* timer)
+    void OnTimer(Basic::Timer* timer)
     {
         std::cout << "OnTimer:" << timer->leftMicroseconds() / 1000 << std::endl;
     }
@@ -56,15 +56,16 @@ int main()
     if (1)
     {
         auto sys = new System();
-        pTimer = Timers::getInstance()->wait(microseconds(3000), &System::OnTimerEnd, sys);
-        pTimer = Timers::getInstance()->wait(microseconds(3000), &System::OnTimerEnd2);
-        pTimer = Timers::getInstance()->wait(microseconds(5000), ::OnTimerEnd);
+        //pTimer = Basic::Timers::getInstance()->wait(microseconds(3000), &System::OnTimerEnd, sys);
+        pTimer = Basic::Timers::getInstance()->repeat(microseconds(3000), OnTimer, microseconds(12000 + 2000), OnTimerEnd);
+        //pTimer = Basic::Timers::getInstance()->wait(microseconds(3000), &System::OnTimerEnd2);
+        //pTimer = Basic::Timers::getInstance()->wait(microseconds(5000), ::OnTimerEnd);
         //delete sys;
     }
     else if (0)
     {
-        pTimer = Timers::getInstance()->repeat(microseconds(1000), OnTimer, 3600, OnTimerEnd);
-        pTimer = Timers::getInstance()->wait(microseconds(3600 * 1000), OnTimerEnd);
+        pTimer = Basic::Timers::getInstance()->repeat(microseconds(1000), OnTimer, microseconds(3600 * 1000), OnTimerEnd);
+        pTimer = Basic::Timers::getInstance()->wait(microseconds(3600 * 1000), OnTimerEnd);
     }
     else if (0)
     {
@@ -87,7 +88,7 @@ int main()
         //pTimer = Timers::getInstance()->wait(microseconds(2560), OnTimerEnd);
         //assert(pTimer->getEndSlot() == base + 2560 / slot);
 
-        pTimer = Timers::getInstance()->wait(microseconds(5110), OnTimerEnd);
+        pTimer = Basic::Timers::getInstance()->wait(microseconds(5110), OnTimerEnd);
         assert(pTimer->nextHitTicks() == base + 5110 / slot);
 
         //pTimer = Timers::getInstance()->wait(microseconds(5120), OnTimerEnd);
@@ -114,16 +115,16 @@ int main()
         for (int i = 1; i < 5000; ++i)
         {
             //Timers::getInstance()->wait(microseconds(i * 10), OnTimerEnd);
-            pTimer = Timers::getInstance()->repeat(microseconds(1000), OnTimer, i, OnTimerEnd);
+            pTimer = Basic::Timers::getInstance()->repeat(microseconds(1000), OnTimer, microseconds(i * 1000), OnTimerEnd);
         }
     }
 
-    PreTime = Timers::getInstance()->currentMicroseconds();
+    PreTime = Basic::Timers::getInstance()->currentMicroseconds();
 
     while (true)
     {
         //std::cout << "============" << pTimer->getLeftMicroseconds() << std::endl;
-        Timers::getInstance()->tick();
+        Basic::Timers::getInstance()->tick();
         ::Sleep(10);
     }
     return 0;

@@ -39,3 +39,14 @@ TestLinux.tlog
 *.idb
 *.recipe
 *.merged
+*.obj
+*.pdb
+*.log
+*.pch
+/SLinux/Test/x64/Debug/LocalTest.exe
+/SLinux/Test/x64/Debug/LocalTest.ilk
+/SLinux/Test/Timers/Debug
+*.cache
+/SLinux/Test/bin/Debug/TestLinux.out
+/SLinux/Test/TestLinux/bin/x64/Release/TestLinux.out
+*.apk

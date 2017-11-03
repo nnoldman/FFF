@@ -7,24 +7,18 @@ using UnityEngine;
 
 public class LoginSelectServer : View
 {
-    Login.SelectServer window
+    Login.SelectServer window;
+    protected override string GetPackageName()
     {
-        get
-        {
-            return (Login.SelectServer)this.panel.ui;
-        }
+        return "Login/SelectServer";
     }
-
-    public LoginSelectServer()
+    protected override void OnCreate()
     {
-        Login.LoginBinder.BindAll();
-    }
-
-    protected override void OnInit()
-    {
+        window = (Login.SelectServer)this.contentPane;
         window.serverList.RemoveChildrenToPool();
         window.serverList.onClickItem.Add(OnSelectServer);
         window.enterGame.onClick.Add(OnClickEnterGame);
+
         for (int i = 0; i < GameConfig.GameServers.Length; ++i)
         {
             var server = GameConfig.GameServers[i];
@@ -32,6 +26,8 @@ public class LoginSelectServer : View
             item.name_.text = server.name;
             item.data = server;
         }
+        window.serverList.selectedIndex = 0;
+        SetCurrentServer(window.serverList.selectedIndex);
     }
 
     void OnClickEnterGame()
@@ -42,26 +38,18 @@ public class LoginSelectServer : View
 
     void OnSelectServer(EventContext context)
     {
-        var item = (Login.ServerItem)context.data;
-        var server = (GameServer)item.data;
-        LoginSystem.Instance.currentServer = server;
-        SetCurrentServer();
+        SetCurrentServer(window.serverList.selectedIndex);
     }
 
-    void SetCurrentServer()
+    void SetCurrentServer(int index)
     {
-        if (LoginSystem.Instance.currentServer !=null)
-        {
-            this.window.currentServer.text = LoginSystem.Instance.currentServer.name;
-        }
-        else
-        {
-            this.window.currentServer.text = string.Empty;
-        }
+        var server = GameConfig.GameServers[index];
+        LoginSystem.Instance.currentServer = server;
+        this.window.currentServer.text = server.name;
     }
 
     protected override void OnShowMe()
     {
-        SetCurrentServer();
+        SetCurrentServer(0);
     }
 }

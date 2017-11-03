@@ -1,8 +1,8 @@
 #pragma once
 #include "DBObject.h"
-#include "GameUserDefine.h"
+#include "TableDefine/GameUserDefine.h"
 #include "Role.h"
-class GameUser:public DBObject
+class GameUser: public DBObject
 {
     //DeclareObjectPool(GameUser);
 public:

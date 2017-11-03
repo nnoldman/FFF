@@ -10,7 +10,7 @@
 #include "Poco/Util/Application.h"
 #include "ServerID.h"
 
-class COREAPI App :public Poco::Util::Application
+class COREAPI App : public Poco::Util::Application
 {
 public:
     static EnvironmentConfig Config;
@@ -36,18 +36,20 @@ protected:
     virtual	bool parseCommandLine() = 0;
     virtual	bool onInitializeEnd() = 0;
     virtual	bool onInitializeNet() = 0;
-    virtual const vector<const DBTableDefine*>& getTableDefines() const= 0;
+    virtual const vector<const DBTableDefine*>& getTableDefines() const = 0;
 
     virtual int main(const std::vector<std::string>& args) override;
     virtual void initialize(Application& app) override;
     virtual void uninitialize() override;
     virtual void reinitialize(Application& app) override;
     virtual bool loadGameConfig();
+    void initCrashDump();
+    virtual void mainLoop();
 private:
     //void run();
     virtual bool initializeDataBase()final;
     bool connectCenter();
-	void setWorkDirectory(char* appName);
+    void setWorkDirectory(char* appName);
 private:
 private:
     CommandLine commandLine_;

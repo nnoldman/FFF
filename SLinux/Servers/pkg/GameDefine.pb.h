@@ -42,7 +42,8 @@ enum Capcity {
   Equip = 30,
   Store = 50,
   Mail = 100,
-  Function = 160
+  Function = 160,
+  ProertyCount = 100
 };
 bool Capcity_IsValid(int value);
 const Capcity Capcity_MIN = ChildGroup;

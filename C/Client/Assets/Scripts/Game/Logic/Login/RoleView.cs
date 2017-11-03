@@ -4,29 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class RoleView:View
+public class RoleView: View
 {
-    Login.RolePanel window
-    {
-        get
-        {
-            return (Login.RolePanel)this.panel.ui;
-        }
-    }
+    Login.RolePanel window;
 
-    public RoleView()
+    protected override string GetPackageName()
     {
-        Login.LoginBinder.BindAll();
+        return "Login/RolePanel";
     }
-
-    protected override void OnInit()
+    protected override void OnCreate()
     {
+        this.window = (Login.RolePanel)this.contentPane;
         this.window.enterGame2.onClick.Add(OnCommand);
     }
 
     void OnCommand(EventContext context)
     {
-        if(context.sender==this.window.enterGame2)
+        if(context.sender == this.window.enterGame2)
         {
             if(LoginSystem.Instance.HasRole())
             {
@@ -38,7 +32,7 @@ public class RoleView:View
                 cmd.name = this.window.name1.text;
                 cmd.sex = 0;
                 cmd.job = 1;
-                Nets.Send(Cmd.CLIENTID.RQCreateRole,cmd);
+                Nets.Send(Cmd.CLIENTID.RQCreateRole, cmd);
             }
         }
     }

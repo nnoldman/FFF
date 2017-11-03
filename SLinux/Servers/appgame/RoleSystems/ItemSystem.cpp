@@ -1,11 +1,17 @@
 #include "../stdafx.h"
 #include "ItemSystem.h"
+#include "TableDefine/GameRoleDefine.h"
 
 ItemSystem::ItemSystem()
 {
 }
 ItemSystem::~ItemSystem()
 {
+}
+
+void ItemSystem::initialize(Role* role)
+{
+    SystemBase::initialize(role);
 }
 
 void ItemSystem::destroy(int dbID, GameDefine::ItemDeleteReason reason)

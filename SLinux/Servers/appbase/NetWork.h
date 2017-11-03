@@ -22,7 +22,7 @@ public:
         u32 len;
         char* data;
         Connection* con;
-        Packet() : data(nullptr), con(nullptr), len(0)
+        Packet() : len(0), data(nullptr), con(nullptr)
         {
         };
         ~Packet()

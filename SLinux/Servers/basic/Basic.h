@@ -18,7 +18,9 @@
 #include "Delegate.h"
 #include "Buffer.h"
 #include "CharBuffer.h"
-#include "XIndex.h"
+#include "Index.h"
+#include "Timer.h"
+#include "Timers.h"
 
 #include "Random.h"
 #include "Easer.h"
@@ -146,15 +148,15 @@ namespace Basic
         split(str, c, ret);
     }
 
-	template<typename Map>
-	bool getValue(Map& map, typename Map::key_type key, typename Map::mapped_type& value)
-	{
-		auto it = map.find(key);
-		if (it == map.end())
-			return false;
-		value = it->second;
-		return true;
-	}
+    template<typename Map>
+    bool getValue(Map& map, typename Map::key_type key, typename Map::mapped_type& value)
+    {
+        auto it = map.find(key);
+        if (it == map.end())
+            return false;
+        value = it->second;
+        return true;
+    }
 }
 
 

@@ -5,6 +5,7 @@
 #include "AnyObject.h"
 
 class DBDefine;
+class DBTableDefine;
 
 class COREAPI DataBase
 {
@@ -22,9 +23,9 @@ public:
 
     bool create_column_if_not_exist(const char* table, const char* key);
 
-    bool createTable(const char* name, const char* cmd);
-
+    bool createTable(const DBTableDefine* def);
     bool hasTable(const char* name);
+    void checkForAlterTableColumns(const DBTableDefine* def);
 
     bool queryKey(string table, string key, const char* value);
 
@@ -48,45 +49,30 @@ public:
     DBExecuter& executer();
 
     DBTable* getTable(const char* name);
-    /*template<typename T>
-    bool insertKeyValue(const char* table, T value, T value1)
-    {
-    	stringstream str;
-    	str << "INSERT INTO " << table << " VALUES (?,?) ";
-    	try
-    	{
-    		*_pSession << str.str(), use(value), use(value1), now;
-    		return true;
-    	}
-    	catch (ConnectionException& ce)
-    	{
-    		std::cout << ce.displayText() << std::endl;
-    	}
-    	catch (StatementException& se)
-    	{
-    		std::cout << se.displayText() << std::endl;
-    	}
-    	return false;
-    }*/
 public:
-
     bool createDB();
-
 private:
-
+    void make_alter_columns(const vector<string>& source
+                            , const vector<string>& dest
+                            , OUT vector<string>& remove_columns
+                            , OUT vector<tuple<string, string>>& add_columns
+                           );
+    void make_alter_cmds(
+        const vector<string>& remove_columns
+        , const vector<tuple<string, string>>& add_columns
+        , const DBTableDefine* def
+        , OUT vector<string>& cmds
+    );
+    bool createTable(const char* name, const char* cmd);
     void generateConnectString();
-    void reGetTables();
+    void fetchTables();
     bool connectNoDB();
     //static void dbInfo(Poco::Data::Session& session);
     void bareboneMySQLTest(const char* host, const char* user, const char* pwd, const char* db, int port, const char* tableCreateString);
-
 private:
-
-    DBExecuter* mExecuter;
-
+    DBExecuter* executer_;
     //Poco::SharedPtr<Poco::Data::Session> _pSession;
-
-    map<string, DBTable*> mTables;
+    map<string, DBTable*> tables_;
 };
 
 
@@ -94,5 +80,5 @@ private:
 
 inline DBExecuter& DataBase::executer()
 {
-    return *mExecuter;
+    return *executer_;
 }

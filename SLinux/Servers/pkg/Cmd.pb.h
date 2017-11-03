@@ -40,11 +40,14 @@ enum CLIENTID {
   RQAccountOperation = 300,
   RQLoginGame = 400,
   RQCreateRole = 500,
-  RQEnterGame = 600
+  RQEnterGame = 600,
+  RQRoleBaseOperation = 5000,
+  RQUseItem = 5100,
+  RQRoleBaseOperationEnd = 50000
 };
 bool CLIENTID_IsValid(int value);
 const CLIENTID CLIENTID_MIN = RQLoginGameServer;
-const CLIENTID CLIENTID_MAX = RQEnterGame;
+const CLIENTID CLIENTID_MAX = RQRoleBaseOperationEnd;
 const int CLIENTID_ARRAYSIZE = CLIENTID_MAX + 1;
 
 enum SERVERID {
@@ -52,11 +55,17 @@ enum SERVERID {
   RTAccountOperation = 300,
   RTLoginGame = 400,
   RTCreateRole = 500,
-  RTMainUser = 600
+  RTMainUser = 600,
+  RTTimeLine = 700,
+  RTMessage = 800,
+  RTObject_Add = 900,
+  RTObject_Sync = 901,
+  RTObject_Delete = 902,
+  RTObject_Use = 903
 };
 bool SERVERID_IsValid(int value);
 const SERVERID SERVERID_MIN = RTLoginGameServer;
-const SERVERID SERVERID_MAX = RTMainUser;
+const SERVERID SERVERID_MAX = RTObject_Use;
 const int SERVERID_ARRAYSIZE = SERVERID_MAX + 1;
 
 // ===================================================================

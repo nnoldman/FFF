@@ -3,20 +3,19 @@
 #include "App.h"
 
 DBTable::DBTable()
-    :mRecordCount(0)
-    , mExecuter(&App::DataBase.executer()) {
+    : executer_(&App::DataBase.executer())
+{
 }
 
 
-DBTable::~DBTable() {
+DBTable::~DBTable()
+{
 }
 
 
-bool DBTable::insert(const char* cmd) {
-    int n = mRecordCount;
-    mExecuter->queryBegin(cmd);
-    refreshRecordCount();
-    return n < mRecordCount;
+bool DBTable::insert(const char* cmd)
+{
+    return false;
 }
 
 //void SQLTable::freshColumns()
@@ -37,11 +36,13 @@ bool DBTable::insert(const char* cmd) {
 //	}*/
 //}
 
-bool DBTable::exist(const char* col) {
-    return std::find(mcolumns.begin(), mcolumns.end(), col) != mcolumns.end();
+bool DBTable::exist(const char* col)
+{
+    return std::find(columns_.begin(), columns_.end(), col) != columns_.end();
 }
 
-bool DBTable::insertCol(const char* col) {
+bool DBTable::insertCol(const char* col)
+{
     //alter table table1 add transactor varchar(10) not Null;
     /*stringstream str;
     str << "alter table " << name << "add " << col << " transactor varchar(10) not Null;";
@@ -61,11 +62,33 @@ bool DBTable::insertCol(const char* col) {
     return exist(col);
 }
 
-int DBTable::refreshRecordCount() {
+int DBTable::refreshRecordCount()
+{
     stringstream sm;
     sm << "SELECT COUNT(*) FROM " << name << ";";
 
-    mExecuter->queryBegin(sm.str().c_str());
-    mRecordCount = mExecuter->count();
-    return mRecordCount;
+    executer_->queryBegin(sm.str().c_str());
+    return 0;
+}
+
+void DBTable::fetchColumns()
+{
+    //select COLUMN_NAME from information_schema.COLUMNS where table_name = 'game_role1' and table_schema = 'ff';
+    stringstream sm;
+    sm << "select COLUMN_NAME from information_schema.COLUMNS where table_name = '" <<
+       name << "' and table_schema = '" << dbName << "';";
+    executer_->queryBegin(sm.str().c_str());
+    vector<vector<string>> ret_records;
+    if (executer_->queryEnd(ret_records))
+    {
+        std::for_each(ret_records.begin(), ret_records.end(), [this](const vector<string>& it)
+        {
+            this->columns_.push_back(it[0]);
+        });
+    }
+}
+
+const std::vector<string>& DBTable::columns() const
+{
+    return columns_;
 }

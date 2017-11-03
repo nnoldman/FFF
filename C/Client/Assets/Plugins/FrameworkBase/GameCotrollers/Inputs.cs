@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Inputs : GameController {
-    public override IEnumerator Initialize() {
+public class Inputs : GameController<Inputs>
+{
+    public override IEnumerator Initialize()
+    {
         throw new NotImplementedException();
     }
 
-    public override void Update() {
+    public override void Update()
+    {
         throw new NotImplementedException();
     }
 }

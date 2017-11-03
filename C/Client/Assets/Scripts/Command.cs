@@ -308,6 +308,193 @@ namespace Cmd
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RetTimeLine")]
+  public partial class RetTimeLine : global::ProtoBuf.IExtensible
+  {
+    public RetTimeLine() {}
+    
+    private int _trun = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"trun", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int trun
+    {
+      get { return _trun; }
+      set { _trun = value; }
+    }
+    private int _leftSeconds = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"leftSeconds", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int leftSeconds
+    {
+      get { return _leftSeconds; }
+      set { _leftSeconds = value; }
+    }
+    private int _totalSeconds = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"totalSeconds", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int totalSeconds
+    {
+      get { return _totalSeconds; }
+      set { _totalSeconds = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CObject")]
+  public partial class CObject : global::ProtoBuf.IExtensible
+  {
+    public CObject() {}
+    
+    private int _dbID = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"dbID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int dbID
+    {
+      get { return _dbID; }
+      set { _dbID = value; }
+    }
+    private int _itemid = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"itemid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int itemid
+    {
+      get { return _itemid; }
+      set { _itemid = value; }
+    }
+    private int _count = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int count
+    {
+      get { return _count; }
+      set { _count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RetObjectAdd")]
+  public partial class RetObjectAdd : global::ProtoBuf.IExtensible
+  {
+    public RetObjectAdd() {}
+    
+    private readonly global::System.Collections.Generic.List<Cmd.CObject> _objects = new global::System.Collections.Generic.List<Cmd.CObject>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"objects", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Cmd.CObject> objects
+    {
+      get { return _objects; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RetObjectSync")]
+  public partial class RetObjectSync : global::ProtoBuf.IExtensible
+  {
+    public RetObjectSync() {}
+    
+    private readonly global::System.Collections.Generic.List<Cmd.CObject> _objects = new global::System.Collections.Generic.List<Cmd.CObject>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"objects", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<Cmd.CObject> objects
+    {
+      get { return _objects; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RetObjectDelete")]
+  public partial class RetObjectDelete : global::ProtoBuf.IExtensible
+  {
+    public RetObjectDelete() {}
+    
+    private readonly global::System.Collections.Generic.List<int> _objects = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"objects", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> objects
+    {
+      get { return _objects; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ReqUseObject")]
+  public partial class ReqUseObject : global::ProtoBuf.IExtensible
+  {
+    public ReqUseObject() {}
+    
+    private int _dbID = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"dbID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int dbID
+    {
+      get { return _dbID; }
+      set { _dbID = value; }
+    }
+    private int _count = default(int);
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int count
+    {
+      get { return _count; }
+      set { _count = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RetMessage")]
+  public partial class RetMessage : global::ProtoBuf.IExtensible
+  {
+    public RetMessage() {}
+    
+    private Cmd.MessageChannel _channel = Cmd.MessageChannel.MessageChannel_System_None;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"channel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(Cmd.MessageChannel.MessageChannel_System_None)]
+    public Cmd.MessageChannel channel
+    {
+      get { return _channel; }
+      set { _channel = value; }
+    }
+    private string _sender = "";
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"sender", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string sender
+    {
+      get { return _sender; }
+      set { _sender = value; }
+    }
+    private string _content = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"content", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string content
+    {
+      get { return _content; }
+      set { _content = value; }
+    }
+    private int _localTime = default(int);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"localTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int localTime
+    {
+      get { return _localTime; }
+      set { _localTime = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
     [global::ProtoBuf.ProtoContract(Name=@"AccountAction")]
     public enum AccountAction
     {
@@ -374,6 +561,55 @@ namespace Cmd
             
       [global::ProtoBuf.ProtoEnum(Name=@"CreateRoleNameRepeated", Value=1)]
       CreateRoleNameRepeated = 1
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"MessageSender")]
+    public enum MessageSender
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageSender_System", Value=0)]
+      MessageSender_System = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageSender_User", Value=1)]
+      MessageSender_User = 1
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"MessageChannel")]
+    public enum MessageChannel
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageChannel_System_None", Value=0)]
+      MessageChannel_System_None = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageChannel_System_Error", Value=1)]
+      MessageChannel_System_Error = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageChannel_System_Sucess", Value=2)]
+      MessageChannel_System_Sucess = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageChannel_System_TV", Value=3)]
+      MessageChannel_System_TV = 3,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageChannel_System_Box", Value=4)]
+      MessageChannel_System_Box = 4,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageChannel_System_Count", Value=5)]
+      MessageChannel_System_Count = 5,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageChannel_User_None", Value=10)]
+      MessageChannel_User_None = 10,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageChannel_User_Normal", Value=11)]
+      MessageChannel_User_Normal = 11,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageChannel_User_World", Value=12)]
+      MessageChannel_User_World = 12,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageChannel_User_Louder", Value=13)]
+      MessageChannel_User_Louder = 13,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"MessageChannel_User_Count", Value=14)]
+      MessageChannel_User_Count = 14
     }
   
 }

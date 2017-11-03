@@ -105,3 +105,72 @@ message RTMainUser
 	optional string name=4;
 	optional int32 vip=5;
 }
+
+//时间轴
+message RetTimeLine
+{
+	optional int32 trun=1;
+	optional int32 leftSeconds=2;
+	optional int32 totalSeconds=3;
+}
+
+
+
+//道具定义
+message CObject
+{
+optional int32 dbID=1;//唯一ID
+optional int32 itemid=2;//道具ID
+optional int32 count=3;//数量
+}
+
+message RetObjectAdd
+{
+	repeated CObject objects=1;
+}
+message RetObjectSync
+{
+	repeated CObject objects=1;
+}
+message RetObjectDelete
+{
+	repeated int32 objects=1;
+}
+
+//使用道具
+message ReqUseObject
+{
+optional int32 dbID=1;
+optional int32 count=2;
+}
+
+enum MessageSender
+{
+	MessageSender_System=0;
+	MessageSender_User=1;
+}
+
+//聊天频道
+enum MessageChannel
+{
+	MessageChannel_System_None=0;//
+	MessageChannel_System_Error=1;//错误提示
+	MessageChannel_System_Sucess=2;//成功提示
+	MessageChannel_System_TV=3;//电视消息
+	MessageChannel_System_Box=4;//对话框消息
+	MessageChannel_System_Count=5;//
+	
+	MessageChannel_User_None=10;
+	MessageChannel_User_Normal=11;//普通频道
+	MessageChannel_User_World=12;//世界频道
+	MessageChannel_User_Louder=13;//喇叭
+	MessageChannel_User_Count=14;
+}
+//聊天消息
+message RetMessage
+{
+	optional MessageChannel channel=1;//频道
+	optional string sender=2;//发送者
+	optional string content=3;//内容
+	optional int32 localTime=4;//时间
+}

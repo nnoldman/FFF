@@ -9,7 +9,7 @@
 
 #include <stdio.h>
 #ifdef WIN32
-#include <tchar.h>
+    #include <tchar.h>
 #endif
 
 
@@ -24,11 +24,15 @@
 #include "Poco/Any.h"
 #include "Poco/Net/Socket.h"
 #include "Poco/Util/Application.h"
+#include "Poco/Util/Timer.h"
+#include "Poco/Util/TimerTask.h"
+#include "Poco/Util/TimerTaskAdapter.h"
 #include "Poco/Logger.h"
 #include "Default.h"
 
 using namespace Poco;
 using namespace Poco::Net;
+using namespace Poco::Util;
 using namespace Basic;
 
 //#define LOG_CRITICAL_A(...)
@@ -48,3 +52,6 @@ using namespace Basic;
 #define LOG_NOTICE_A(...) Poco::Util::Application::instance().logger().notice(__VA_ARGS__)
 #define LOG_TRACE_A(...) Poco::Util::Application::instance().logger().trace(__VA_ARGS__)
 #define LOG_WARNING_A(...) Poco::Util::Application::instance().logger().warning(__VA_ARGS__)
+
+#define FORMAT_TEXT(buffer,fmt,...) char buffer[2048] = {0};\
+    snprintf(buffer, 2048, fmt, __VA_ARGS__);

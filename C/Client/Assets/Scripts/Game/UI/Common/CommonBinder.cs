@@ -8,6 +8,8 @@ namespace Common
 	{
 		public static void BindAll()
 		{
+			UIObjectFactory.SetPackageItemExtension(CommonProperty.URL, typeof(CommonProperty));
+			UIObjectFactory.SetPackageItemExtension(CommonProgressBar.URL, typeof(CommonProgressBar));
 		}
 	}
 }
