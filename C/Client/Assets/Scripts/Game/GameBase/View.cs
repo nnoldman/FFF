@@ -1,4 +1,4 @@
-﻿using AppCore;
+﻿using GameFrame;
 using System;
 using System.Collections.Generic;
 using System.Linq;

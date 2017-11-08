@@ -27,6 +27,12 @@
     <ClInclude Include="Installer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="IDGenerator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -54,6 +60,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Test_Lambda.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_IDGenerator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IDGenerator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

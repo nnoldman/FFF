@@ -50,3 +50,4 @@ TestLinux.tlog
 /SLinux/Test/bin/Debug/TestLinux.out
 /SLinux/Test/TestLinux/bin/x64/Release/TestLinux.out
 *.apk
+/SLinux/Test/bin

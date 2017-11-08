@@ -146,11 +146,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IDGenerator.h" />
     <ClInclude Include="Installer.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="IDGenerator.cpp" />
     <ClCompile Include="Installer.cpp" />
     <ClCompile Include="LocalTest.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -161,6 +164,7 @@
     </ClCompile>
     <ClCompile Include="Test_any.cpp" />
     <ClCompile Include="Test_Heap.cpp" />
+    <ClCompile Include="Test_IDGenerator.cpp" />
     <ClCompile Include="Test_Lambda.cpp" />
     <ClCompile Include="Test_Patch.cpp" />
     <ClCompile Include="Test_PureCall.cpp" />

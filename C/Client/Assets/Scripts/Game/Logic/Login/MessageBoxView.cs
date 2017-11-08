@@ -1,4 +1,4 @@
-﻿using AppCore;
+﻿using GameFrame;
 using DG.Tweening;
 using FairyGUI;
 using System;

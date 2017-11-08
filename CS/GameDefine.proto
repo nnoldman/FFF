@@ -20,7 +20,7 @@ enum Capcity
 	BagLimit=180;//包裹最大数量
 	
 	//包裹容量
-	Bag=50;
+	Bag=120;
 	
 	//附属族群容量
 	ChildGroup=5;
@@ -63,6 +63,15 @@ enum ItemLocation
 enum ItemSellSource
 {
 	ItemSellSource_Invalid=0;
+}
+
+//道具格子类型
+enum ObjectCellType
+{
+	ObjectCellType_None=0;
+	ObjectCellType_Bag=1;
+	ObjectCellType_Equip=2;
+	ObjectCellType_Store=3;
 }
 
 

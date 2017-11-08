@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 
-namespace AppCore
+namespace GameFrame
 {
     public class Game
     {
@@ -36,6 +36,15 @@ namespace AppCore
         public IEnumerator Close()
         {
             yield return null;
+        }
+
+        public void Quit()
+        {
+            for (int i = controllers_.Count - 1; i >= 0; --i)
+            {
+                var controller = controllers_[i];
+                controller.ForceClose();
+            }
         }
 
         public IEnumerator LoadScene(SceneParam param)

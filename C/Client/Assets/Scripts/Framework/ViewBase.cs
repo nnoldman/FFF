@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AppCore
+namespace GameFrame
 {
 
     public enum ShowMode

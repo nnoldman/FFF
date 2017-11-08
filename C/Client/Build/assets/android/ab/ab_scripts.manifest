@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1214561636
+CRC: 3683644693
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0acaa41c0c2d006b454bc7c1c904428f
+    Hash: 6dc2497d777982cbc455408b41a16a51
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1033bf7ddfd4c6d43e7a6382c0a0a61a
@@ -13,5 +13,7 @@ ClassTypes:
   Script: {instanceID: 0}
 Assets:
 - Assets/Resources2/Config/TimeTable.txt
+- Assets/Resources2/Config/ItemTable.txt
 - Assets/Resources2/Config/Language.txt
+- Assets/Resources2/Config/IconTable.txt
 Dependencies: []

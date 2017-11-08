@@ -13,4 +13,11 @@ public static class ClientDefine
             public static readonly string Cancel = "取消";
         }
     }
+
+    public enum ObjectCellType
+    {
+        None,
+        Bag,
+        Equip,
+    }
 }

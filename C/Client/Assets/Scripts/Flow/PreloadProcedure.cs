@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using AppCore;
+using GameFrame;
 
 public class PreloadProcedure : GameFrame.Procedure<PreloadProcedure>
 {

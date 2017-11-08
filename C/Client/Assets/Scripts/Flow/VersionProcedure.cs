@@ -138,7 +138,8 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
 
     public override IEnumerator Start()
     {
-        return DoUpdata();
+        yield return null;
+        //return DoUpdata();
     }
 
     public string DownLoadText(string url)

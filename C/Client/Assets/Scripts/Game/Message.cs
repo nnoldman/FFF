@@ -16,6 +16,6 @@ public class Message
     }
     public static void ShowBox(MessageBoxParam param)
     {
-        AppCore.UIController.Instance.Get<MessageBoxView>().Open(param);
+        GameFrame.UIController.Instance.Get<MessageBoxView>().Open(param);
     }
 }

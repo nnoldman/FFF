@@ -1,4 +1,4 @@
-﻿using AppCore;
+﻿using GameFrame;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -46,7 +46,7 @@ public class LoginSystem: SystemBase
 
     private Cmd.RetAccountOperation preOperation_;
 
-    public void LoginPlant(string host,int port,string user, string psw)
+    public void LoginPlant(string host, int port, string user, string psw)
     {
         var record = TimeTable.Instance.Get(5);
         user_ = user;

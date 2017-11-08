@@ -1,4 +1,4 @@
-﻿生成启动时间为 2017/11/1 15:08:52。
+﻿生成启动时间为 2017/11/5 10:35:37。
      1>项目“C:\Src\FFF\SLinux\Test\TestLinux\TestLinux.vcxproj”在节点 2 上(Build 个目标)。
      1>InitializeBuildStatus:
          正在创建“C:\Src\FFF\SLinux\Test\TestLinux\obj\x64\Debug\TestLinux.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
@@ -13,7 +13,7 @@
          Copying sources remotely to '43.248.102.164'
          Copying file 'C:\Src\FFF\SLinux\Test\TestLinux\main.cpp' to '/root/projects/TestLinux/main.cpp'
          Skipping 'C:\Src\FFF\SLinux\Test\TestLinux\Installer.cpp', as it is up to date.
-         Copying file 'C:\Src\FFF\SLinux\Test\TestLinux\test_crash.cpp' to '/root/projects/TestLinux/test_crash.cpp'
+         Skipping 'C:\Src\FFF\SLinux\Test\TestLinux\test_crash.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Test\TestLinux\test_path.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Test\TestLinux\Installer.h', as it is up to date.
        ClCompile:
@@ -22,37 +22,57 @@
          Invoking g++
          g++ -c -x c++ /root/projects/TestLinux/main.cpp -g2 -gdwarf-2 -o "/root/projects/TestLinux/obj/x64/Debug/main.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
          main.cpp
-         /root/projects/TestLinux/main.cpp:24:33: warning: multi-character character constant [-Wmultichar]
+         /root/projects/TestLinux/main.cpp:25:33: warning: multi-character character constant [-Wmultichar]
               if (buf[strlen(buf) - 1] == '/n')
                                           ^
-         /root/projects/TestLinux/main.cpp:25:32: warning: multi-character character constant [-Wmultichar]
+         /root/projects/TestLinux/main.cpp:26:32: warning: multi-character character constant [-Wmultichar]
                   buf[strlen(buf) - 1] = '/0';
                                          ^
-         /root/projects/TestLinux/main.cpp:24:33: warning: multi-character character constant [-Wmultichar]
+         /root/projects/TestLinux/main.cpp:25:33: warning: multi-character character constant [-Wmultichar]
               if (buf[strlen(buf) - 1] == '/n')
                                           ^
-         /root/projects/TestLinux/main.cpp:25:32: warning: multi-character character constant [-Wmultichar]
+         /root/projects/TestLinux/main.cpp:26:32: warning: multi-character character constant [-Wmultichar]
                   buf[strlen(buf) - 1] = '/0';
                                          ^
          
          /root/projects/TestLinux/main.cpp: In function ‘void crash_dump(int)’:
-         /root/projects/TestLinux/main.cpp:25:30: warning: overflow in implicit constant conversion [-Woverflow]
+         /root/projects/TestLinux/main.cpp:26:30: warning: overflow in implicit constant conversion [-Woverflow]
                   buf[strlen(buf) - 1] = '/0';
                                        ^
+         /root/projects/TestLinux/main.cpp: In function ‘void OnCrashHandler(int)’:
+         /root/projects/TestLinux/main.cpp:68:56: warning: conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
+                  strings = (char**)backtrace_symbols(array, size);
+                                                                 ^
+         /root/projects/TestLinux/main.cpp:51:13: warning: unused variable ‘nLen1’ [-Wunused-variable]
+                  int nLen1 = sprintf(szLine
+                      ^
+         /root/projects/TestLinux/main.cpp:65:19: warning: unused variable ‘j’ [-Wunused-variable]
+                  size_t i, j;
+                            ^
          /root/projects/TestLinux/main.cpp: In function ‘void crash_dump(int)’:
-         /root/projects/TestLinux/main.cpp:25:30: warning: overflow in implicit constant conversion [-Woverflow]
+         /root/projects/TestLinux/main.cpp:26:30: warning: overflow in implicit constant conversion [-Woverflow]
                   buf[strlen(buf) - 1] = '/0';
                                        ^
+         /root/projects/TestLinux/main.cpp: In function ‘void OnCrashHandler(int)’:
+         /root/projects/TestLinux/main.cpp:68:56: warning: conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
+                  strings = (char**)backtrace_symbols(array, size);
+                                                                 ^
+         /root/projects/TestLinux/main.cpp:51:13: warning: unused variable ‘nLen1’ [-Wunused-variable]
+                  int nLen1 = sprintf(szLine
+                      ^
+         /root/projects/TestLinux/main.cpp:65:19: warning: unused variable ‘j’ [-Wunused-variable]
+                  size_t i, j;
+                            ^
          
-     1>C:\Src\FFF\SLinux\Test\TestLinux\main.cpp(24,33): warning : multi-character character constant [-Wmultichar]
-     1>C:\Src\FFF\SLinux\Test\TestLinux\main.cpp(25,32): warning : multi-character character constant [-Wmultichar]
-     1>C:\Src\FFF\SLinux\Test\TestLinux\main.cpp(25,30): warning : overflow in implicit constant conversion [-Woverflow]
+     1>C:\Src\FFF\SLinux\Test\TestLinux\main.cpp(25,33): warning : multi-character character constant [-Wmultichar]
+     1>C:\Src\FFF\SLinux\Test\TestLinux\main.cpp(26,32): warning : multi-character character constant [-Wmultichar]
+     1>C:\Src\FFF\SLinux\Test\TestLinux\main.cpp(26,30): warning : overflow in implicit constant conversion [-Woverflow]
+     1>C:\Src\FFF\SLinux\Test\TestLinux\main.cpp(68,56): warning : conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
+     1>C:\Src\FFF\SLinux\Test\TestLinux\main.cpp(51,13): warning : unused variable ‘nLen1’ [-Wunused-variable]
+     1>C:\Src\FFF\SLinux\Test\TestLinux\main.cpp(65,19): warning : unused variable ‘j’ [-Wunused-variable]
          Done compiling '/root/projects/TestLinux/main.cpp'
          Skipping 'C:\Src\FFF\SLinux\Test\TestLinux\Installer.cpp', as it is up to date.
-         Invoking g++
-         g++ -c -x c++ /root/projects/TestLinux/test_crash.cpp -g2 -gdwarf-2 -o "/root/projects/TestLinux/obj/x64/Debug/test_crash.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         test_crash.cpp
-         Done compiling '/root/projects/TestLinux/test_crash.cpp'
+         Skipping 'C:\Src\FFF\SLinux\Test\TestLinux\test_crash.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Test\TestLinux\test_path.cpp', as it is up to date.
        Link:
          Linking objects

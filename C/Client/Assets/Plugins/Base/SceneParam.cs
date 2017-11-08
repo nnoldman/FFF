@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AppCore {
-public class SceneParam {
-    public string name;
-}
+namespace GameFrame
+{
+    public class SceneParam
+    {
+        public string name;
+    }
 }

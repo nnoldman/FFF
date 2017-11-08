@@ -47,6 +47,7 @@ enum SERVERID
 	RTObject_Add=900;//添加道具RetObjectAdd
 	RTObject_Sync=901;//刷新道具RetObjectSync
 	RTObject_Delete=902;//删除道具RetObjectDelete
-	RTObject_Use=903;//使用道具ReqUseObject
+	RTObject_Move=903;//移动道具RetObjectMove
+	RTObject_Use=910;//使用道具ReqUseObject
 };
 

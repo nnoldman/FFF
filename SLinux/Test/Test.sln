@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{AFFD2981-57F2-405D-A02F-A8E0367E8B41}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Timers", "Timers\Timers.vcxproj", "{46240D4B-3700-49F2-BD39-705E7A25A4DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTimer", "TestTimer\TestTimer\TestTimer.csproj", "{C59F9A5C-C46A-4842-B716-BD501561BE38}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SQLInterface", "SQLInterface\SQLInterface.vcxproj", "{798E4A3B-B6D9-45C0-9611-21220634E017}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,22 @@ Global
 		{C59F9A5C-C46A-4842-B716-BD501561BE38}.Release|x64.Build.0 = Release|Any CPU
 		{C59F9A5C-C46A-4842-B716-BD501561BE38}.Release|x86.ActiveCfg = Release|Any CPU
 		{C59F9A5C-C46A-4842-B716-BD501561BE38}.Release|x86.Build.0 = Release|Any CPU
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Debug|ARM.ActiveCfg = Debug|Win32
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Debug|Win32.ActiveCfg = Debug|Win32
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Debug|Win32.Build.0 = Debug|Win32
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Debug|x64.ActiveCfg = Debug|x64
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Debug|x64.Build.0 = Debug|x64
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Debug|x86.ActiveCfg = Debug|Win32
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Debug|x86.Build.0 = Debug|Win32
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Release|Any CPU.ActiveCfg = Release|Win32
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Release|ARM.ActiveCfg = Release|Win32
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Release|Win32.ActiveCfg = Release|Win32
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Release|Win32.Build.0 = Release|Win32
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Release|x64.ActiveCfg = Release|x64
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Release|x64.Build.0 = Release|x64
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Release|x86.ActiveCfg = Release|Win32
+		{798E4A3B-B6D9-45C0-9611-21220634E017}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 
-namespace AppCore
+namespace GameFrame
 {
     public enum GameError
     {

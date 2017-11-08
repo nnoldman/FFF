@@ -15,6 +15,13 @@ public class Nets : GameController<Nets>
         yield return null;
     }
 
+    public override void ForceClose()
+    {
+        if(mSocketBase != null)
+            mSocketBase.Closed(NetEventID.ActiveDisconnect);
+        mSocketBase = null;
+    }
+
     public override void OnMapReady()
     {
         //this.ResumeMessageLoop();

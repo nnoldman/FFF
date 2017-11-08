@@ -1,4 +1,4 @@
-﻿using AppCore;
+﻿using GameFrame;
 using CommonBack;
 using FairyGUI;
 using System;
@@ -27,10 +27,10 @@ public class EarthView : View
 
     protected override void OnCreate()
     {
-        window_ = (Earth.EarthMainView)this.contentPane;
+        this.window_ = (Earth.EarthMainView)this.contentPane;
         this.windowFrame.title_.text = "星体";
-        this.windowFrame.close_.onClick.Add(OnCommand);
-
+        this.windowFrame.close_.onClick.Add(() => UIController.Instance.GoBack());
+        this.windowFrame.clickarea_.onClick.Add(() => UIController.Instance.GoBack());
         InitPropertyNames();
     }
 
@@ -48,8 +48,6 @@ public class EarthView : View
     {
         if (context.sender == this.windowFrame.close_)
         {
-            Debug.LogWarning("context.sender == this.windowFrame.close_");
-            UIController.Instance.GoBack();
         }
     }
     protected override void OnShowMe()

@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Command.proto
+// Note: requires additional types generated from: GameDefine.proto
 namespace Cmd
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ReqAccountOperation")]
@@ -342,10 +343,10 @@ namespace Cmd
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CObject")]
-  public partial class CObject : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ItemObject")]
+  public partial class ItemObject : global::ProtoBuf.IExtensible
   {
-    public CObject() {}
+    public ItemObject() {}
     
     private int _dbID = default(int);
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"dbID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -371,6 +372,22 @@ namespace Cmd
       get { return _count; }
       set { _count = value; }
     }
+    private GameDefine.ObjectCellType _cell = GameDefine.ObjectCellType.ObjectCellType_None;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"cell", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(GameDefine.ObjectCellType.ObjectCellType_None)]
+    public GameDefine.ObjectCellType cell
+    {
+      get { return _cell; }
+      set { _cell = value; }
+    }
+    private int _position = default(int);
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"position", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int position
+    {
+      get { return _position; }
+      set { _position = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -381,9 +398,9 @@ namespace Cmd
   {
     public RetObjectAdd() {}
     
-    private readonly global::System.Collections.Generic.List<Cmd.CObject> _objects = new global::System.Collections.Generic.List<Cmd.CObject>();
+    private readonly global::System.Collections.Generic.List<Cmd.ItemObject> _objects = new global::System.Collections.Generic.List<Cmd.ItemObject>();
     [global::ProtoBuf.ProtoMember(1, Name=@"objects", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Cmd.CObject> objects
+    public global::System.Collections.Generic.List<Cmd.ItemObject> objects
     {
       get { return _objects; }
     }
@@ -398,9 +415,9 @@ namespace Cmd
   {
     public RetObjectSync() {}
     
-    private readonly global::System.Collections.Generic.List<Cmd.CObject> _objects = new global::System.Collections.Generic.List<Cmd.CObject>();
+    private readonly global::System.Collections.Generic.List<Cmd.ItemObject> _objects = new global::System.Collections.Generic.List<Cmd.ItemObject>();
     [global::ProtoBuf.ProtoMember(1, Name=@"objects", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<Cmd.CObject> objects
+    public global::System.Collections.Generic.List<Cmd.ItemObject> objects
     {
       get { return _objects; }
     }
@@ -422,6 +439,40 @@ namespace Cmd
       get { return _objects; }
     }
   
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"RetObjectMove")]
+  public partial class RetObjectMove : global::ProtoBuf.IExtensible
+  {
+    public RetObjectMove() {}
+    
+    private int _dbID = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"dbID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int dbID
+    {
+      get { return _dbID; }
+      set { _dbID = value; }
+    }
+    private GameDefine.ObjectCellType _cell = GameDefine.ObjectCellType.ObjectCellType_None;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"cell", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(GameDefine.ObjectCellType.ObjectCellType_None)]
+    public GameDefine.ObjectCellType cell
+    {
+      get { return _cell; }
+      set { _cell = value; }
+    }
+    private int _position = default(int);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"position", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int position
+    {
+      get { return _position; }
+      set { _position = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

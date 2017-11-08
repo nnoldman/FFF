@@ -1,4 +1,4 @@
-﻿using AppCore;
+﻿using GameFrame;
 using FairyGUI;
 using System;
 using System.Collections.Generic;
@@ -33,6 +33,10 @@ public class MainView : View
             var param = new Message.MessageBoxParam();
             param.content = "FFFFFFFFFFFFFFFFFFFFFFFF";
             Message.ShowBox(param);
+        }
+        else if (context.sender == this.window.bm3_)
+        {
+            UIController.Instance.Show<BagView>(false);
         }
     }
     protected override void OnShowMe()

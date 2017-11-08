@@ -73,8 +73,11 @@ namespace Cmd
       [global::ProtoBuf.ProtoEnum(Name=@"RTObject_Delete", Value=902)]
       RTObject_Delete = 902,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"RTObject_Use", Value=903)]
-      RTObject_Use = 903
+      [global::ProtoBuf.ProtoEnum(Name=@"RTObject_Move", Value=903)]
+      RTObject_Move = 903,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"RTObject_Use", Value=910)]
+      RTObject_Use = 910
     }
   
 }

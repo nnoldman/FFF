@@ -1,0 +1,10 @@
+C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\bin\Debug\TestTimer.exe.config
+C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\bin\Debug\TestTimer.exe
+C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\bin\Debug\TestTimer.pdb
+C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.csprojResolveAssemblyReference.cache
+C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.Form1.resources
+C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.Properties.Resources.resources
+C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.csproj.GenerateResource.Cache
+C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.csproj.CoreCompileInputs.cache
+C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.exe
+C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.pdb

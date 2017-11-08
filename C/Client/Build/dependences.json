@@ -1,6 +1,22 @@
 {
     "resources": [
         {
+            "path": "Assets/Resources2/Config/IconTable.txt",
+            "guid": "bfc9f58cfbeb366429e02613cb65dfc2",
+            "reference": 1,
+            "dependices": [
+                "Assets/Resources2/Config/IconTable.txt"
+            ]
+        },
+        {
+            "path": "Assets/Resources2/Config/ItemTable.txt",
+            "guid": "151a43e73fedc0e4da8e340909d1d74f",
+            "reference": 1,
+            "dependices": [
+                "Assets/Resources2/Config/ItemTable.txt"
+            ]
+        },
+        {
             "path": "Assets/Resources2/Config/Language.txt",
             "guid": "099f7648ae1974b46bfabbf6fb53e83e",
             "reference": 1,

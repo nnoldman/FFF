@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using AppCore;
+using GameFrame;
 using FairyGUI;
 using System.Reflection;
 using System;

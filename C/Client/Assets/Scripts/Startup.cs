@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using AppCore;
+using GameFrame;
 using FairyGUI;
 using System.Reflection;
 using System;
@@ -37,6 +37,7 @@ public class Startup : MonoBehaviour
     IEnumerator OnStartEnd()
     {
         this.game_.AddController<Nets>();
+        this.game_.AddController<GameFrame.IconManager>();
         this.game_.AddController<UIController>();
         this.game_.AddController<GameFrame.Cameras>();
         yield return this.game_.Start();
@@ -53,6 +54,7 @@ public class Startup : MonoBehaviour
 
     void OnDestroy()
     {
+        this.game_.Quit();
     }
 }
 

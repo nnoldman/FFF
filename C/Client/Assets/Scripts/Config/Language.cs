@@ -23,19 +23,6 @@ public partial class Language : TableManager<LanguageRecord>
     {
         return "Language.txt";
     }
-
-    public string GetContent(int id)
-    {
-        var recourd = Get(id);
-        if (recourd != null)
-            return recourd.text;
-        return string.Empty;
-    }
-
-    public string GetPropertyName(RolePropertyID id)
-    {
-        return GetContent((int)id + 20);
-    }
 }
 
 

@@ -17,8 +17,8 @@ namespace GameDefine
       [global::ProtoBuf.ProtoEnum(Name=@"BagLimit", Value=180)]
       BagLimit = 180,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"Bag", Value=50)]
-      Bag = 50,
+      [global::ProtoBuf.ProtoEnum(Name=@"Bag", Value=120)]
+      Bag = 120,
             
       [global::ProtoBuf.ProtoEnum(Name=@"ChildGroup", Value=5)]
       ChildGroup = 5,
@@ -84,6 +84,23 @@ namespace GameDefine
             
       [global::ProtoBuf.ProtoEnum(Name=@"ItemSellSource_Invalid", Value=0)]
       ItemSellSource_Invalid = 0
+    }
+  
+    [global::ProtoBuf.ProtoContract(Name=@"ObjectCellType")]
+    public enum ObjectCellType
+    {
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ObjectCellType_None", Value=0)]
+      ObjectCellType_None = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ObjectCellType_Bag", Value=1)]
+      ObjectCellType_Bag = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ObjectCellType_Equip", Value=2)]
+      ObjectCellType_Equip = 2,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ObjectCellType_Store", Value=3)]
+      ObjectCellType_Store = 3
     }
   
 }

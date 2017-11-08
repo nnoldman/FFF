@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace AppCore
+namespace GameFrame
 {
     public class UIController: GameController<UIController>
     {
@@ -103,10 +103,13 @@ namespace AppCore
         {
             UIConfig.defaultFont = "SimHei,Droid Sans Fallback, LTHYSZK, Helvetica-Bold, Microsoft YaHei";
             GRoot.inst.SetContentScaleFactor(576, 1024);
+            UIObjectFactory.SetLoaderExtension(typeof(UITextureLoader));
+
             UIPackage.AddPackage("UI/Basics");
             UIPackage.AddPackage("UI/Common");
             UIPackage.AddPackage("UI/CommonBack");
             UIPackage.AddPackage("UI/MessageBox");
+            UIPackage.AddPackage("UI/GameBag");
 
             Common.CommonBinder.BindAll();
             CommonBack.CommonBackBinder.BindAll();
@@ -114,6 +117,7 @@ namespace AppCore
             Login.LoginBinder.BindAll();
             MainUI.MainUIBinder.BindAll();
             MessageBox.MessageBoxBinder.BindAll();
+            GameBag.GameBagBinder.BindAll();
             UIConfig.globalModalWaiting = UIPackage.GetItemURL("MessageBox", "MessageBox");
             UIController.Instance.Show<TVView>(false);
             yield return null;

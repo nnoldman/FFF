@@ -4,6 +4,8 @@ syntax = "proto2";
 
 package Cmd;
 
+import "GameDefine.proto";
+
 option csharp_namespace = "Google.Protobuf.WellKnownTypes";
 option go_package = "github.com/golang/protobuf/ptypes/duration";
 option java_package = "com.google.protobuf";
@@ -117,24 +119,33 @@ message RetTimeLine
 
 
 //道具定义
-message CObject
+message ItemObject
 {
 optional int32 dbID=1;//唯一ID
 optional int32 itemid=2;//道具ID
 optional int32 count=3;//数量
+optional GameDefine.ObjectCellType cell=4[default=ObjectCellType_None];//道具所在格子类型
+optional int32 position=5;//道具在该类型格子中的位置
 }
 
 message RetObjectAdd
 {
-	repeated CObject objects=1;
+	repeated ItemObject objects=1;
 }
 message RetObjectSync
 {
-	repeated CObject objects=1;
+	repeated ItemObject objects=1;
 }
 message RetObjectDelete
 {
 	repeated int32 objects=1;
+}
+
+message RetObjectMove
+{
+optional int32 dbID=1;
+optional GameDefine.ObjectCellType cell=2[default=ObjectCellType_None];//道具所在格子类型
+optional int32 position=3;
 }
 
 //使用道具

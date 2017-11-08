@@ -9,6 +9,9 @@ public abstract class BaseController
     {
         yield return null;
     }
+    public virtual void ForceClose()
+    {
+    }
     public abstract IEnumerator Initialize();
     public virtual void OnMapReady()
     {
