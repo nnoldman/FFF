@@ -195,16 +195,18 @@ inline void dMemoryZero(void* p, size_t len)
 #define dMemoryZeroStruct(p) memset(p,0,sizeof(*p))
 #define dToggle(b) (b=!b)
 
+#define dMemoryZeroArray(arr) memset(arr,0,sizeof(arr))
+
 inline void dMemoryCopy(void* dst, void* src, size_t len)
 {
     CXASSERT(dst && src);
     memcpy(dst, src, len);
 }
-template<typename T, u32 N>
-void dMemoryZeroArray(T(&arr)[N])
-{
-    dMemoryZero(&arr, sizeof(T) *N);
-}
+//template<typename T, u32 N>
+//void dMemoryZeroArray(T(&arr)[N])
+//{
+//    dMemoryZero(&arr, sizeof(T) *N);
+//}
 inline bool dStrEqual(const char* s1, const char* s2)
 {
     return 0 == strcmp(s1, s2);

@@ -1,6 +1,7 @@
 #pragma once
 #include <list>
 #include <sstream>
+#include "Math.h"
 class COREAPI DBStream
 {
 public:
@@ -18,6 +19,7 @@ public:
     DBStream& operator << (string var);
     DBStream& operator << (float var);
     DBStream& operator << (double var);
+    DBStream& operator << (stringstream& var);
 
     DBStream& operator >> (u8& var);
     DBStream& operator >> (u16& var);
@@ -31,6 +33,13 @@ public:
     DBStream& operator >> (string& var);
     DBStream& operator >> (float& var);
     DBStream& operator >> (double& var);
+    DBStream& operator >> (stringstream& var);
+
+    template<typename T, int N>
+    DBStream& operator << (const T(&var)[N]);
+    template<typename T, int N>
+    DBStream& operator >> (T(&var)[N]);
+
 
     template<int N>
     inline DBStream& operator << (Basic::CharBuffer<N>& var);
@@ -42,13 +51,13 @@ public:
     {
         return contents_;
     }
-    void moveToEnd()
-    {
-        this->position_ = this->contents_.size() - 1;
-    }
     void clear()
     {
         this->contents_.clear();
+    }
+    void reposition()
+    {
+        this->position_ = 0;
     }
 private:
     std::vector<string> contents_;
@@ -60,8 +69,28 @@ inline DBStream& DBStream::operator >> (Basic::CharBuffer<N>& var)
 {
     string container = contents_[position_];
     var.setString(container.c_str());
-    contents_.pop_back();
-    position_--;
+    position_++;
+    return *this;
+}
+
+template<typename T, int N>
+DBStream& DBStream::operator>>(T(&var)[N])
+{
+    string container = contents_[position_];
+    Basic::Math::fromHEX(var, container);
+    position_++;
+    return *this;
+}
+
+template<typename T, int N>
+DBStream& DBStream::operator<<(const T(&var)[N])
+{
+    string buffer;
+    stringstream ss;
+    Basic::Math::toHEX(var, buffer);
+    ss << "'" << buffer << "'";
+    contents_.push_back(ss.str());
+    position_++;
     return *this;
 }
 

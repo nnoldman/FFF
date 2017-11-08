@@ -1,75 +1,85 @@
-#pragma once
+#ifndef ItemDefine_h__
+#define ItemDefine_h__
+
 #include "DBDefine.h"
-#include "CharBuffer.h"
 #include "DBTableDefine.h"
+#include "GameDefine.pb.h"
+#include "RoleInfoDefine.h"
 
 class ItemDefine :
-	public DBDefine
+    public DBDefine
 {
 public:
-	static const DBTableDefine& GetDefine()
-	{
-		static const vector<DBColumn> columns =
-		{
-			{ "id",enum_field_types::MYSQL_TYPE_LONG,0,true,false,0 },
-			{ "name",enum_field_types::MYSQL_TYPE_VARCHAR,Default::NameSize,false,false,"" },
-			{ "level",enum_field_types::MYSQL_TYPE_LONG,0,false,false,1 },
-			{ "sex",enum_field_types::MYSQL_TYPE_BIT,0,false,false ,0 },
-			{ "job",enum_field_types::MYSQL_TYPE_SHORT,0,false,false ,0 },
-		};
-		static const DBTableDefine TheTable =
-		{
-			"item",false,"id","",columns,
-		};
-		return TheTable;
-	}
+    static const int ObjectsCapacity = GameDefine::Bag + GameDefine::Equip;
 
-	virtual const char* table() override
-	{
-		return GetDefine().tableName();
-	}
+    static const DBTableDefine& GetDefine()
+    {
+        static const vector<DBColumn> columns =
+        {
+            { "id", enum_field_types::MYSQL_TYPE_LONG, 0, false, false, 0 },
+            { "dbID", enum_field_types::MYSQL_TYPE_LONG, 0, false, false, 0 },
+            { "itemID", enum_field_types::MYSQL_TYPE_LONG, 0, false, false, 0 },
+            { "count", enum_field_types::MYSQL_TYPE_LONG, 0, false, false, 0 },
+            { "position", enum_field_types::MYSQL_TYPE_SHORT, 0, false, false, 0 },
+            { "cell", enum_field_types::MYSQL_TYPE_TINY, 0, false, false, 0 },
+            { "kind", enum_field_types::MYSQL_TYPE_TINY, 0, false, false, 0 },
+            { "borntime", enum_field_types::MYSQL_TYPE_DATETIME, 0, false, false, 0 },
+        };
+        static const DBTableDefine TheTable =
+        {
+            "items", false, "id", "dbID", columns,
+        };
+        return TheTable;
+    }
+    static DBDefine* Create()
+    {
+        return new ItemDefine();
+    }
+
+    virtual const char* table() override
+    {
+        return GetDefine().tableName();
+    }
 public:
-	Basic::CharBuffer<Default::NameSize> name;
-	int level;
-	int sex;
-	int job;
+    int dbID;
+    int itemID;
+    int count;
+    short position;
+    char cell;
+    char kind;
+    Basic::CharBuffer<Default::TimeSize> borntime;
 public:
-	virtual const char* key() override
-	{
-		return GetDefine().key();
-	}
-	virtual const char* key2() override
-	{
-		return GetDefine().key2();
-	}
+    virtual const char* key() override
+    {
+        return GetDefine().key();
+    }
+    virtual const char* key2() override
+    {
+        return GetDefine().key2();
+    }
+    virtual void deserializeMe() override
+    {
+        stream() >> this->id;
+        stream() >> this->dbID;
+        stream() >> this->itemID;
+        stream() >> this->count;
+        stream() >> this->position;
+        stream() >> this->cell;
+        stream() >> this->kind;
+        stream() >> this->borntime;
+    }
 
-
-	virtual void serializeForUpdate(stringstream& ss) override
-	{
-		startConcat(ss, GetDefine(), id);
-		concat(ss, GetDefine(), name);
-		concat(ss, GetDefine(), level);
-		concat(ss, GetDefine(), sex);
-		concat(ss, GetDefine(), job);
-	}
-
-	virtual void deserializeMe() override
-	{
-		stream() >> id;
-		stream() >> name;
-		stream() >> level;
-		stream() >> sex;
-		stream() >> job;
-	}
-
-	virtual void serializeMe() override
-	{
-		stream() << id;
-		stream() << name;
-		stream() << level;
-		stream() << sex;
-		stream() << job;
-	}
+    virtual void serializeMe() override
+    {
+        stream() << this->id;
+        stream() << this->dbID;
+        stream() << this->itemID;
+        stream() << this->count;
+        stream() << this->position;
+        stream() << this->cell;
+        stream() << this->kind;
+        stream() << this->borntime;
+    }
 };
 
-
+#endif // ItemDefine_h__

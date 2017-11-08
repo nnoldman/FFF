@@ -5,8 +5,8 @@
 #include "Singleton.h"
 
 #ifndef CPP1999
-#include "Pointer.h"
-#include "WeakPointer.h"
+    #include "Pointer.h"
+    #include "WeakPointer.h"
 #endif
 
 #include "Array.h"
@@ -14,7 +14,6 @@
 #include "BiTree.h"
 #include "RapidxmlLoader.h"
 #include "RapidxmlWriter.h"
-#include "XMath.h"
 #include "Delegate.h"
 #include "Buffer.h"
 #include "CharBuffer.h"
@@ -28,10 +27,11 @@
 #include "Color.h"
 #include "ObjectPool.h"
 #include "BitArray.h"
-#include "IDObjects.h"
+#include "IDGenerator.h"
 #include "Point2.h"
 #include "Pointer.h"
 #include "Lexer.h"
+#include "Math.h"
 
 #include "Tree.h"
 
@@ -122,7 +122,6 @@ namespace Basic
         auto& children = parent->getChildren();
         for (auto& a : children)
             takeElementToVectorUntil(dstArray, a, cur, end);
-
     }
 
     inline void split(const std::string& s, const std::string& c, std::vector<std::string>& ret)
@@ -134,7 +133,6 @@ namespace Basic
         while (std::string::npos != pos2)
         {
             ret.push_back(s.substr(pos1, pos2 - pos1));
-
             pos1 = pos2 + c.size();
             pos2 = s.find(c, pos1);
         }

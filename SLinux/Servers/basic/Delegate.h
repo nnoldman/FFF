@@ -110,7 +110,6 @@ public:
         intptr_t memberPtr = (intptr_t)(&func);
         intptr_t objPtr = (intptr_t)obj;
         assert(nullptr == check(memberPtr, objPtr));
-
         FunctionObjectType object = std::bind(func, obj, std::placeholders::_1);
         auto functor = new Functor();
         functor->functionPtr = memberPtr;
@@ -190,7 +189,6 @@ public:
         intptr_t memberPtr = (intptr_t)(&func);
         intptr_t objPtr = (intptr_t)obj;
         assert(nullptr == check(memberPtr, objPtr));
-
         FunctionObjectType object = std::bind(func, obj, std::placeholders::_1, std::placeholders::_2);
         auto functor = new Functor();
         functor->functionPtr = memberPtr;
@@ -271,7 +269,6 @@ public:
         intptr_t memberPtr = (intptr_t)(&func);
         intptr_t objPtr = (intptr_t)obj;
         assert(nullptr == check(memberPtr, objPtr));
-
         FunctionObjectType object = std::bind(func, obj
                                               , std::placeholders::_1
                                               , std::placeholders::_2
@@ -357,7 +354,6 @@ public:
         intptr_t memberPtr = (intptr_t)(&func);
         intptr_t objPtr = (intptr_t)obj;
         assert(nullptr == check(memberPtr, objPtr));
-
         FunctionObjectType object = std::bind(func, obj
                                               , std::placeholders::_1
                                               , std::placeholders::_2
@@ -445,7 +441,6 @@ public:
         intptr_t memberPtr = (intptr_t)(&func);
         intptr_t objPtr = (intptr_t)obj;
         assert(nullptr == check(memberPtr, objPtr));
-
         FunctionObjectType object = std::bind(func, obj
                                               , std::placeholders::_1
                                               , std::placeholders::_2

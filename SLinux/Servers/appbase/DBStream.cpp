@@ -4,7 +4,7 @@ using namespace Basic;
 using namespace Basic::StringHelper;
 
 DBStream::DBStream()
-    :position_(0)
+    : position_(0)
 {
 }
 
@@ -34,7 +34,7 @@ DBStream& DBStream::operator >> (u8& var)
 {
     string container = contents_[position_];
     StringHelper::setValue(container.c_str(), &var);
-    position_--;
+    position_++;
     return *this;
 }
 
@@ -42,7 +42,7 @@ DBStream& DBStream::operator >> (u16& var)
 {
     string container = contents_[position_];
     StringHelper::setValue(container.c_str(), &var);
-    position_--;
+    position_++;
     return *this;
 }
 
@@ -50,7 +50,7 @@ DBStream& DBStream::operator >> (u32& var)
 {
     string container = contents_[position_];
     StringHelper::setValue(container.c_str(), &var);
-    position_--;
+    position_++;
     return *this;
 }
 
@@ -58,7 +58,7 @@ DBStream& DBStream::operator >> (u64& var)
 {
     string container = contents_[position_];
     StringHelper::setValue(container.c_str(), &var);
-    position_--;
+    position_++;
     return *this;
 }
 
@@ -66,16 +66,15 @@ DBStream& DBStream::operator >> (char& var)
 {
     string container = contents_[position_];
     StringHelper::setValue(container.c_str(), &var);
-    position_--;
+    position_++;
     return *this;
-
 }
 
 DBStream& DBStream::operator >> (s16& var)
 {
     string container = contents_[position_];
     StringHelper::setValue(container.c_str(), &var);
-    position_--;
+    position_++;
     return *this;
 }
 
@@ -83,7 +82,7 @@ DBStream& DBStream::operator >> (int& var)
 {
     string container = contents_[position_];
     StringHelper::setValue(container.c_str(), &var);
-    position_--;
+    position_++;
     return *this;
 }
 
@@ -91,7 +90,7 @@ DBStream& DBStream::operator >> (s64& var)
 {
     string container = contents_[position_];
     StringHelper::setValue(container.c_str(), &var);
-    position_--;
+    position_++;
     return *this;
 }
 
@@ -99,7 +98,7 @@ DBStream& DBStream::operator >> (bool& var)
 {
     string container = contents_[position_];
     StringHelper::setValue(container.c_str(), &var);
-    position_--;
+    position_++;
     return *this;
 }
 
@@ -107,7 +106,7 @@ DBStream& DBStream::operator >> (string& var)
 {
     string container = contents_[position_];
     StringHelper::setValue(container.c_str(), &var);
-    position_--;
+    position_++;
     return *this;
 }
 
@@ -115,7 +114,7 @@ DBStream& DBStream::operator >> (float& var)
 {
     string container = contents_[position_];
     StringHelper::setValue(container.c_str(), &var);
-    position_--;
+    position_++;
     return *this;
 }
 
@@ -123,7 +122,17 @@ DBStream& DBStream::operator >> (double& var)
 {
     string container = contents_[position_];
     StringHelper::setValue(container.c_str(), &var);
-    position_--;
+    position_++;
+    return *this;
+}
+
+
+
+DBStream& DBStream::operator>>(stringstream& var)
+{
+    string container = contents_[position_];
+    var << container;
+    position_++;
     return *this;
 }
 
@@ -218,6 +227,12 @@ DBStream& DBStream::operator<<(u16 var)
     string container;
     StringHelper::toString(container, &var);
     contents_.push_back(container);
+    position_++;
+    return *this;
+}
+DBStream& DBStream::operator<<(stringstream& var)
+{
+    contents_.push_back(var.str());
     position_++;
     return *this;
 }

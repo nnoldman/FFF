@@ -14,7 +14,10 @@ Role::Role()
 Role::~Role()
 {
     for (auto sys : systems_)
+    {
+        sys->archieve();
         delete sys;
+    }
 }
 
 bool Role::initialize()

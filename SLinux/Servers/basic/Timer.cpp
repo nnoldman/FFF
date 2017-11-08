@@ -9,8 +9,8 @@ namespace Basic
     Timer::Timer()
         : onTimer_(nullptr)
         , onEnd_(nullptr)
-        , life_(0)
-        , interval_(0)
+        , lifeMillseconds_(0)
+        , intervalMillseconds_(0)
         , nextHitTicks_(0)
         , leftTruns_(0)
         , position_(-1)
@@ -20,7 +20,7 @@ namespace Basic
 
     Timer::~Timer()
     {
-        std::cout << "Timer>>" << life_.count() << std::endl;
+        std::cout << "Timer>>" << lifeMillseconds_ << std::endl;
     }
 
     void Timer::cancel(bool raise /*= false*/)
@@ -28,18 +28,18 @@ namespace Basic
         Timers::getInstance()->cancel(this, raise);
     }
 
-    int64_t Timer::leftMicroseconds() const
+    int64_t Timer::leftMillseconds() const
     {
         return Timers::getInstance()->leftMicroseconds(this);
     }
 
     int Timer::leftSeconds() const
     {
-        return (int)(leftMicroseconds() * 0.001);
+        return (int)(leftMillseconds() * 0.001);
     }
 
-    std::chrono::microseconds Timer::life() const
+    std::chrono::milliseconds Timer::life() const
     {
-        return this->life_;
+        return milliseconds(this->lifeMillseconds_);
     }
 }

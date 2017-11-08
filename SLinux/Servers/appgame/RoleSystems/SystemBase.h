@@ -15,6 +15,7 @@ public:
 public:
     virtual void initialize(Role* role);
     virtual void onNet(Cmd::CLIENTID id, ProtocoBuffer* pb);
+    virtual void archieve();
     void send(Cmd::SERVERID id, google::protobuf::MessageLite* message);
 protected:
     Role* role_;

@@ -51,21 +51,15 @@ void LevelSystem::syncTimeLine()
 void LevelSystem::calcTimeLine()
 {
     auto roledefine = this->role_->getDefine();
-
     auto delta = Basic::Time_::nowMinusLocalTime(roledefine->base.borntime.c_str());
-
     auto allrecords = TimeTable::getInstance()->all();
-
     int64_t eclipseTime = 0;
-
     for (auto i = 0; i < allrecords.size() - 1; ++i)
     {
         auto record = allrecords[i];
         auto next = allrecords[i + 1];
-
-        currentTrunTotalTime_ = (next->start - record->start) / record->speed;
+        currentTrunTotalTime_ = (next->start - record->start) / record->realtime / 1000000;
         eclipseTime += currentTrunTotalTime_;
-
         if (eclipseTime > delta)
         {
             currentTrun_ = i;
@@ -73,12 +67,7 @@ void LevelSystem::calcTimeLine()
             if (this->timeLineTimer_ != nullptr)
                 this->timeLineTimer_->cancel();
             this->timeLineTimer_ = Timers::getInstance()->repeat(
-                                       microseconds(5000)
-                                       , &LevelSystem::onTimer
-                                       , this
-                                       , microseconds(currentTrunLeftTime_ * 1000)
-                                       , &::LevelSystem::onTimeLineEnd
-                                   );
+                                       5000, &LevelSystem::onTimer, this, currentTrunLeftTime_ * 1000, &::LevelSystem::onTimeLineEnd );
             break;
         }
     }

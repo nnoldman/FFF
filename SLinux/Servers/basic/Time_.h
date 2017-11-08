@@ -13,6 +13,7 @@ namespace Basic
         static bool localTime(tm& ret, time_t* tm = nullptr);
         static std::string utcTimeString();
         static std::string localTimeString();
+        static int64_t getMicroSeconds();
     };
 }
 

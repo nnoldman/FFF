@@ -61,7 +61,8 @@ enum SERVERID {
   RTObject_Add = 900,
   RTObject_Sync = 901,
   RTObject_Delete = 902,
-  RTObject_Use = 903
+  RTObject_Move = 903,
+  RTObject_Use = 910
 };
 bool SERVERID_IsValid(int value);
 const SERVERID SERVERID_MIN = RTLoginGameServer;

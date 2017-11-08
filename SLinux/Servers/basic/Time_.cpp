@@ -1,7 +1,8 @@
 #include "base.h"
 #include "Time_.h"
 #include <sstream>
-
+#include <sys/time.h>
+#include <unistd.h>
 time_t Basic::Time_::utc()
 {
     return time(nullptr);
@@ -27,7 +28,6 @@ time_t Basic::Time_::fromUTCTime(const char* time)
     //int tm_wday;			/* Day of week.	[0-6] */
     //int tm_yday;			/* Days in year.[0-365]	*/
     //int tm_isdst;			/* DST.		[-1/0/1]*/
-
     try
     {
         sscanf(time, "%d-%d-%d %d:%d:%d", &tm_year, &tm_mon, &tm_mday, &tm_hour, &tm_min, &tm_sec);
@@ -36,16 +36,13 @@ time_t Basic::Time_::fromUTCTime(const char* time)
     {
     }
     tm st;
-
     dMemoryZero(&st, sizeof(tm));
-
     st.tm_year = tm_year - 1900;
     st.tm_mon = tm_mon - 1;
     st.tm_mday = tm_mday;
     st.tm_hour = tm_hour;
     st.tm_min = tm_min;
     st.tm_sec = tm_sec;
-
     return ::mktime(&st);
 }
 
@@ -108,5 +105,12 @@ std::string Basic::Time_::localTimeString()
     std::stringstream ss;
     ss << ret.tm_year + 1900 << "-" << ret.tm_mon + 1 << "-" << ret.tm_mday << " " << ret.tm_hour << ":" << ret.tm_min << ":" << ret.tm_sec;
     return ss.str();
+}
+int64_t Basic::Time_::getMicroSeconds()
+{
+    struct timeval tv;
+    gettimeofday(&tv, nullptr);
+    int64_t ret = tv.tv_sec * 1000000 + tv.tv_usec;
+    return ret;
 }
 

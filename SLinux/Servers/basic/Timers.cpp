@@ -23,7 +23,7 @@ namespace Basic
             timers_[i] = nullptr;
         for (auto i = 0; i < kLevelCount; ++i)
             cursor_[i] = 0;
-        startTime_ = currentMicroseconds();
+        startTime_ = currentMillseconds();
     }
 
 
@@ -36,46 +36,42 @@ namespace Basic
         }
     }
 
-    Timer* Timers::wait(microseconds lefttime, Timer::callback onTimerEnd /*= nullptr*/)
+    Timer* Timers::wait(int64_t lefttimeMillseconds, Timer::callback onTimerEnd /*= nullptr*/)
     {
         Timer* ret = new Timer();
         ret->onEnd_ = onTimerEnd;
-        if (lefttime.count() == 0)
+        if (lefttimeMillseconds == 0)
         {
             this->cancel(ret, true);
             return nullptr;
         }
-        return repeat(lefttime.count() == -1 ? microseconds(1000) : lefttime, nullptr, lefttime, onTimerEnd);
+        return repeat(lefttimeMillseconds == -1 ? 1000 : lefttimeMillseconds, nullptr, lefttimeMillseconds, onTimerEnd);
     }
 
-    Basic::Timer* Timers::repeat(microseconds interval, Timer::callback onTimer, microseconds leftTime, Timer::callback onTimerEnd)
+    Basic::Timer* Timers::repeat(int64_t intervalMillseconds, Timer::callback onTimer, int64_t leftTimeMillseconds, Timer::callback onTimerEnd)
     {
-        assert(interval.count() > 0);
-        assert(interval.count() % kPrecision == 0);
-
+        assert(intervalMillseconds > 0);
+        assert(intervalMillseconds % kPrecision == 0);
         int64_t truns = 0, mod = 0;
-        if (leftTime.count() < 0)
+        if (leftTimeMillseconds < 0)
         {
             truns = -1;
         }
         else
         {
-            assert(leftTime.count() % kPrecision == 0);
-            truns = leftTime.count() / interval.count();
-            mod = leftTime.count() % interval.count();
+            assert(leftTimeMillseconds % kPrecision == 0);
+            truns = leftTimeMillseconds / intervalMillseconds;
+            mod = leftTimeMillseconds % intervalMillseconds;
             if (mod > 0)
                 truns++;
         }
-
-
         Timer* ret = new Timer();
-        ret->life_ = leftTime;
+        ret->lifeMillseconds_ = leftTimeMillseconds;
         ret->onTimer_ = onTimer;
         ret->onEnd_ = onTimerEnd;
-        ret->interval_ = interval;
+        ret->intervalMillseconds_ = intervalMillseconds;
         ret->leftTruns_ = truns;
         //×Ô¶¯ÑÓÊ±
-
         if (mod > 0)
         {
             ret->nextHitTicks_ = Timers::getInstance()->calcDeadTicks(mod);
@@ -83,26 +79,21 @@ namespace Basic
         }
         else
         {
-            ret->nextHitTicks_ = Timers::getInstance()->calcDeadTicks(ret->interval_.count());
-            ret->position_ = calcSlotIndex(ret->interval_.count());
+            ret->nextHitTicks_ = Timers::getInstance()->calcDeadTicks(ret->intervalMillseconds_);
+            ret->position_ = calcSlotIndex(ret->intervalMillseconds_);
         }
-
         this->addToTail(&this->timers_[ret->position_], ret);
         return ret;
     }
 
     void Timers::tick()
     {
-        int64_t delta = currentMicroseconds() - startTime_ - ticksSinceTimersStart_ * kPrecision;
-
+        int64_t delta = currentMillseconds() - startTime_ - ticksSinceTimersStart_ * kPrecision;
         int count = (int)std::floor((double)delta / kPrecision);
-
         while (count)
         {
             ticksSinceTimersStart_++;
-
             int level = 0;
-
             while (level < kLevelCount)
             {
                 int cursor = cursor_[level];
@@ -143,7 +134,7 @@ namespace Basic
         return microseconds == -1 ? -1 : ticksSinceTimersStart_ + microseconds / Timers::kPrecision;
     }
 
-    int64_t Timers::currentMicroseconds() const
+    int64_t Timers::currentMillseconds() const
     {
         auto clock = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now());
         auto now = std::chrono::duration_cast<std::chrono::milliseconds>(clock.time_since_epoch());
@@ -163,7 +154,7 @@ namespace Basic
     {
         if (timer == nullptr)
             return -1;
-        return timer->leftTruns_ == 0 ? 0 : (timer->leftTruns_ - 1) * timer->interval_.count()
+        return timer->leftTruns_ == 0 ? 0 : (timer->leftTruns_ - 1) * timer->intervalMillseconds_
                + (timer->nextHitTicks_ - Timers::getInstance()->currentTicks()) * Timers::kPrecision;
     }
 
@@ -201,11 +192,8 @@ namespace Basic
     {
         assert(level >= 1 && level <= kLevelCount);
         //std::cout << "cascade:" << level << std::endl;
-
         int64_t base = kCalcSlotIndexBase[level] + cursor_[level];
-
         auto* timers = this->timers_[base];
-
         if (timers != nullptr)
         {
             for (auto it = timers->begin(); it != timers->end(); ++it)
@@ -223,7 +211,6 @@ namespace Basic
     {
         auto base = this->cursor_[0];
         auto timers = this->timers_[base];
-
         if (timers != nullptr)
         {
             for (auto it = timers->begin(); it != timers->end();)
@@ -247,7 +234,6 @@ namespace Basic
     Timers::ProcessRet Timers::processTimer(Timer* timer, int currentSlot)
     {
         ProcessRet ret = ProcessRet::None;
-
         if (timer->position_ == currentSlot)
         {
             assert(timer->leftTruns_ > 0);
@@ -255,9 +241,7 @@ namespace Basic
             {
                 timer->onTimer_(timer);
             }
-
             timer->leftTruns_--;
-
             if (timer->leftTruns_ == 0)
             {
                 if (timer->onEnd_ != nullptr)
@@ -266,8 +250,8 @@ namespace Basic
             }
             else
             {
-                timer->position_ = calcSlotIndex(timer->interval_.count());
-                timer->nextHitTicks_ = calcDeadTicks(timer->interval_.count());
+                timer->position_ = calcSlotIndex(timer->intervalMillseconds_);
+                timer->nextHitTicks_ = calcDeadTicks(timer->intervalMillseconds_);
                 if (timer->position_ != currentSlot)
                 {
                     this->addToTail(&this->timers_[timer->position_], timer);
@@ -279,12 +263,12 @@ namespace Basic
     }
 
 #ifdef WIN32
-    CAPI Timer* stdcall timer_wait(int64_t microseconds, TimerCallback onTimerEnd)
+    CAPI Timer* stdcall timer_wait(int64_t millseconds, TimerCallback onTimerEnd)
 #elif __GNUC__
-    Timer* timer_wait(int64_t microseconds, TimerCallback onTimerEnd)
+    Timer* timer_wait(int64_t millseconds, TimerCallback onTimerEnd)
 #endif
     {
-        Timer* ret = Timers::getInstance()->wait(std::chrono::microseconds(microseconds), onTimerEnd);
+        Timer* ret = Timers::getInstance()->wait(millseconds, onTimerEnd);
         return (Timer*)ret;
     }
 
@@ -295,7 +279,7 @@ namespace Basic
 #endif
     {
         Timer* ret = (Timer*)timer;
-        return ret->leftMicroseconds();
+        return ret->leftMillseconds();
     }
 
 #ifdef WIN32

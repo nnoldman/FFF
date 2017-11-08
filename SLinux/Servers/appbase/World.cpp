@@ -7,6 +7,7 @@
 
 
 World::World()
+    : dirty_(false)
 {
 }
 
@@ -39,7 +40,24 @@ const std::map<Connection*, DBObject*>& World::getAcccounts() const
 {
     return this->accounts_;
 }
-
+void World::process()
+{
+    if (!this->dirty_)
+        return;
+    for (auto it : this->quitedAccounts_)
+    {
+        DBObject* ret = nullptr;
+        if (!Basic::getValue(accounts_, it, ret))
+        {
+            assert(false);
+            return;
+        }
+        accounts_.erase(it);
+        dSafeDelete(ret);
+    }
+    this->quitedAccounts_.clear();
+    this->dirty_ = false;
+}
 void World::reclaimAccount(Connection* connection)
 {
     if (connection == nullptr)
@@ -50,9 +68,12 @@ void World::reclaimAccount(Connection* connection)
     {
         return;
     }
-    assert(ret);
-    accounts_.erase(connection);
-    dSafeDelete(ret);
+    if(std::find(this->quitedAccounts_.begin(), this->quitedAccounts_.end(), connection) == this->quitedAccounts_.end())
+        this->quitedAccounts_.push_back(connection);
+    this->dirty_ = true;
+    //assert(ret);
+    //accounts_.erase(connection);
+    //dSafeDelete(ret);
 }
 
 void World::onEnterWorld(Connection* connection, DBObject* account)

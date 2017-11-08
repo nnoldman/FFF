@@ -20,12 +20,12 @@ public:
             { "sex", enum_field_types::MYSQL_TYPE_BIT, 0, false, false, 0 },
             { "job", enum_field_types::MYSQL_TYPE_SHORT, 0, false, false, 0 },
             { "borntime", enum_field_types::MYSQL_TYPE_DATETIME, 0, false, false, 0 },
+            { "functions", enum_field_types::MYSQL_TYPE_VARCHAR, GameDefine::Capcity::Function / 4, false, false, 0 },
         };
         static const DBTableDefine TheTable =
         {
             "game_role", false, "id", "name", columns,
         };
-
         return TheTable;
     }
 
@@ -37,9 +37,6 @@ public:
 public://游戏基本系统
     RoleStat::Base base;
     RoleStat::Property property;
-    RoleStat::Bag bag;
-    RoleStat::Equip equip;
-    RoleStat::Store store;
     RoleStat::Mail mail;
 
 public://游戏内容
@@ -60,19 +57,6 @@ public:
     {
         return GetDefine().key2();
     }
-
-
-    virtual void serializeForUpdate(stringstream& ss) override
-    {
-        startConcat(ss, GetDefine(), id);
-        concat(ss, GetDefine(), base.name);
-        concat(ss, GetDefine(), base.vip);
-        concat(ss, GetDefine(), base.level);
-        concat(ss, GetDefine(), base.sex);
-        concat(ss, GetDefine(), base.job);
-        concat(ss, GetDefine(), base.borntime);
-    }
-
     virtual void deserializeMe() override
     {
         stream() >> id;
@@ -82,6 +66,7 @@ public:
         stream() >> base.sex;
         stream() >> base.job;
         stream() >> base.borntime;
+        stream() >> base.functions;
     }
 
     virtual void serializeMe() override
@@ -93,6 +78,7 @@ public:
         stream() << base.sex;
         stream() << base.job;
         stream() << base.borntime;
+        stream() << base.functions;
     }
 };
 

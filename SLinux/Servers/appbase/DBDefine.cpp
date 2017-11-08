@@ -11,7 +11,7 @@ const char* DBDefine::key2()
 
 void DBDefine::deserialize()
 {
-    this->stream().moveToEnd();
+    this->stream().reposition();
     this->deserializeMe();
 }
 
@@ -32,10 +32,24 @@ bool DBDefine::pull(AnyObject keyvalue)
     return App::DataBase.pull(keyvalue, this);
 }
 
-bool DBDefine::commit()
+bool DBDefine::commitByKey1()
 {
-    return App::DataBase.commit(this);
+    return App::DataBase.commitByKey1(this);
 }
+
+bool DBDefine::commitByKey1Key2(AnyObject key2value)
+{
+    return App::DataBase.commitByKey1Key2(this, key2value);
+}
+
+bool DBDefine::insertByKey1()
+{
+}
+
+bool DBDefine::insertByKey1Key2(AnyObject key2value)
+{
+}
+
 //delete from global_account where user = '123';
 bool DBDefine::insertAndQuery(AnyObject keyvalue)
 {
@@ -65,6 +79,6 @@ bool DBDefine::getValues(stringstream& ss)
 
 bool DBDefine::exist(const char* key, AnyObject value)
 {
-    return App::DataBase.pull(key, value,this);
+    return App::DataBase.pull(key, value, this);
 }
 

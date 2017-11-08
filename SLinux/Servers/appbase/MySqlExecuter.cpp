@@ -14,17 +14,13 @@ MySQLExecuter::~MySQLExecuter()
 bool MySQLExecuter::initialize(const DBConfig& config)
 {
     mConfig = config;
-
     mConnection = mysql_init(0);
     assert(mConnection != 0);
-
     MYSQL* tmp = mysql_real_connect(mConnection, mConfig.host.c_str(), mConfig.user.c_str(), mConfig.password.c_str(),
                                     mConfig.dbName.c_str(), mConfig.port, 0, 0);
     assert(tmp == mConnection);
-
     MYSQL_STMT* hstmt = mysql_stmt_init(mConnection);
     assert(hstmt != 0);
-
     return true;
 }
 
@@ -54,9 +50,9 @@ bool MySQLExecuter::queryEnd(vector<string>& record)
         MYSQL_ROW row = mysql_fetch_row(records);
         if (row)
         {
-            for (int j = columns - 1; j >= 0; --j)
+            for (int i = 0; i < columns; ++i)
             {
-                record.push_back(row[j]);
+                record.push_back(row[i]);
             }
         }
         return record.size() > 0;
@@ -65,7 +61,6 @@ bool MySQLExecuter::queryEnd(vector<string>& record)
     {
         return false;
     }
-
     return record.size() > 0;
 }
 
@@ -73,7 +68,6 @@ bool MySQLExecuter::queryEnd(vector<string>& record)
 bool MySQLExecuter::queryEnd(vector<vector<string>>& ret_records)
 {
     MYSQL_RES* records = mysql_store_result(mConnection);
-
     if (records)
     {
         auto columns = mysql_num_fields(records);
@@ -92,7 +86,6 @@ bool MySQLExecuter::queryEnd(vector<vector<string>>& ret_records)
         }
         return ret_records.size() > 0;
     }
-
     return ret_records.size() > 0;
 }
 

@@ -22,7 +22,6 @@ public:
 
     virtual void deserialize() final;
     virtual void serialize() final;
-    virtual void serializeForUpdate(stringstream& ss) = 0;
 
     virtual void serializeMe() = 0;
     virtual void deserializeMe() = 0;
@@ -31,7 +30,10 @@ public:
     //use key()
     bool pull(AnyObject keyvalue);
     //use key()
-    bool commit();
+    bool commitByKey1();
+    bool commitByKey1Key2(AnyObject key2value);
+    bool insertByKey1();
+    bool insertByKey1Key2(AnyObject key2value);
     bool insertAndQuery(AnyObject keyvalue);
     bool insertAndQuery(const char* key, AnyObject keyvalue);
 
@@ -41,33 +43,6 @@ public:
     inline DBStream& stream()
     {
         return stream_;
-    }
-protected:
-    template<typename T>
-    void startConcat(stringstream& ss, const DBTableDefine& def, T& value)
-    {
-        concatIndex_ = 0;
-        ss << def.column(concatIndex_) << "=" << value << Basic::Variable::space();
-        concatIndex_++;
-    }
-    template<int N>
-    void startConcat(stringstream& ss, const DBTableDefine& def, Basic::CharBuffer<N>& value)
-    {
-        concatIndex_ = 0;
-        ss << def.column(concatIndex_) << "='" << value.c_str() << "'" << Basic::Variable::space();
-        concatIndex_++;
-    }
-    template<typename T>
-    void concat(stringstream& ss, const DBTableDefine& def, T& value)
-    {
-        ss << "," << def.column(concatIndex_) << "=" << value << Basic::Variable::space();
-        concatIndex_++;
-    }
-    template<int N>
-    void concat(stringstream& ss, const DBTableDefine& def, Basic::CharBuffer<N>& value)
-    {
-        ss << "," << def.column(concatIndex_) << "='" << value.c_str() << "'" << Basic::Variable::space();
-        concatIndex_++;
     }
 private:
     DBStream stream_;

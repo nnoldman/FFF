@@ -20,7 +20,7 @@ public:
     DBObject* get(Connection* connection);
 
     const map<Connection*, DBObject*>& getAcccounts() const;
-
+    void process();
 public:
     void reclaimAccount(Connection* connection);
     void onEnterWorld(Connection* connection, DBObject* account);
@@ -30,6 +30,8 @@ public:
     void onNetException(Connection* connection);
 private:
     map<Connection*, DBObject*> accounts_;
+    vector<Connection*> quitedAccounts_;
+    bool dirty_;
 };
 
 #endif // World_h__

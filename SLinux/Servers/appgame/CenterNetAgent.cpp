@@ -37,9 +37,7 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
     case Cmd::CLIENTID::RQLoginGame:
     {
         auto req = pb->parse<Cmd::ReqLoginGameServer>();
-
         Cmd::RetLoginGameServer ret;
-
         if (Encrypt::makeLoginToken(req->accountid(), req->time()) != req->token())
         {
             ret.set_error(Cmd::LoginGameError::LoginGameInvalid);
@@ -55,7 +53,6 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
             user->setGlobalID(req->accountid());
             user->getDefine()->setGlobalID(req->accountid());
             user->onEnterGate();
-
             auto role = user->getRole();
             auto gameRole = ret.mutable_role();
             auto def = role->getDefine();
@@ -68,7 +65,6 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
                 gameRole->set_sex(def->base.sex);
                 gameRole->set_name(def->base.name.c_str());
             }
-
             App::World.onEnterWorld(connect, user);
             ret.set_error(Cmd::LoginGameError::LoginGameSucess);
         }
@@ -86,7 +82,6 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
             {
                 Cmd::RetCreateRole ret;
                 auto gameRole = ret.mutable_role();
-
                 auto def = role->getDefine();
                 def->base.name = req->name().c_str();
                 def->base.borntime = Basic::Time_::localTimeString().c_str();
@@ -107,7 +102,7 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
                     else
                     {
                         user->getDefine()->role = def->id;
-                        if (!user->getDefine()->commit())
+                        if (!user->getDefine()->commitByKey1())
                         {
                             assert(false);
                         }

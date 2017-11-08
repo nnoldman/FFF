@@ -1,23 +1,19 @@
 #pragma once
-#include "TableDefine/ItemDefine.h"
 #include "SystemBase.h"
+#include "TableDefine/ItemDefine.h"
 class ItemSystem : public SystemBase
 {
 public:
     ItemSystem();
     ~ItemSystem();
     virtual void initialize(Role* role) override;
+    virtual void archieve() override;
 public:
 
     /*
     销毁道具
     */
     void destroy(int dbID, GameDefine::ItemDeleteReason reason);
-
-    /*
-    生成道具
-    */
-    ItemDefine* create(int itemID, GameDefine::ItemLocation location, int x);
 
     /*
     刷新道具数量
@@ -38,5 +34,24 @@ public:
     移动道具
     */
     bool moveItem(int dbID, GameDefine::ItemLocation locationSrc, int xSrc, GameDefine::ItemLocation locationDst, int xDst);
+protected:
+    void onTimer(Basic::Timer* timer);
+    void syncToClient();
+    void pullFromDB();
+    void testSystem();
+    /*
+    生成道具
+    */
+    ItemDefine* create(int itemID, int num, int cell, int position );
+
+    int getFirstEmptySlot(GameDefine::ObjectCellType cell);
+    bool empty(GameDefine::ObjectCellType cell);
+    int getStartIndex(GameDefine::ObjectCellType cell);
+    int getIndex(GameDefine::ObjectCellType cell, int position);
+private:
+    Basic::Timer* testTimer_;
+    ItemDefine* objects_[ItemDefine::ObjectsCapacity];
+    Basic::IDGenerator idGenerator_;
+    static int sCellCapicity[];
 };
 

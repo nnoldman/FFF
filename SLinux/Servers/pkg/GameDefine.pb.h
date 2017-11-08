@@ -37,7 +37,7 @@ void protobuf_ShutdownFile_GameDefine_2eproto();
 
 enum Capcity {
   BagLimit = 180,
-  Bag = 50,
+  Bag = 120,
   ChildGroup = 5,
   Equip = 30,
   Store = 50,
@@ -87,6 +87,17 @@ const ItemSellSource ItemSellSource_MIN = ItemSellSource_Invalid;
 const ItemSellSource ItemSellSource_MAX = ItemSellSource_Invalid;
 const int ItemSellSource_ARRAYSIZE = ItemSellSource_MAX + 1;
 
+enum ObjectCellType {
+  ObjectCellType_None = 0,
+  ObjectCellType_Bag = 1,
+  ObjectCellType_Equip = 2,
+  ObjectCellType_Store = 3
+};
+bool ObjectCellType_IsValid(int value);
+const ObjectCellType ObjectCellType_MIN = ObjectCellType_None;
+const ObjectCellType ObjectCellType_MAX = ObjectCellType_Store;
+const int ObjectCellType_ARRAYSIZE = ObjectCellType_MAX + 1;
+
 // ===================================================================
 
 
@@ -111,6 +122,7 @@ template <> struct is_proto_enum< ::GameDefine::ItemDeleteReason> : ::google::pr
 template <> struct is_proto_enum< ::GameDefine::ItemRefreshReason> : ::google::protobuf::internal::true_type {};
 template <> struct is_proto_enum< ::GameDefine::ItemLocation> : ::google::protobuf::internal::true_type {};
 template <> struct is_proto_enum< ::GameDefine::ItemSellSource> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::GameDefine::ObjectCellType> : ::google::protobuf::internal::true_type {};
 
 }  // namespace protobuf
 }  // namespace google

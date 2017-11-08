@@ -7,7 +7,6 @@ BundleReceiver::BundleReceiver(Connection* ss, char* data, u16 len)
     , mBuffer(data)
     , mLength(len)
 {
-
 }
 
 BundleReceiver::~BundleReceiver()
@@ -43,9 +42,9 @@ void BundleSender::sendFlatbuffer(u32 opcode, u32 length, char* data)
 {
 }
 
+
 void BundleSender::sendProtoBuffer(u32 opcode, google::protobuf::MessageLite* message)
 {
-
 }
 
 void BundleSender::sendProtoBuffer(u32 opcode, google::protobuf::MessageLite * message, Connection * ss)

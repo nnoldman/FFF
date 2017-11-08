@@ -10,6 +10,8 @@ class DBTableDefine;
 class COREAPI DataBase
 {
 public:
+    typedef DBDefine* (*Creator)();
+
     DataBase();
     ~DataBase();
 
@@ -35,8 +37,17 @@ public:
 
     bool pull(AnyObject keyvalue, OUT DBDefine* def);
     bool pull(const char* key, AnyObject keyvalue, OUT DBDefine* def);
-    bool commit(OUT DBDefine* def);
-    bool commit(AnyObject keyvalue, OUT DBDefine* def);
+    /*
+    适用以角色ID为主键1、DBID为主键2的表，上线拉取数据，生成的数据内存需要使用者管理。
+    如道具表
+    */
+    bool pullByPrimaryKey(const DBTableDefine& def, AnyObject keyvalue, Creator creator, OUT std::list<DBDefine*>& ret);
+
+    bool commitByKey1(DBDefine* def);
+    bool commitByKey1Key2(DBDefine* def, AnyObject key2Value);
+    bool deleteByKey1(DBDefine* def);
+    bool deleteByKey1Key2(DBDefine* def, AnyObject key2Value);
+
     bool insert(OUT DBDefine* def);
     /*
      *	insert and record ,then execute query
@@ -45,6 +56,7 @@ public:
     bool insertAndQuery(const char* key, AnyObject keyvalue, OUT DBDefine* def);
 
     bool insertDefaultByGUID(const char* table, const char* guid);
+
 
     DBExecuter& executer();
 

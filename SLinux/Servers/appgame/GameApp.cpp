@@ -6,6 +6,8 @@
 #include "Config/TimeTable.h"
 #include "Config/Language.h"
 #include "GameSystems/GameControllers.h"
+#include "TableDefine/ItemDefine.h"
+#include "Config/ItemTable.h"
 
 GameApp::GameApp(int argc, char* argv[])
     : App(argc, argv)
@@ -42,9 +44,7 @@ bool GameApp::parseCommandLine()
 
 void GameApp::archive()
 {
-
 }
-
 bool GameApp::onInitializeEnd()
 {
     controllers_ = new GameControllers();
@@ -65,6 +65,7 @@ const vector<const DBTableDefine*>& GameApp::getTableDefines() const
     {
         &GameUserDefine::GetDefine(),
         &GameRoleDefine::GetDefine(),
+        &ItemDefine::GetDefine(),
     };
     return ret;
 }
@@ -72,6 +73,7 @@ const vector<const DBTableDefine*>& GameApp::getTableDefines() const
 bool GameApp::loadGameConfig()
 {
     TimeTable::getInstance()->reload();
+    ItemTable::getInstance()->reload();
     Language::getInstance()->reload();
     return true;
 }

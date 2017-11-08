@@ -26,10 +26,11 @@ void protobuf_ShutdownFile_Command_2eproto() {
   delete RetCreateRole::default_instance_;
   delete RTMainUser::default_instance_;
   delete RetTimeLine::default_instance_;
-  delete CObject::default_instance_;
+  delete ItemObject::default_instance_;
   delete RetObjectAdd::default_instance_;
   delete RetObjectSync::default_instance_;
   delete RetObjectDelete::default_instance_;
+  delete RetObjectMove::default_instance_;
   delete ReqUseObject::default_instance_;
   delete RetMessage::default_instance_;
 }
@@ -47,6 +48,7 @@ void protobuf_AddDesc_Command_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
 #endif
+  ::GameDefine::protobuf_AddDesc_GameDefine_2eproto();
   ReqAccountOperation::default_instance_ = new ReqAccountOperation();
   RetAccountOperation::default_instance_ = new RetAccountOperation();
   ReqLoginGameServer::default_instance_ = new ReqLoginGameServer();
@@ -56,10 +58,11 @@ void protobuf_AddDesc_Command_2eproto() {
   RetCreateRole::default_instance_ = new RetCreateRole();
   RTMainUser::default_instance_ = new RTMainUser();
   RetTimeLine::default_instance_ = new RetTimeLine();
-  CObject::default_instance_ = new CObject();
+  ItemObject::default_instance_ = new ItemObject();
   RetObjectAdd::default_instance_ = new RetObjectAdd();
   RetObjectSync::default_instance_ = new RetObjectSync();
   RetObjectDelete::default_instance_ = new RetObjectDelete();
+  RetObjectMove::default_instance_ = new RetObjectMove();
   ReqUseObject::default_instance_ = new ReqUseObject();
   RetMessage::default_instance_ = new RetMessage();
   ReqAccountOperation::default_instance_->InitAsDefaultInstance();
@@ -71,10 +74,11 @@ void protobuf_AddDesc_Command_2eproto() {
   RetCreateRole::default_instance_->InitAsDefaultInstance();
   RTMainUser::default_instance_->InitAsDefaultInstance();
   RetTimeLine::default_instance_->InitAsDefaultInstance();
-  CObject::default_instance_->InitAsDefaultInstance();
+  ItemObject::default_instance_->InitAsDefaultInstance();
   RetObjectAdd::default_instance_->InitAsDefaultInstance();
   RetObjectSync::default_instance_->InitAsDefaultInstance();
   RetObjectDelete::default_instance_->InitAsDefaultInstance();
+  RetObjectMove::default_instance_->InitAsDefaultInstance();
   ReqUseObject::default_instance_->InitAsDefaultInstance();
   RetMessage::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Command_2eproto);
@@ -4281,35 +4285,37 @@ void RetTimeLine::clear_totalseconds() {
 
 // ===================================================================
 
-static ::std::string* MutableUnknownFieldsForCObject(
-    CObject* ptr) {
+static ::std::string* MutableUnknownFieldsForItemObject(
+    ItemObject* ptr) {
   return ptr->mutable_unknown_fields();
 }
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int CObject::kDbIDFieldNumber;
-const int CObject::kItemidFieldNumber;
-const int CObject::kCountFieldNumber;
+const int ItemObject::kDbIDFieldNumber;
+const int ItemObject::kItemidFieldNumber;
+const int ItemObject::kCountFieldNumber;
+const int ItemObject::kCellFieldNumber;
+const int ItemObject::kPositionFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-CObject::CObject()
+ItemObject::ItemObject()
   : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Cmd.CObject)
+  // @@protoc_insertion_point(constructor:Cmd.ItemObject)
 }
 
-void CObject::InitAsDefaultInstance() {
+void ItemObject::InitAsDefaultInstance() {
 }
 
-CObject::CObject(const CObject& from)
+ItemObject::ItemObject(const ItemObject& from)
   : ::google::protobuf::MessageLite(),
     _arena_ptr_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:Cmd.CObject)
+  // @@protoc_insertion_point(copy_constructor:Cmd.ItemObject)
 }
 
-void CObject::SharedCtor() {
+void ItemObject::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   _unknown_fields_.UnsafeSetDefault(
@@ -4317,15 +4323,17 @@ void CObject::SharedCtor() {
   dbid_ = 0;
   itemid_ = 0;
   count_ = 0;
+  cell_ = 0;
+  position_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-CObject::~CObject() {
-  // @@protoc_insertion_point(destructor:Cmd.CObject)
+ItemObject::~ItemObject() {
+  // @@protoc_insertion_point(destructor:Cmd.ItemObject)
   SharedDtor();
 }
 
-void CObject::SharedDtor() {
+void ItemObject::SharedDtor() {
   _unknown_fields_.DestroyNoArena(
       &::google::protobuf::internal::GetEmptyStringAlreadyInited());
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
@@ -4336,12 +4344,12 @@ void CObject::SharedDtor() {
   }
 }
 
-void CObject::SetCachedSize(int size) const {
+void ItemObject::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const CObject& CObject::default_instance() {
+const ItemObject& ItemObject::default_instance() {
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   protobuf_AddDesc_Command_2eproto();
 #else
@@ -4350,27 +4358,27 @@ const CObject& CObject::default_instance() {
   return *default_instance_;
 }
 
-CObject* CObject::default_instance_ = NULL;
+ItemObject* ItemObject::default_instance_ = NULL;
 
-CObject* CObject::New(::google::protobuf::Arena* arena) const {
-  CObject* n = new CObject;
+ItemObject* ItemObject::New(::google::protobuf::Arena* arena) const {
+  ItemObject* n = new ItemObject;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void CObject::Clear() {
-// @@protoc_insertion_point(message_clear_start:Cmd.CObject)
+void ItemObject::Clear() {
+// @@protoc_insertion_point(message_clear_start:Cmd.ItemObject)
 #if defined(__clang__)
 #define ZR_HELPER_(f) \
   _Pragma("clang diagnostic push") \
   _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
-  __builtin_offsetof(CObject, f) \
+  __builtin_offsetof(ItemObject, f) \
   _Pragma("clang diagnostic pop")
 #else
 #define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<CObject*>(16)->f)
+  &reinterpret_cast<ItemObject*>(16)->f)
 #endif
 
 #define ZR_(first, last) do {\
@@ -4378,7 +4386,9 @@ void CObject::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  ZR_(dbid_, count_);
+  if (_has_bits_[0 / 32] & 31u) {
+    ZR_(dbid_, position_);
+  }
 
 #undef ZR_HELPER_
 #undef ZR_
@@ -4388,16 +4398,16 @@ void CObject::Clear() {
       &::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
-bool CObject::MergePartialFromCodedStream(
+bool ItemObject::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
   ::google::protobuf::io::LazyStringOutputStream unknown_fields_string(
       ::google::protobuf::internal::NewPermanentCallback(
-          &MutableUnknownFieldsForCObject, this));
+          &MutableUnknownFieldsForItemObject, this));
   ::google::protobuf::io::CodedOutputStream unknown_fields_stream(
       &unknown_fields_string, false);
-  // @@protoc_insertion_point(parse_start:Cmd.CObject)
+  // @@protoc_insertion_point(parse_start:Cmd.ItemObject)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -4443,6 +4453,42 @@ bool CObject::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(32)) goto parse_cell;
+        break;
+      }
+
+      // optional .GameDefine.ObjectCellType cell = 4 [default = ObjectCellType_None];
+      case 4: {
+        if (tag == 32) {
+         parse_cell:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::GameDefine::ObjectCellType_IsValid(value)) {
+            set_cell(static_cast< ::GameDefine::ObjectCellType >(value));
+          } else {
+            unknown_fields_stream.WriteVarint32(32);
+            unknown_fields_stream.WriteVarint32(value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(40)) goto parse_position;
+        break;
+      }
+
+      // optional int32 position = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_position:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &position_)));
+          set_has_position();
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -4461,17 +4507,17 @@ bool CObject::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Cmd.CObject)
+  // @@protoc_insertion_point(parse_success:Cmd.ItemObject)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Cmd.CObject)
+  // @@protoc_insertion_point(parse_failure:Cmd.ItemObject)
   return false;
 #undef DO_
 }
 
-void CObject::SerializeWithCachedSizes(
+void ItemObject::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Cmd.CObject)
+  // @@protoc_insertion_point(serialize_start:Cmd.ItemObject)
   // optional int32 dbID = 1;
   if (has_dbid()) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->dbid(), output);
@@ -4487,16 +4533,27 @@ void CObject::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->count(), output);
   }
 
+  // optional .GameDefine.ObjectCellType cell = 4 [default = ObjectCellType_None];
+  if (has_cell()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      4, this->cell(), output);
+  }
+
+  // optional int32 position = 5;
+  if (has_position()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->position(), output);
+  }
+
   output->WriteRaw(unknown_fields().data(),
                    static_cast<int>(unknown_fields().size()));
-  // @@protoc_insertion_point(serialize_end:Cmd.CObject)
+  // @@protoc_insertion_point(serialize_end:Cmd.ItemObject)
 }
 
-int CObject::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:Cmd.CObject)
+int ItemObject::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:Cmd.ItemObject)
   int total_size = 0;
 
-  if (_has_bits_[0 / 32] & 7u) {
+  if (_has_bits_[0 / 32] & 31u) {
     // optional int32 dbID = 1;
     if (has_dbid()) {
       total_size += 1 +
@@ -4518,6 +4575,19 @@ int CObject::ByteSize() const {
           this->count());
     }
 
+    // optional .GameDefine.ObjectCellType cell = 4 [default = ObjectCellType_None];
+    if (has_cell()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->cell());
+    }
+
+    // optional int32 position = 5;
+    if (has_position()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->position());
+    }
+
   }
   total_size += unknown_fields().size();
 
@@ -4527,13 +4597,13 @@ int CObject::ByteSize() const {
   return total_size;
 }
 
-void CObject::CheckTypeAndMergeFrom(
+void ItemObject::CheckTypeAndMergeFrom(
     const ::google::protobuf::MessageLite& from) {
-  MergeFrom(*::google::protobuf::down_cast<const CObject*>(&from));
+  MergeFrom(*::google::protobuf::down_cast<const ItemObject*>(&from));
 }
 
-void CObject::MergeFrom(const CObject& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Cmd.CObject)
+void ItemObject::MergeFrom(const ItemObject& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Cmd.ItemObject)
   if (GOOGLE_PREDICT_FALSE(&from == this)) {
     ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
   }
@@ -4547,114 +4617,171 @@ void CObject::MergeFrom(const CObject& from) {
     if (from.has_count()) {
       set_count(from.count());
     }
+    if (from.has_cell()) {
+      set_cell(from.cell());
+    }
+    if (from.has_position()) {
+      set_position(from.position());
+    }
   }
   if (!from.unknown_fields().empty()) {
     mutable_unknown_fields()->append(from.unknown_fields());
   }
 }
 
-void CObject::CopyFrom(const CObject& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Cmd.CObject)
+void ItemObject::CopyFrom(const ItemObject& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Cmd.ItemObject)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool CObject::IsInitialized() const {
+bool ItemObject::IsInitialized() const {
 
   return true;
 }
 
-void CObject::Swap(CObject* other) {
+void ItemObject::Swap(ItemObject* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void CObject::InternalSwap(CObject* other) {
+void ItemObject::InternalSwap(ItemObject* other) {
   std::swap(dbid_, other->dbid_);
   std::swap(itemid_, other->itemid_);
   std::swap(count_, other->count_);
+  std::swap(cell_, other->cell_);
+  std::swap(position_, other->position_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _unknown_fields_.Swap(&other->_unknown_fields_);
   std::swap(_cached_size_, other->_cached_size_);
 }
 
-::std::string CObject::GetTypeName() const {
-  return "Cmd.CObject";
+::std::string ItemObject::GetTypeName() const {
+  return "Cmd.ItemObject";
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
-// CObject
+// ItemObject
 
 // optional int32 dbID = 1;
-bool CObject::has_dbid() const {
+bool ItemObject::has_dbid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-void CObject::set_has_dbid() {
+void ItemObject::set_has_dbid() {
   _has_bits_[0] |= 0x00000001u;
 }
-void CObject::clear_has_dbid() {
+void ItemObject::clear_has_dbid() {
   _has_bits_[0] &= ~0x00000001u;
 }
-void CObject::clear_dbid() {
+void ItemObject::clear_dbid() {
   dbid_ = 0;
   clear_has_dbid();
 }
- ::google::protobuf::int32 CObject::dbid() const {
-  // @@protoc_insertion_point(field_get:Cmd.CObject.dbID)
+ ::google::protobuf::int32 ItemObject::dbid() const {
+  // @@protoc_insertion_point(field_get:Cmd.ItemObject.dbID)
   return dbid_;
 }
- void CObject::set_dbid(::google::protobuf::int32 value) {
+ void ItemObject::set_dbid(::google::protobuf::int32 value) {
   set_has_dbid();
   dbid_ = value;
-  // @@protoc_insertion_point(field_set:Cmd.CObject.dbID)
+  // @@protoc_insertion_point(field_set:Cmd.ItemObject.dbID)
 }
 
 // optional int32 itemid = 2;
-bool CObject::has_itemid() const {
+bool ItemObject::has_itemid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-void CObject::set_has_itemid() {
+void ItemObject::set_has_itemid() {
   _has_bits_[0] |= 0x00000002u;
 }
-void CObject::clear_has_itemid() {
+void ItemObject::clear_has_itemid() {
   _has_bits_[0] &= ~0x00000002u;
 }
-void CObject::clear_itemid() {
+void ItemObject::clear_itemid() {
   itemid_ = 0;
   clear_has_itemid();
 }
- ::google::protobuf::int32 CObject::itemid() const {
-  // @@protoc_insertion_point(field_get:Cmd.CObject.itemid)
+ ::google::protobuf::int32 ItemObject::itemid() const {
+  // @@protoc_insertion_point(field_get:Cmd.ItemObject.itemid)
   return itemid_;
 }
- void CObject::set_itemid(::google::protobuf::int32 value) {
+ void ItemObject::set_itemid(::google::protobuf::int32 value) {
   set_has_itemid();
   itemid_ = value;
-  // @@protoc_insertion_point(field_set:Cmd.CObject.itemid)
+  // @@protoc_insertion_point(field_set:Cmd.ItemObject.itemid)
 }
 
 // optional int32 count = 3;
-bool CObject::has_count() const {
+bool ItemObject::has_count() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-void CObject::set_has_count() {
+void ItemObject::set_has_count() {
   _has_bits_[0] |= 0x00000004u;
 }
-void CObject::clear_has_count() {
+void ItemObject::clear_has_count() {
   _has_bits_[0] &= ~0x00000004u;
 }
-void CObject::clear_count() {
+void ItemObject::clear_count() {
   count_ = 0;
   clear_has_count();
 }
- ::google::protobuf::int32 CObject::count() const {
-  // @@protoc_insertion_point(field_get:Cmd.CObject.count)
+ ::google::protobuf::int32 ItemObject::count() const {
+  // @@protoc_insertion_point(field_get:Cmd.ItemObject.count)
   return count_;
 }
- void CObject::set_count(::google::protobuf::int32 value) {
+ void ItemObject::set_count(::google::protobuf::int32 value) {
   set_has_count();
   count_ = value;
-  // @@protoc_insertion_point(field_set:Cmd.CObject.count)
+  // @@protoc_insertion_point(field_set:Cmd.ItemObject.count)
+}
+
+// optional .GameDefine.ObjectCellType cell = 4 [default = ObjectCellType_None];
+bool ItemObject::has_cell() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+void ItemObject::set_has_cell() {
+  _has_bits_[0] |= 0x00000008u;
+}
+void ItemObject::clear_has_cell() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+void ItemObject::clear_cell() {
+  cell_ = 0;
+  clear_has_cell();
+}
+ ::GameDefine::ObjectCellType ItemObject::cell() const {
+  // @@protoc_insertion_point(field_get:Cmd.ItemObject.cell)
+  return static_cast< ::GameDefine::ObjectCellType >(cell_);
+}
+ void ItemObject::set_cell(::GameDefine::ObjectCellType value) {
+  assert(::GameDefine::ObjectCellType_IsValid(value));
+  set_has_cell();
+  cell_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.ItemObject.cell)
+}
+
+// optional int32 position = 5;
+bool ItemObject::has_position() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+void ItemObject::set_has_position() {
+  _has_bits_[0] |= 0x00000010u;
+}
+void ItemObject::clear_has_position() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+void ItemObject::clear_position() {
+  position_ = 0;
+  clear_has_position();
+}
+ ::google::protobuf::int32 ItemObject::position() const {
+  // @@protoc_insertion_point(field_get:Cmd.ItemObject.position)
+  return position_;
+}
+ void ItemObject::set_position(::google::protobuf::int32 value) {
+  set_has_position();
+  position_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.ItemObject.position)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -4758,7 +4885,7 @@ bool RetObjectAdd::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .Cmd.CObject objects = 1;
+      // repeated .Cmd.ItemObject objects = 1;
       case 1: {
         if (tag == 10) {
           DO_(input->IncrementRecursionDepth());
@@ -4799,7 +4926,7 @@ failure:
 void RetObjectAdd::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:Cmd.RetObjectAdd)
-  // repeated .Cmd.CObject objects = 1;
+  // repeated .Cmd.ItemObject objects = 1;
   for (unsigned int i = 0, n = this->objects_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessage(
       1, this->objects(i), output);
@@ -4814,7 +4941,7 @@ int RetObjectAdd::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:Cmd.RetObjectAdd)
   int total_size = 0;
 
-  // repeated .Cmd.CObject objects = 1;
+  // repeated .Cmd.ItemObject objects = 1;
   total_size += 1 * this->objects_size();
   for (int i = 0; i < this->objects_size(); i++) {
     total_size +=
@@ -4876,31 +5003,31 @@ void RetObjectAdd::InternalSwap(RetObjectAdd* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // RetObjectAdd
 
-// repeated .Cmd.CObject objects = 1;
+// repeated .Cmd.ItemObject objects = 1;
 int RetObjectAdd::objects_size() const {
   return objects_.size();
 }
 void RetObjectAdd::clear_objects() {
   objects_.Clear();
 }
-const ::Cmd::CObject& RetObjectAdd::objects(int index) const {
+const ::Cmd::ItemObject& RetObjectAdd::objects(int index) const {
   // @@protoc_insertion_point(field_get:Cmd.RetObjectAdd.objects)
   return objects_.Get(index);
 }
-::Cmd::CObject* RetObjectAdd::mutable_objects(int index) {
+::Cmd::ItemObject* RetObjectAdd::mutable_objects(int index) {
   // @@protoc_insertion_point(field_mutable:Cmd.RetObjectAdd.objects)
   return objects_.Mutable(index);
 }
-::Cmd::CObject* RetObjectAdd::add_objects() {
+::Cmd::ItemObject* RetObjectAdd::add_objects() {
   // @@protoc_insertion_point(field_add:Cmd.RetObjectAdd.objects)
   return objects_.Add();
 }
-::google::protobuf::RepeatedPtrField< ::Cmd::CObject >*
+::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject >*
 RetObjectAdd::mutable_objects() {
   // @@protoc_insertion_point(field_mutable_list:Cmd.RetObjectAdd.objects)
   return &objects_;
 }
-const ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >&
+const ::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject >&
 RetObjectAdd::objects() const {
   // @@protoc_insertion_point(field_list:Cmd.RetObjectAdd.objects)
   return objects_;
@@ -5007,7 +5134,7 @@ bool RetObjectSync::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .Cmd.CObject objects = 1;
+      // repeated .Cmd.ItemObject objects = 1;
       case 1: {
         if (tag == 10) {
           DO_(input->IncrementRecursionDepth());
@@ -5048,7 +5175,7 @@ failure:
 void RetObjectSync::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:Cmd.RetObjectSync)
-  // repeated .Cmd.CObject objects = 1;
+  // repeated .Cmd.ItemObject objects = 1;
   for (unsigned int i = 0, n = this->objects_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessage(
       1, this->objects(i), output);
@@ -5063,7 +5190,7 @@ int RetObjectSync::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:Cmd.RetObjectSync)
   int total_size = 0;
 
-  // repeated .Cmd.CObject objects = 1;
+  // repeated .Cmd.ItemObject objects = 1;
   total_size += 1 * this->objects_size();
   for (int i = 0; i < this->objects_size(); i++) {
     total_size +=
@@ -5125,31 +5252,31 @@ void RetObjectSync::InternalSwap(RetObjectSync* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // RetObjectSync
 
-// repeated .Cmd.CObject objects = 1;
+// repeated .Cmd.ItemObject objects = 1;
 int RetObjectSync::objects_size() const {
   return objects_.size();
 }
 void RetObjectSync::clear_objects() {
   objects_.Clear();
 }
-const ::Cmd::CObject& RetObjectSync::objects(int index) const {
+const ::Cmd::ItemObject& RetObjectSync::objects(int index) const {
   // @@protoc_insertion_point(field_get:Cmd.RetObjectSync.objects)
   return objects_.Get(index);
 }
-::Cmd::CObject* RetObjectSync::mutable_objects(int index) {
+::Cmd::ItemObject* RetObjectSync::mutable_objects(int index) {
   // @@protoc_insertion_point(field_mutable:Cmd.RetObjectSync.objects)
   return objects_.Mutable(index);
 }
-::Cmd::CObject* RetObjectSync::add_objects() {
+::Cmd::ItemObject* RetObjectSync::add_objects() {
   // @@protoc_insertion_point(field_add:Cmd.RetObjectSync.objects)
   return objects_.Add();
 }
-::google::protobuf::RepeatedPtrField< ::Cmd::CObject >*
+::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject >*
 RetObjectSync::mutable_objects() {
   // @@protoc_insertion_point(field_mutable_list:Cmd.RetObjectSync.objects)
   return &objects_;
 }
-const ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >&
+const ::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject >&
 RetObjectSync::objects() const {
   // @@protoc_insertion_point(field_list:Cmd.RetObjectSync.objects)
   return objects_;
@@ -5407,6 +5534,393 @@ RetObjectDelete::objects() const {
 RetObjectDelete::mutable_objects() {
   // @@protoc_insertion_point(field_mutable_list:Cmd.RetObjectDelete.objects)
   return &objects_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+static ::std::string* MutableUnknownFieldsForRetObjectMove(
+    RetObjectMove* ptr) {
+  return ptr->mutable_unknown_fields();
+}
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int RetObjectMove::kDbIDFieldNumber;
+const int RetObjectMove::kCellFieldNumber;
+const int RetObjectMove::kPositionFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+RetObjectMove::RetObjectMove()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Cmd.RetObjectMove)
+}
+
+void RetObjectMove::InitAsDefaultInstance() {
+}
+
+RetObjectMove::RetObjectMove(const RetObjectMove& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:Cmd.RetObjectMove)
+}
+
+void RetObjectMove::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  _unknown_fields_.UnsafeSetDefault(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  dbid_ = 0;
+  cell_ = 0;
+  position_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+RetObjectMove::~RetObjectMove() {
+  // @@protoc_insertion_point(destructor:Cmd.RetObjectMove)
+  SharedDtor();
+}
+
+void RetObjectMove::SharedDtor() {
+  _unknown_fields_.DestroyNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+  }
+}
+
+void RetObjectMove::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const RetObjectMove& RetObjectMove::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_Command_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_Command_2eproto();
+#endif
+  return *default_instance_;
+}
+
+RetObjectMove* RetObjectMove::default_instance_ = NULL;
+
+RetObjectMove* RetObjectMove::New(::google::protobuf::Arena* arena) const {
+  RetObjectMove* n = new RetObjectMove;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void RetObjectMove::Clear() {
+// @@protoc_insertion_point(message_clear_start:Cmd.RetObjectMove)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(RetObjectMove, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<RetObjectMove*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(dbid_, position_);
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  _unknown_fields_.ClearToEmptyNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+bool RetObjectMove::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  ::google::protobuf::io::LazyStringOutputStream unknown_fields_string(
+      ::google::protobuf::internal::NewPermanentCallback(
+          &MutableUnknownFieldsForRetObjectMove, this));
+  ::google::protobuf::io::CodedOutputStream unknown_fields_stream(
+      &unknown_fields_string, false);
+  // @@protoc_insertion_point(parse_start:Cmd.RetObjectMove)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional int32 dbID = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &dbid_)));
+          set_has_dbid();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_cell;
+        break;
+      }
+
+      // optional .GameDefine.ObjectCellType cell = 2 [default = ObjectCellType_None];
+      case 2: {
+        if (tag == 16) {
+         parse_cell:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::GameDefine::ObjectCellType_IsValid(value)) {
+            set_cell(static_cast< ::GameDefine::ObjectCellType >(value));
+          } else {
+            unknown_fields_stream.WriteVarint32(16);
+            unknown_fields_stream.WriteVarint32(value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_position;
+        break;
+      }
+
+      // optional int32 position = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_position:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &position_)));
+          set_has_position();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(
+            input, tag, &unknown_fields_stream));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Cmd.RetObjectMove)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Cmd.RetObjectMove)
+  return false;
+#undef DO_
+}
+
+void RetObjectMove::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Cmd.RetObjectMove)
+  // optional int32 dbID = 1;
+  if (has_dbid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->dbid(), output);
+  }
+
+  // optional .GameDefine.ObjectCellType cell = 2 [default = ObjectCellType_None];
+  if (has_cell()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->cell(), output);
+  }
+
+  // optional int32 position = 3;
+  if (has_position()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->position(), output);
+  }
+
+  output->WriteRaw(unknown_fields().data(),
+                   static_cast<int>(unknown_fields().size()));
+  // @@protoc_insertion_point(serialize_end:Cmd.RetObjectMove)
+}
+
+int RetObjectMove::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:Cmd.RetObjectMove)
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & 7u) {
+    // optional int32 dbID = 1;
+    if (has_dbid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->dbid());
+    }
+
+    // optional .GameDefine.ObjectCellType cell = 2 [default = ObjectCellType_None];
+    if (has_cell()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->cell());
+    }
+
+    // optional int32 position = 3;
+    if (has_position()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->position());
+    }
+
+  }
+  total_size += unknown_fields().size();
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void RetObjectMove::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const RetObjectMove*>(&from));
+}
+
+void RetObjectMove::MergeFrom(const RetObjectMove& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Cmd.RetObjectMove)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_dbid()) {
+      set_dbid(from.dbid());
+    }
+    if (from.has_cell()) {
+      set_cell(from.cell());
+    }
+    if (from.has_position()) {
+      set_position(from.position());
+    }
+  }
+  if (!from.unknown_fields().empty()) {
+    mutable_unknown_fields()->append(from.unknown_fields());
+  }
+}
+
+void RetObjectMove::CopyFrom(const RetObjectMove& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Cmd.RetObjectMove)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RetObjectMove::IsInitialized() const {
+
+  return true;
+}
+
+void RetObjectMove::Swap(RetObjectMove* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void RetObjectMove::InternalSwap(RetObjectMove* other) {
+  std::swap(dbid_, other->dbid_);
+  std::swap(cell_, other->cell_);
+  std::swap(position_, other->position_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string RetObjectMove::GetTypeName() const {
+  return "Cmd.RetObjectMove";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// RetObjectMove
+
+// optional int32 dbID = 1;
+bool RetObjectMove::has_dbid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void RetObjectMove::set_has_dbid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void RetObjectMove::clear_has_dbid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void RetObjectMove::clear_dbid() {
+  dbid_ = 0;
+  clear_has_dbid();
+}
+ ::google::protobuf::int32 RetObjectMove::dbid() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetObjectMove.dbID)
+  return dbid_;
+}
+ void RetObjectMove::set_dbid(::google::protobuf::int32 value) {
+  set_has_dbid();
+  dbid_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.RetObjectMove.dbID)
+}
+
+// optional .GameDefine.ObjectCellType cell = 2 [default = ObjectCellType_None];
+bool RetObjectMove::has_cell() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+void RetObjectMove::set_has_cell() {
+  _has_bits_[0] |= 0x00000002u;
+}
+void RetObjectMove::clear_has_cell() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+void RetObjectMove::clear_cell() {
+  cell_ = 0;
+  clear_has_cell();
+}
+ ::GameDefine::ObjectCellType RetObjectMove::cell() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetObjectMove.cell)
+  return static_cast< ::GameDefine::ObjectCellType >(cell_);
+}
+ void RetObjectMove::set_cell(::GameDefine::ObjectCellType value) {
+  assert(::GameDefine::ObjectCellType_IsValid(value));
+  set_has_cell();
+  cell_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.RetObjectMove.cell)
+}
+
+// optional int32 position = 3;
+bool RetObjectMove::has_position() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+void RetObjectMove::set_has_position() {
+  _has_bits_[0] |= 0x00000004u;
+}
+void RetObjectMove::clear_has_position() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+void RetObjectMove::clear_position() {
+  position_ = 0;
+  clear_has_position();
+}
+ ::google::protobuf::int32 RetObjectMove::position() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetObjectMove.position)
+  return position_;
+}
+ void RetObjectMove::set_position(::google::protobuf::int32 value) {
+  set_has_position();
+  position_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.RetObjectMove.position)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

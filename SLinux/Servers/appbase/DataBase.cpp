@@ -21,17 +21,11 @@ bool DataBase::initialize(const DBConfig& config)
 {
     if (!executer_->initialize(config))
         return false;
-
     executer_->use(config.dbName.c_str());
-
     fetchTables();
-
     checkDefineToCreateTables.invoke(executer_);
-
     //Data::MySQL::Connector::registerConnector();
-
     //generateConnectString();
-
     //try
     //{
     //	_pSession = new Session(MySQL::Connector::KEY, _dbConnString);
@@ -43,8 +37,6 @@ bool DataBase::initialize(const DBConfig& config)
     //	if (!createDB)
     //		return false;
     //}
-
-
     return true;
 }
 
@@ -97,7 +89,6 @@ void DataBase::make_alter_columns(const vector<string>& source, const vector<str
 {
     remove_columns.clear();
     add_columns.clear();
-
     auto finder = [](const vector<string>& arr, size_t start, string text)
     {
         size_t ret = -1;
@@ -111,7 +102,6 @@ void DataBase::make_alter_columns(const vector<string>& source, const vector<str
         }
         return ret;
     };
-
     for (size_t i = 0, start = 0; i < dest.size(); ++i)
     {
         auto cur = dest[i];
@@ -126,7 +116,6 @@ void DataBase::make_alter_columns(const vector<string>& source, const vector<str
             ++start;
         }
     }
-
     for (size_t i = 0, start = 0; i < source.size(); ++i)
     {
         auto cur = source[i];
@@ -179,18 +168,14 @@ void DataBase::checkForAlterTableColumns(const DBTableDefine* def)
     assert(def);
     DBTable* table = getTable(def->tableName());
     assert(table);
-
     vector<string> remove_columns;
     vector<tuple<string, string>> add_columns;
     vector<string> currentColumns;
     for (auto it : def->columns())
         currentColumns.push_back(it.name);
-
     this->make_alter_columns(table->columns(), currentColumns, remove_columns, add_columns);
-
     vector<string> cmds;
     this->make_alter_cmds(remove_columns, add_columns, def, cmds);
-
     for (auto it : cmds)
     {
         executer_->queryBegin(it.c_str());
@@ -258,17 +243,61 @@ bool DataBase::pull(const char* key, AnyObject keyvalue, OUT DBDefine* def)
     return ret;
 }
 
-bool DataBase::commit(AnyObject keyvalue, OUT DBDefine* def)
+bool DataBase::pullByPrimaryKey(const DBTableDefine& def, AnyObject keyvalue, Creator creator, OUT std::list<DBDefine*>& ret)
 {
-    return false;
+    ret.clear();
+    stringstream ss;
+    if (keyvalue.isString())
+        ss << "SELECT * FROM " << def.tableName() << " WHERE " << def.key() << " = '" << keyvalue.get<string>()->c_str() << "'";
+    else
+        ss << "SELECT * FROM " << def.tableName() << " WHERE " << def.key() << " = " << keyvalue.toString();
+    executer_->queryBegin(ss.str().c_str());
+    std::vector<std::vector<string>> records;
+    auto state = executer_->queryEnd(records);
+    if (state)
+    {
+        for (auto& it : records)
+        {
+            auto def = creator();
+            def->set(it);
+            def->deserialize();
+            ret.push_back(def);
+        }
+    }
+    return state;
 }
 
-bool DataBase::commit(OUT DBDefine* def)
+
+bool DataBase::commitByKey1(DBDefine* def)
 {
-    stringstream ssupdate;
-    def->serializeForUpdate(ssupdate);
+    deleteByKey1(def);
+    return insert(def);
+}
+
+
+bool DataBase::commitByKey1Key2(DBDefine* def, AnyObject key2Value)
+{
+    deleteByKey1Key2(def, key2Value);
+    return insert(def);
+}
+
+bool DataBase::deleteByKey1(DBDefine* def)
+{
+    assert(def->key2() == nullptr);
     stringstream cmd;
-    cmd << "UPDATE " << def->table() << " SET " << ssupdate.str() << "WHERE id=" << def->id << ";";
+    cmd << "DELETE FROM  " << def->table() << " WHERE id=" << def->id << ";";
+    executer_->queryBegin(cmd.str().c_str());
+    return executer_->queryEnd();
+}
+
+bool DataBase::deleteByKey1Key2(DBDefine* def, AnyObject key2Value)
+{
+    assert(def->key2() != nullptr);
+    stringstream cmd;
+    if (key2Value.isString())
+        cmd << "DELETE FROM  " << def->table() << " WHERE id=" << def->id << " AND " << def->key2() << "='" << key2Value.get<string>()->c_str() << "';";
+    else
+        cmd << "DELETE FROM  " << def->table() << " WHERE id=" << def->id << " AND " << def->key2() << "=" << key2Value.toString() << ";";
     executer_->queryBegin(cmd.str().c_str());
     return executer_->queryEnd();
 }
@@ -310,7 +339,6 @@ bool DataBase::insertDefaultByGUID(const char* table, const char* guid)
     assert(guid);
     assert(strlen(table));
     assert(strlen(guid));
-
     stringstream sm;
     sm << "INSERT INTO " << table << "(guid) VALUES (" << guid << ");";
     executer_->queryBegin(sm.str().c_str());
@@ -361,11 +389,9 @@ void DataBase::generateConnectString()
 void DataBase::fetchTables()
 {
     dSafeDeleteMap2(tables_);
-
     stringstream sm;
     sm << "show tables;";
     executer_->queryBegin(sm.str().c_str());
-
     vector<vector<string>> tableNames;
     if (!executer_->queryEnd(tableNames))
     {
@@ -413,7 +439,6 @@ void DataBase::bareboneMySQLTest(const char* host, const char* user, const char*
 {
     //bareboneMySQLTest(mConfig.host.c_str(), mConfig.user.c_str(), mConfig.password.c_str(), mConfig.dbName.c_str()
     //	, mConfig.port, "create table account;");
-
     /*int rc;
     MYSQL* hsession = mysql_init(0);
     assert(hsession != 0);

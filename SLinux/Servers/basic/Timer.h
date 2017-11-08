@@ -13,16 +13,16 @@ namespace Basic
         ~Timer();
         void cancel(bool raise = false);
         int64_t nextHitTicks() const;
-        int64_t intervalMicroseconds() const;
-        int64_t leftMicroseconds() const;
+        int64_t intervalMillseconds() const;
+        int64_t leftMillseconds() const;
         int leftSeconds() const;
-        std::chrono::microseconds life() const;
+        std::chrono::milliseconds life() const;
     private:
         Timer();
-        std::function<void(Timer*)> onTimer_;
-        std::function<void(Timer*)> onEnd_;
-        std::chrono::microseconds life_;
-        std::chrono::microseconds interval_;
+        callback onTimer_;
+        callback onEnd_;
+        int64_t lifeMillseconds_;
+        int64_t intervalMillseconds_;
         int64_t nextHitTicks_;
         int64_t leftTruns_;
         int position_;
@@ -32,9 +32,9 @@ namespace Basic
     {
         return this->position_;
     }
-    inline int64_t Timer::intervalMicroseconds() const
+    inline int64_t Timer::intervalMillseconds() const
     {
-        return this->interval_.count();
+        return this->intervalMillseconds_;
     }
 }
 

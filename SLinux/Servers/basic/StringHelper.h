@@ -117,7 +117,7 @@ namespace Basic
 
     inline void StringHelper::setValue(const char* val, char* var)
     {
-        *var = val[0];
+        *var = (s8)std::stoi(val);
     }
 
     inline void StringHelper::setValue(const char* val, u8* var)

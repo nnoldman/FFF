@@ -26,6 +26,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_enum_util.h>
+#include "GameDefine.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace Cmd {
@@ -35,8 +36,8 @@ void protobuf_AddDesc_Command_2eproto();
 void protobuf_AssignDesc_Command_2eproto();
 void protobuf_ShutdownFile_Command_2eproto();
 
-class CObject;
 class GameRole;
+class ItemObject;
 class RTMainUser;
 class ReqAccountOperation;
 class ReqCreateRole;
@@ -48,6 +49,7 @@ class RetLoginGameServer;
 class RetMessage;
 class RetObjectAdd;
 class RetObjectDelete;
+class RetObjectMove;
 class RetObjectSync;
 class RetTimeLine;
 
@@ -1353,14 +1355,14 @@ class RetTimeLine : public ::google::protobuf::MessageLite /* @@protoc_insertion
 };
 // -------------------------------------------------------------------
 
-class CObject : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Cmd.CObject) */ {
+class ItemObject : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Cmd.ItemObject) */ {
  public:
-  CObject();
-  virtual ~CObject();
+  ItemObject();
+  virtual ~ItemObject();
 
-  CObject(const CObject& from);
+  ItemObject(const ItemObject& from);
 
-  inline CObject& operator=(const CObject& from) {
+  inline ItemObject& operator=(const ItemObject& from) {
     CopyFrom(from);
     return *this;
   }
@@ -1375,28 +1377,28 @@ class CObject : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
         &::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
 
-  static const CObject& default_instance();
+  static const ItemObject& default_instance();
 
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   // Returns the internal default instance pointer. This function can
   // return NULL thus should not be used by the user. This is intended
   // for Protobuf internal code. Please use default_instance() declared
   // above instead.
-  static inline const CObject* internal_default_instance() {
+  static inline const ItemObject* internal_default_instance() {
     return default_instance_;
   }
   #endif
 
-  void Swap(CObject* other);
+  void Swap(ItemObject* other);
 
   // implements Message ----------------------------------------------
 
-  inline CObject* New() const { return New(NULL); }
+  inline ItemObject* New() const { return New(NULL); }
 
-  CObject* New(::google::protobuf::Arena* arena) const;
+  ItemObject* New(::google::protobuf::Arena* arena) const;
   void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
-  void CopyFrom(const CObject& from);
-  void MergeFrom(const CObject& from);
+  void CopyFrom(const ItemObject& from);
+  void MergeFrom(const ItemObject& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -1411,7 +1413,7 @@ class CObject : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const;
-  void InternalSwap(CObject* other);
+  void InternalSwap(ItemObject* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return _arena_ptr_;
@@ -1448,7 +1450,21 @@ class CObject : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
   ::google::protobuf::int32 count() const;
   void set_count(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:Cmd.CObject)
+  // optional .GameDefine.ObjectCellType cell = 4 [default = ObjectCellType_None];
+  bool has_cell() const;
+  void clear_cell();
+  static const int kCellFieldNumber = 4;
+  ::GameDefine::ObjectCellType cell() const;
+  void set_cell(::GameDefine::ObjectCellType value);
+
+  // optional int32 position = 5;
+  bool has_position() const;
+  void clear_position();
+  static const int kPositionFieldNumber = 5;
+  ::google::protobuf::int32 position() const;
+  void set_position(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:Cmd.ItemObject)
  private:
   inline void set_has_dbid();
   inline void clear_has_dbid();
@@ -1456,6 +1472,10 @@ class CObject : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
   inline void clear_has_itemid();
   inline void set_has_count();
   inline void clear_has_count();
+  inline void set_has_cell();
+  inline void clear_has_cell();
+  inline void set_has_position();
+  inline void clear_has_position();
 
   ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
   ::google::protobuf::Arena* _arena_ptr_;
@@ -1465,6 +1485,8 @@ class CObject : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
   ::google::protobuf::int32 dbid_;
   ::google::protobuf::int32 itemid_;
   ::google::protobuf::int32 count_;
+  int cell_;
+  ::google::protobuf::int32 position_;
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   friend void  protobuf_AddDesc_Command_2eproto_impl();
   #else
@@ -1474,7 +1496,7 @@ class CObject : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
   friend void protobuf_ShutdownFile_Command_2eproto();
 
   void InitAsDefaultInstance();
-  static CObject* default_instance_;
+  static ItemObject* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -1552,16 +1574,16 @@ class RetObjectAdd : public ::google::protobuf::MessageLite /* @@protoc_insertio
 
   // accessors -------------------------------------------------------
 
-  // repeated .Cmd.CObject objects = 1;
+  // repeated .Cmd.ItemObject objects = 1;
   int objects_size() const;
   void clear_objects();
   static const int kObjectsFieldNumber = 1;
-  const ::Cmd::CObject& objects(int index) const;
-  ::Cmd::CObject* mutable_objects(int index);
-  ::Cmd::CObject* add_objects();
-  ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >*
+  const ::Cmd::ItemObject& objects(int index) const;
+  ::Cmd::ItemObject* mutable_objects(int index);
+  ::Cmd::ItemObject* add_objects();
+  ::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject >*
       mutable_objects();
-  const ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >&
+  const ::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject >&
       objects() const;
 
   // @@protoc_insertion_point(class_scope:Cmd.RetObjectAdd)
@@ -1572,7 +1594,7 @@ class RetObjectAdd : public ::google::protobuf::MessageLite /* @@protoc_insertio
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::Cmd::CObject > objects_;
+  ::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject > objects_;
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   friend void  protobuf_AddDesc_Command_2eproto_impl();
   #else
@@ -1660,16 +1682,16 @@ class RetObjectSync : public ::google::protobuf::MessageLite /* @@protoc_inserti
 
   // accessors -------------------------------------------------------
 
-  // repeated .Cmd.CObject objects = 1;
+  // repeated .Cmd.ItemObject objects = 1;
   int objects_size() const;
   void clear_objects();
   static const int kObjectsFieldNumber = 1;
-  const ::Cmd::CObject& objects(int index) const;
-  ::Cmd::CObject* mutable_objects(int index);
-  ::Cmd::CObject* add_objects();
-  ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >*
+  const ::Cmd::ItemObject& objects(int index) const;
+  ::Cmd::ItemObject* mutable_objects(int index);
+  ::Cmd::ItemObject* add_objects();
+  ::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject >*
       mutable_objects();
-  const ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >&
+  const ::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject >&
       objects() const;
 
   // @@protoc_insertion_point(class_scope:Cmd.RetObjectSync)
@@ -1680,7 +1702,7 @@ class RetObjectSync : public ::google::protobuf::MessageLite /* @@protoc_inserti
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::Cmd::CObject > objects_;
+  ::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject > objects_;
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
   friend void  protobuf_AddDesc_Command_2eproto_impl();
   #else
@@ -1799,6 +1821,131 @@ class RetObjectDelete : public ::google::protobuf::MessageLite /* @@protoc_inser
 
   void InitAsDefaultInstance();
   static RetObjectDelete* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RetObjectMove : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:Cmd.RetObjectMove) */ {
+ public:
+  RetObjectMove();
+  virtual ~RetObjectMove();
+
+  RetObjectMove(const RetObjectMove& from);
+
+  inline RetObjectMove& operator=(const RetObjectMove& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::std::string& unknown_fields() const {
+    return _unknown_fields_.GetNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  inline ::std::string* mutable_unknown_fields() {
+    return _unknown_fields_.MutableNoArena(
+        &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+
+  static const RetObjectMove& default_instance();
+
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  // Returns the internal default instance pointer. This function can
+  // return NULL thus should not be used by the user. This is intended
+  // for Protobuf internal code. Please use default_instance() declared
+  // above instead.
+  static inline const RetObjectMove* internal_default_instance() {
+    return default_instance_;
+  }
+  #endif
+
+  void Swap(RetObjectMove* other);
+
+  // implements Message ----------------------------------------------
+
+  inline RetObjectMove* New() const { return New(NULL); }
+
+  RetObjectMove* New(::google::protobuf::Arena* arena) const;
+  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from);
+  void CopyFrom(const RetObjectMove& from);
+  void MergeFrom(const RetObjectMove& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  void DiscardUnknownFields();
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(RetObjectMove* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _arena_ptr_;
+  }
+  inline ::google::protobuf::Arena* MaybeArenaPtr() const {
+    return _arena_ptr_;
+  }
+  public:
+
+  ::std::string GetTypeName() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 dbID = 1;
+  bool has_dbid() const;
+  void clear_dbid();
+  static const int kDbIDFieldNumber = 1;
+  ::google::protobuf::int32 dbid() const;
+  void set_dbid(::google::protobuf::int32 value);
+
+  // optional .GameDefine.ObjectCellType cell = 2 [default = ObjectCellType_None];
+  bool has_cell() const;
+  void clear_cell();
+  static const int kCellFieldNumber = 2;
+  ::GameDefine::ObjectCellType cell() const;
+  void set_cell(::GameDefine::ObjectCellType value);
+
+  // optional int32 position = 3;
+  bool has_position() const;
+  void clear_position();
+  static const int kPositionFieldNumber = 3;
+  ::google::protobuf::int32 position() const;
+  void set_position(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:Cmd.RetObjectMove)
+ private:
+  inline void set_has_dbid();
+  inline void clear_has_dbid();
+  inline void set_has_cell();
+  inline void clear_has_cell();
+  inline void set_has_position();
+  inline void clear_has_position();
+
+  ::google::protobuf::internal::ArenaStringPtr _unknown_fields_;
+  ::google::protobuf::Arena* _arena_ptr_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 dbid_;
+  int cell_;
+  ::google::protobuf::int32 position_;
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  friend void  protobuf_AddDesc_Command_2eproto_impl();
+  #else
+  friend void  protobuf_AddDesc_Command_2eproto();
+  #endif
+  friend void protobuf_AssignDesc_Command_2eproto();
+  friend void protobuf_ShutdownFile_Command_2eproto();
+
+  void InitAsDefaultInstance();
+  static RetObjectMove* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -3138,109 +3285,158 @@ inline void RetTimeLine::set_totalseconds(::google::protobuf::int32 value) {
 
 // -------------------------------------------------------------------
 
-// CObject
+// ItemObject
 
 // optional int32 dbID = 1;
-inline bool CObject::has_dbid() const {
+inline bool ItemObject::has_dbid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void CObject::set_has_dbid() {
+inline void ItemObject::set_has_dbid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void CObject::clear_has_dbid() {
+inline void ItemObject::clear_has_dbid() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void CObject::clear_dbid() {
+inline void ItemObject::clear_dbid() {
   dbid_ = 0;
   clear_has_dbid();
 }
-inline ::google::protobuf::int32 CObject::dbid() const {
-  // @@protoc_insertion_point(field_get:Cmd.CObject.dbID)
+inline ::google::protobuf::int32 ItemObject::dbid() const {
+  // @@protoc_insertion_point(field_get:Cmd.ItemObject.dbID)
   return dbid_;
 }
-inline void CObject::set_dbid(::google::protobuf::int32 value) {
+inline void ItemObject::set_dbid(::google::protobuf::int32 value) {
   set_has_dbid();
   dbid_ = value;
-  // @@protoc_insertion_point(field_set:Cmd.CObject.dbID)
+  // @@protoc_insertion_point(field_set:Cmd.ItemObject.dbID)
 }
 
 // optional int32 itemid = 2;
-inline bool CObject::has_itemid() const {
+inline bool ItemObject::has_itemid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void CObject::set_has_itemid() {
+inline void ItemObject::set_has_itemid() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void CObject::clear_has_itemid() {
+inline void ItemObject::clear_has_itemid() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void CObject::clear_itemid() {
+inline void ItemObject::clear_itemid() {
   itemid_ = 0;
   clear_has_itemid();
 }
-inline ::google::protobuf::int32 CObject::itemid() const {
-  // @@protoc_insertion_point(field_get:Cmd.CObject.itemid)
+inline ::google::protobuf::int32 ItemObject::itemid() const {
+  // @@protoc_insertion_point(field_get:Cmd.ItemObject.itemid)
   return itemid_;
 }
-inline void CObject::set_itemid(::google::protobuf::int32 value) {
+inline void ItemObject::set_itemid(::google::protobuf::int32 value) {
   set_has_itemid();
   itemid_ = value;
-  // @@protoc_insertion_point(field_set:Cmd.CObject.itemid)
+  // @@protoc_insertion_point(field_set:Cmd.ItemObject.itemid)
 }
 
 // optional int32 count = 3;
-inline bool CObject::has_count() const {
+inline bool ItemObject::has_count() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void CObject::set_has_count() {
+inline void ItemObject::set_has_count() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void CObject::clear_has_count() {
+inline void ItemObject::clear_has_count() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void CObject::clear_count() {
+inline void ItemObject::clear_count() {
   count_ = 0;
   clear_has_count();
 }
-inline ::google::protobuf::int32 CObject::count() const {
-  // @@protoc_insertion_point(field_get:Cmd.CObject.count)
+inline ::google::protobuf::int32 ItemObject::count() const {
+  // @@protoc_insertion_point(field_get:Cmd.ItemObject.count)
   return count_;
 }
-inline void CObject::set_count(::google::protobuf::int32 value) {
+inline void ItemObject::set_count(::google::protobuf::int32 value) {
   set_has_count();
   count_ = value;
-  // @@protoc_insertion_point(field_set:Cmd.CObject.count)
+  // @@protoc_insertion_point(field_set:Cmd.ItemObject.count)
+}
+
+// optional .GameDefine.ObjectCellType cell = 4 [default = ObjectCellType_None];
+inline bool ItemObject::has_cell() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ItemObject::set_has_cell() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ItemObject::clear_has_cell() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ItemObject::clear_cell() {
+  cell_ = 0;
+  clear_has_cell();
+}
+inline ::GameDefine::ObjectCellType ItemObject::cell() const {
+  // @@protoc_insertion_point(field_get:Cmd.ItemObject.cell)
+  return static_cast< ::GameDefine::ObjectCellType >(cell_);
+}
+inline void ItemObject::set_cell(::GameDefine::ObjectCellType value) {
+  assert(::GameDefine::ObjectCellType_IsValid(value));
+  set_has_cell();
+  cell_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.ItemObject.cell)
+}
+
+// optional int32 position = 5;
+inline bool ItemObject::has_position() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ItemObject::set_has_position() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ItemObject::clear_has_position() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ItemObject::clear_position() {
+  position_ = 0;
+  clear_has_position();
+}
+inline ::google::protobuf::int32 ItemObject::position() const {
+  // @@protoc_insertion_point(field_get:Cmd.ItemObject.position)
+  return position_;
+}
+inline void ItemObject::set_position(::google::protobuf::int32 value) {
+  set_has_position();
+  position_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.ItemObject.position)
 }
 
 // -------------------------------------------------------------------
 
 // RetObjectAdd
 
-// repeated .Cmd.CObject objects = 1;
+// repeated .Cmd.ItemObject objects = 1;
 inline int RetObjectAdd::objects_size() const {
   return objects_.size();
 }
 inline void RetObjectAdd::clear_objects() {
   objects_.Clear();
 }
-inline const ::Cmd::CObject& RetObjectAdd::objects(int index) const {
+inline const ::Cmd::ItemObject& RetObjectAdd::objects(int index) const {
   // @@protoc_insertion_point(field_get:Cmd.RetObjectAdd.objects)
   return objects_.Get(index);
 }
-inline ::Cmd::CObject* RetObjectAdd::mutable_objects(int index) {
+inline ::Cmd::ItemObject* RetObjectAdd::mutable_objects(int index) {
   // @@protoc_insertion_point(field_mutable:Cmd.RetObjectAdd.objects)
   return objects_.Mutable(index);
 }
-inline ::Cmd::CObject* RetObjectAdd::add_objects() {
+inline ::Cmd::ItemObject* RetObjectAdd::add_objects() {
   // @@protoc_insertion_point(field_add:Cmd.RetObjectAdd.objects)
   return objects_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >*
+inline ::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject >*
 RetObjectAdd::mutable_objects() {
   // @@protoc_insertion_point(field_mutable_list:Cmd.RetObjectAdd.objects)
   return &objects_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >&
+inline const ::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject >&
 RetObjectAdd::objects() const {
   // @@protoc_insertion_point(field_list:Cmd.RetObjectAdd.objects)
   return objects_;
@@ -3250,31 +3446,31 @@ RetObjectAdd::objects() const {
 
 // RetObjectSync
 
-// repeated .Cmd.CObject objects = 1;
+// repeated .Cmd.ItemObject objects = 1;
 inline int RetObjectSync::objects_size() const {
   return objects_.size();
 }
 inline void RetObjectSync::clear_objects() {
   objects_.Clear();
 }
-inline const ::Cmd::CObject& RetObjectSync::objects(int index) const {
+inline const ::Cmd::ItemObject& RetObjectSync::objects(int index) const {
   // @@protoc_insertion_point(field_get:Cmd.RetObjectSync.objects)
   return objects_.Get(index);
 }
-inline ::Cmd::CObject* RetObjectSync::mutable_objects(int index) {
+inline ::Cmd::ItemObject* RetObjectSync::mutable_objects(int index) {
   // @@protoc_insertion_point(field_mutable:Cmd.RetObjectSync.objects)
   return objects_.Mutable(index);
 }
-inline ::Cmd::CObject* RetObjectSync::add_objects() {
+inline ::Cmd::ItemObject* RetObjectSync::add_objects() {
   // @@protoc_insertion_point(field_add:Cmd.RetObjectSync.objects)
   return objects_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >*
+inline ::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject >*
 RetObjectSync::mutable_objects() {
   // @@protoc_insertion_point(field_mutable_list:Cmd.RetObjectSync.objects)
   return &objects_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::Cmd::CObject >&
+inline const ::google::protobuf::RepeatedPtrField< ::Cmd::ItemObject >&
 RetObjectSync::objects() const {
   // @@protoc_insertion_point(field_list:Cmd.RetObjectSync.objects)
   return objects_;
@@ -3312,6 +3508,83 @@ inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
 RetObjectDelete::mutable_objects() {
   // @@protoc_insertion_point(field_mutable_list:Cmd.RetObjectDelete.objects)
   return &objects_;
+}
+
+// -------------------------------------------------------------------
+
+// RetObjectMove
+
+// optional int32 dbID = 1;
+inline bool RetObjectMove::has_dbid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RetObjectMove::set_has_dbid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RetObjectMove::clear_has_dbid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RetObjectMove::clear_dbid() {
+  dbid_ = 0;
+  clear_has_dbid();
+}
+inline ::google::protobuf::int32 RetObjectMove::dbid() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetObjectMove.dbID)
+  return dbid_;
+}
+inline void RetObjectMove::set_dbid(::google::protobuf::int32 value) {
+  set_has_dbid();
+  dbid_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.RetObjectMove.dbID)
+}
+
+// optional .GameDefine.ObjectCellType cell = 2 [default = ObjectCellType_None];
+inline bool RetObjectMove::has_cell() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RetObjectMove::set_has_cell() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RetObjectMove::clear_has_cell() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RetObjectMove::clear_cell() {
+  cell_ = 0;
+  clear_has_cell();
+}
+inline ::GameDefine::ObjectCellType RetObjectMove::cell() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetObjectMove.cell)
+  return static_cast< ::GameDefine::ObjectCellType >(cell_);
+}
+inline void RetObjectMove::set_cell(::GameDefine::ObjectCellType value) {
+  assert(::GameDefine::ObjectCellType_IsValid(value));
+  set_has_cell();
+  cell_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.RetObjectMove.cell)
+}
+
+// optional int32 position = 3;
+inline bool RetObjectMove::has_position() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RetObjectMove::set_has_position() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RetObjectMove::clear_has_position() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RetObjectMove::clear_position() {
+  position_ = 0;
+  clear_has_position();
+}
+inline ::google::protobuf::int32 RetObjectMove::position() const {
+  // @@protoc_insertion_point(field_get:Cmd.RetObjectMove.position)
+  return position_;
+}
+inline void RetObjectMove::set_position(::google::protobuf::int32 value) {
+  set_has_position();
+  position_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.RetObjectMove.position)
 }
 
 // -------------------------------------------------------------------
@@ -3528,6 +3801,8 @@ inline void RetMessage::set_localtime(::google::protobuf::int32 value) {
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

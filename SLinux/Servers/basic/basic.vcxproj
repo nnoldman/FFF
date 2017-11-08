@@ -80,8 +80,9 @@
     <ClInclude Include="Delegate.h" />
     <ClInclude Include="Easer.h" />
     <ClInclude Include="FileLoader.h" />
-    <ClInclude Include="IDObjects.h" />
+    <ClInclude Include="IDGenerator.h" />
     <ClInclude Include="Lexer.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="md5.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="Platform.h" />
@@ -106,11 +107,12 @@
     <ClInclude Include="Variable.h" />
     <ClInclude Include="WeakPointer.h" />
     <ClInclude Include="Index.h" />
-    <ClInclude Include="XMath.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base.cpp" />
     <ClCompile Include="CommandLine.cpp" />
+    <ClCompile Include="IDGenerator.cpp" />
+    <ClCompile Include="Math.cpp" />
     <ClCompile Include="md5.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Timer.cpp" />

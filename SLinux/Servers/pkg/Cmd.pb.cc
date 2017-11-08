@@ -77,6 +77,7 @@ bool SERVERID_IsValid(int value) {
     case 901:
     case 902:
     case 903:
+    case 910:
       return true;
     default:
       return false;

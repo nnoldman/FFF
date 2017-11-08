@@ -24,15 +24,15 @@ namespace Basic
     public:
         ~Timers();
         template<typename T>
-        Timer* wait(microseconds lefttime, void(T::*onTimerEnd)(Timer*) = nullptr, T* object = nullptr);
-        Timer* wait(microseconds lefttime, Timer::callback onTimerEnd = nullptr);
+        Timer* wait(int64_t lefttimeMillSeconds, void(T::*onTimerEnd)(Timer*) = nullptr, T* object = nullptr);
+        Timer* wait(int64_t lefttimeMillSeconds, Timer::callback onTimerEnd = nullptr);
 
         template<typename T>
-        Timer* repeat(microseconds interval, void(T::*onTimer)(Timer*), T* object, microseconds leftTime = microseconds(-1), void(T::*onTimerEnd)(Timer*) = nullptr);
-        Timer* repeat(microseconds interval, Timer::callback onTimer, microseconds leftTime, Timer::callback  onTimerEnd);
+        Timer* repeat(int64_t intervalMillSeconds, void(T::*onTimer)(Timer*), T* object, int64_t leftTime = -1, void(T::*onTimerEnd)(Timer*) = nullptr);
+        Timer* repeat(int64_t intervalMillSeconds, Timer::callback onTimer, int64_t leftTime, Timer::callback  onTimerEnd);
         void tick();
         int64_t currentTicks() const;
-        int64_t currentMicroseconds() const;
+        int64_t currentMillseconds() const;
         void cancel(Timer* timer, bool raiseEvent);
         int64_t leftMicroseconds(const Timer* timer) const;
     private:
@@ -58,24 +58,24 @@ namespace Basic
     };
 
     template<typename T>
-    Timer* Timers::wait(microseconds lefttime, void(T::*onTimerEnd)(Timer*) /*= nullptr*/, T* object /*= nullptr*/)
+    Timer* Timers::wait(int64_t lefttimeMillSeconds, void(T::*onTimerEnd)(Timer*) /*= nullptr*/, T* object /*= nullptr*/)
     {
         auto function = std::bind(onTimerEnd, object, std::placeholders::_1);
-        return this->wait(lefttime, function);
+        return this->wait(lefttimeMillSeconds, function);
     }
 
     template<typename T>
-    Timer* Timers::repeat(microseconds interval, void(T::*onTimer)(Timer*), T* object, microseconds leftTime /*= microseconds(-1)*/, void(T::*onTimerEnd)(Timer*) /*= nullptr*/)
+    Timer* Timers::repeat(int64_t intervalMillSeconds, void(T::*onTimer)(Timer*), T* object, int64_t leftTimeMillSeconds /*= microseconds(-1)*/, void(T::*onTimerEnd)(Timer*) /*= nullptr*/)
     {
         auto function1 = std::bind(onTimer, object, std::placeholders::_1);
         if (onTimerEnd == nullptr)
         {
-            return this->repeat(interval, function1, leftTime, nullptr);
+            return this->repeat(intervalMillSeconds, function1, leftTimeMillSeconds, nullptr);
         }
         else
         {
             auto function2 = std::bind(onTimerEnd, object, std::placeholders::_1);
-            return this->repeat(interval, function1, leftTime, function2);
+            return this->repeat(intervalMillSeconds, function1, leftTimeMillSeconds, function2);
         }
         return nullptr;
     }

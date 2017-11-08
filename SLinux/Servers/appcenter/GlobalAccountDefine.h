@@ -11,16 +11,16 @@ public:
     {
         static const vector<DBColumn> columns =
         {
-			{ "id",enum_field_types::MYSQL_TYPE_LONG,0,true,false,0 },
-			{ "user",enum_field_types::MYSQL_TYPE_VARCHAR,Default::NameSize,false,false,"" },
-            { "password",enum_field_types::MYSQL_TYPE_VARCHAR,Default::NameSize,false,false,"" },
-            { "late_serverid1",enum_field_types::MYSQL_TYPE_LONG,0,false,false,0},
-            { "late_serverid2",enum_field_types::MYSQL_TYPE_LONG,0,false,false,0},
-            { "late_serverid3",enum_field_types::MYSQL_TYPE_LONG,0,false,false,0 },
+            { "id", enum_field_types::MYSQL_TYPE_LONG, 0, true, false, 0 },
+            { "user", enum_field_types::MYSQL_TYPE_VARCHAR, Default::NameSize, false, false, "" },
+            { "password", enum_field_types::MYSQL_TYPE_VARCHAR, Default::NameSize, false, false, "" },
+            { "late_serverid1", enum_field_types::MYSQL_TYPE_LONG, 0, false, false, 0},
+            { "late_serverid2", enum_field_types::MYSQL_TYPE_LONG, 0, false, false, 0},
+            { "late_serverid3", enum_field_types::MYSQL_TYPE_LONG, 0, false, false, 0 },
         };
         static const DBTableDefine TheTable =
         {
-            "global_account",true,"id","user",columns,
+            "global_account", true, "id", "user", columns,
         };
         return TheTable;
     }
@@ -60,15 +60,6 @@ public:
         stream() << late_serverid1;
         stream() << late_serverid2;
         stream() << late_serverid3;
-    }
-    virtual void serializeForUpdate(stringstream& ss) override
-    {
-        startConcat(ss, GetDefine(), id);
-        concat(ss, GetDefine(), user);
-        concat(ss, GetDefine(), password);
-        concat(ss, GetDefine(), late_serverid1);
-        concat(ss, GetDefine(), late_serverid2);
-        concat(ss, GetDefine(), late_serverid3);
     }
 };
 

@@ -54,6 +54,7 @@ bool Capcity_IsValid(int value) {
     case 30:
     case 50:
     case 100:
+    case 120:
     case 160:
     case 180:
       return true;
@@ -97,6 +98,18 @@ bool ItemLocation_IsValid(int value) {
 bool ItemSellSource_IsValid(int value) {
   switch(value) {
     case 0:
+      return true;
+    default:
+      return false;
+  }
+}
+
+bool ObjectCellType_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
       return true;
     default:
       return false;

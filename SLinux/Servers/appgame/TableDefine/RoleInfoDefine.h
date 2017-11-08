@@ -12,6 +12,9 @@ namespace RoleStat
         int sex;
         int job;
         Basic::CharBuffer<Default::TimeSize> borntime;
+        u32 functions[GameDefine::Function / sizeof(u32) / 8];//功能
+        int bagOpened;
+        int bagCapicity;
     };
 
     /*
@@ -23,32 +26,6 @@ namespace RoleStat
     };
 
     /*
-    背包
-    */
-    struct Bag
-    {
-        int id;
-        int openedQuantity;
-        int capcity;
-    };
-
-    /*
-    装备
-    */
-    struct Equip
-    {
-        int uuids[GameDefine::Equip];
-    };
-
-    /*
-    仓库
-    */
-    struct Store
-    {
-        int uuids[GameDefine::Store];
-    };
-
-    /*
     邮件
     */
     struct Mail
@@ -57,11 +34,11 @@ namespace RoleStat
     };
 
     /*
-    功能
+    所有道具
     */
-    struct Function
+    struct GameObjects
     {
-        u32 uuids[GameDefine::Function / sizeof(u32) / 8];
+
     };
 
     /*

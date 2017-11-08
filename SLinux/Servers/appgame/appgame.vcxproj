@@ -82,21 +82,21 @@
     <ClCompile Include="GameSystems\MessageController.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Config\ItemTable.h" />
     <ClInclude Include="Config\Language.h" />
     <ClInclude Include="GameSystems\GameControllerBase.h" />
     <ClInclude Include="GameSystems\GameControllers.h" />
     <ClInclude Include="RoleSystems\RewardSystem.h" />
     <ClInclude Include="GameSystems\MessageController.h" />
-    <ClInclude Include="TableDefine\BagDefine.h" />
     <ClInclude Include="CenterNetAgent.h" />
     <ClInclude Include="Config\TimeTable.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="TableDefine\GameRoleDefine.h" />
     <ClInclude Include="GameUser.h" />
     <ClInclude Include="TableDefine\GameUserDefine.h" />
-    <ClInclude Include="TableDefine\ItemDefine.h" />
     <ClInclude Include="RoleSystems\LevelSystem.h" />
     <ClInclude Include="Role.h" />
+    <ClInclude Include="TableDefine\ItemDefine.h" />
     <ClInclude Include="TableDefine\RoleInfoDefine.h" />
     <ClInclude Include="RoleSystems\ItemSystem.h" />
     <ClInclude Include="RoleSystems\PaySystem.h" />
@@ -106,6 +106,7 @@
     <ClInclude Include="RoleSystems\TaskSystem.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Config\ItemTable.inl" />
     <None Include="Config\Language.inl" />
     <None Include="Config\TimeTable.inl" />
   </ItemGroup>
