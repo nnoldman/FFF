@@ -21,11 +21,12 @@ public class TVView : View
     }
     protected override void OnCreate()
     {
+        this.goBackWhenClickBG = false;
         window = (MainUI.TV)this.contentPane;
         sourcePositon_ = this.window.content_.position;
         this.sortingOrder = UILayer.TV;
         this.InvalidateBatchingState();
-        GameEvents.Instance.Bind(GameEventID.OnTVMessage, OnTvMessage);
+        GameEvents.Instance.Bind(GameEventID.OnMessageTV, OnTvMessage);
         this.Next();
     }
 

@@ -21,6 +21,7 @@ ItemSystem::~ItemSystem()
     dSafeDeleteArray(this->objects_);
 }
 
+
 void ItemSystem::initialize(Role* role)
 {
     SystemBase::initialize(role);
@@ -106,6 +107,14 @@ void ItemSystem::onTimer(Basic::Timer* timer)
     }
 }
 
+void ItemSystem::onTimerEnd(Basic::Timer * timer)
+{
+    if (timer == this->testTimer_)
+    {
+        this->testTimer_ = nullptr;
+    }
+}
+
 
 void ItemSystem::syncToClient()
 {
@@ -153,7 +162,7 @@ void ItemSystem::testSystem()
 {
     if (this->testTimer_ != nullptr)
         this->testTimer_->cancel();
-    this->testTimer_ = Timers::getInstance()->repeat(5000, &ItemSystem::onTimer, this, 200 * 1000);
+    this->testTimer_ = Timers::getInstance()->repeat(5000, &ItemSystem::onTimer, this, 15 * 1000, &ItemSystem::onTimerEnd);
 }
 
 int ItemSystem::getFirstEmptySlot(GameDefine::ObjectCellType cell)

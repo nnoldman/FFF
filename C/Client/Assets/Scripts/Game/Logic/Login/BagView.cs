@@ -24,8 +24,6 @@ public class BagView : View
         this.window_ = (GameBag.BagMain)this.contentPane;
         this.windowFrame.title_.text = "包裹";
         this.windowFrame.close_.onClick.Add(() => UIController.Instance.GoBack());
-        this.windowFrame.clickarea_.onClick.Add(() => UIController.Instance.GoBack());
-
         this.window_.items_.itemRenderer = OnItemRender;
         this.window_.items_.numItems = (int)GameDefine.Capcity.Bag;
     }

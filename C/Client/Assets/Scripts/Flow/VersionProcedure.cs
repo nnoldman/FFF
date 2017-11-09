@@ -138,8 +138,11 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
 
     public override IEnumerator Start()
     {
+#if UINTY_EDITOR
         yield return null;
-        //return DoUpdata();
+#else
+        yield return DoUpdata();
+#endif
     }
 
     public string DownLoadText(string url)

@@ -186,7 +186,7 @@ void DataBase::checkForAlterTableColumns(const DBTableDefine* def)
 bool DataBase::queryKey(string table, string key, const char* value)
 {
     stringstream ss;
-    ss << "SELECT COUNT(*) FROM " << table << " WHERE " << key << " = " << value;
+    ss << "SELECT COUNT(*) FROM " << table << " WHERE " << key << " = " << value << ";";;
     executer_->queryBegin(ss.str().c_str());
     return executer_->queryEnd();
 }
@@ -200,7 +200,7 @@ bool DataBase::queryRecord(const char* cmd, std::vector<string>& result)
 bool DataBase::queryRecord(string table, string key, const char* value, std::vector<string>& result)
 {
     stringstream ss;
-    ss << "SELECT COUNT(*) FROM " << table << " WHERE " << key << " = " << value;
+    ss << "SELECT COUNT(*) FROM " << table << " WHERE " << key << " = " << value << ";";;
     executer_->queryBegin(ss.str().c_str());
     return executer_->queryEnd(result);
 }
@@ -208,7 +208,7 @@ bool DataBase::queryRecord(string table, string key, const char* value, std::vec
 bool DataBase::queryRecord(string table, string key, const char* value, OUT DBDefine* result)
 {
     stringstream ss;
-    ss << "SELECT COUNT(*) FROM " << table << " WHERE " << key << " = " << value;
+    ss << "SELECT COUNT(*) FROM " << table << " WHERE " << key << " = " << value << ";";;
     executer_->queryBegin(ss.str().c_str());
     std::vector<string> records;
     auto ret = executer_->queryEnd(records);
@@ -229,9 +229,9 @@ bool DataBase::pull(const char* key, AnyObject keyvalue, OUT DBDefine* def)
 {
     stringstream ss;
     if (keyvalue.isString())
-        ss << "SELECT * FROM " << def->table() << " WHERE " << key << " = '" << keyvalue.get<string>()->c_str() << "'";
+        ss << "SELECT * FROM " << def->table() << " WHERE " << key << " = '" << keyvalue.get<string>()->c_str() << "'" << ";";
     else
-        ss << "SELECT * FROM " << def->table() << " WHERE " << key << " = " << keyvalue.toString();
+        ss << "SELECT * FROM " << def->table() << " WHERE " << key << " = " << keyvalue.toString() << ";";
     executer_->queryBegin(ss.str().c_str());
     std::vector<string> records;
     auto ret = executer_->queryEnd(records);
@@ -248,9 +248,9 @@ bool DataBase::pullByPrimaryKey(const DBTableDefine& def, AnyObject keyvalue, Cr
     ret.clear();
     stringstream ss;
     if (keyvalue.isString())
-        ss << "SELECT * FROM " << def.tableName() << " WHERE " << def.key() << " = '" << keyvalue.get<string>()->c_str() << "'";
+        ss << "SELECT * FROM " << def.tableName() << " WHERE " << def.key() << " = '" << keyvalue.get<string>()->c_str() << "'" << ";";
     else
-        ss << "SELECT * FROM " << def.tableName() << " WHERE " << def.key() << " = " << keyvalue.toString();
+        ss << "SELECT * FROM " << def.tableName() << " WHERE " << def.key() << " = " << keyvalue.toString() << ";";
     executer_->queryBegin(ss.str().c_str());
     std::vector<std::vector<string>> records;
     auto state = executer_->queryEnd(records);
@@ -285,7 +285,7 @@ bool DataBase::deleteByKey1(DBDefine* def)
 {
     assert(def->key2() == nullptr);
     stringstream cmd;
-    cmd << "DELETE FROM  " << def->table() << " WHERE id=" << def->id << ";";
+    cmd << "DELETE FROM " << def->table() << " WHERE id=" << def->id << ";";
     executer_->queryBegin(cmd.str().c_str());
     return executer_->queryEnd();
 }
@@ -295,9 +295,9 @@ bool DataBase::deleteByKey1Key2(DBDefine* def, AnyObject key2Value)
     assert(def->key2() != nullptr);
     stringstream cmd;
     if (key2Value.isString())
-        cmd << "DELETE FROM  " << def->table() << " WHERE id=" << def->id << " AND " << def->key2() << "='" << key2Value.get<string>()->c_str() << "';";
+        cmd << "DELETE FROM " << def->table() << " WHERE id=" << def->id << " AND " << def->key2() << "='" << key2Value.get<string>()->c_str() << "';";
     else
-        cmd << "DELETE FROM  " << def->table() << " WHERE id=" << def->id << " AND " << def->key2() << "=" << key2Value.toString() << ";";
+        cmd << "DELETE FROM " << def->table() << " WHERE id=" << def->id << " AND " << def->key2() << "=" << key2Value.toString() << ";";
     executer_->queryBegin(cmd.str().c_str());
     return executer_->queryEnd();
 }

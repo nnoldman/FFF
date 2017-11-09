@@ -5,6 +5,7 @@
 #include "RoleSystems/LevelSystem.h"
 #include "RoleSystems/ItemSystem.h"
 #include "RoleSystems/TaskSystem.h"
+#include "RoleSystems/ChatSystem.h"
 
 Role::Role()
 {
@@ -25,8 +26,10 @@ bool Role::initialize()
     systems_[ServerDefine::SystemType::SystemType_Level] = new LevelSystem();
     systems_[ServerDefine::SystemType::SystemType_Item] = new ItemSystem();
     systems_[ServerDefine::SystemType::SystemType_Task] = new TaskSystem();
+    systems_[ServerDefine::SystemType::SystemType_Chat] = new ChatSystem();
     return DBObject::initialize();
 }
+
 
 void Role::createDefine()
 {

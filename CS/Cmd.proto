@@ -30,7 +30,12 @@ enum CLIENTID
 	
 	RQUseItem=5100;//ReqUseObject
 	
+	//聊天
+	RQChat=5110;//ReqChat
+	
 	RQRoleBaseOperationEnd=50000;
+	
+
 };
 
 enum SERVERID

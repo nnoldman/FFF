@@ -1,10 +1,11 @@
-﻿生成启动时间为 2017/11/8 14:12:33。
+﻿生成启动时间为 2017/11/9 16:23:18。
      1>项目“C:\Src\FFF\SLinux\Servers\default\default.vcxproj”在节点 2 上(Build 个目标)。
      1>_ValidateSources:
          Validating sources
        _CopySources:
          Copying sources remotely to '43.248.102.164'
-         Skipping copying files as they are up to date.
+         Copying file 'C:\Src\FFF\SLinux\Servers\default\Default.h' to '/root/projects/default/Default.h'
+         Copying file 'C:\Src\FFF\SLinux\Servers\default\PathConfiguration.h' to '/root/projects/default/PathConfiguration.h'
      1>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Application Type\Linux\1.0\Linux.Makefile.Targets(128,5): warning : Build command not configured. Skipping...
      1>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Application Type\Linux\1.0\Linux.Makefile.Targets(130,5): warning : Remote build command not configured. Skipping...
      1>已完成生成项目“C:\Src\FFF\SLinux\Servers\default\default.vcxproj”(Build 个目标)的操作。

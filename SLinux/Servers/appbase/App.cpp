@@ -178,7 +178,7 @@ const int MAX_STACK_FRAMES = 64;
 void OnCrashHandler(int signum)
 {
     Basic::Platform::createDirectory("log");
-    FILE* f = fopen("log/crash.txt", "at");
+    FILE* f = fopen("crash_app.txt", "at");
     if (nullptr == f)
     {
         exit(1);

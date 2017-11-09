@@ -31,3 +31,11 @@ void SystemBase::send(Cmd::SERVERID id, google::protobuf::MessageLite * message)
 {
     BundleSender::GetInstance().sendProtoBuffer((u32)id, message, role_->getNetInterface());
 }
+
+void SystemBase::onTimer(Basic::Timer * timer)
+{
+}
+
+void SystemBase::onTimerEnd(Basic::Timer * timer)
+{
+}

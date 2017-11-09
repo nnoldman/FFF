@@ -35,7 +35,8 @@ public:
     */
     bool moveItem(int dbID, GameDefine::ItemLocation locationSrc, int xSrc, GameDefine::ItemLocation locationDst, int xDst);
 protected:
-    void onTimer(Basic::Timer* timer);
+    virtual void onTimer(Basic::Timer* timer)override;
+    virtual void onTimerEnd(Basic::Timer* timer)override;
     void syncToClient();
     void pullFromDB();
     void testSystem();

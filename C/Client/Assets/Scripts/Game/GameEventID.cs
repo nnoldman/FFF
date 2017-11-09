@@ -6,7 +6,10 @@ using System.Text;
 public enum GameEventID
 {
     GameBaseStart = 100,
-    OnTVMessage,
+
+    OnMessageChat,
+    OnMessageTV,
+
     OnObjectAdd,
     OnObjectSync,
     OnObjectDelete,

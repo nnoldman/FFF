@@ -57,6 +57,7 @@ bool CLIENTID_IsValid(int value) {
     case 600:
     case 5000:
     case 5100:
+    case 5110:
     case 50000:
       return true;
     default:

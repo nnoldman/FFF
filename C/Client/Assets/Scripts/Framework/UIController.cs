@@ -110,6 +110,7 @@ namespace GameFrame
             UIPackage.AddPackage("UI/CommonBack");
             UIPackage.AddPackage("UI/MessageBox");
             UIPackage.AddPackage("UI/GameBag");
+            UIPackage.AddPackage("UI/Chat");
 
             Common.CommonBinder.BindAll();
             CommonBack.CommonBackBinder.BindAll();
@@ -118,6 +119,7 @@ namespace GameFrame
             MainUI.MainUIBinder.BindAll();
             MessageBox.MessageBoxBinder.BindAll();
             GameBag.GameBagBinder.BindAll();
+            Chat.ChatBinder.BindAll();
             UIConfig.globalModalWaiting = UIPackage.GetItemURL("MessageBox", "MessageBox");
             UIController.Instance.Show<TVView>(false);
             yield return null;

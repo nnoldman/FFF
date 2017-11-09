@@ -6,6 +6,8 @@
 #include <assert.h>
 #include <iostream>
 #include <cmath>
+#include <algorithm>
+
 namespace Basic
 {
     const int64_t L0 = 256, L1 = 64, L2 = 64, L3 = 64, L4 = 64;
@@ -146,8 +148,14 @@ namespace Basic
         if (timer->onEnd_ != nullptr && raiseEvent)
             timer->onEnd_(timer);
         if (timer->position_ > 0)
-            this->timers_[timer->position_]->remove(timer);
-        delete timer;
+        {
+            auto timers = this->timers_[timer->position_];
+            assert(timers != nullptr);
+            auto it = std::find(timers->begin(), timers->end(), timer);
+            assert(it != timers->end());
+            timers->erase(it);
+            delete timer;
+        }
     }
 
     int64_t Timers::leftMicroseconds(const Timer* timer) const

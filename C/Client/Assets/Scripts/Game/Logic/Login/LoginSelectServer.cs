@@ -18,7 +18,7 @@ public class LoginSelectServer : View
         window.serverList.RemoveChildrenToPool();
         window.serverList.onClickItem.Add(OnSelectServer);
         window.enterGame.onClick.Add(OnClickEnterGame);
-
+        this.goBackWhenClickBG = false;
         for (int i = 0; i < GameConfig.GameServers.Length; ++i)
         {
             var server = GameConfig.GameServers[i];

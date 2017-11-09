@@ -30,7 +30,6 @@ public class EarthView : View
         this.window_ = (Earth.EarthMainView)this.contentPane;
         this.windowFrame.title_.text = "星体";
         this.windowFrame.close_.onClick.Add(() => UIController.Instance.GoBack());
-        this.windowFrame.clickarea_.onClick.Add(() => UIController.Instance.GoBack());
         InitPropertyNames();
     }
 
@@ -44,8 +43,9 @@ public class EarthView : View
         }
     }
 
-    void OnCommand(EventContext context)
+    protected override void OnCommand(EventContext context)
     {
+        base.OnCommand(context);
         if (context.sender == this.windowFrame.close_)
         {
         }

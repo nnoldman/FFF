@@ -15,6 +15,7 @@ public class MainView : View
     }
     protected override void OnCreate()
     {
+        this.goBackWhenClickBG = false;
         window = (MainUI.MainWindow)this.contentPane;
         this.window.bm1_.onClick.Add(OnCommand);
         this.window.bm2_.onClick.Add(OnCommand);
@@ -22,7 +23,7 @@ public class MainView : View
         this.window.bm4_.onClick.Add(OnCommand);
         this.window.bm5_.onClick.Add(OnCommand);
     }
-    void OnCommand(EventContext context)
+    protected override void OnCommand(EventContext context)
     {
         if (context.sender == this.window.bm1_)
         {
@@ -37,6 +38,13 @@ public class MainView : View
         else if (context.sender == this.window.bm3_)
         {
             UIController.Instance.Show<BagView>(false);
+        }
+        else if (context.sender == this.window.bm4_)
+        {
+            UIController.Instance.Show<ChatView>(false);
+        }
+        else if (context.sender == this.window.bm5_)
+        {
         }
     }
     protected override void OnShowMe()

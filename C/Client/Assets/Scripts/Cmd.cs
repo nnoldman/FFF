@@ -35,6 +35,9 @@ namespace Cmd
       [global::ProtoBuf.ProtoEnum(Name=@"RQUseItem", Value=5100)]
       RQUseItem = 5100,
             
+      [global::ProtoBuf.ProtoEnum(Name=@"RQChat", Value=5110)]
+      RQChat = 5110,
+            
       [global::ProtoBuf.ProtoEnum(Name=@"RQRoleBaseOperationEnd", Value=50000)]
       RQRoleBaseOperationEnd = 50000
     }

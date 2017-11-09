@@ -33,6 +33,7 @@ void protobuf_ShutdownFile_Command_2eproto() {
   delete RetObjectMove::default_instance_;
   delete ReqUseObject::default_instance_;
   delete RetMessage::default_instance_;
+  delete ReqChat::default_instance_;
 }
 
 #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
@@ -65,6 +66,7 @@ void protobuf_AddDesc_Command_2eproto() {
   RetObjectMove::default_instance_ = new RetObjectMove();
   ReqUseObject::default_instance_ = new ReqUseObject();
   RetMessage::default_instance_ = new RetMessage();
+  ReqChat::default_instance_ = new ReqChat();
   ReqAccountOperation::default_instance_->InitAsDefaultInstance();
   RetAccountOperation::default_instance_->InitAsDefaultInstance();
   ReqLoginGameServer::default_instance_->InitAsDefaultInstance();
@@ -81,6 +83,7 @@ void protobuf_AddDesc_Command_2eproto() {
   RetObjectMove::default_instance_->InitAsDefaultInstance();
   ReqUseObject::default_instance_->InitAsDefaultInstance();
   RetMessage::default_instance_->InitAsDefaultInstance();
+  ReqChat::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Command_2eproto);
 }
 
@@ -6758,6 +6761,611 @@ void RetMessage::clear_localtime() {
   set_has_localtime();
   localtime_ = value;
   // @@protoc_insertion_point(field_set:Cmd.RetMessage.localTime)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+static ::std::string* MutableUnknownFieldsForReqChat(
+    ReqChat* ptr) {
+  return ptr->mutable_unknown_fields();
+}
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int ReqChat::kChannelFieldNumber;
+const int ReqChat::kRoleIDFieldNumber;
+const int ReqChat::kFromFieldNumber;
+const int ReqChat::kToFieldNumber;
+const int ReqChat::kContentFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+ReqChat::ReqChat()
+  : ::google::protobuf::MessageLite(), _arena_ptr_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Cmd.ReqChat)
+}
+
+void ReqChat::InitAsDefaultInstance() {
+}
+
+ReqChat::ReqChat(const ReqChat& from)
+  : ::google::protobuf::MessageLite(),
+    _arena_ptr_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:Cmd.ReqChat)
+}
+
+void ReqChat::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
+  _cached_size_ = 0;
+  _unknown_fields_.UnsafeSetDefault(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  channel_ = 0;
+  roleid_ = 0;
+  from_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  to_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  content_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ReqChat::~ReqChat() {
+  // @@protoc_insertion_point(destructor:Cmd.ReqChat)
+  SharedDtor();
+}
+
+void ReqChat::SharedDtor() {
+  _unknown_fields_.DestroyNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  from_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  to_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  content_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  if (this != &default_instance()) {
+  #else
+  if (this != default_instance_) {
+  #endif
+  }
+}
+
+void ReqChat::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ReqChat& ReqChat::default_instance() {
+#ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
+  protobuf_AddDesc_Command_2eproto();
+#else
+  if (default_instance_ == NULL) protobuf_AddDesc_Command_2eproto();
+#endif
+  return *default_instance_;
+}
+
+ReqChat* ReqChat::default_instance_ = NULL;
+
+ReqChat* ReqChat::New(::google::protobuf::Arena* arena) const {
+  ReqChat* n = new ReqChat;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void ReqChat::Clear() {
+// @@protoc_insertion_point(message_clear_start:Cmd.ReqChat)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(ReqChat, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<ReqChat*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  if (_has_bits_[0 / 32] & 31u) {
+    ZR_(channel_, roleid_);
+    if (has_from()) {
+      from_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+    if (has_to()) {
+      to_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+    if (has_content()) {
+      content_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    }
+  }
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  _unknown_fields_.ClearToEmptyNoArena(
+      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+bool ReqChat::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  ::google::protobuf::io::LazyStringOutputStream unknown_fields_string(
+      ::google::protobuf::internal::NewPermanentCallback(
+          &MutableUnknownFieldsForReqChat, this));
+  ::google::protobuf::io::CodedOutputStream unknown_fields_stream(
+      &unknown_fields_string, false);
+  // @@protoc_insertion_point(parse_start:Cmd.ReqChat)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .Cmd.MessageChannel channel = 1;
+      case 1: {
+        if (tag == 8) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::Cmd::MessageChannel_IsValid(value)) {
+            set_channel(static_cast< ::Cmd::MessageChannel >(value));
+          } else {
+            unknown_fields_stream.WriteVarint32(8);
+            unknown_fields_stream.WriteVarint32(value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_roleID;
+        break;
+      }
+
+      // optional int32 roleID = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_roleID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &roleid_)));
+          set_has_roleid();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_from;
+        break;
+      }
+
+      // optional string from = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_from:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_from()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_to;
+        break;
+      }
+
+      // optional string to = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_to:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_to()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(42)) goto parse_content;
+        break;
+      }
+
+      // optional string content = 5;
+      case 5: {
+        if (tag == 42) {
+         parse_content:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_content()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(
+            input, tag, &unknown_fields_stream));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Cmd.ReqChat)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Cmd.ReqChat)
+  return false;
+#undef DO_
+}
+
+void ReqChat::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Cmd.ReqChat)
+  // optional .Cmd.MessageChannel channel = 1;
+  if (has_channel()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->channel(), output);
+  }
+
+  // optional int32 roleID = 2;
+  if (has_roleid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->roleid(), output);
+  }
+
+  // optional string from = 3;
+  if (has_from()) {
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->from(), output);
+  }
+
+  // optional string to = 4;
+  if (has_to()) {
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->to(), output);
+  }
+
+  // optional string content = 5;
+  if (has_content()) {
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      5, this->content(), output);
+  }
+
+  output->WriteRaw(unknown_fields().data(),
+                   static_cast<int>(unknown_fields().size()));
+  // @@protoc_insertion_point(serialize_end:Cmd.ReqChat)
+}
+
+int ReqChat::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:Cmd.ReqChat)
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & 31u) {
+    // optional .Cmd.MessageChannel channel = 1;
+    if (has_channel()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->channel());
+    }
+
+    // optional int32 roleID = 2;
+    if (has_roleid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->roleid());
+    }
+
+    // optional string from = 3;
+    if (has_from()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->from());
+    }
+
+    // optional string to = 4;
+    if (has_to()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->to());
+    }
+
+    // optional string content = 5;
+    if (has_content()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->content());
+    }
+
+  }
+  total_size += unknown_fields().size();
+
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ReqChat::CheckTypeAndMergeFrom(
+    const ::google::protobuf::MessageLite& from) {
+  MergeFrom(*::google::protobuf::down_cast<const ReqChat*>(&from));
+}
+
+void ReqChat::MergeFrom(const ReqChat& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Cmd.ReqChat)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) {
+    ::google::protobuf::internal::MergeFromFail(__FILE__, __LINE__);
+  }
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_channel()) {
+      set_channel(from.channel());
+    }
+    if (from.has_roleid()) {
+      set_roleid(from.roleid());
+    }
+    if (from.has_from()) {
+      set_has_from();
+      from_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.from_);
+    }
+    if (from.has_to()) {
+      set_has_to();
+      to_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.to_);
+    }
+    if (from.has_content()) {
+      set_has_content();
+      content_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.content_);
+    }
+  }
+  if (!from.unknown_fields().empty()) {
+    mutable_unknown_fields()->append(from.unknown_fields());
+  }
+}
+
+void ReqChat::CopyFrom(const ReqChat& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Cmd.ReqChat)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ReqChat::IsInitialized() const {
+
+  return true;
+}
+
+void ReqChat::Swap(ReqChat* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ReqChat::InternalSwap(ReqChat* other) {
+  std::swap(channel_, other->channel_);
+  std::swap(roleid_, other->roleid_);
+  from_.Swap(&other->from_);
+  to_.Swap(&other->to_);
+  content_.Swap(&other->content_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _unknown_fields_.Swap(&other->_unknown_fields_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::std::string ReqChat::GetTypeName() const {
+  return "Cmd.ReqChat";
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// ReqChat
+
+// optional .Cmd.MessageChannel channel = 1;
+bool ReqChat::has_channel() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void ReqChat::set_has_channel() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void ReqChat::clear_has_channel() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void ReqChat::clear_channel() {
+  channel_ = 0;
+  clear_has_channel();
+}
+ ::Cmd::MessageChannel ReqChat::channel() const {
+  // @@protoc_insertion_point(field_get:Cmd.ReqChat.channel)
+  return static_cast< ::Cmd::MessageChannel >(channel_);
+}
+ void ReqChat::set_channel(::Cmd::MessageChannel value) {
+  assert(::Cmd::MessageChannel_IsValid(value));
+  set_has_channel();
+  channel_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.ReqChat.channel)
+}
+
+// optional int32 roleID = 2;
+bool ReqChat::has_roleid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+void ReqChat::set_has_roleid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+void ReqChat::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+void ReqChat::clear_roleid() {
+  roleid_ = 0;
+  clear_has_roleid();
+}
+ ::google::protobuf::int32 ReqChat::roleid() const {
+  // @@protoc_insertion_point(field_get:Cmd.ReqChat.roleID)
+  return roleid_;
+}
+ void ReqChat::set_roleid(::google::protobuf::int32 value) {
+  set_has_roleid();
+  roleid_ = value;
+  // @@protoc_insertion_point(field_set:Cmd.ReqChat.roleID)
+}
+
+// optional string from = 3;
+bool ReqChat::has_from() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+void ReqChat::set_has_from() {
+  _has_bits_[0] |= 0x00000004u;
+}
+void ReqChat::clear_has_from() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+void ReqChat::clear_from() {
+  from_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_from();
+}
+ const ::std::string& ReqChat::from() const {
+  // @@protoc_insertion_point(field_get:Cmd.ReqChat.from)
+  return from_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ReqChat::set_from(const ::std::string& value) {
+  set_has_from();
+  from_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Cmd.ReqChat.from)
+}
+ void ReqChat::set_from(const char* value) {
+  set_has_from();
+  from_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Cmd.ReqChat.from)
+}
+ void ReqChat::set_from(const char* value, size_t size) {
+  set_has_from();
+  from_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Cmd.ReqChat.from)
+}
+ ::std::string* ReqChat::mutable_from() {
+  set_has_from();
+  // @@protoc_insertion_point(field_mutable:Cmd.ReqChat.from)
+  return from_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* ReqChat::release_from() {
+  // @@protoc_insertion_point(field_release:Cmd.ReqChat.from)
+  clear_has_from();
+  return from_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ReqChat::set_allocated_from(::std::string* from) {
+  if (from != NULL) {
+    set_has_from();
+  } else {
+    clear_has_from();
+  }
+  from_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from);
+  // @@protoc_insertion_point(field_set_allocated:Cmd.ReqChat.from)
+}
+
+// optional string to = 4;
+bool ReqChat::has_to() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+void ReqChat::set_has_to() {
+  _has_bits_[0] |= 0x00000008u;
+}
+void ReqChat::clear_has_to() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+void ReqChat::clear_to() {
+  to_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_to();
+}
+ const ::std::string& ReqChat::to() const {
+  // @@protoc_insertion_point(field_get:Cmd.ReqChat.to)
+  return to_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ReqChat::set_to(const ::std::string& value) {
+  set_has_to();
+  to_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Cmd.ReqChat.to)
+}
+ void ReqChat::set_to(const char* value) {
+  set_has_to();
+  to_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Cmd.ReqChat.to)
+}
+ void ReqChat::set_to(const char* value, size_t size) {
+  set_has_to();
+  to_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Cmd.ReqChat.to)
+}
+ ::std::string* ReqChat::mutable_to() {
+  set_has_to();
+  // @@protoc_insertion_point(field_mutable:Cmd.ReqChat.to)
+  return to_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* ReqChat::release_to() {
+  // @@protoc_insertion_point(field_release:Cmd.ReqChat.to)
+  clear_has_to();
+  return to_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ReqChat::set_allocated_to(::std::string* to) {
+  if (to != NULL) {
+    set_has_to();
+  } else {
+    clear_has_to();
+  }
+  to_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), to);
+  // @@protoc_insertion_point(field_set_allocated:Cmd.ReqChat.to)
+}
+
+// optional string content = 5;
+bool ReqChat::has_content() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+void ReqChat::set_has_content() {
+  _has_bits_[0] |= 0x00000010u;
+}
+void ReqChat::clear_has_content() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+void ReqChat::clear_content() {
+  content_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_content();
+}
+ const ::std::string& ReqChat::content() const {
+  // @@protoc_insertion_point(field_get:Cmd.ReqChat.content)
+  return content_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ReqChat::set_content(const ::std::string& value) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Cmd.ReqChat.content)
+}
+ void ReqChat::set_content(const char* value) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Cmd.ReqChat.content)
+}
+ void ReqChat::set_content(const char* value, size_t size) {
+  set_has_content();
+  content_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Cmd.ReqChat.content)
+}
+ ::std::string* ReqChat::mutable_content() {
+  set_has_content();
+  // @@protoc_insertion_point(field_mutable:Cmd.ReqChat.content)
+  return content_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* ReqChat::release_content() {
+  // @@protoc_insertion_point(field_release:Cmd.ReqChat.content)
+  clear_has_content();
+  return content_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ReqChat::set_allocated_content(::std::string* content) {
+  if (content != NULL) {
+    set_has_content();
+  } else {
+    clear_has_content();
+  }
+  content_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), content);
+  // @@protoc_insertion_point(field_set_allocated:Cmd.ReqChat.content)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

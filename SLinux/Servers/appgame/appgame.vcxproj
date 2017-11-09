@@ -66,6 +66,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="CenterNetAgent.cpp" />
+    <ClCompile Include="RoleSystems\ChatSystem.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameSystems\GameControllerBase.cpp" />
     <ClCompile Include="GameSystems\GameControllers.cpp" />
@@ -82,6 +83,7 @@
     <ClCompile Include="GameSystems\MessageController.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RoleSystems\ChatSystem.h" />
     <ClInclude Include="Config\ItemTable.h" />
     <ClInclude Include="Config\Language.h" />
     <ClInclude Include="GameSystems\GameControllerBase.h" />

@@ -18,7 +18,7 @@ namespace GameFrame
     public class ViewBase : Window
     {
         public UIPanel panel;
-
+        public bool goBackWhenClickBG = true;
         protected virtual void BindListeners()
         {
         }
@@ -41,6 +41,7 @@ namespace GameFrame
             var name = elements[1];
             UIPackage.AddPackage(GameConfig.FairyGUIOption.PackagePath + package);
             this.contentPane = UIPackage.CreateObject(package, name).asCom;
+            this.contentPane.onClick.Add(OnCommand);
             this.OnCreate();
         }
         protected virtual string GetPackageName()
@@ -51,7 +52,14 @@ namespace GameFrame
         {
 
         }
-
+        protected virtual void OnCommand(EventContext context)
+        {
+            if (context.initiator == this.contentPane.container)
+            {
+                if(goBackWhenClickBG)
+                    UIController.Instance.GoBack();
+            }
+        }
         protected sealed override void OnHide()
         {
             //this.panel.gameObject.SetActive(false);

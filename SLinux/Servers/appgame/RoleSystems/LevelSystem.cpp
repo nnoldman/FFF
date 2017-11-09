@@ -35,6 +35,8 @@ void LevelSystem::onTimer(Basic::Timer* timer)
 
 void LevelSystem::onTimeLineEnd(Basic::Timer* timer)
 {
+    if (this->timeLineTimer_ == timer)
+        this->timeLineTimer_ = nullptr;
     calcTimeLine();
     syncTimeLine();
 }

@@ -43,6 +43,7 @@ enum CLIENTID {
   RQEnterGame = 600,
   RQRoleBaseOperation = 5000,
   RQUseItem = 5100,
+  RQChat = 5110,
   RQRoleBaseOperationEnd = 50000
 };
 bool CLIENTID_IsValid(int value);

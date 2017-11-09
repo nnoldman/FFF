@@ -168,7 +168,7 @@ enum MessageChannel
 	MessageChannel_System_Error=1;//错误提示
 	MessageChannel_System_Sucess=2;//成功提示
 	MessageChannel_System_TV=3;//电视消息
-	MessageChannel_System_Box=4;//对话框消息
+	MessageChannel_System_MessageBox=4;//对话框消息
 	MessageChannel_System_Count=5;//
 	
 	MessageChannel_User_None=10;
@@ -184,4 +184,13 @@ message RetMessage
 	optional string sender=2;//发送者
 	optional string content=3;//内容
 	optional int32 localTime=4;//时间
+}
+
+message ReqChat
+{
+	optional MessageChannel channel=1;//频道
+	optional int32 roleID=2;
+	optional string from=3;
+	optional string to=4;
+	optional string content=5;
 }

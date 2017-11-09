@@ -14,11 +14,12 @@ public class RoleView: View
     }
     protected override void OnCreate()
     {
+        this.goBackWhenClickBG = false;
         this.window = (Login.RolePanel)this.contentPane;
         this.window.enterGame2.onClick.Add(OnCommand);
     }
 
-    void OnCommand(EventContext context)
+    protected override void OnCommand(EventContext context)
     {
         if(context.sender == this.window.enterGame2)
         {

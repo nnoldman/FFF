@@ -20,4 +20,9 @@ public static class ClientDefine
         Bag,
         Equip,
     }
+
+    public static class HistroyCount
+    {
+        public static readonly int Chat = 50;
+    }
 }

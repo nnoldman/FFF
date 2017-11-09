@@ -7,7 +7,6 @@ namespace CommonBack
 {
 	public partial class WindowTemplete : GComponent
 	{
-		public GButton clickarea_;
 		public GButton contentarea_;
 		public GTextField title_;
 		public GButton close_;
@@ -27,7 +26,6 @@ namespace CommonBack
 		{
 			base.ConstructFromXML(xml);
 
-			clickarea_ = (GButton)this.GetChild("clickarea_");
 			contentarea_ = (GButton)this.GetChild("contentarea_");
 			title_ = (GTextField)this.GetChild("title_");
 			close_ = (GButton)this.GetChild("close_");

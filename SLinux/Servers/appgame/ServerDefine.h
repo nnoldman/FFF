@@ -12,6 +12,7 @@ namespace ServerDefine
         SystemType_Level,
         SystemType_Item,
         SystemType_Task,
+        SystemType_Chat,
         SystemType_Count,
     };
 }

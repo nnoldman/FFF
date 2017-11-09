@@ -9,12 +9,16 @@ public class MessageSystem: SystemBase
     public static MessageSystem Instance;
 
     public Cmd.RetTimeLine timeline;
+    private List<Cmd.RetMessage> histroy_ = new List<Cmd.RetMessage>();
 
     public override void BindListeners()
     {
         Commands.Instance.Bind(Cmd.SERVERID.RTMessage, OnMessage);
     }
-
+    public List<Cmd.RetMessage> GetHistroy()
+    {
+        return this.histroy_;
+    }
     void OnMessage(object pb)
     {
         var ret = ParseCmd<Cmd.RetMessage>(pb);
@@ -23,9 +27,13 @@ public class MessageSystem: SystemBase
         {
             case Cmd.MessageChannel.MessageChannel_System_TV:
             {
-                GameEvents.Instance.Trigger(GameEventID.OnTVMessage, ret.content);
+                GameEvents.Instance.Trigger(GameEventID.OnMessageTV, ret.content);
             }
             break;
         }
+        histroy_.Add(ret);
+        while (histroy_.Count > ClientDefine.HistroyCount.Chat)
+            histroy_.RemoveAt(0);
+        GameEvents.Instance.Trigger(GameEventID.OnMessageChat, ret);
     }
 }

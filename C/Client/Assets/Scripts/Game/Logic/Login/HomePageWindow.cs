@@ -17,6 +17,7 @@ public class HomePageWindow: View
     }
     protected override void OnCreate()
     {
+        this.goBackWhenClickBG = false;
         window = (Login.LoginPlant)this.contentPane;
         window.login.onClick.Add(LoginPlant);
     }

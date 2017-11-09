@@ -146,6 +146,7 @@ void CenterNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect)
     }
 }
 
+
 bool CenterNetAgent::on_rqCreateAccount(const string & user, const string & password, Connection * con)
 {
     return false;

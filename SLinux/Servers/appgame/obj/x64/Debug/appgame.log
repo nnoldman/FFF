@@ -1,4 +1,4 @@
-﻿生成启动时间为 2017/11/8 14:12:35。
+﻿生成启动时间为 2017/11/9 16:33:14。
      1>项目“C:\Src\FFF\SLinux\Servers\appgame\appgame.vcxproj”在节点 2 上(Build 个目标)。
      1>InitializeBuildStatus:
          正在创建“C:\Src\FFF\SLinux\Servers\appgame\obj\x64\Debug\appgame.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
@@ -12,6 +12,7 @@
        _CopySources:
          Copying sources remotely to '43.248.102.164'
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\CenterNetAgent.cpp', as it is up to date.
+         Copying file 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\ChatSystem.cpp' to '/root/projects/appgame/RoleSystems/ChatSystem.cpp'
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameApp.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameSystems\GameControllerBase.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameSystems\GameControllers.cpp', as it is up to date.
@@ -20,12 +21,13 @@
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\LevelSystem.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\main.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\Role.cpp', as it is up to date.
-         Copying file 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\ItemSystem.cpp' to '/root/projects/appgame/RoleSystems/ItemSystem.cpp'
+         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\ItemSystem.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\PaySystem.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\stdafx.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\SystemBase.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\TaskSystem.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameSystems\MessageController.cpp', as it is up to date.
+         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\ChatSystem.h', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\Config\ItemTable.h', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\Config\Language.h', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameSystems\GameControllerBase.h', as it is up to date.
@@ -55,26 +57,18 @@
          Starting remote build
          Compiling sources:
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\CenterNetAgent.cpp', as it is up to date.
-         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameApp.cpp', as it is up to date.
-         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameSystems\GameControllerBase.cpp', as it is up to date.
-         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameSystems\GameControllers.cpp', as it is up to date.
-         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameUser.cpp', as it is up to date.
-         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\RewardSystem.cpp', as it is up to date.
-         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\LevelSystem.cpp', as it is up to date.
-         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\main.cpp', as it is up to date.
-         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\Role.cpp', as it is up to date.
          Invoking g++
-         g++ -c -x c++ /root/projects/appgame/RoleSystems/ItemSystem.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/ItemSystem.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         ItemSystem.cpp
+         g++ -c -x c++ /root/projects/appgame/RoleSystems/ChatSystem.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/ChatSystem.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         ChatSystem.cpp
          In file included from /root/projects/appgame/../appbase/Core.h:3:0,
                           from /root/projects/appgame/RoleSystems/../stdafx.h:3,
-                          from /root/projects/appgame/RoleSystems/ItemSystem.cpp:1:
+                          from /root/projects/appgame/RoleSystems/ChatSystem.cpp:1:
          /root/projects/appgame/../appbase/stdafx.h:56:61: warning: backslash-newline at end of file [enabled by default]
           #define FORMAT_TEXT(buffer,fmt,...) char buffer[2048] = {0};\
           ^
          In file included from /root/projects/appgame/../appbase/Core.h:3:0,
                           from /root/projects/appgame/RoleSystems/../stdafx.h:3,
-                          from /root/projects/appgame/RoleSystems/ItemSystem.cpp:1:
+                          from /root/projects/appgame/RoleSystems/ChatSystem.cpp:1:
          /root/projects/appgame/../appbase/stdafx.h:56:61: warning: backslash-newline at end of file [enabled by default]
           #define FORMAT_TEXT(buffer,fmt,...) char buffer[2048] = {0};\
           ^
@@ -82,110 +76,23 @@
          In file included from /root/projects/appgame/../appbase/stdafx.h:23:0,
                           from /root/projects/appgame/../appbase/Core.h:3,
                           from /root/projects/appgame/RoleSystems/../stdafx.h:3,
-                          from /root/projects/appgame/RoleSystems/ItemSystem.cpp:1:
+                          from /root/projects/appgame/RoleSystems/ChatSystem.cpp:1:
          /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator+(const char&, const Poco::Dynamic::Var&)’:
          /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:869:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
            return other + da.convert<char>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator-(const char&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:876:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
-           return other - da.convert<char>();
                         ^
          In file included from /root/projects/appgame/../appbase/stdafx.h:23:0,
                           from /root/projects/appgame/../appbase/Core.h:3,
                           from /root/projects/appgame/RoleSystems/../stdafx.h:3,
-                          from /root/projects/appgame/RoleSystems/ItemSystem.cpp:1:
+                          from /root/projects/appgame/RoleSystems/ChatSystem.cpp:1:
          /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator+(const char&, const Poco::Dynamic::Var&)’:
          /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:869:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
            return other + da.convert<char>();
                         ^
+         
          /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator-(const char&, const Poco::Dynamic::Var&)’:
          /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:876:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
            return other - da.convert<char>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator*(const char&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:883:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
-           return other * da.convert<char>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator/(const char&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:890:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
-           return other / da.convert<char>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator+=(char&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:897:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
-           return other += da.convert<char>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator-=(char&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:904:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
-           return other -= da.convert<char>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator*=(char&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:911:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
-           return other *= da.convert<char>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator/=(char&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:918:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
-           return other /= da.convert<char>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator+(const Int8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:973:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
-           return other + da.convert<Poco::Int8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator-(const Int8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:980:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
-           return other - da.convert<Poco::Int8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator*(const Int8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:987:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
-           return other * da.convert<Poco::Int8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator/(const Int8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:994:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
-           return other / da.convert<Poco::Int8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator+=(Poco::Int8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1001:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
-           return other += da.convert<Poco::Int8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator-=(Poco::Int8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1008:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
-           return other -= da.convert<Poco::Int8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator*=(Poco::Int8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1015:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
-           return other *= da.convert<Poco::Int8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator/=(Poco::Int8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1022:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
-           return other /= da.convert<Poco::Int8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator+(const UInt8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1077:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-           return other + da.convert<Poco::UInt8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator-(const UInt8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1084:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-           return other - da.convert<Poco::UInt8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator*(const UInt8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1091:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-           return other * da.convert<Poco::UInt8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator+=(Poco::UInt8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1105:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-           return other += da.convert<Poco::UInt8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator-=(Poco::UInt8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1112:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-           return other -= da.convert<Poco::UInt8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator*=(Poco::UInt8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1119:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-           return other *= da.convert<Poco::UInt8>();
-                        ^
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator/=(Poco::UInt8&, const Poco::Dynamic::Var&)’:
-         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1126:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-           return other /= da.convert<Poco::UInt8>();
                         ^
          /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator*(const char&, const Poco::Dynamic::Var&)’:
          /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:883:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
@@ -331,6 +238,94 @@
          /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1334:15: warning: conversion to ‘Poco::UInt16 {aka short unsigned int}’ from ‘int’ may alter its value [-Wconversion]
            return other /= da.convert<Poco::UInt16>();
                         ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator-(const char&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:876:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+           return other - da.convert<char>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator*(const char&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:883:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+           return other * da.convert<char>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator/(const char&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:890:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+           return other / da.convert<char>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator+=(char&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:897:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+           return other += da.convert<char>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator-=(char&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:904:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+           return other -= da.convert<char>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator*=(char&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:911:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+           return other *= da.convert<char>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘char Poco::Dynamic::operator/=(char&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:918:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
+           return other /= da.convert<char>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator+(const Int8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:973:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
+           return other + da.convert<Poco::Int8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator-(const Int8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:980:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
+           return other - da.convert<Poco::Int8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator*(const Int8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:987:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
+           return other * da.convert<Poco::Int8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator/(const Int8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:994:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
+           return other / da.convert<Poco::Int8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator+=(Poco::Int8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1001:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
+           return other += da.convert<Poco::Int8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator-=(Poco::Int8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1008:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
+           return other -= da.convert<Poco::Int8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator*=(Poco::Int8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1015:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
+           return other *= da.convert<Poco::Int8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int8 Poco::Dynamic::operator/=(Poco::Int8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1022:15: warning: conversion to ‘Poco::Int8 {aka signed char}’ from ‘int’ may alter its value [-Wconversion]
+           return other /= da.convert<Poco::Int8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator+(const UInt8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1077:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
+           return other + da.convert<Poco::UInt8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator-(const UInt8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1084:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
+           return other - da.convert<Poco::UInt8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator*(const UInt8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1091:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
+           return other * da.convert<Poco::UInt8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator+=(Poco::UInt8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1105:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
+           return other += da.convert<Poco::UInt8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator-=(Poco::UInt8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1112:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
+           return other -= da.convert<Poco::UInt8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator*=(Poco::UInt8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1119:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
+           return other *= da.convert<Poco::UInt8>();
+                        ^
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::UInt8 Poco::Dynamic::operator/=(Poco::UInt8&, const Poco::Dynamic::Var&)’:
+         /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1126:15: warning: conversion to ‘Poco::UInt8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
+           return other /= da.convert<Poco::UInt8>();
+                        ^
          /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h: In function ‘Poco::Int16 Poco::Dynamic::operator+(const Int16&, const Poco::Dynamic::Var&)’:
          /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1181:15: warning: conversion to ‘Poco::Int16 {aka short int}’ from ‘int’ may alter its value [-Wconversion]
            return other + da.convert<Poco::Int16>();
@@ -391,39 +386,6 @@
          /root/projects/appgame/../third_lib/Poco/Dynamic/Var.h:1334:15: warning: conversion to ‘Poco::UInt16 {aka short unsigned int}’ from ‘int’ may alter its value [-Wconversion]
            return other /= da.convert<Poco::UInt16>();
                         ^
-         
-         In file included from /root/projects/appgame/RoleSystems/ItemSystem.cpp:5:0:
-         /root/projects/appgame/Config/ItemTable.h: In static member function ‘static void ItemTableRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
-         /root/projects/appgame/Config/ItemTable.h:62:36: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-            for (int i = 0; i < columns.size(); ++i)
-                                             ^
-         In file included from /root/projects/appgame/RoleSystems/ItemSystem.cpp:5:0:
-         /root/projects/appgame/Config/ItemTable.h: In static member function ‘static void ItemTableRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
-         /root/projects/appgame/Config/ItemTable.h:62:36: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-            for (int i = 0; i < columns.size(); ++i)
-                                             ^
-         /root/projects/appgame/RoleSystems/ItemSystem.cpp: In member function ‘ItemDefine* ItemSystem::create(int, int, int, int)’:
-         /root/projects/appgame/RoleSystems/ItemSystem.cpp:54:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
-              ret->cell = cell;
-                        ^
-         /root/projects/appgame/RoleSystems/ItemSystem.cpp:57:19: warning: conversion to ‘short int’ from ‘int’ may alter its value [-Wconversion]
-              ret->position = position;
-                            ^
-         /root/projects/appgame/RoleSystems/ItemSystem.cpp: In member function ‘void ItemSystem::onTimer(Basic::Timer*)’:
-         /root/projects/appgame/RoleSystems/ItemSystem.cpp:92:75: warning: conversion to ‘int’ from ‘std::vector<ItemTableRecord*, std::allocator<ItemTableRecord*> >::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
-                  auto index = Basic::Random::getInstance().randI(0, records.size() - 1);
-                                                                                    ^
-         /root/projects/appgame/RoleSystems/ItemSystem.cpp: In member function ‘ItemDefine* ItemSystem::create(int, int, int, int)’:
-         /root/projects/appgame/RoleSystems/ItemSystem.cpp:54:15: warning: conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
-              ret->cell = cell;
-                        ^
-         /root/projects/appgame/RoleSystems/ItemSystem.cpp:57:19: warning: conversion to ‘short int’ from ‘int’ may alter its value [-Wconversion]
-              ret->position = position;
-                            ^
-         /root/projects/appgame/RoleSystems/ItemSystem.cpp: In member function ‘void ItemSystem::onTimer(Basic::Timer*)’:
-         /root/projects/appgame/RoleSystems/ItemSystem.cpp:92:75: warning: conversion to ‘int’ from ‘std::vector<ItemTableRecord*, std::allocator<ItemTableRecord*> >::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
-                  auto index = Basic::Random::getInstance().randI(0, records.size() - 1);
-                                                                                    ^
          
      1>C:\Src\FFF\SLinux\Servers\appgame\..\appbase\stdafx.h(56,61): warning : backslash-newline at end of file [enabled by default]
      1>C:\Src\FFF\SLinux\Servers\appgame\..\third_lib\Poco\Dynamic\Var.h(869,15): warning : conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
@@ -464,11 +426,16 @@
      1>C:\Src\FFF\SLinux\Servers\appgame\..\third_lib\Poco\Dynamic\Var.h(1320,15): warning : conversion to ‘Poco::UInt16 {aka short unsigned int}’ from ‘int’ may alter its value [-Wconversion]
      1>C:\Src\FFF\SLinux\Servers\appgame\..\third_lib\Poco\Dynamic\Var.h(1327,15): warning : conversion to ‘Poco::UInt16 {aka short unsigned int}’ from ‘int’ may alter its value [-Wconversion]
      1>C:\Src\FFF\SLinux\Servers\appgame\..\third_lib\Poco\Dynamic\Var.h(1334,15): warning : conversion to ‘Poco::UInt16 {aka short unsigned int}’ from ‘int’ may alter its value [-Wconversion]
-     1>C:\Src\FFF\SLinux\Servers\appgame\Config\ItemTable.h(62,36): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
-     1>C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\ItemSystem.cpp(54,15): warning : conversion to ‘char’ from ‘int’ may alter its value [-Wconversion]
-     1>C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\ItemSystem.cpp(57,19): warning : conversion to ‘short int’ from ‘int’ may alter its value [-Wconversion]
-     1>C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\ItemSystem.cpp(92,75): warning : conversion to ‘int’ from ‘std::vector<ItemTableRecord*, std::allocator<ItemTableRecord*> >::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
-         Done compiling '/root/projects/appgame/RoleSystems/ItemSystem.cpp'
+         Done compiling '/root/projects/appgame/RoleSystems/ChatSystem.cpp'
+         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameApp.cpp', as it is up to date.
+         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameSystems\GameControllerBase.cpp', as it is up to date.
+         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameSystems\GameControllers.cpp', as it is up to date.
+         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\GameUser.cpp', as it is up to date.
+         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\RewardSystem.cpp', as it is up to date.
+         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\LevelSystem.cpp', as it is up to date.
+         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\main.cpp', as it is up to date.
+         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\Role.cpp', as it is up to date.
+         Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\ItemSystem.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\PaySystem.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\stdafx.cpp', as it is up to date.
          Skipping 'C:\Src\FFF\SLinux\Servers\appgame\RoleSystems\SystemBase.cpp', as it is up to date.
@@ -477,7 +444,7 @@
        Link:
          Linking objects
          Invoking ld
-         g++ -o "/root/projects/appgame/../bin/Debug/appgame.out" -Wl,--no-undefined -Wl,-L/root/projects/third_lib2 -Wl,-L/root/projects/bin/Debug -Wl,-L/usr/lib64 -Wl,-L/usr/lib64/mysql -Wl,-L/root/projects/bin/debug -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /root/projects/appgame/obj/x64/Debug/CenterNetAgent.o /root/projects/appgame/obj/x64/Debug/GameApp.o /root/projects/appgame/obj/x64/Debug/GameControllerBase.o /root/projects/appgame/obj/x64/Debug/GameControllers.o /root/projects/appgame/obj/x64/Debug/GameUser.o /root/projects/appgame/obj/x64/Debug/RewardSystem.o /root/projects/appgame/obj/x64/Debug/LevelSystem.o /root/projects/appgame/obj/x64/Debug/main.o /root/projects/appgame/obj/x64/Debug/Role.o /root/projects/appgame/obj/x64/Debug/ItemSystem.o /root/projects/appgame/obj/x64/Debug/PaySystem.o /root/projects/appgame/obj/x64/Debug/stdafx.o /root/projects/appgame/obj/x64/Debug/SystemBase.o /root/projects/appgame/obj/x64/Debug/TaskSystem.o /root/projects/appgame/obj/x64/Debug/MessageController.o -lappbase -lPocoXMLd -lPocoJSONd -lPocoUtild -lPocoNetd -lPocoFoundationd -lmysqlclient -lpkg -l"protobuf-lite" -lbasic
+         g++ -o "/root/projects/appgame/../bin/Debug/appgame.out" -Wl,--no-undefined -Wl,-L/root/projects/third_lib2 -Wl,-L/root/projects/bin/Debug -Wl,-L/usr/lib64 -Wl,-L/usr/lib64/mysql -Wl,-L/root/projects/bin/debug -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /root/projects/appgame/obj/x64/Debug/CenterNetAgent.o /root/projects/appgame/obj/x64/Debug/ChatSystem.o /root/projects/appgame/obj/x64/Debug/GameApp.o /root/projects/appgame/obj/x64/Debug/GameControllerBase.o /root/projects/appgame/obj/x64/Debug/GameControllers.o /root/projects/appgame/obj/x64/Debug/GameUser.o /root/projects/appgame/obj/x64/Debug/RewardSystem.o /root/projects/appgame/obj/x64/Debug/LevelSystem.o /root/projects/appgame/obj/x64/Debug/main.o /root/projects/appgame/obj/x64/Debug/Role.o /root/projects/appgame/obj/x64/Debug/ItemSystem.o /root/projects/appgame/obj/x64/Debug/PaySystem.o /root/projects/appgame/obj/x64/Debug/stdafx.o /root/projects/appgame/obj/x64/Debug/SystemBase.o /root/projects/appgame/obj/x64/Debug/TaskSystem.o /root/projects/appgame/obj/x64/Debug/MessageController.o -lappbase -lPocoXMLd -lPocoJSONd -lPocoUtild -lPocoNetd -lPocoFoundationd -lmysqlclient -lpkg -l"protobuf-lite" -lbasic
          Done linking, output file name: '/root/projects/appgame/../bin/Debug/appgame.out'
          Copying file '/root/projects/appgame/../bin/Debug/appgame.out' to '..\bin\Debug\appgame.out'
          appgame.vcxproj -> ..\bin\Debug\appgame.out

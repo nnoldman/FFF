@@ -45,6 +45,7 @@ bool GameApp::parseCommandLine()
 void GameApp::archive()
 {
 }
+
 bool GameApp::onInitializeEnd()
 {
     controllers_ = new GameControllers();
@@ -58,6 +59,7 @@ bool GameApp::onInitializeNet()
     netAgent_->initialize();
     return true;
 }
+
 
 const vector<const DBTableDefine*>& GameApp::getTableDefines() const
 {
