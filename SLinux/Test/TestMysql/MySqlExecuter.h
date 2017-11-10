@@ -27,7 +27,7 @@ public:
 
     bool queryEnd();
 
-    virtual unsigned long count() override;
+    virtual unsigned long count(const char* tablaname) override;
 
     virtual void use(const char* dataBaseName) const override;
 

@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DBConfig.h" />
+    <ClInclude Include="DBDefine.h" />
     <ClInclude Include="DBExecuter.h" />
     <ClInclude Include="MySqlExecuter.h" />
     <ClInclude Include="QueryNode.h" />
@@ -157,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DBConfig.cpp" />
+    <ClCompile Include="DBDefine.cpp" />
     <ClCompile Include="DBExecuter.cpp" />
     <ClCompile Include="MySqlExecuter.cpp" />
     <ClCompile Include="QueryNode.cpp" />

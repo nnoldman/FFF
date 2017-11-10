@@ -17,7 +17,7 @@ public:
 
     virtual bool queryEnd() = 0;
 
-    virtual unsigned long count() = 0;
+    virtual unsigned long count(const char* tablaname) = 0;
 
     virtual void use(const char* dataBaseName) const = 0;
 };

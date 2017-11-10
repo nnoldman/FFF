@@ -4,7 +4,6 @@
 QueryNode::QueryNode(MYSQL* sql)
     : mysql_(nullptr)
 {
-    mysql_store_result(mysql_);
 }
 
 QueryNode::~QueryNode()
@@ -52,9 +51,57 @@ bool QueryNode::query() const
     return true;
 }
 
+bool QueryNode::query(const char* cmd, DBDefine* ret)
+{
+    if (!this->start(cmd))
+        return false;
+}
+
+bool QueryNode::query(const char* cmd, vector<DBDefine*>* ret)
+{
+    if (!this->start(cmd))
+        return false;
+}
+
+bool QueryNode::query(const char* cmd)
+{
+    return this->start(cmd);
+}
+
+bool QueryNode::start(const char* cmd)
+{
+    auto state = mysql_real_query(this->mysql_);
+    if (state == 0)
+        return true;
+    std::cout << "Error:" << mysql_error(this->mysql_) << std::endl;
+    return false;
+}
+
 MYSQL_ROW QueryNode::nextRow()
 {
     return mysql_fetch_row(this->resource_);
+}
+
+QueryNode::operator bool()
+{
+    return this->resource_ != nullptr;
+}
+
+::size_t QueryNode::count()
+{
+    stringstream cmd;
+    cmd << "select count(*) from " << tablaname << ";";
+    if (!queryBegin(cmd.str().c_str()))
+    {
+        return 0;
+    }
+    MYSQL_RES* ress = mysql_store_result(mysql_);
+    if (ress == nullptr)
+        return 0;
+    MYSQL_ROW row = mysql_fetch_row(ress);
+    mysql_free_result(ress);
+    ress = nullptr;
+    return ::atoi(row[0]);
 }
 
 ::size_t QueryNode::getColumns()

@@ -84,15 +84,11 @@ bool MySQLExecuter::queryEnd(vector<vector<string>>& ret_records)
     return node.query(ret_records);
 }
 
-unsigned long MySQLExecuter::count()
+unsigned long MySQLExecuter::count(const char* name)
 {
-    MYSQL_RES* ress = mysql_store_result(mysql_);
-    if (ress == nullptr)
-        return 0;
-    MYSQL_ROW row = mysql_fetch_row(ress);
-    mysql_free_result(ress);
-    ress = nullptr;
-    return ::atoi(row[0]);
+    QueryNode query(this->mysql_);
+    return query.count(name);
+    return 0;
 }
 
 void MySQLExecuter::use(const char* dataBaseName) const

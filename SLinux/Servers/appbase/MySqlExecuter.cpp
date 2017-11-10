@@ -43,7 +43,7 @@ bool MySQLExecuter::queryEnd()
 }
 
 
-bool MySQLExecuter::queryEnd(vector<string>& record)
+int MySQLExecuter::queryEnd(vector<string>& record)
 {
     if (mysql_affected_rows(mysql_) == 0)
         return false;
@@ -61,7 +61,7 @@ bool MySQLExecuter::queryEnd(vector<string>& record)
         }
         mysql_free_result(records);
         records = nullptr;
-        return record.size() > 0;
+        return record.size;
     }
     else
     {
@@ -98,8 +98,13 @@ bool MySQLExecuter::queryEnd(vector<vector<string>>& ret_records)
     return ret_records.size() > 0;
 }
 
-unsigned long MySQLExecuter::count()
+unsigned long MySQLExecuter::count(const char* tablaname)
 {
+    stringstream cmd;
+    cmd << "select count(*) from " << tablaname << ";";
+    if (queryBegin(cmd.str().c_str()))
+    {
+    }
     MYSQL_RES* ress = mysql_store_result(mysql_);
     if (ress == nullptr)
         return 0;
