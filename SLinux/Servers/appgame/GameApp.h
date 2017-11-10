@@ -1,5 +1,5 @@
 #pragma once
-class CenterNetAgent;
+class GameNetAgent;
 class GameControllers;
 class GameApp :
     public App
@@ -13,7 +13,7 @@ public:
 private:
     int serverID_;
 private:
-    CenterNetAgent* netAgent_;
+    GameNetAgent* netAgent_;
     GameControllers* controllers_;
 protected:
     virtual void archive() override;

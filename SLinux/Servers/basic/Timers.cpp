@@ -38,19 +38,19 @@ namespace Basic
         }
     }
 
-    Timer* Timers::wait(int64_t lefttimeMillseconds, Timer::callback onTimerEnd /*= nullptr*/)
+    TimerPtr Timers::wait(int64_t lefttimeMillseconds, Timer::callback onTimerEnd /*= nullptr*/)
     {
-        Timer* ret = new Timer();
+        shared_ptr<Timer> ret(new Timer());
         ret->onEnd_ = onTimerEnd;
         if (lefttimeMillseconds == 0)
         {
-            this->cancel(ret, true);
+            this->cancel(ret.get(), true);
             return nullptr;
         }
         return repeat(lefttimeMillseconds == -1 ? 1000 : lefttimeMillseconds, nullptr, lefttimeMillseconds, onTimerEnd);
     }
 
-    Basic::Timer* Timers::repeat(int64_t intervalMillseconds, Timer::callback onTimer, int64_t leftTimeMillseconds, Timer::callback onTimerEnd)
+    TimerPtr Timers::repeat(int64_t intervalMillseconds, Timer::callback onTimer, int64_t leftTimeMillseconds, Timer::callback onTimerEnd)
     {
         assert(intervalMillseconds > 0);
         assert(intervalMillseconds % kPrecision == 0);
@@ -67,7 +67,7 @@ namespace Basic
             if (mod > 0)
                 truns++;
         }
-        Timer* ret = new Timer();
+        std::shared_ptr<Timer> ret(new Timer());
         ret->lifeMillseconds_ = leftTimeMillseconds;
         ret->onTimer_ = onTimer;
         ret->onEnd_ = onTimerEnd;
@@ -151,7 +151,10 @@ namespace Basic
         {
             auto timers = this->timers_[timer->position_];
             assert(timers != nullptr);
-            auto it = std::find(timers->begin(), timers->end(), timer);
+            auto it = std::find_if(timers->begin(), timers->end(), [timer](const TimerPtr it)
+            {
+                return timer == it.get();
+            });
             assert(it != timers->end());
             timers->erase(it);
             delete timer;
@@ -166,12 +169,12 @@ namespace Basic
                + (timer->nextHitTicks_ - Timers::getInstance()->currentTicks()) * Timers::kPrecision;
     }
 
-    void Timers::addToTail(std::list<Timer*>** head, Timer* var)
+    void Timers::addToTail(std::list<TimerPtr>** head, TimerPtr var)
     {
         auto base = *head;
         if (base == nullptr)
         {
-            base = new std::list<Timer *>();
+            base = new std::list<TimerPtr>();
             *head = base;
         }
         base->push_back(var);
@@ -229,7 +232,7 @@ namespace Basic
                 {
                     it = timers->erase(it);
                     if (ret == ProcessRet::Delete)
-                        delete timer;
+                        delete timer.get();
                 }
                 else
                 {
@@ -239,7 +242,7 @@ namespace Basic
         }
     }
 
-    Timers::ProcessRet Timers::processTimer(Timer* timer, int currentSlot)
+    Timers::ProcessRet Timers::processTimer(TimerPtr timer, int currentSlot)
     {
         ProcessRet ret = ProcessRet::None;
         if (timer->position_ == currentSlot)
@@ -247,13 +250,13 @@ namespace Basic
             assert(timer->leftTruns_ > 0);
             if (timer->onTimer_ != nullptr)
             {
-                timer->onTimer_(timer);
+                timer->onTimer_(timer.get());
             }
             timer->leftTruns_--;
             if (timer->leftTruns_ == 0)
             {
                 if (timer->onEnd_ != nullptr)
-                    timer->onEnd_(timer);
+                    timer->onEnd_(timer.get());
                 ret = ProcessRet::Delete;
             }
             else
@@ -276,8 +279,8 @@ namespace Basic
     Timer* timer_wait(int64_t millseconds, TimerCallback onTimerEnd)
 #endif
     {
-        Timer* ret = Timers::getInstance()->wait(millseconds, onTimerEnd);
-        return (Timer*)ret;
+        auto ret = Timers::getInstance()->wait(millseconds, onTimerEnd);
+        return ret.get();
     }
 
 #ifdef WIN32

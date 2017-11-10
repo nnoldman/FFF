@@ -1,17 +1,16 @@
 #include "stdafx.h"
 #include "CenterApp.h"
-#include "LoginNetAgent.h"
+#include "CenterNetAgent.h"
 #include "DBTableDefine.h"
 #include "GlobalRoleDefine.h"
 #include "GlobalAccountDefine.h"
 #include "HServer.h"
 
 CenterApp::CenterApp(int narg, char* argv[])
-    : App(narg,argv)
+    : App(narg, argv)
     , mNetAgent(nullptr)
     , hServer_(nullptr)
 {
-
 }
 
 CenterApp::~CenterApp()
@@ -47,7 +46,7 @@ bool CenterApp::onInitializeEnd()
 
 bool CenterApp::onInitializeNet()
 {
-    mNetAgent = new LoginNetAgent();
+    mNetAgent = new CenterNetAgent();
     if (!mNetAgent->initialize())
         return false;
     return true;

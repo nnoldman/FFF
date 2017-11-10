@@ -65,7 +65,8 @@
     <OutDir>..\bin\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="CenterNetAgent.cpp" />
+    <ClCompile Include="GameNetAgent.cpp" />
+    <ClCompile Include="RoleSystems\MailSystem.cpp" />
     <ClCompile Include="RoleSystems\ChatSystem.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameSystems\GameControllerBase.cpp" />
@@ -83,6 +84,7 @@
     <ClCompile Include="GameSystems\MessageController.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RoleSystems\MailSystem.h" />
     <ClInclude Include="RoleSystems\ChatSystem.h" />
     <ClInclude Include="Config\ItemTable.h" />
     <ClInclude Include="Config\Language.h" />
@@ -90,7 +92,7 @@
     <ClInclude Include="GameSystems\GameControllers.h" />
     <ClInclude Include="RoleSystems\RewardSystem.h" />
     <ClInclude Include="GameSystems\MessageController.h" />
-    <ClInclude Include="CenterNetAgent.h" />
+    <ClInclude Include="GameNetAgent.h" />
     <ClInclude Include="Config\TimeTable.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="TableDefine\GameRoleDefine.h" />
@@ -99,6 +101,7 @@
     <ClInclude Include="RoleSystems\LevelSystem.h" />
     <ClInclude Include="Role.h" />
     <ClInclude Include="TableDefine\ItemDefine.h" />
+    <ClInclude Include="TableDefine\MailDefine.h" />
     <ClInclude Include="TableDefine\RoleInfoDefine.h" />
     <ClInclude Include="RoleSystems\ItemSystem.h" />
     <ClInclude Include="RoleSystems\PaySystem.h" />

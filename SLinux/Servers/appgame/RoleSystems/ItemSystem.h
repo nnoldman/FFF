@@ -50,7 +50,7 @@ protected:
     int getStartIndex(GameDefine::ObjectCellType cell);
     int getIndex(GameDefine::ObjectCellType cell, int position);
 private:
-    Basic::Timer* testTimer_;
+    std::weak_ptr<Basic::Timer> testTimer_;
     ItemDefine* objects_[ItemDefine::ObjectsCapacity];
     Basic::IDGenerator idGenerator_;
     static int sCellCapicity[];

@@ -1,5 +1,5 @@
 #pragma once
-class LoginNetAgent;
+class CenterNetAgent;
 class HServer;
 class CenterApp :
     public App
@@ -11,7 +11,7 @@ public:
     virtual const DBConfig& getDataBaseConfig() override;
     virtual bool parseCommandLine() override;
 private:
-    LoginNetAgent* mNetAgent;
+    CenterNetAgent* mNetAgent;
     HServer* hServer_;
 protected:
     virtual void archive() override;

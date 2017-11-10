@@ -14,7 +14,7 @@ public:
 
     bool initialize(const DBConfig& config);
 
-    void queryBegin(const char* cmd) const;
+    bool queryBegin(const char* cmd) const;
 
     /*
     	Only return first record or nothing.
@@ -37,7 +37,7 @@ private:
 
     DBConfig mConfig;
 
-    MYSQL* mConnection;
+    MYSQL* mysql_;
 };
 
 

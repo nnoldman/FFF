@@ -6,7 +6,7 @@
 #include "Default.h"
 
 class GameRoleDefine :
-    public DBDefine
+    public DBDefineInterface<GameRoleDefine>
 {
 public:
     static const DBTableDefine& GetDefine()

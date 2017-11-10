@@ -24,45 +24,12 @@ bool DataBase::initialize(const DBConfig& config)
     executer_->use(config.dbName.c_str());
     fetchTables();
     checkDefineToCreateTables.invoke(executer_);
-    //Data::MySQL::Connector::registerConnector();
-    //generateConnectString();
-    //try
-    //{
-    //	_pSession = new Session(MySQL::Connector::KEY, _dbConnString);
-    //}
-    //catch (ConnectionFailedException& ex)
-    //{
-    //	std::cout << ex.displayText() << std::endl;
-    //	std::cout << "Trying to connect without DB and create one ..." << std::endl;
-    //	if (!createDB)
-    //		return false;
-    //}
     return true;
 }
 
 void DataBase::finish()
 {
 }
-
-void DataBase::create_table_if_not_exist(const char* name)
-{
-}
-
-bool DataBase::create_column_if_not_exist(const char* table, const char* key)
-{
-    auto res = tables_.find(table);
-    if (res != tables_.end())
-    {
-        DBTable* sqltable = res->second;
-        if (!sqltable->exist(key))
-        {
-            return sqltable->insertCol(key);
-        }
-    }
-    return false;
-}
-
-
 bool DataBase::createTable(const char* name, const char* cmd)
 {
     stringstream cmdstring;
@@ -187,29 +154,33 @@ bool DataBase::queryKey(string table, string key, const char* value)
 {
     stringstream ss;
     ss << "SELECT COUNT(*) FROM " << table << " WHERE " << key << " = " << value << ";";;
-    executer_->queryBegin(ss.str().c_str());
-    return executer_->queryEnd();
+    if (executer_->queryBegin(ss.str().c_str()))
+        return executer_->queryEnd();
+    return false;
 }
 
 bool DataBase::queryRecord(const char* cmd, std::vector<string>& result)
 {
-    executer_->queryBegin(cmd);
-    return executer_->queryEnd(result);
+    if(executer_->queryBegin(cmd))
+        return executer_->queryEnd(result);
+    return false;
 }
 
 bool DataBase::queryRecord(string table, string key, const char* value, std::vector<string>& result)
 {
     stringstream ss;
     ss << "SELECT COUNT(*) FROM " << table << " WHERE " << key << " = " << value << ";";;
-    executer_->queryBegin(ss.str().c_str());
-    return executer_->queryEnd(result);
+    if(executer_->queryBegin(ss.str().c_str()))
+        return executer_->queryEnd(result);
+    return false;
 }
 
 bool DataBase::queryRecord(string table, string key, const char* value, OUT DBDefine* result)
 {
     stringstream ss;
     ss << "SELECT COUNT(*) FROM " << table << " WHERE " << key << " = " << value << ";";;
-    executer_->queryBegin(ss.str().c_str());
+    if (!executer_->queryBegin(ss.str().c_str()))
+        return false;
     std::vector<string> records;
     auto ret = executer_->queryEnd(records);
     if (ret)
@@ -232,7 +203,8 @@ bool DataBase::pull(const char* key, AnyObject keyvalue, OUT DBDefine* def)
         ss << "SELECT * FROM " << def->table() << " WHERE " << key << " = '" << keyvalue.get<string>()->c_str() << "'" << ";";
     else
         ss << "SELECT * FROM " << def->table() << " WHERE " << key << " = " << keyvalue.toString() << ";";
-    executer_->queryBegin(ss.str().c_str());
+    if (!executer_->queryBegin(ss.str().c_str()))
+        return false;
     std::vector<string> records;
     auto ret = executer_->queryEnd(records);
     if (ret)
@@ -243,7 +215,7 @@ bool DataBase::pull(const char* key, AnyObject keyvalue, OUT DBDefine* def)
     return ret;
 }
 
-bool DataBase::pullByPrimaryKey(const DBTableDefine& def, AnyObject keyvalue, Creator creator, OUT std::list<DBDefine*>& ret)
+bool DataBase::pullByPrimaryKey(const DBTableDefine& def, AnyObject keyvalue, DBDefineCreator creator, OUT std::list<DBDefine*>& ret)
 {
     ret.clear();
     stringstream ss;
@@ -251,7 +223,8 @@ bool DataBase::pullByPrimaryKey(const DBTableDefine& def, AnyObject keyvalue, Cr
         ss << "SELECT * FROM " << def.tableName() << " WHERE " << def.key() << " = '" << keyvalue.get<string>()->c_str() << "'" << ";";
     else
         ss << "SELECT * FROM " << def.tableName() << " WHERE " << def.key() << " = " << keyvalue.toString() << ";";
-    executer_->queryBegin(ss.str().c_str());
+    if (!executer_->queryBegin(ss.str().c_str()))
+        return false;
     std::vector<std::vector<string>> records;
     auto state = executer_->queryEnd(records);
     if (state)
@@ -286,7 +259,8 @@ bool DataBase::deleteByKey1(DBDefine* def)
     assert(def->key2() == nullptr);
     stringstream cmd;
     cmd << "DELETE FROM " << def->table() << " WHERE id=" << def->id << ";";
-    executer_->queryBegin(cmd.str().c_str());
+    if (!executer_->queryBegin(cmd.str().c_str()))
+        return false;
     return executer_->queryEnd();
 }
 
@@ -298,7 +272,8 @@ bool DataBase::deleteByKey1Key2(DBDefine* def, AnyObject key2Value)
         cmd << "DELETE FROM " << def->table() << " WHERE id=" << def->id << " AND " << def->key2() << "='" << key2Value.get<string>()->c_str() << "';";
     else
         cmd << "DELETE FROM " << def->table() << " WHERE id=" << def->id << " AND " << def->key2() << "=" << key2Value.toString() << ";";
-    executer_->queryBegin(cmd.str().c_str());
+    if (!executer_->queryBegin(cmd.str().c_str()))
+        return false;
     return executer_->queryEnd();
 }
 
@@ -309,7 +284,8 @@ bool DataBase::insert(OUT DBDefine* def)
     def->serialize();
     def->getValues(ssvalue);
     ss << "INSERT INTO " << def->table() << " VALUES (" << ssvalue.str().c_str() << ");";
-    executer_->queryBegin(ss.str().c_str());
+    if (!executer_->queryBegin(ss.str().c_str()))
+        return false;
     return executer_->queryEnd();
 }
 
@@ -341,7 +317,8 @@ bool DataBase::insertDefaultByGUID(const char* table, const char* guid)
     assert(strlen(guid));
     stringstream sm;
     sm << "INSERT INTO " << table << "(guid) VALUES (" << guid << ");";
-    executer_->queryBegin(sm.str().c_str());
+    if (!executer_->queryBegin(sm.str().c_str()))
+        return false;
     return executer_->queryEnd();
 }
 
@@ -391,7 +368,8 @@ void DataBase::fetchTables()
     dSafeDeleteMap2(tables_);
     stringstream sm;
     sm << "show tables;";
-    executer_->queryBegin(sm.str().c_str());
+    if (!executer_->queryBegin(sm.str().c_str()))
+        return;
     vector<vector<string>> tableNames;
     if (!executer_->queryEnd(tableNames))
     {

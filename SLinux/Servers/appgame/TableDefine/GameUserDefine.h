@@ -5,7 +5,7 @@
 #include "ServerID.h"
 
 class GameUserDefine :
-    public DBDefine
+    public DBDefineInterface<GameUserDefine>
 {
 public:
     static const DBTableDefine& GetDefine()
@@ -23,24 +23,15 @@ public:
     };
 public:
     int role;
-public:
-    virtual const char* key() override
+protected:
+    virtual void serializeMe() override
     {
-        return GetDefine().key();
-    }
-    virtual const char* table() override
-    {
-        return GetDefine().tableName();
+        stream() << id;
+        stream() << role;
     }
     virtual void deserializeMe() override
     {
         stream() >> id;
         stream() >> role;
-    }
-
-    virtual void serializeMe() override
-    {
-        stream() << id;
-        stream() << role;
     }
 };

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GameApp.h"
-#include "CenterNetAgent.h"
+#include "GameNetAgent.h"
 #include "TableDefine/GameUserDefine.h"
 #include "TableDefine/GameRoleDefine.h"
 #include "Config/TimeTable.h"
@@ -8,6 +8,7 @@
 #include "GameSystems/GameControllers.h"
 #include "TableDefine/ItemDefine.h"
 #include "Config/ItemTable.h"
+#include "TableDefine/MailDefine.h"
 
 GameApp::GameApp(int argc, char* argv[])
     : App(argc, argv)
@@ -55,11 +56,10 @@ bool GameApp::onInitializeEnd()
 
 bool GameApp::onInitializeNet()
 {
-    netAgent_ = new CenterNetAgent();
+    netAgent_ = new GameNetAgent();
     netAgent_->initialize();
     return true;
 }
-
 
 const vector<const DBTableDefine*>& GameApp::getTableDefines() const
 {
@@ -68,6 +68,7 @@ const vector<const DBTableDefine*>& GameApp::getTableDefines() const
         &GameUserDefine::GetDefine(),
         &GameRoleDefine::GetDefine(),
         &ItemDefine::GetDefine(),
+        &MailDefine::GetDefine(),
     };
     return ret;
 }

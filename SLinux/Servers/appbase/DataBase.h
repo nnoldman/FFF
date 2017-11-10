@@ -10,7 +10,7 @@ class DBTableDefine;
 class COREAPI DataBase
 {
 public:
-    typedef DBDefine* (*Creator)();
+    typedef DBDefine* (*DBDefineCreator)();
 
     DataBase();
     ~DataBase();
@@ -20,11 +20,6 @@ public:
     bool initialize(const DBConfig& config);
 
     void finish();
-
-    void create_table_if_not_exist(const char* name);
-
-    bool create_column_if_not_exist(const char* table, const char* key);
-
     bool createTable(const DBTableDefine* def);
     bool hasTable(const char* name);
     void checkForAlterTableColumns(const DBTableDefine* def);
@@ -41,7 +36,7 @@ public:
     适用以角色ID为主键1、DBID为主键2的表，上线拉取数据，生成的数据内存需要使用者管理。
     如道具表
     */
-    bool pullByPrimaryKey(const DBTableDefine& def, AnyObject keyvalue, Creator creator, OUT std::list<DBDefine*>& ret);
+    bool pullByPrimaryKey(const DBTableDefine& def, AnyObject keyvalue, DBDefineCreator creator, OUT std::list<DBDefine*>& ret);
 
     bool commitByKey1(DBDefine* def);
     bool commitByKey1Key2(DBDefine* def, AnyObject key2Value);

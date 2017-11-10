@@ -14,7 +14,7 @@ protected:
     void calcTimeLine();
 private:
     Role* role_;
-    Basic::Timer* timeLineTimer_;
+    std::weak_ptr<Basic::Timer> timeLineTimer_;
     int currentTrun_;
     int currentTrunLeftTime_;
     int currentTrunTotalTime_;

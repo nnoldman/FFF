@@ -1,17 +1,15 @@
-﻿生成启动时间为 2017/11/8 12:33:01。
+﻿生成启动时间为 2017/11/9 20:57:11。
      1>项目“C:\Src\FFF\SLinux\Test\LocalTest\LocalTest.vcxproj”在节点 2 上(Build 个目标)。
      1>InitializeBuildStatus:
-         正在创建“x64\Debug\LocalTest.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+         正在对“x64\Debug\LocalTest.tlog\unsuccessfulbuild”执行 Touch 任务。
        ClCompile:
          所有输出均为最新。
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\bin\HostX86\x64\CL.exe /c /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"x64\Debug\LocalTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /errorReport:prompt Test_stringstream.cpp
-         Test_stringstream.cpp
-     1>c:\src\fff\slinux\test\localtest\test_stringstream.cpp(113): warning C4838: 从“int”转换到“char”需要收缩转换
-     1>c:\src\fff\slinux\test\localtest\test_stringstream.cpp(113): warning C4309: “初始化”: 截断常量值
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\bin\HostX86\x64\CL.exe /c /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"x64\Debug\LocalTest.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /errorReport:prompt test_wake_ptr.cpp
+         test_wake_ptr.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Src\FFF\SLinux\Test\x64\Debug\LocalTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win64" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Src\FFF\SLinux\Test\x64\Debug\LocalTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Src\FFF\SLinux\Test\x64\Debug\LocalTest.lib" /MACHINE:X64 x64\Debug\IDGenerator.obj
          x64\Debug\Installer.obj
-         x64\Debug\LocalTest.obj
+         x64\Debug\main.obj
          x64\Debug\stdafx.obj
          x64\Debug\Test_any.obj
          x64\Debug\Test_Heap.obj
@@ -20,6 +18,7 @@
          x64\Debug\Test_Patch.obj
          x64\Debug\Test_PureCall.obj
          x64\Debug\Test_stringstream.obj
+         x64\Debug\test_wake_ptr.obj
          LocalTest.vcxproj -> C:\Src\FFF\SLinux\Test\x64\Debug\LocalTest.exe
        FinalizeBuildStatus:
          正在删除文件“x64\Debug\LocalTest.tlog\unsuccessfulbuild”。

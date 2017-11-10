@@ -69,7 +69,7 @@
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="CenterApp.cpp" />
     <ClCompile Include="HServer.cpp" />
-    <ClCompile Include="LoginNetAgent.cpp" />
+    <ClCompile Include="CenterNetAgent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
@@ -79,7 +79,7 @@
     <ClInclude Include="GlobalAccountDefine.h" />
     <ClInclude Include="GlobalRoleDefine.h" />
     <ClInclude Include="HServer.h" />
-    <ClInclude Include="LoginNetAgent.h" />
+    <ClInclude Include="CenterNetAgent.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

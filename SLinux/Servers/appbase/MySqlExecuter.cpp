@@ -2,6 +2,7 @@
 #include "MySqlExecuter.h"
 
 
+
 MySQLExecuter::MySQLExecuter()
 {
 }
@@ -14,35 +15,40 @@ MySQLExecuter::~MySQLExecuter()
 bool MySQLExecuter::initialize(const DBConfig& config)
 {
     mConfig = config;
-    mConnection = mysql_init(0);
-    assert(mConnection != 0);
-    MYSQL* tmp = mysql_real_connect(mConnection, mConfig.host.c_str(), mConfig.user.c_str(), mConfig.password.c_str(),
+    mysql_ = mysql_init(0);
+    assert(mysql_ != 0);
+    MYSQL* tmp = mysql_real_connect(mysql_, mConfig.host.c_str(), mConfig.user.c_str(), mConfig.password.c_str(),
                                     mConfig.dbName.c_str(), mConfig.port, 0, 0);
-    assert(tmp == mConnection);
-    MYSQL_STMT* hstmt = mysql_stmt_init(mConnection);
+    assert(tmp == mysql_);
+    MYSQL_STMT* hstmt = mysql_stmt_init(mysql_);
     assert(hstmt != 0);
     return true;
 }
 
 
-void MySQLExecuter::queryBegin(const char* cmd) const
+bool MySQLExecuter::queryBegin(const char* cmd) const
 {
     assert(cmd);
-    int res = mysql_real_query(mConnection, cmd, static_cast<unsigned long>(strlen(cmd)));
-    printf("QUERY=>%s\n", cmd);
+    int status = mysql_real_query(mysql_, cmd, static_cast<unsigned long>(strlen(cmd)));
+    if (status != 0)
+        printf("QUERY X=>%s\n", mysql_error(mysql_));
+    else
+        printf("QUERY V=>%s\n", cmd);
+    return status == 0;
 }
-
-
 
 bool MySQLExecuter::queryEnd()
 {
-    return  mysql_affected_rows(mConnection) > 0;
+    return  mysql_affected_rows(mysql_) > 0;
 }
 
 
 bool MySQLExecuter::queryEnd(vector<string>& record)
 {
-    MYSQL_RES* records = mysql_store_result(mConnection);
+    if (mysql_affected_rows(mysql_) == 0)
+        return false;
+    MYSQL_RES* records = nullptr;
+    records = mysql_store_result(mysql_);
     if (records)
     {
         auto columns = mysql_num_fields(records);
@@ -51,10 +57,10 @@ bool MySQLExecuter::queryEnd(vector<string>& record)
         if (row)
         {
             for (int i = 0; i < columns; ++i)
-            {
                 record.push_back(row[i]);
-            }
         }
+        mysql_free_result(records);
+        records = nullptr;
         return record.size() > 0;
     }
     else
@@ -65,25 +71,28 @@ bool MySQLExecuter::queryEnd(vector<string>& record)
 }
 
 
+
+
 bool MySQLExecuter::queryEnd(vector<vector<string>>& ret_records)
 {
-    MYSQL_RES* records = mysql_store_result(mConnection);
+    if (mysql_affected_rows(mysql_) == 0)
+        return false;
+    MYSQL_RES* records = nullptr;
+    records = mysql_store_result(mysql_);
     if (records)
     {
         auto columns = mysql_num_fields(records);
-        for (auto i = 0; i < records->row_count; ++i)
+        MYSQL_ROW row = mysql_fetch_row(records);
+        while (row)
         {
-            MYSQL_ROW row = mysql_fetch_row(records);
-            if (row)
-            {
-                vector<string> record;
-                for (auto j = 0; j < columns; ++j)
-                {
-                    record.push_back(row[j]);
-                }
-                ret_records.push_back(record);
-            }
+            vector<string> record;
+            for (auto j = 0; j < columns; ++j)
+                record.push_back(row[j]);
+            ret_records.push_back(record);
+            row = mysql_fetch_row(records);
         }
+        mysql_free_result(records);
+        records = nullptr;
         return ret_records.size() > 0;
     }
     return ret_records.size() > 0;
@@ -91,13 +100,13 @@ bool MySQLExecuter::queryEnd(vector<vector<string>>& ret_records)
 
 unsigned long MySQLExecuter::count()
 {
-    MYSQL_RES* ress = mysql_store_result(mConnection);
+    MYSQL_RES* ress = mysql_store_result(mysql_);
     if (ress == nullptr)
         return 0;
     MYSQL_ROW row = mysql_fetch_row(ress);
-    if (ress)
-        return ::atoi(row[0]);
-    return 0;
+    mysql_free_result(ress);
+    ress = nullptr;
+    return ::atoi(row[0]);
 }
 
 void MySQLExecuter::use(const char* dataBaseName) const

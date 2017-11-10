@@ -5,7 +5,6 @@
 
 LevelSystem::LevelSystem()
     : role_(nullptr)
-    , timeLineTimer_(nullptr)
     , currentTrun_(0)
     , currentTrunLeftTime_(0)
     , currentTrunTotalTime_(0)
@@ -15,9 +14,8 @@ LevelSystem::LevelSystem()
 
 LevelSystem::~LevelSystem()
 {
-    if (this->timeLineTimer_ != nullptr)
-        this->timeLineTimer_->cancel();
-    this->timeLineTimer_ = nullptr;
+    if (!this->timeLineTimer_.expired())
+        this->timeLineTimer_.lock()->cancel();
 }
 
 void LevelSystem::initialize(Role* role)
@@ -35,8 +33,6 @@ void LevelSystem::onTimer(Basic::Timer* timer)
 
 void LevelSystem::onTimeLineEnd(Basic::Timer* timer)
 {
-    if (this->timeLineTimer_ == timer)
-        this->timeLineTimer_ = nullptr;
     calcTimeLine();
     syncTimeLine();
 }
@@ -45,7 +41,7 @@ void LevelSystem::syncTimeLine()
 {
     Cmd::RetTimeLine ret;
     ret.set_trun(this->currentTrun_);
-    ret.set_leftseconds(this->timeLineTimer_->leftSeconds());
+    ret.set_leftseconds(this->timeLineTimer_.lock()->leftSeconds());
     ret.set_totalseconds(this->currentTrunTotalTime_);
     send(Cmd::SERVERID::RTTimeLine, &ret);
 }
@@ -66,8 +62,8 @@ void LevelSystem::calcTimeLine()
         {
             currentTrun_ = i;
             currentTrunLeftTime_ = eclipseTime - delta;
-            if (this->timeLineTimer_ != nullptr)
-                this->timeLineTimer_->cancel();
+            if (this->timeLineTimer_.lock())
+                this->timeLineTimer_.lock()->cancel();
             this->timeLineTimer_ = Timers::getInstance()->repeat(
                                        5000, &LevelSystem::onTimer, this, currentTrunLeftTime_ * 1000, &::LevelSystem::onTimeLineEnd );
             break;

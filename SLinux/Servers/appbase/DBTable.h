@@ -11,16 +11,9 @@ public:
     DBTable();
     ~DBTable();
 
-    bool insert(const char* cmd);
-
     bool exist(const char* col);
-
-    bool insertCol(const char* col);
-
     int refreshRecordCount();
-
     void fetchColumns();
-
     const std::vector<string>& columns()const;
 private:
 

@@ -210,13 +210,13 @@ void OnCrashHandler(int signum)
         //fprintf(stderr, "oncrash;\n");
         for (i = 0; i < size; ++i)
         {
-#if 0
+#if 1
             std::string symbol(strings[i]);
             std::string::size_type pos1 = symbol.find_first_of("[");
             std::string::size_type pos2 = symbol.find_last_of("]");
-            std::string address = symbo.substr(pos1 + 1, pos2 - pos1 - 1);
+            std::string address = symbol.substr(pos1 + 1, pos2 - pos1 - 1);
             char cmd[128] = { 0, };
-            sprintf(cmd, "addr2line -e gameserver %p", address.c_str());
+            sprintf(cmd, "addr2line -e appgame %p", address.c_str());
             system(cmd);
 #endif
             char szLine[512] = { 0, };

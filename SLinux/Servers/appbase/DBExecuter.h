@@ -8,7 +8,7 @@ public:
 
     virtual bool initialize(const DBConfig& config) = 0;
 
-    virtual void queryBegin(const char* cmd) const = 0;
+    virtual bool queryBegin(const char* cmd) const = 0;
 
     virtual bool queryEnd(vector<string>& result) = 0;
 

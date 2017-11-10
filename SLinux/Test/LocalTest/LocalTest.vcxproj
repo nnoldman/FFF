@@ -155,7 +155,7 @@
   <ItemGroup>
     <ClCompile Include="IDGenerator.cpp" />
     <ClCompile Include="Installer.cpp" />
-    <ClCompile Include="LocalTest.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -169,6 +169,7 @@
     <ClCompile Include="Test_Patch.cpp" />
     <ClCompile Include="Test_PureCall.cpp" />
     <ClCompile Include="Test_stringstream.cpp" />
+    <ClCompile Include="test_wake_ptr.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

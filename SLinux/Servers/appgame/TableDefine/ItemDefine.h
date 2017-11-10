@@ -7,7 +7,7 @@
 #include "RoleInfoDefine.h"
 
 class ItemDefine :
-    public DBDefine
+    public DBDefineInterface<ItemDefine>
 {
 public:
     static const int ObjectsCapacity = GameDefine::Bag + GameDefine::Equip;
@@ -27,18 +27,9 @@ public:
         };
         static const DBTableDefine TheTable =
         {
-            "items", false, "id", "dbID", columns,
+            "game_item", false, "id", "dbID", columns,
         };
         return TheTable;
-    }
-    static DBDefine* Create()
-    {
-        return new ItemDefine();
-    }
-
-    virtual const char* table() override
-    {
-        return GetDefine().tableName();
     }
 public:
     int dbID;
@@ -49,14 +40,6 @@ public:
     char kind;
     Basic::CharBuffer<Default::TimeSize> borntime;
 public:
-    virtual const char* key() override
-    {
-        return GetDefine().key();
-    }
-    virtual const char* key2() override
-    {
-        return GetDefine().key2();
-    }
     virtual void deserializeMe() override
     {
         stream() >> this->id;

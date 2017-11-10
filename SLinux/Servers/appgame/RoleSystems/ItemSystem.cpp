@@ -10,14 +10,13 @@ int ItemSystem::sCellCapicity[] =
 };
 
 ItemSystem::ItemSystem()
-    : testTimer_(nullptr)
 {
     dMemoryZeroArray(this->objects_);
 }
 ItemSystem::~ItemSystem()
 {
-    if (this->testTimer_ != nullptr)
-        this->testTimer_->cancel();
+    if (this->testTimer_.lock())
+        this->testTimer_.lock()->cancel();
     dSafeDeleteArray(this->objects_);
 }
 
@@ -82,7 +81,7 @@ bool ItemSystem::moveItem(int dbID, GameDefine::ItemLocation locationSrc, int xS
 
 void ItemSystem::onTimer(Basic::Timer* timer)
 {
-    if (timer == this->testTimer_)
+    if (timer == this->testTimer_.lock().get())
     {
         auto position = this->getFirstEmptySlot(GameDefine::ObjectCellType_Bag);
         if (position == -1)
@@ -109,10 +108,6 @@ void ItemSystem::onTimer(Basic::Timer* timer)
 
 void ItemSystem::onTimerEnd(Basic::Timer * timer)
 {
-    if (timer == this->testTimer_)
-    {
-        this->testTimer_ = nullptr;
-    }
 }
 
 
@@ -133,7 +128,6 @@ void ItemSystem::syncToClient()
     }
     SendProtoBuffer(this->role_->getNetInterface(), Cmd::SERVERID::RTObject_Add, cmd);
 }
-
 void ItemSystem::pullFromDB()
 {
     std::list<DBDefine*> records;
@@ -158,10 +152,11 @@ void ItemSystem::pullFromDB()
     }
 }
 
+
 void ItemSystem::testSystem()
 {
-    if (this->testTimer_ != nullptr)
-        this->testTimer_->cancel();
+    if (this->testTimer_.lock())
+        this->testTimer_.lock()->cancel();
     this->testTimer_ = Timers::getInstance()->repeat(5000, &ItemSystem::onTimer, this, 15 * 1000, &ItemSystem::onTimerEnd);
 }
 

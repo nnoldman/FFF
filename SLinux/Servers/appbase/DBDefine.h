@@ -46,10 +46,30 @@ public:
     }
 private:
     DBStream stream_;
-    int concatIndex_;
 };
 inline	void DBDefine::setGlobalID(int id)
 {
     this->id = id;
 }
 
+template<typename T>
+class DBDefineInterface: public DBDefine
+{
+public:
+    static DBDefine* Create()
+    {
+        return new T();
+    }
+    virtual const char* table() override
+    {
+        return T::GetDefine().tableName();
+    }
+    virtual const char* key() override
+    {
+        return T::GetDefine().key();
+    }
+    virtual const char* key2() override
+    {
+        return T::GetDefine().key2();
+    }
+};

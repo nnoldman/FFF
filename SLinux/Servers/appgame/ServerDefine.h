@@ -14,6 +14,7 @@ namespace ServerDefine
         SystemType_Task,
         SystemType_Chat,
         SystemType_Count,
+        SystemType_Mail,
     };
 }
 
