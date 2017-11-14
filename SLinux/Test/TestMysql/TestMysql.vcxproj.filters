@@ -24,9 +24,6 @@
     <ClInclude Include="QueryNode.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="SQLInterface.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="DBExecuter.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -39,15 +36,36 @@
     <ClInclude Include="DBDefine.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DataBase.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DBStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DBTable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DBTableDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLHelper.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TableDefine\GameUserDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TableDefine\ItemDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TableDefine\MailDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="QueryNode.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="SQLInterface.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DBExecuter.cpp">
@@ -63,6 +81,21 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DBDefine.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DataBase.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DBStream.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DBTable.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DBTableDefine.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLHelper.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -2,25 +2,28 @@
 #define QueryNode_h__
 #include "DBDefine.h"
 
-class QueryNode
-{
-public:
+class QueryNode {
+  public:
     typedef DBDefine* (*Creator)();
-public:
+  public:
     QueryNode(MYSQL* sql);
     ~QueryNode();
-    bool query(const char* cmd, DBDefine* ret);
-    bool query(const char* cmd, vector<DBDefine*>* ret);
-    bool query(const char* cmd);
-    ::size_t count();
-protected:
-    bool query() const;
-    bool query(vector<string>& ret);
-    bool query(vector<vector<string>>& ret);
+
     bool start(const char* cmd);
-private:
+    bool fetch() const;
+    bool fetch(vector<string>& ret);
+    bool fetch(vector<vector<string>>& ret);
+
+    bool query(const char* cmd);
+
+    operator bool();
+
+    MYSQL_ROW nextRow();
+
+  private:
     ::size_t getColumns();
-private:
+    bool store();
+  private:
     MYSQL* mysql_;
     MYSQL_RES* resource_;
     const char* cmd_;

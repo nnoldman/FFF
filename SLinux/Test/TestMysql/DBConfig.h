@@ -1,5 +1,7 @@
-struct DBConfig
-{
+#ifndef DBConfig_h__
+#define DBConfig_h__
+
+struct DBConfig {
     string dbName;
     string user;
     string password;
@@ -9,9 +11,9 @@ struct DBConfig
     DBConfig()
         : host("localhost")
         , port(3306)
-        , autoCreateAccount(true)
-    {
+        , autoCreateAccount(true) {
     }
 };
 
 
+#endif // DBConfig_h__

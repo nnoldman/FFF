@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -23,7 +23,7 @@
     <ProjectGuid>{AF5B5DA1-3FFA-4B14-8158-C46C9B358028}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>TestMysql</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -76,7 +76,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>../include;$(IncludePath)</IncludePath>
+    <IncludePath>../include;../;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -110,6 +110,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>basic.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -147,22 +149,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DataBase.h" />
     <ClInclude Include="DBConfig.h" />
     <ClInclude Include="DBDefine.h" />
     <ClInclude Include="DBExecuter.h" />
+    <ClInclude Include="DBStream.h" />
+    <ClInclude Include="DBTable.h" />
+    <ClInclude Include="DBTableDefine.h" />
     <ClInclude Include="MySqlExecuter.h" />
     <ClInclude Include="QueryNode.h" />
-    <ClInclude Include="SQLInterface.h" />
+    <ClInclude Include="SQLHelper.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TableDefine\GameUserDefine.h" />
+    <ClInclude Include="TableDefine\ItemDefine.h" />
+    <ClInclude Include="TableDefine\MailDefine.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DataBase.cpp" />
     <ClCompile Include="DBConfig.cpp" />
     <ClCompile Include="DBDefine.cpp" />
     <ClCompile Include="DBExecuter.cpp" />
+    <ClCompile Include="DBStream.cpp" />
+    <ClCompile Include="DBTable.cpp" />
+    <ClCompile Include="DBTableDefine.cpp" />
     <ClCompile Include="MySqlExecuter.cpp" />
     <ClCompile Include="QueryNode.cpp" />
-    <ClCompile Include="SQLInterface.cpp" />
+    <ClCompile Include="SQLHelper.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

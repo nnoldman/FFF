@@ -5,24 +5,21 @@
 
 
 MySQLExecuter::MySQLExecuter()
-{
+    :mysql_(nullptr) {
 }
 
 
-MySQLExecuter::~MySQLExecuter()
-{
-    mysql_close(this->mysql_);
+MySQLExecuter::~MySQLExecuter() {
 }
 
-bool MySQLExecuter::initialize(const DBConfig& config)
-{
-    mConfig = config;
+bool MySQLExecuter::initialize(const DBConfig& config) {
+    DBExecuter::initialize(config);
+
     mysql_ = mysql_init(0);
     assert(mysql_ != 0);
-    MYSQL* tmp = mysql_real_connect(mysql_, mConfig.host.c_str(), mConfig.user.c_str(), mConfig.password.c_str(),
-                                    mConfig.dbName.c_str(), mConfig.port, 0, 0);
-    if (tmp == nullptr)
-    {
+    MYSQL* tmp = mysql_real_connect(mysql_, config_.host.c_str(), config_.user.c_str(), config_.password.c_str(),
+                                    config_.dbName.c_str(), config_.port, 0, 0);
+    if (tmp == nullptr) {
         std::cout << "MySQLExecuter::initialize=>>" << mysql_error(mysql_) << std::endl;
         return false;
     }
@@ -30,71 +27,75 @@ bool MySQLExecuter::initialize(const DBConfig& config)
     assert(hstmt != 0);
     return true;
 }
-
-
-bool MySQLExecuter::queryBegin(const char* cmd) const
-{
-    assert(cmd);
-    int status = mysql_real_query(mysql_, cmd, static_cast<unsigned long>(strlen(cmd)));
-    if (status != 0)
-        printf("QUERY X=>%s\n", mysql_error(mysql_));
-    else
-        printf("QUERY V=>%s\n", cmd);
-    return status == 0;
-}
-
-bool MySQLExecuter::queryEnd()
-{
-    return  mysql_affected_rows(mysql_) > 0;
-}
-
-
-bool MySQLExecuter::queryEnd(vector<string>& record)
-{
-    if (mysql_affected_rows(mysql_) == 0)
-        return false;
-    MYSQL_RES* records = nullptr;
-    records = mysql_store_result(mysql_);
-    if (records)
-    {
-        auto columns = mysql_num_fields(records);
-        assert(records->row_count <= 1);
-        MYSQL_ROW row = mysql_fetch_row(records);
-        if (row)
-        {
-            for (auto i = 0U; i < columns; ++i)
-                record.push_back(row[i]);
-        }
-        mysql_free_result(records);
-        records = nullptr;
-        return record.size() > 0;
-    }
-    else
-    {
-        return false;
-    }
-    return record.size() > 0;
-}
-
-bool MySQLExecuter::queryEnd(vector<vector<string>>& ret_records)
-{
-    if (mysql_affected_rows(mysql_) == 0)
-        return false;
-    QueryNode node(mysql_);
-    return node.query(ret_records);
-}
-
-unsigned long MySQLExecuter::count(const char* name)
-{
+unsigned long MySQLExecuter::count(const char* name) {
     QueryNode query(this->mysql_);
-    return query.count(name);
+    throw new exception();
     return 0;
 }
 
-void MySQLExecuter::use(const char* dataBaseName) const
-{
+void MySQLExecuter::use() const {
     stringstream cmd;
-    cmd << "use database " << dataBaseName << ";";
-    queryBegin(cmd.str().c_str());
+    cmd << "use " << this->config_.dbName << ";";
+    QueryNode query(this->mysql_);
+    query.query(cmd.str().c_str());
+}
+
+void MySQLExecuter::close()  {
+    if(this->mysql_)
+        mysql_close(this->mysql_);
+    this->mysql_ = nullptr;
+}
+
+bool MySQLExecuter::query(const char* cmd) {
+    QueryNode query(this->mysql_);
+    if (query.start(cmd)) {
+        return true;
+    }
+    return false;
+}
+
+bool MySQLExecuter::query(const char* cmd, OUT vector<string>& result) {
+    QueryNode query(this->mysql_);
+    if (query.start(cmd)) {
+        return query.fetch(result);
+    }
+    return false;
+}
+
+bool MySQLExecuter::query(const char* cmd, OUT vector<vector<string>>& result) {
+    QueryNode query(this->mysql_);
+    if (query.start(cmd)) {
+        return query.fetch(result);
+    }
+    return false;
+}
+
+bool MySQLExecuter::query(const char* cmd, OUT DBDefine* ret) {
+    QueryNode query(this->mysql_);
+    vector<string> columns;
+    if (query.start(cmd)) {
+        if (query.fetch(columns)) {
+            ret->deserialize(columns);
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool MySQLExecuter::query(const char* cmd, OUT vector<DBDefine *>& ret, DBDefineCreator creator) {
+    vector<vector<string>> records;
+    QueryNode query(this->mysql_);
+    if (query.start(cmd)) {
+        if (query.fetch(records)) {
+            for (auto columns : records) {
+                auto def = creator(this);
+                def->deserialize(columns);
+                ret.push_back(def);
+            }
+            return true;
+        }
+    }
+    return false;
 }
 

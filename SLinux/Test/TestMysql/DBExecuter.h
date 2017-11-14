@@ -1,24 +1,52 @@
-#ifndef SQLExecuter_h__
-#define SQLExecuter_h__
+#ifndef DBExecuter_h__
+#define DBExecuter_h__
 
 #include "DBConfig.h"
+class DBDefine;
+class DBTableDefine;
+class DBExecuter {
+  public:
+    typedef DBDefine* (*DBDefineCreator)(DBExecuter*);
 
-class DBExecuter
-{
-public:
-
-    virtual bool initialize(const DBConfig& config) = 0;
-
-    virtual bool queryBegin(const char* cmd) const = 0;
-
-    virtual bool queryEnd(vector<string>& result) = 0;
-
-    virtual bool queryEnd(vector<vector<string>>& result) = 0;
-
-    virtual bool queryEnd() = 0;
+    virtual bool initialize(const DBConfig& config);
+    virtual bool query(const char* cmd) = 0;
+    virtual bool query(const char* cmd, OUT vector<string>& result) = 0;
+    virtual bool query(const char* cmd, OUT vector<vector<string>>& result) = 0;
+    virtual bool query(const char* cmd, OUT DBDefine* ret) = 0;
+    virtual bool query(const char* cmd, OUT vector<DBDefine*>& ret, DBDefineCreator creator) = 0;
 
     virtual unsigned long count(const char* tablaname) = 0;
 
-    virtual void use(const char* dataBaseName) const = 0;
+    virtual void use() const = 0;
+    virtual void close() = 0;
+
+    bool pull(const char* key, Basic::AnyValue keyvalue, OUT DBDefine* def);
+    /*
+    适用以角色ID为主键1、DBID为主键2的表，上线拉取所有数据，生成的数据内存需要使用者管理。
+    如道具表
+    */
+    bool pullByKey1(const DBTableDefine& def, Basic::AnyValue keyvalue, DBDefineCreator creator, OUT std::vector<DBDefine*>& ret);
+    /*
+    拉取一条数据
+    */
+    bool pullByKey1(OUT DBDefine* def);
+    /*
+    拉取一条数据
+    */
+    bool pullByKey1Key2(DBDefine* def,Basic::AnyValue keyvalue);
+    bool commitByKey1(DBDefine* def);
+    bool commitByKey1Key2(DBDefine* def, Basic::AnyValue key2Value);
+    bool deleteByKey1(DBDefine* def);
+    bool deleteByKey1Key2(DBDefine* def, Basic::AnyValue key2Value);
+
+    bool insertAndQuery(Basic::AnyValue keyvalue, OUT DBDefine* def);
+    bool insertAndQuery(const char* key, Basic::AnyValue keyvalue, OUT DBDefine* def);
+
+    const DBConfig& config() const;
+  private:
+    bool insert(OUT DBDefine* def);
+    string makeValue(const Basic::AnyValue& keyvalue);
+  protected:
+    DBConfig config_;
 };
-#endif // SQLExecuter_h__
+#endif // DBExecuter_h__
