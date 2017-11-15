@@ -1,38 +1,30 @@
 #ifndef XSingleton_h__
 #define XSingleton_h__
 
-namespace Basic
-{
+namespace Basic {
     template<typename T>
-    class Singleton
-    {
-    public:
+    class Singleton {
+      public:
         typedef Singleton<T> MyType;
-    private:
-        Singleton()
-        {
+      private:
+        Singleton() {
         }
         Singleton(const Singleton&);
         Singleton& operator= (const Singleton&);
-    public:
-        virtual ~Singleton()
-        {
+      public:
+        virtual ~Singleton() {
         }
-        static T*& getInstance()
-        {
+        static T*& getInstance() {
             static T* sInstance_ = nullptr;
-            if (!sInstance_)
-            {
+            if (!sInstance_) {
                 sInstance_ = new T;
             }
             return sInstance_;
         }
-        static  T& getSingleton()
-        {
+        static  T& getSingleton() {
             return *getInstance();
         }
-        static void destoryInstance()
-        {
+        static void destoryInstance() {
             T*& p = getInstance();
             dSafeDelete(p);
         }

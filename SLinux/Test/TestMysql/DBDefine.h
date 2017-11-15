@@ -10,7 +10,7 @@
 class DBDefine {
   public:
     int id;
-    DBExecuter* execter_;
+    DBExecuter* execter;
   public:
     virtual ~DBDefine() {}
     virtual const char* table() = 0;
@@ -51,7 +51,7 @@ class DBDefineInterface: public DBDefine {
   public:
     static DBDefine* Create(DBExecuter* executer) {
         auto ret = (DBDefine*)(new T());
-        ret->execter_ = executer;
+        ret->execter = executer;
         return ret;
     }
     virtual const char* table() override {

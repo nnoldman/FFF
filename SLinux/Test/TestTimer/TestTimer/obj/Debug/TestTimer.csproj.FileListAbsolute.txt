@@ -8,3 +8,13 @@ C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.csproj.GenerateRe
 C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.csproj.CoreCompileInputs.cache
 C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.exe
 C:\Src\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.pdb
+D:\git\FFF\SLinux\Test\TestTimer\TestTimer\bin\Debug\TestTimer.exe.config
+D:\git\FFF\SLinux\Test\TestTimer\TestTimer\bin\Debug\TestTimer.exe
+D:\git\FFF\SLinux\Test\TestTimer\TestTimer\bin\Debug\TestTimer.pdb
+D:\git\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.csprojResolveAssemblyReference.cache
+D:\git\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.Form1.resources
+D:\git\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.Properties.Resources.resources
+D:\git\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.csproj.GenerateResource.Cache
+D:\git\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.csproj.CoreCompileInputs.cache
+D:\git\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.exe
+D:\git\FFF\SLinux\Test\TestTimer\TestTimer\obj\Debug\TestTimer.pdb

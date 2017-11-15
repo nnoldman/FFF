@@ -111,9 +111,6 @@
     <ClInclude Include="Time_.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="TimeDim.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -121,9 +118,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Tree.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Value.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Variable.h">

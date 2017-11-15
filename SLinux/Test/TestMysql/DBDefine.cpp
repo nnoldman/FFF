@@ -24,39 +24,39 @@ void DBDefine::set(vector<string>& values) {
 }
 
 bool DBDefine::pullByKey1() {
-    return this->execter_->pullByKey1(this);
+    return this->execter->pullByKey1(this);
 }
 
 bool DBDefine::pullByKey1Key2(Basic::AnyValue key2value) {
-    return this->execter_->pullByKey1Key2(this,key2value);
+    return this->execter->pullByKey1Key2(this,key2value);
 }
 
 bool DBDefine::commitByKey1() {
-    return this->execter_->commitByKey1(this);
+    return this->execter->commitByKey1(this);
 }
 
 bool DBDefine::commitByKey1Key2(Basic::AnyValue key2value) {
-    return this->execter_->commitByKey1Key2(this, key2value);
+    return this->execter->commitByKey1Key2(this, key2value);
 }
 
 bool DBDefine::insertByKey1() {
-    return this->execter_->commitByKey1(this);
+    return this->execter->commitByKey1(this);
 }
 
 bool DBDefine::insertByKey1Key2(Basic::AnyValue key2value) {
-    return this->execter_->commitByKey1Key2(this, key2value);
+    return this->execter->commitByKey1Key2(this, key2value);
 }
 
 //delete from global_account where user = '123';
 bool DBDefine::insertAndQuery(Basic::AnyValue keyvalue) {
-    if (this->execter_->commitByKey1(this))
+    if (this->execter->commitByKey1(this))
         return pullByKey1();
     return false;
 }
 
 bool DBDefine::insertAndQuery(const char* key, Basic::AnyValue keyvalue) {
-    if (this->execter_->commitByKey1(this))
-        return this->execter_->pull(key, keyvalue, this);
+    if (this->execter->commitByKey1(this))
+        return this->execter->pull(key, keyvalue, this);
     return false;
 }
 
@@ -71,6 +71,6 @@ bool DBDefine::getValues(stringstream& ss) {
 }
 
 bool DBDefine::exist(const char* key, Basic::AnyValue value) {
-    return this->execter_->pull(key, value, this);
+    return this->execter->pull(key, value, this);
 }
 

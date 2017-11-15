@@ -8,23 +8,20 @@
 #include <memory>
 using namespace std;
 using namespace std::chrono;
-namespace Basic
-{
+namespace Basic {
     typedef shared_ptr<Basic::Timer> TimerPtr;
-    class Timers
-    {
-    public:
+    class Timers {
+      public:
         static const int kPrecision = 10;//¾«¶È10MS
-    public:
+      public:
         static const int kLevelCount = 5;
         static const int kSlotsCount = 512;
-    public:
-        static Timers* getInstance()
-        {
+      public:
+        static Timers* getInstance() {
             static Timers t;
             return &t;
         }
-    public:
+      public:
         ~Timers();
         template<typename T>
         TimerPtr wait(int64_t lefttimeMillSeconds, void(T::*onTimerEnd)(Timer*) = nullptr, T* object = nullptr);
@@ -38,22 +35,21 @@ namespace Basic
         int64_t currentMillseconds() const;
         void cancel(Timer* timer, bool raiseEvent);
         int64_t leftMicroseconds(const Timer* timer) const;
-    private:
+      private:
         Timers();
         int64_t calcDeadTicks(int64_t microseconds) const;
         void addToTail(std::list<TimerPtr>** head, TimerPtr var);
         int calcSlotIndex(int64_t microseconds);
         void cascade(int level);
         void raise();
-    private:
-        enum ProcessRet
-        {
+      private:
+        enum ProcessRet {
             None = 1 << 0,
             Remove = 1 << 1,
             Delete = 1 << 2 | Remove,
         };
         ProcessRet processTimer(TimerPtr timer, int currentSlot);
-    private:
+      private:
         std::list<TimerPtr>* timers_[kSlotsCount];
         int cursor_[kLevelCount];
         int64_t ticksSinceTimersStart_;
@@ -61,30 +57,24 @@ namespace Basic
     };
 
     template<typename T>
-    TimerPtr Timers::wait(int64_t lefttimeMillSeconds, void(T::*onTimerEnd)(Timer*) /*= nullptr*/, T* object /*= nullptr*/)
-    {
+    TimerPtr Timers::wait(int64_t lefttimeMillSeconds, void(T::*onTimerEnd)(Timer*) /*= nullptr*/, T* object /*= nullptr*/) {
         auto function = std::bind(onTimerEnd, object, std::placeholders::_1);
         return this->wait(lefttimeMillSeconds, function);
     }
 
     template<typename T>
-    TimerPtr Timers::repeat(int64_t intervalMillSeconds, void(T::*onTimer)(Timer*), T* object, int64_t leftTimeMillSeconds /*= microseconds(-1)*/, void(T::*onTimerEnd)(Timer*) /*= nullptr*/)
-    {
+    TimerPtr Timers::repeat(int64_t intervalMillSeconds, void(T::*onTimer)(Timer*), T* object, int64_t leftTimeMillSeconds /*= microseconds(-1)*/, void(T::*onTimerEnd)(Timer*) /*= nullptr*/) {
         auto function1 = std::bind(onTimer, object, std::placeholders::_1);
-        if (onTimerEnd == nullptr)
-        {
+        if (onTimerEnd == nullptr) {
             return this->repeat(intervalMillSeconds, function1, leftTimeMillSeconds, nullptr);
-        }
-        else
-        {
+        } else {
             auto function2 = std::bind(onTimerEnd, object, std::placeholders::_1);
             return this->repeat(intervalMillSeconds, function1, leftTimeMillSeconds, function2);
         }
         return nullptr;
     }
 
-    inline int64_t Timers::currentTicks() const
-    {
+    inline int64_t Timers::currentTicks() const {
         return ticksSinceTimersStart_;
     }
 

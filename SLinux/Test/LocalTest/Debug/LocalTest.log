@@ -1,4 +1,6 @@
-﻿  Test_any.cpp
-  LINK : 没有找到 D:\git\FFF\SLinux\Test\Debug\LocalTest.exe 或上一个增量链接没有生成它；正在执行完全链接
+﻿  IDGenerator.cpp
+  正在生成代码...
+  正在编译...
+  Test_IDGenerator.cpp
+  正在生成代码...
   LocalTest.vcxproj -> D:\git\FFF\SLinux\Test\Debug\LocalTest.exe
-  LocalTest.vcxproj -> D:\git\FFF\SLinux\Test\Debug\LocalTest.pdb (Partial PDB)

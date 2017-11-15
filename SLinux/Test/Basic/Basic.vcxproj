@@ -161,12 +161,10 @@
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StringHelper.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TimeDim.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Timers.h" />
     <ClInclude Include="Time_.h" />
     <ClInclude Include="Tree.h" />
-    <ClInclude Include="Value.h" />
     <ClInclude Include="Variable.h" />
     <ClInclude Include="WeakPointer.h" />
   </ItemGroup>

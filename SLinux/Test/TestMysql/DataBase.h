@@ -1,4 +1,6 @@
-#pragma once
+#ifndef DataBase_h__
+#define DataBase_h__
+
 #include "DBExecuter.h"
 #include "DBTable.h"
 #include "DBStream.h"
@@ -23,7 +25,7 @@ class DataBase {
     DBTable* getTable(const char* name);
     template<typename T>
     T* createDefine();
-  public:
+  private:
     void make_alter_columns(
         const vector<string>& source
         , const vector<string>& dest
@@ -54,3 +56,4 @@ T* DataBase::createDefine() {
     auto ret= (T*)DBDefineInterface<T>::Create(this->executer_);
     return ret;
 }
+#endif // DataBase_h__

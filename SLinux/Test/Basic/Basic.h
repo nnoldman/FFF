@@ -1,6 +1,3 @@
-#ifndef CXBase_h__
-#define CXBase_h__
-//--------------------------------------------------------------------------------------------------
 #include "base.h"
 #include "Singleton.h"
 
@@ -22,7 +19,6 @@
 
 #include "Random.h"
 #include "Easer.h"
-#include "TimeDim.h"
 #include "Color.h"
 #include "ObjectPool.h"
 #include "BitArray.h"
@@ -44,17 +40,13 @@
 namespace Basic {
     /** @brief 查找一个数组或vector中cur之后的第一个符合条件的元素 **/
     template<typename Array, typename T, typename CondtionObj>
-    T* dFindNextElementInArray(Array&  arr, T* cur, CondtionObj& funObj)
-    {
+    T* dFindNextElementInArray(Array&  arr, T* cur, CondtionObj& funObj) {
         bool existCur = false;
-        for (auto& e : arr)
-        {
-            if (existCur && funObj(e))
-            {
+        for (auto& e : arr) {
+            if (existCur && funObj(e)) {
                 return e;
             }
-            if (e == cur)
-            {
+            if (e == cur) {
                 existCur = true;
             }
         }
@@ -64,20 +56,16 @@ namespace Basic {
     查找一棵树中(中序遍历)cur之后的第一个符合条件的元素
     **/
     template<typename T, typename CondtionObj>
-    T* dFindNextElementInTree(T*  parent, T* cur, CondtionObj& funObj)
-    {
+    T* dFindNextElementInTree(T*  parent, T* cur, CondtionObj& funObj) {
         assert(parent);
         assert(cur);
         bool existCur = parent == cur;
         auto& children = parent->getChildren();
-        for (auto& e : children)
-        {
-            if (existCur && funObj(e))
-            {
+        for (auto& e : children) {
+            if (existCur && funObj(e)) {
                 return e;
             }
-            if (e == cur)
-            {
+            if (e == cur) {
                 existCur = true;
             }
             T* tar = dFindNextElementInTree(e, cur, funObj);
@@ -87,8 +75,7 @@ namespace Basic {
         return nullptr;
     }
     template<typename T, typename CondtionObj>
-    T* dFindNextElementInTreeCycle(T*  parent, T* cur, CondtionObj& funObj)
-    {
+    T* dFindNextElementInTreeCycle(T*  parent, T* cur, CondtionObj& funObj) {
         Array<T*> dstArray;
         bool begin = parent == cur;
         bool end = parent == cur;
@@ -97,8 +84,7 @@ namespace Basic {
         return dFindNextElementInArray(dstArray, cur, funObj);
     }
     template<typename T>
-    void takeElementToTopFromTreeToVector(Array<T*>& dstArray, T* parent, T* cur, bool& begin)
-    {
+    void takeElementToTopFromTreeToVector(Array<T*>& dstArray, T* parent, T* cur, bool& begin) {
         if (parent == cur)
             begin = true;
         if (begin)
@@ -108,10 +94,8 @@ namespace Basic {
             takeElementToTopFromTreeToVector(dstArray, a, cur, begin);
     }
     template<typename T>
-    void takeElementToVectorUntil(Array<T*>& dstArray, T* parent, T* cur, bool& end)
-    {
-        if (parent == cur)
-        {
+    void takeElementToVectorUntil(Array<T*>& dstArray, T* parent, T* cur, bool& end) {
+        if (parent == cur) {
             end = true;
             return;
         }
@@ -122,14 +106,12 @@ namespace Basic {
             takeElementToVectorUntil(dstArray, a, cur, end);
     }
 
-    inline void split(const std::string& s, const std::string& c, std::vector<std::string>& ret)
-    {
+    inline void split(const std::string& s, const std::string& c, std::vector<std::string>& ret) {
         ret.clear();
         std::string::size_type pos1, pos2;
         pos2 = s.find(c);
         pos1 = 0;
-        while (std::string::npos != pos2)
-        {
+        while (std::string::npos != pos2) {
             ret.push_back(s.substr(pos1, pos2 - pos1));
             pos1 = pos2 + c.size();
             pos2 = s.find(c, pos1);
@@ -137,16 +119,14 @@ namespace Basic {
         if (pos1 != s.length())
             ret.push_back(s.substr(pos1));
     }
-    inline void split(const char* s, const std::string& c, std::vector<std::string>& ret)
-    {
+    inline void split(const char* s, const std::string& c, std::vector<std::string>& ret) {
         std::string str;
         str = s;
         split(str, c, ret);
     }
 
     template<typename Map>
-    bool getValue(Map& map, typename Map::key_type key, typename Map::mapped_type& value)
-    {
+    bool getValue(Map& map, typename Map::key_type key, typename Map::mapped_type& value) {
         auto it = map.find(key);
         if (it == map.end())
             return false;
@@ -156,6 +136,3 @@ namespace Basic {
 }
 
 
-
-//--------------------------------------------------------------------------------------------------
-#endif // CXBase_h__

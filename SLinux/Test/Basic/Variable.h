@@ -1,13 +1,10 @@
 #ifndef Variable_h__
 #define Variable_h__
 
-namespace Basic
-{
-    class Variable
-    {
-    public:
-        static const char space()
-        {
+namespace Basic {
+    class Variable {
+      public:
+        static const char space() {
             return ' ';
         }
     };

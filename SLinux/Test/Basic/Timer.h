@@ -3,13 +3,11 @@
 #include <functional>
 #include <chrono>
 using namespace std::chrono;
-namespace Basic
-{
-    class Timer
-    {
-    public:
+namespace Basic {
+    class Timer {
+      public:
         typedef std::function<void(Timer*)> callback;
-    public:
+      public:
         ~Timer();
         void cancel(bool raise = false);
         int64_t nextHitTicks() const;
@@ -17,7 +15,7 @@ namespace Basic
         int64_t leftMillseconds() const;
         int leftSeconds() const;
         std::chrono::milliseconds life() const;
-    private:
+      private:
         Timer();
         callback onTimer_;
         callback onEnd_;
@@ -28,12 +26,10 @@ namespace Basic
         int position_;
         friend class Timers;
     };
-    inline int64_t Timer::nextHitTicks() const
-    {
+    inline int64_t Timer::nextHitTicks() const {
         return this->position_;
     }
-    inline int64_t Timer::intervalMillseconds() const
-    {
+    inline int64_t Timer::intervalMillseconds() const {
         return this->intervalMillseconds_;
     }
 }
