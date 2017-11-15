@@ -1,46 +1,24 @@
-#ifndef DBExecuter_h__
-#define DBExecuter_h__
+#ifndef MySqlExecuter_h__
+#define MySqlExecuter_h__
 
 #include "DBExecuter.h"
 #include "mysql.h"
-
-class MySQLExecuter: public DBExecuter
-{
-public:
-
+class MySQLExecuter: public DBExecuter {
+  public:
     MySQLExecuter();
-
     ~MySQLExecuter();
 
-    bool initialize(const DBConfig& config);
+    virtual bool initialize(const DBConfig& config) override;
+    virtual unsigned long count(const char* tablaname) override;
+    void use() const;
+    virtual void close() override;
 
-    bool queryBegin(const char* cmd) const;
-
-    /*
-    	Only return first record or nothing.
-    */
-    bool queryEnd(vector<string>& record);
-
-    /*
-    	return all eligible records.
-    */
-    bool queryEnd(vector<vector<string>>& ret_records);
-
-    bool queryEnd();
-
-    virtual unsigned long count() override;
-
-
-    virtual void use(const char* dataBaseName) const override;
-
-private:
-
-    DBConfig mConfig;
-
+    virtual bool query(const char* cmd) override;
+    virtual bool query(const char* cmd, OUT vector<string>& result) override;
+    virtual bool query(const char* cmd, OUT vector<vector<string>>& result) override;
+    virtual bool query(const char* cmd, OUT DBDefine* ret) override;
+    virtual bool query(const char* cmd, OUT vector<DBDefine *>& ret, DBDefineCreator creator) override;
+  private:
     MYSQL* mysql_;
 };
-
-
-
-
-#endif // DBExecuter_h__
+#endif // MySqlExecuter_h__

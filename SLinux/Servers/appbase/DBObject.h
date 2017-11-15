@@ -3,9 +3,8 @@
 #include "Connection.h"
 #include "DBDefine.h"
 
-class COREAPI DBObject
-{
-public:
+class COREAPI DBObject {
+  public:
     DBObject();
     virtual ~DBObject();
     virtual bool initialize();
@@ -18,27 +17,23 @@ public:
     inline Connection* getNetInterface();
     //bool pull(Value keyValue);
     //bool commit(Value keyValue);
-protected:
+  protected:
     DBDefine* dbInterface_;
     Connection* netInterface_;
-private:
+  private:
     int globalID_;
 };
-inline int DBObject::globalID() const
-{
+inline int DBObject::globalID() const {
     return globalID_;
 }
-inline DBDefine* DBObject::getDBInterface() const
-{
+inline DBDefine* DBObject::getDBInterface() const {
     return dbInterface_;
 }
-inline void DBObject::setConnection(Connection* connect)
-{
+inline void DBObject::setConnection(Connection* connect) {
     netInterface_ = connect;
 }
 
-inline Connection* DBObject::getNetInterface()
-{
+inline Connection* DBObject::getNetInterface() {
     return netInterface_;
 }
 

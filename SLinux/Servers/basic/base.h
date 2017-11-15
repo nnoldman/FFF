@@ -78,7 +78,7 @@ using namespace std::chrono;
 
 ///project type
 #ifdef WIN32
-    #ifdef _LIBRARY
+    #ifdef _LIB
         #define COREAPI	__declspec(dllexport)
     #else
         #define COREAPI  __declspec(dllimport)
@@ -92,7 +92,7 @@ using namespace std::chrono;
 #endif
 
 
-#ifdef _LIBRARY
+#ifdef _LIB
     #define CAPI extern "C" __declspec(dllexport)
 #else
     #define CAPI extern "C" __declspec(dllimport)
@@ -105,7 +105,7 @@ using namespace std::chrono;
     #define declare_once __declspec(selectany)
     #define warning_push
     #define warning_pop
-    #define warning_disable(c) #pragma warning(disable:c)
+    //#define warning_disable(c) #pragma warning(disable:c)
     #define stdcall _stdcall
 #elif __GNUC__
     #define declare_once __attribute__((weakref))
@@ -121,8 +121,6 @@ using namespace std::chrono;
 #endif
 
 ///memory
-#define CXNew new
-#define CXDelete delete
 
 #define dSafeDelete(x) {if(x){ delete x;x=nullptr;}}
 #define dSafeRelease(v) if(v){v->Release();v=nullptr;}
@@ -144,13 +142,11 @@ using namespace std::chrono;
 #define dDebugOut(fmt,...) dDebugOutWithFile(__FILE__,__LINE__,fmt,__VA_ARGS__)
 
 template<typename T>
-void dConstruct(void* ptr)
-{
+void dConstruct(void* ptr) {
     ::new (ptr) T;
 }
 template<typename T, typename E>
-void dRemoveChild(T& v, E* e)
-{
+void dRemoveChild(T& v, E* e) {
     typename T::iterator i = std::find(v.begin(), v.end(), e);
     if (i != v.end())
         v.erase(i);
@@ -187,8 +183,7 @@ void dRemoveChild(T& v, E* e)
         v.clear();\
     }
 
-inline void dMemoryZero(void* p, size_t len)
-{
+inline void dMemoryZero(void* p, size_t len) {
     CXASSERT(p);
     memset(p, 0, len);
 }
@@ -197,8 +192,7 @@ inline void dMemoryZero(void* p, size_t len)
 
 #define dMemoryZeroArray(arr) memset(arr,0,sizeof(arr))
 
-inline void dMemoryCopy(void* dst, void* src, size_t len)
-{
+inline void dMemoryCopy(void* dst, void* src, size_t len) {
     CXASSERT(dst && src);
     memcpy(dst, src, len);
 }
@@ -207,35 +201,29 @@ inline void dMemoryCopy(void* dst, void* src, size_t len)
 //{
 //    dMemoryZero(&arr, sizeof(T) *N);
 //}
-inline bool dStrEqual(const char* s1, const char* s2)
-{
+inline bool dStrEqual(const char* s1, const char* s2) {
     return 0 == strcmp(s1, s2);
 }
-inline size_t dStrLen(const wchar_t* s)
-{
+inline size_t dStrLen(const wchar_t* s) {
     CXASSERT(s != 0);
     return wcslen(s);
 }
-inline size_t dStrLen(const char* s)
-{
+inline size_t dStrLen(const char* s) {
     CXASSERT(s != 0);
     return strlen(s);
 }
 
 template<typename T, s32 N>
-const s32 dArrayCount(T(&arr)[N])
-{
+const s32 dArrayCount(T(&arr)[N]) {
     return N;
 }
 
 template<typename T1, typename T2>
-void dCast(T1& dst, T2* src)
-{
+void dCast(T1& dst, T2* src) {
     dst = *((T1*)src);
 }
 template<typename T1, typename T2>
-void dCast(T1* dst, T2 src)
-{
+void dCast(T1* dst, T2 src) {
     *((T2*)dst) = src;
 }
 

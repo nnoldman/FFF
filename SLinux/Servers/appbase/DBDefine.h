@@ -1,75 +1,68 @@
-#pragma once
-class DataBase;
+#ifndef DBDefine_h__
+#define DBDefine_h__
+
 #include "DBStream.h"
-#include "Value.h"
-#include "Variable.h"
-#include "ServerID.h"
+#include "../basic/ServerID.h"
+#include "../basic/CharBuffer.h"
+#include "../basic/AnyValue.h"
 #include "DBTableDefine.h"
-#include "AnyObject.h"
-#include "CharBuffer.h"
-#include <sstream>
-class COREAPI DBDefine
-{
-public:
+#include "DBExecuter.h"
+class DBDefine {
+  public:
     int id;
-public:
+    DBExecuter* execter;
+  public:
     virtual ~DBDefine() {}
     virtual const char* table() = 0;
 
-    void setGlobalID(int id);
     virtual const char* key() = 0;
     virtual const char* key2();
 
-    virtual void deserialize() final;
-    virtual void serialize() final;
+    virtual void deserialize(std::vector<string>& columns) final;
+    virtual void serialize(stringstream& columns) final;
 
     virtual void serializeMe() = 0;
     virtual void deserializeMe() = 0;
 
     void set(vector<string>& values);
     //use key()
-    bool pull(AnyObject keyvalue);
+    bool pullByKey1();
+    bool pullByKey1Key2(Basic::AnyValue key2value);
+    bool pullByKey(const char* key,Basic::AnyValue value);
     //use key()
     bool commitByKey1();
-    bool commitByKey1Key2(AnyObject key2value);
+    bool commitByKey1Key2(Basic::AnyValue key2value);
     bool insertByKey1();
-    bool insertByKey1Key2(AnyObject key2value);
-    bool insertAndQuery(AnyObject keyvalue);
-    bool insertAndQuery(const char* key, AnyObject keyvalue);
-
-    bool getValues(stringstream& ss);
-    bool exist(const char* key, AnyObject value);
-public:
-    inline DBStream& stream()
-    {
+    bool insertByKey1Key2(Basic::AnyValue key2value);
+    bool insertAndQuery(Basic::AnyValue keyvalue);
+    bool insertAndQuery(const char* key, Basic::AnyValue keyvalue);
+    bool exist(const char* key, Basic::AnyValue value);
+  public:
+    inline DBStream& stream() {
         return stream_;
     }
-private:
+  private:
+    bool getValues(stringstream& ss);
+  private:
     DBStream stream_;
 };
-inline	void DBDefine::setGlobalID(int id)
-{
-    this->id = id;
-}
 
 template<typename T>
-class DBDefineInterface: public DBDefine
-{
-public:
-    static DBDefine* Create()
-    {
-        return new T();
+class DBDefineInterface: public DBDefine {
+  public:
+    static DBDefine* Create(DBExecuter* executer) {
+        auto ret = (DBDefine*)(new T());
+        ret->execter = executer;
+        return ret;
     }
-    virtual const char* table() override
-    {
+    virtual const char* table() override {
         return T::GetDefine().tableName();
     }
-    virtual const char* key() override
-    {
+    virtual const char* key() override {
         return T::GetDefine().key();
     }
-    virtual const char* key2() override
-    {
+    virtual const char* key2() override {
         return T::GetDefine().key2();
     }
 };
+#endif // DBDefine_h__

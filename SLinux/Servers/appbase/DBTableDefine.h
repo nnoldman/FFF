@@ -1,21 +1,17 @@
-#pragma once
+#ifndef DBTableDefine_h__
+#define DBTableDefine_h__
 #include "mysql.h"
-//ID   INT              NOT NULL,
-//SALARY   DECIMAL(18, 2) DEFAULT 5000.00,
 #include <initializer_list>
-#include "AnyObject.h"
-//PRIMARY KEY(ID)
-struct DBColumn
-{
+#include "../basic/AnyValue.h"
+struct DBColumn {
     const char* name = nullptr;
     enum_field_types type = enum_field_types::MYSQL_TYPE_DECIMAL;
     u16 length = 0;
     bool autoIncrement = false;
     bool canNull = false;
-    AnyObject defaultValue;
+    Basic::AnyValue defaultValue;
 
-    DBColumn(const char* name, enum_field_types type, u16 length, bool autoIncrement, bool canNull, AnyObject defaultValue)
-    {
+    DBColumn(const char* name, enum_field_types type, u16 length, bool autoIncrement, bool canNull, Basic::AnyValue defaultValue) {
         this->name = name;
         this->type = type;
         this->length = length;
@@ -25,9 +21,8 @@ struct DBColumn
     }
 };
 
-class COREAPI DBTableDefine
-{
-public:
+class DBTableDefine {
+  public:
     ~DBTableDefine();
     DBTableDefine(const DBTableDefine& def);
     DBTableDefine(const char* name, bool isGlobal, const char* key1, const char* key2, const vector<DBColumn>& array);
@@ -39,9 +34,9 @@ public:
     const char* key() const;
     const char* column(int index) const;
     const vector<DBColumn>& columns() const;
-private:
+  private:
     void generateName();
-private:
+  private:
     const vector<DBColumn>& columns_;
     bool isGlobal_;
     string primaryKey1_;
@@ -50,3 +45,4 @@ private:
     string finalName_;
 };
 
+#endif // DBTableDefine_h__

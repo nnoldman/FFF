@@ -1,10 +1,7 @@
 #pragma once
-struct Color
-{
-    union
-    {
-        struct
-        {
+struct Color {
+    union {
+        struct {
             unsigned char B;
             unsigned char G;
             unsigned char R;
@@ -12,8 +9,7 @@ struct Color
         };
         u32 color;
     };
-    operator u32 ()
-    {
+    operator u32 () {
         return color;
     }
     static const u32 White = 0XFFFFFFFF;

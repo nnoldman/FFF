@@ -2,20 +2,19 @@
 class GameNetAgent;
 class GameControllers;
 class GameApp :
-    public App
-{
-public:
+    public App {
+  public:
     GameApp(int argc, char* argv[]);
     ~GameApp();
     virtual const NetConfig& getNetConfig() override;
     virtual const DBConfig& getDataBaseConfig() override;
     virtual bool parseCommandLine() override;
-private:
+  private:
     int serverID_;
-private:
+  private:
     GameNetAgent* netAgent_;
     GameControllers* controllers_;
-protected:
+  protected:
     virtual void archive() override;
     virtual bool onInitializeEnd() override;
     virtual bool onInitializeNet() override;

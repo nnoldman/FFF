@@ -1,27 +1,82 @@
-﻿生成启动时间为 2017/11/10 14:57:33。
-     1>项目“C:\Src\FFF\SLinux\Servers\pkg\pkg.vcxproj”在节点 3 上(Build 个目标)。
-     1>InitializeBuildStatus:
-         正在对“C:\Src\FFF\SLinux\Servers\pkg\obj\x64\Debug\pkg.tlog\unsuccessfulbuild”执行 Touch 任务。
-       CreateRecipeFile:
-       正在跳过目标“CreateRecipeFile”，因为所有输出文件相对于输入文件而言都是最新的。
-       _ValidateValidArchitecture:
-         Validating architecture
-         Current project architecture 'x64' is compatible with the remote system architecture 'x64' ('x64').
-       _ValidateSources:
-         Validating sources
-       _CopySources:
-         Copying sources remotely to '43.248.102.164'
-         Skipping copying files as they are up to date.
-       ClCompile:
-         Starting remote build
-         Compiling sources:
-         Skipping 'C:\Src\FFF\SLinux\Servers\pkg\Cmd.pb.cc', as it is up to date.
-         Skipping 'C:\Src\FFF\SLinux\Servers\pkg\Command.pb.cc', as it is up to date.
-         Skipping 'C:\Src\FFF\SLinux\Servers\pkg\GameDefine.pb.cc', as it is up to date.
-         Skipping 'C:\Src\FFF\SLinux\Servers\pkg\stdafx.cpp', as it is up to date.
-       Lib:
-         Archiving objects
-       FinalizeBuildStatus:
-         正在删除文件“C:\Src\FFF\SLinux\Servers\pkg\obj\x64\Debug\pkg.tlog\unsuccessfulbuild”。
-         正在对“C:\Src\FFF\SLinux\Servers\pkg\obj\x64\Debug\pkg.tlog\pkg.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“C:\Src\FFF\SLinux\Servers\pkg\pkg.vcxproj”(Build 个目标)的操作。
+﻿  Validating architecture
+  Validating sources
+  Copying sources remotely to '43.248.102.164'
+  Starting remote build
+  Compiling sources:
+  Cmd.pb.cc
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+  Command.pb.cc
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(438,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(987,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(1488,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(1992,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(2473,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(2859,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(3238,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(3682,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(4149,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(4595,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(4955,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(5204,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(5458,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(5790,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(6142,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(6537,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\Command.pb.cc(7083,14): warning : conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+  GameDefine.pb.cc
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(275,55): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(350,48): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\pkg\..\third_lib\google\protobuf\wire_format_lite_inl.h(351,51): warning : conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+  stdafx.cpp
+  Archiving objects
+  pkg.vcxproj -> ..\bin\Debug\libpkg.a

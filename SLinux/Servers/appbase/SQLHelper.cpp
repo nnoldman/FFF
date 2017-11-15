@@ -1,18 +1,15 @@
 #include "stdafx.h"
 #include "SQLHelper.h"
-#include <iosfwd>
-std::string SQLHelper::create_table(const char* table, const char* values)
-{
+#include "mysql.h"
+std::string SQLHelper::create_table(const char* table, const char* values) {
     //mysql> insert into yw_account values(12345);
     std::stringstream str;
     str << "create table " << table << " values(" << values << ")";
     return str.str();
 }
 
-const char* SQLHelper::getSQLType(enum_field_types type)
-{
-    switch (type)
-    {
+const char* SQLHelper::getSQLType(enum_field_types type) {
+    switch (type) {
     case MYSQL_TYPE_DECIMAL:
         return "DECIMAL";
         break;
@@ -63,12 +60,12 @@ const char* SQLHelper::getSQLType(enum_field_types type)
     case MYSQL_TYPE_BIT:
         return "BIT";
         break;
-    case MYSQL_TYPE_TIMESTAMP2:
-        break;
-    case MYSQL_TYPE_DATETIME2:
-        break;
-    case MYSQL_TYPE_TIME2:
-        break;
+    //case MYSQL_TYPE_TIMESTAMP2:
+    //    break;
+    //case MYSQL_TYPE_DATETIME2:
+    //    break;
+    //case MYSQL_TYPE_TIME2:
+    //    break;
     case MYSQL_TYPE_NEWDECIMAL:
         break;
     case MYSQL_TYPE_ENUM:

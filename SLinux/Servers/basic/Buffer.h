@@ -7,11 +7,9 @@
 	@brief
 	@author nnboy,29/9/2014  12:08
 */
-namespace Basic
-{
-    class Buffer
-    {
-    public:
+namespace Basic {
+    class Buffer {
+      public:
         Buffer();
         ~Buffer();
         Buffer(size_t byteCnt);
@@ -44,125 +42,102 @@ namespace Basic
         size_t forwardPosition(int tranlate);
 
         template<typename T>
-        inline void set(size_t idx, const T& v)
-        {
+        inline void set(size_t idx, const T& v) {
             *((T*)&data_[idx * sizeof(T)]) = v;
         }
 
         template<typename T>
-        inline T& get(size_t idx)
-        {
+        inline T& get(size_t idx) {
             return* ((T*) &data_[idx * sizeof(T)]) ;
         }
 
-        inline void zero()
-        {
+        inline void zero() {
             dMemoryZero(data_, length());
         }
-        explicit  operator bool() const
-        {
+        explicit  operator bool() const {
             // test if _Ipfx succeeded
             return (ok_);
         }
-    protected:
-        inline void free()
-        {
-            if (data_ != nullptr)
-            {
+      protected:
+        inline void free() {
+            if (data_ != nullptr) {
                 delete[] data_;
                 data_ = nullptr;
             }
         }
-        inline void setElementCount(size_t count)
-        {
+        inline void setElementCount(size_t count) {
             elementCount_ = count;
         }
-    private:
+      private:
         size_t capacity_;
         size_t position_;
         size_t elementWidth_;
         size_t elementCount_;
         bool ok_;
-    protected:
-        union
-        {
+      protected:
+        union {
             char* data_;
             wchar_t* mWData;
         };
     };
-    inline size_t Buffer::length()
-    {
+    inline size_t Buffer::length() {
         return capacity_ * elementWidth_;
     }
-    inline char* Buffer::getBuffer() const
-    {
+    inline char* Buffer::getBuffer() const {
         return data_;
     }
 
-    inline char* Buffer::currentPointer() const
-    {
+    inline char* Buffer::currentPointer() const {
         return (char*)(data_ + position_);
     }
 
-    inline const char* Buffer::c_str() const
-    {
+    inline const char* Buffer::c_str() const {
         return (const char*) data_;
     }
-    inline void Buffer::setElementByteCount(size_t size)
-    {
+    inline void Buffer::setElementByteCount(size_t size) {
         elementWidth_ = size;
     }
 
-    inline void Buffer::copyTo(void* dst)
-    {
+    inline void Buffer::copyTo(void* dst) {
         dMemoryCopy(dst, data_, elementCount_ * elementWidth_);
     }
 
-    inline void Buffer::copyFrom(void* src)
-    {
+    inline void Buffer::copyFrom(void* src) {
         dMemoryCopy(data_, src, capacity_ * elementWidth_);
     }
     template<typename T>
-    inline void Buffer::addElement(T* v, size_t cnt)
-    {
+    inline void Buffer::addElement(T* v, size_t cnt) {
         dMemoryCopy(&data_[elementCount_ * elementWidth_], v, cnt * elementWidth_);
         elementCount_ += cnt;
     }
 
     template<typename T>
-    inline void Buffer::addElement(T v)
-    {
+    inline void Buffer::addElement(T v) {
         * ((T*) &data_[elementCount_ * sizeof(T)]) = v;
         elementCount_++;
     }
 
 
-    inline size_t Buffer::size()
-    {
+    inline size_t Buffer::size() {
         return elementCount_;
     }
-    inline size_t Buffer::elementWidth()
-    {
+    inline size_t Buffer::elementWidth() {
         return elementWidth_;
     }
 
-    inline void Buffer::setChar(size_t idx, char c)
-    {
+    inline void Buffer::setChar(size_t idx, char c) {
         assert(data_);
         data_[idx] = c;
     }
 
-    inline bool Buffer::getline(char* buffer, size_t size)
-    {
+    inline bool Buffer::getline(char* buffer, size_t size) {
         if (position_ == capacity_)
             return false;
         char* dst = buffer;
         size_t count = 0;
-        while (position_ < capacity_ && count < size)
-        {
+        while (position_ < capacity_ && count < size) {
             auto ch = data_[position_];
-            if (ch == '\n')
-            {
+            if (ch == '\n') {
                 if (position_ > 0 && data_[position_ - 1] == '\r')
                     buffer[count - 1] = '\0';
                 position_++;
@@ -176,20 +151,17 @@ namespace Basic
         return true;
     }
 
-    inline size_t Buffer::capacity() const
-    {
+    inline size_t Buffer::capacity() const {
         return capacity_;
     }
 
-    inline void Buffer::clear()
-    {
+    inline void Buffer::clear() {
         elementCount_ = 0;
         position_ = 0;
         ok_ = true;
         this->zero();
     }
-    inline Buffer::Buffer(void)
-    {
+    inline Buffer::Buffer(void) {
         data_ = 0;
         elementCount_ = 0;
         position_ = 0;
@@ -197,8 +169,7 @@ namespace Basic
         elementWidth_ = 1;
         ok_ = true;
     }
-    inline Buffer::Buffer(size_t byteCnt)
-    {
+    inline Buffer::Buffer(size_t byteCnt) {
         data_ = 0;
         elementCount_ = 0;
         position_ = 0;
@@ -208,13 +179,11 @@ namespace Basic
     }
 
 
-    inline Buffer::~Buffer(void)
-    {
+    inline Buffer::~Buffer(void) {
         this->free();
     }
 
-    inline void Buffer::reallocate(size_t byteSize)
-    {
+    inline void Buffer::reallocate(size_t byteSize) {
         this->free();
         data_ = new char[byteSize];
         if (elementWidth_ <= 0)
@@ -223,52 +192,44 @@ namespace Basic
         this->zero();
     }
 
-    inline void Buffer::reallocateByElementCount(size_t cnt)
-    {
+    inline void Buffer::reallocateByElementCount(size_t cnt) {
         this->free();
         capacity_ = cnt;
         data_ = new char[capacity_ * elementWidth_];
         this->zero();
     }
 
-    inline void Buffer::setSize(size_t size)
-    {
+    inline void Buffer::setSize(size_t size) {
         elementCount_ = size;
     }
 
-    inline wchar_t* Buffer::getWChar()
-    {
+    inline wchar_t* Buffer::getWChar() {
         return mWData;
     }
 
-    inline size_t Buffer::readInt(int& var)
-    {
+    inline size_t Buffer::readInt(int& var) {
         var = (*(int*)(data_ + position_));
         position_ += 4;
         return position_;
     }
 
-    inline size_t Buffer::write(int& var)
-    {
+    inline size_t Buffer::write(int& var) {
         (*(int*)(data_ + position_)) = var;
         position_ += sizeof(int);
         return position_;
     }
 
-    inline size_t Buffer::write(u32& var)
-    {
+    inline size_t Buffer::write(u32& var) {
         (*(u32*)(data_ + position_)) = var;
         position_ += sizeof(u32);
         return position_;
     }
 
-    inline size_t Buffer::getPosition()
-    {
+    inline size_t Buffer::getPosition() {
         return position_;
     }
 
-    inline size_t Buffer::forwardPosition(int tranlate)
-    {
+    inline size_t Buffer::forwardPosition(int tranlate) {
         position_ += tranlate;
         return position_;
     }

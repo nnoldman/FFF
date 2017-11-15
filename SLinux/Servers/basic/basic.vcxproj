@@ -68,6 +68,7 @@
     <OutDir>..\bin\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemGroup>
+    <ClInclude Include="AnyValue.h" />
     <ClInclude Include="Array.h" />
     <ClInclude Include="base.h" />
     <ClInclude Include="Basic.h" />
@@ -93,6 +94,7 @@
     <ClInclude Include="RapidxmlWriter.h" />
     <ClInclude Include="rapidxml_help.hpp" />
     <ClInclude Include="Reference.h" />
+    <ClInclude Include="ServerID.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="stdafx.h" />
@@ -109,12 +111,14 @@
     <ClInclude Include="Index.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AnyValue.cpp" />
     <ClCompile Include="base.cpp" />
     <ClCompile Include="CommandLine.cpp" />
     <ClCompile Include="IDGenerator.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="md5.cpp" />
     <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="ServerID.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Timers.cpp" />
     <ClCompile Include="Time_.cpp" />

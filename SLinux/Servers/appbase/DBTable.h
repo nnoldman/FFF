@@ -1,22 +1,22 @@
-#pragma once
+#ifndef DBTable_h__
+#define DBTable_h__
+
 #include "DBExecuter.h"
-class DBTable
-{
-public:
+class DBTable {
+  public:
     string dbName;
     string name;
-private:
+  private:
     DBExecuter* executer_;
-public:
-    DBTable();
+  public:
+    DBTable(DBExecuter* executer);
     ~DBTable();
-
     bool exist(const char* col);
-    int refreshRecordCount();
     void fetchColumns();
     const std::vector<string>& columns()const;
-private:
+  private:
 
     std::vector<string> columns_;
 };
 
+#endif // DBTable_h__

@@ -7,8 +7,6 @@
 #include "Encrypt.h"
 #include "ServerID.h"
 #include "App.h"
-#include "AnyObject.h"
-
 
 #endif // Core_h__
 

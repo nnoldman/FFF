@@ -5,33 +5,27 @@
 
 DBObject::DBObject()
     : netInterface_(nullptr)
-    , dbInterface_(nullptr)
-{
+    , dbInterface_(nullptr) {
 }
 
-DBObject::~DBObject()
-{
+DBObject::~DBObject() {
     dSafeDelete(dbInterface_);
-    if (netInterface_)
-    {
+    if (netInterface_) {
         netInterface_->disconnect();
         netInterface_ = nullptr;
     }
 }
-bool DBObject::initialize()
-{
+bool DBObject::initialize() {
     this->createDefine();
     return true;
 }
 
-void DBObject::setGlobalID(int globalID)
-{
+void DBObject::setGlobalID(int globalID) {
+    dbInterface_->id = globalID;
     globalID_ = globalID;
-    this->dbInterface_->key();
 }
 
-void DBObject::syncToClient()
-{
+void DBObject::syncToClient() {
 
 }
 

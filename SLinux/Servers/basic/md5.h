@@ -56,25 +56,25 @@
  * @Transformations for rounds 1, 2, 3, and 4.
  */
 #define FF(a, b, c, d, x, s, ac) { \
-  (a) += F ((b), (c), (d)) + (x) + ac; \
-  (a) = ROTATELEFT ((a), (s)); \
-  (a) += (b); \
-}
+        (a) += F ((b), (c), (d)) + (x) + ac; \
+        (a) = ROTATELEFT ((a), (s)); \
+        (a) += (b); \
+    }
 #define GG(a, b, c, d, x, s, ac) { \
-  (a) += G ((b), (c), (d)) + (x) + ac; \
-  (a) = ROTATELEFT ((a), (s)); \
-  (a) += (b); \
-}
+        (a) += G ((b), (c), (d)) + (x) + ac; \
+        (a) = ROTATELEFT ((a), (s)); \
+        (a) += (b); \
+    }
 #define HH(a, b, c, d, x, s, ac) { \
-  (a) += H ((b), (c), (d)) + (x) + ac; \
-  (a) = ROTATELEFT ((a), (s)); \
-  (a) += (b); \
-}
+        (a) += H ((b), (c), (d)) + (x) + ac; \
+        (a) = ROTATELEFT ((a), (s)); \
+        (a) += (b); \
+    }
 #define II(a, b, c, d, x, s, ac) { \
-  (a) += I ((b), (c), (d)) + (x) + ac; \
-  (a) = ROTATELEFT ((a), (s)); \
-  (a) += (b); \
-}
+        (a) += I ((b), (c), (d)) + (x) + ac; \
+        (a) = ROTATELEFT ((a), (s)); \
+        (a) += (b); \
+    }
 
 #include <string>
 #include <cstring>
@@ -86,9 +86,8 @@ typedef unsigned char byte;
 /* Define of byte. */
 typedef unsigned int bit32;
 
-class  MD5
-{
-public:
+class  MD5 {
+  public:
     /* Construct a MD5 object with a string. */
     MD5(const string& message);
 
@@ -98,7 +97,7 @@ public:
     /* Convert digest to string value */
     string toStr();
 
-private:
+  private:
     /* Initialization the md5 object, processing another message block,
      * and updating the context.*/
     void init(const byte* input, size_t len);
@@ -112,7 +111,7 @@ private:
     /* Decodes input (byte) into output (usigned long). */
     void decode(const byte* input, bit32* output, size_t length);
 
-private:
+  private:
     /* Flag for mark whether calculate finished. */
     bool finished;
 

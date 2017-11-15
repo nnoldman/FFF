@@ -120,6 +120,9 @@
       <AdditionalLibraryDirectories>/root/projects/third_lib2;/root/projects/bin/$(Configuration);/usr/lib64;/usr/lib64/mysql;/root/projects/bin/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LibraryDependencies>appbase;PocoXMLd;PocoJSONd;PocoUtild;PocoNetd;PocoFoundationd;mysqlclient;pkg;protobuf-lite;basic;%(LibraryDependencies)</LibraryDependencies>
     </Link>
+    <ClCompile>
+      <AdditionalOptions>-Wno-conversion %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

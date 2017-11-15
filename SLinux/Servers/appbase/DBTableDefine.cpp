@@ -1,15 +1,13 @@
 #include "stdafx.h"
 #include "DBTableDefine.h"
 #include "SQLHelper.h"
-#include "ServerID.h"
+#include "../basic/ServerID.h"
 
-DBTableDefine::~DBTableDefine()
-{
+DBTableDefine::~DBTableDefine() {
 }
 
 inline DBTableDefine::DBTableDefine(const DBTableDefine& def)
-    : columns_(def.columns_)
-{
+    : columns_(def.columns_) {
     this->tableName_ = def.tableName_;
     this->primaryKey1_ = def.primaryKey1_;
     this->primaryKey2_ = def.primaryKey2_;
@@ -18,8 +16,7 @@ inline DBTableDefine::DBTableDefine(const DBTableDefine& def)
 }
 
 DBTableDefine::DBTableDefine(const char* name, bool isGlobal, const char* key1, const char* key2, const vector<DBColumn>& array)
-    : columns_(array)
-{
+    : columns_(array) {
     this->isGlobal_ = isGlobal;
     tableName_ = name;
     primaryKey1_ = key1;
@@ -28,12 +25,10 @@ DBTableDefine::DBTableDefine(const char* name, bool isGlobal, const char* key1, 
     generateName();
 }
 
-bool DBTableDefine::generateCreateTableString(stringstream& cmd) const
-{
+bool DBTableDefine::generateCreateTableString(stringstream& cmd) const {
     cmd << "create table ";
     cmd << tableName() << "(";
-    for (auto column : this->columns_)
-    {
+    for (auto column : this->columns_) {
         cmd << column.name << " ";
         cmd << SQLHelper::getSQLType(column.type) << " ";
         if (column.length > 0)
@@ -53,21 +48,18 @@ bool DBTableDefine::generateCreateTableString(stringstream& cmd) const
     return true;
 }
 
-void DBTableDefine::generateDropCloumnString(stringstream& cmd, string column) const
-{
+void DBTableDefine::generateDropCloumnString(stringstream& cmd, string column) const {
     cmd << "ALTER TABLE " << this->finalName_ << " DROP COLUMN " << column << ";";
 }
 
-bool DBTableDefine::generateAddCloumnString(stringstream& cmd, string pre, string column) const
-{
-    auto columnDefine = std::find_if( this->columns_.begin(), this->columns_.end(), [column](const DBColumn it)
-    {
+bool DBTableDefine::generateAddCloumnString(stringstream& cmd, string pre, string column) const {
+    auto columnDefine = std::find_if( this->columns_.begin(), this->columns_.end(), [column](const DBColumn it) {
         return column == it.name;
     });
 
     if (columnDefine == this->columns_.end())
         return false;
-    cmd << "ALTER TABLE " << this->finalName_ << " ADD COLUMN " << column << " ";
+    cmd << "alter table " << this->finalName_ << " add column " << column << " ";
     cmd << SQLHelper::getSQLType(columnDefine->type) << " ";
     if (columnDefine->length > 0)
         cmd << "(" << columnDefine->length << ")";
@@ -77,43 +69,37 @@ bool DBTableDefine::generateAddCloumnString(stringstream& cmd, string pre, strin
         cmd << " auto_increment";
 
     if(pre.length() == 0)
-        cmd << " FIRST ";
+        cmd << " first ";
     else
-        cmd << " AFTER " << pre << " ";
+        cmd << " after " << pre << " ";
     if (this->primaryKey1_ == columnDefine->name)
         cmd << " add primary key(" << columnDefine->name << ")";
     cmd << ";";
     return true;
 }
 
-const char* DBTableDefine::tableName() const
-{
+const char* DBTableDefine::tableName() const {
     return finalName_.c_str();
 }
 
-const char* DBTableDefine::key2() const
-{
+const char* DBTableDefine::key2() const {
     return primaryKey2_.c_str();
 }
 
-const char* DBTableDefine::key() const
-{
+const char* DBTableDefine::key() const {
     return primaryKey1_.c_str();
 }
 
-const char* DBTableDefine::column(int index) const
-{
-    assert(index < columns_.size());
+const char* DBTableDefine::column(int index) const {
+    assert(index < (int)columns_.size());
     return columns_[index].name;
 }
 
-const vector<DBColumn>& DBTableDefine::columns() const
-{
+const vector<DBColumn>& DBTableDefine::columns() const {
     return this->columns_;
 }
 
-void DBTableDefine::generateName()
-{
+void DBTableDefine::generateName() {
     finalName_.clear();
     finalName_ += tableName_;
     if (!isGlobal_)

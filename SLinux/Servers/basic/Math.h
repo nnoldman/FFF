@@ -1,11 +1,9 @@
 #ifndef Math_h__
 #define Math_h__
 #include <sstream>
-namespace Basic
-{
-    class Math
-    {
-    public:
+namespace Basic {
+    class Math {
+      public:
         template<typename T>
         T dScale(T src, T reference, double scale);
 
@@ -22,8 +20,7 @@ namespace Basic
     };
 
     template<typename T>
-    T Basic::Math::dClamp(T src, T minv, T maxv)
-    {
+    T Basic::Math::dClamp(T src, T minv, T maxv) {
         T t0 = dMin(minv, maxv);
         T t1 = dMax(minv, maxv);
         if (src < t0)
@@ -34,20 +31,17 @@ namespace Basic
     }
 
     template<typename T>
-    T Basic::Math::dScale(T src, T reference, double scale)
-    {
+    T Basic::Math::dScale(T src, T reference, double scale) {
         return reference + scale * (src - reference);
     }
 
     template<typename T, int N>
-    void Basic::Math::fromHEX(const T(&arr)[N], const std::string& instream)
-    {
+    void Basic::Math::fromHEX(const T(&arr)[N], const std::string& instream) {
         fromHEX((unsigned char*)arr, sizeof(arr), instream);
     }
 
     template<typename T, int N>
-    void Basic::Math::toHEX(const T(&arr)[N], std::string& stream)
-    {
+    void Basic::Math::toHEX(const T(&arr)[N], std::string& stream) {
         toHEX((unsigned char*)arr, sizeof(arr), stream);
     }
 

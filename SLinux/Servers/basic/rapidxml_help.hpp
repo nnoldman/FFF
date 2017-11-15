@@ -10,32 +10,28 @@ typedef rapidxml::xml_attribute<Char> CXRapidxmlAttr;
 
 typedef  class Stack<CXRapidxmlNode*> CXXMLNodeStack;
 
-class CXXMLHelper
-{
-public:
+class CXXMLHelper {
+  public:
     CXXMLHelper ( CXXMLNodeStack& stack, CXRapidxmlNode*& n, const char* nodeName );
     ~CXXMLHelper();
-private:
+  private:
     CXXMLNodeStack& mNodeStack;
     CXRapidxmlNode*& mNode;
 };
 inline CXXMLHelper::CXXMLHelper(CXXMLNodeStack& stack, CXRapidxmlNode*& n, const char* nodeName)
     : mNodeStack(stack)
-    , mNode(n)
-{
+    , mNode(n) {
     if (mNode)
         mNodeStack.push(mNode);
     mNode = mNode->first_node(nodeName);
 }
 
-inline CXXMLHelper::~CXXMLHelper()
-{
+inline CXXMLHelper::~CXXMLHelper() {
     mNode = mNodeStack.top();
     mNodeStack.pop();
 }
 template<typename T>
-bool _xml_get_attribute ( CXRapidxmlNode* node, const char* attr, T& var )
-{
+bool _xml_get_attribute ( CXRapidxmlNode* node, const char* attr, T& var ) {
     CXASSERT_RETURN_FALSE ( node && attr );
     CXRapidxmlAttr* pAttri = node->first_attribute ( attr );
     CXASSERT_RETURN_FALSE ( pAttri );

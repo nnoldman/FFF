@@ -1,5 +1,5 @@
 #pragma once
-#include "mysql.h"
+#include "mysql/mysql.h"
 class SQLHelper {
   public:
     static string create_table(const char* table, const char* values);

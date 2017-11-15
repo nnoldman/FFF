@@ -1,10 +1,11 @@
-#pragma once
+#ifndef DBStream_h__
+#define DBStream_h__
+
 #include <list>
 #include <sstream>
 #include "Math.h"
-class COREAPI DBStream
-{
-public:
+class DBStream {
+  public:
     DBStream();
     ~DBStream();
     DBStream& operator << (u8 var);
@@ -47,26 +48,22 @@ public:
     inline DBStream& operator >> (Basic::CharBuffer<N>& var);
     void set(vector<string>& values);
 
-    const vector<string>& getContents() const
-    {
+    const vector<string>& getContents() const {
         return contents_;
     }
-    void clear()
-    {
+    void clear() {
         this->contents_.clear();
     }
-    void reposition()
-    {
+    void reposition() {
         this->position_ = 0;
     }
-private:
+  private:
     std::vector<string> contents_;
     ::size_t position_;
 };
 
 template<int N>
-inline DBStream& DBStream::operator >> (Basic::CharBuffer<N>& var)
-{
+inline DBStream& DBStream::operator >> (Basic::CharBuffer<N>& var) {
     string container = contents_[position_];
     var.setString(container.c_str());
     position_++;
@@ -74,8 +71,7 @@ inline DBStream& DBStream::operator >> (Basic::CharBuffer<N>& var)
 }
 
 template<typename T, int N>
-DBStream& DBStream::operator>>(T(&var)[N])
-{
+DBStream& DBStream::operator>>(T(&var)[N]) {
     string container = contents_[position_];
     Basic::Math::fromHEX(var, container);
     position_++;
@@ -83,8 +79,7 @@ DBStream& DBStream::operator>>(T(&var)[N])
 }
 
 template<typename T, int N>
-DBStream& DBStream::operator<<(const T(&var)[N])
-{
+DBStream& DBStream::operator<<(const T(&var)[N]) {
     string buffer;
     stringstream ss;
     Basic::Math::toHEX(var, buffer);
@@ -95,8 +90,7 @@ DBStream& DBStream::operator<<(const T(&var)[N])
 }
 
 template<int N>
-inline DBStream& DBStream::operator<<(Basic::CharBuffer<N>& var)
-{
+inline DBStream& DBStream::operator<<(Basic::CharBuffer<N>& var) {
     string container = var.c_str();
     stringstream ss;
     ss << "'" << container << "'";
@@ -105,3 +99,4 @@ inline DBStream& DBStream::operator<<(Basic::CharBuffer<N>& var)
     return *this;
 }
 
+#endif // DBStream_h__

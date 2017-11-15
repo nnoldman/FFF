@@ -4,59 +4,45 @@
 
 //ImplementObjectPoolN(GameUser, 3000);
 
-GameUser::GameUser()
-{
+GameUser::GameUser() {
 }
 
 
-GameUser::~GameUser()
-{
+GameUser::~GameUser() {
 }
 
-void GameUser::createDefine()
-{
+void GameUser::createDefine() {
     this->dbInterface_ = new GameUserDefine();
 }
 
-bool GameUser::initialize()
-{
+bool GameUser::initialize() {
     return DBObject::initialize();
 }
 
-void GameUser::onEnterGate()
-{
+void GameUser::onEnterGate() {
     auto def = getDefine();
     role_.initialize();
 
-    if (def->pull(def->id))
-    {
-        if (def->role > 0)
-        {
+    if (def->pullByKey1()) {
+        if (def->role > 0) {
             role_.setGlobalID(def->role);
-            role_.getDefine()->pull(def->role);
+            role_.getDefine()->pullByKey1();
         }
-    }
-    else
-    {
+    } else {
         auto ret = def->insertAndQuery(def->id);
         assert(ret);
     }
 }
 
-Role* GameUser::getRole()
-{
+Role* GameUser::getRole() {
     return &role_;
 }
 
-void GameUser::activeRole()
-{
-    if (role_.valid())
-    {
+void GameUser::activeRole() {
+    if (role_.valid()) {
         role_.setConnection(getNetInterface());
         role_.syncToClient();
-    }
-    else
-    {
+    } else {
         assert(false);
     }
 }

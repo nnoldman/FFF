@@ -1,6 +1,6 @@
-#include "stdafx.h"
+#include "base.h"
 #include "ServerID.h"
-const string& ServerID::get()
+const std::string& ServerID::get()
 {
     return id_;
 }
@@ -10,4 +10,4 @@ void ServerID::set(const char* id)
     id_ = id;
 }
 
-string ServerID::id_ = "0";
+std::string ServerID::id_ = "0";

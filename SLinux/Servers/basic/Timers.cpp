@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "base.h"
 #include "Timers.h"
 #ifdef WIN32
     #include <windows.h>
@@ -8,8 +8,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace Basic
-{
+namespace Basic {
     const int64_t L0 = 256, L1 = 64, L2 = 64, L3 = 64, L4 = 64;
 
     const int kCalcSlotIndexBase[Timers::kLevelCount] = { 0, L0 - 1, L0 + L1 - 1, L0 + L1 + L2 - 1, L0 + L1 + L2 + L3 - 1 };
