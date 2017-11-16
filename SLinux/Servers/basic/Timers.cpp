@@ -18,8 +18,7 @@ namespace Basic {
     const int64_t kTicksPerSlot[Timers::kLevelCount] = { 1, L0, L0 * L1, L0 * L1 * L2, L0 * L1 * L2 * L3 };
 
     Timers::Timers()
-        : ticksSinceTimersStart_(0)
-    {
+        : ticksSinceTimersStart_(0) {
         for (auto i = 0; i < kSlotsCount; ++i)
             timers_[i] = nullptr;
         for (auto i = 0; i < kLevelCount; ++i)
@@ -29,37 +28,29 @@ namespace Basic {
 
 
 
-    Timers::~Timers()
-    {
-        for (auto i = 0; i < kSlotsCount; ++i)
-        {
+    Timers::~Timers() {
+        for (auto i = 0; i < kSlotsCount; ++i) {
             delete timers_[i];
         }
     }
 
-    TimerPtr Timers::wait(int64_t lefttimeMillseconds, Timer::callback onTimerEnd /*= nullptr*/)
-    {
+    TimerPtr Timers::wait(int64_t lefttimeMillseconds, Timer::callback onTimerEnd /*= nullptr*/) {
         shared_ptr<Timer> ret(new Timer());
         ret->onEnd_ = onTimerEnd;
-        if (lefttimeMillseconds == 0)
-        {
+        if (lefttimeMillseconds == 0) {
             this->cancel(ret.get(), true);
             return nullptr;
         }
         return repeat(lefttimeMillseconds == -1 ? 1000 : lefttimeMillseconds, nullptr, lefttimeMillseconds, onTimerEnd);
     }
 
-    TimerPtr Timers::repeat(int64_t intervalMillseconds, Timer::callback onTimer, int64_t leftTimeMillseconds, Timer::callback onTimerEnd)
-    {
+    TimerPtr Timers::repeat(int64_t intervalMillseconds, Timer::callback onTimer, int64_t leftTimeMillseconds, Timer::callback onTimerEnd) {
         assert(intervalMillseconds > 0);
         assert(intervalMillseconds % kPrecision == 0);
         int64_t truns = 0, mod = 0;
-        if (leftTimeMillseconds < 0)
-        {
+        if (leftTimeMillseconds < 0) {
             truns = -1;
-        }
-        else
-        {
+        } else {
             assert(leftTimeMillseconds % kPrecision == 0);
             truns = leftTimeMillseconds / intervalMillseconds;
             mod = leftTimeMillseconds % intervalMillseconds;
@@ -73,13 +64,10 @@ namespace Basic {
         ret->intervalMillseconds_ = intervalMillseconds;
         ret->leftTruns_ = truns;
         //×Ô¶¯ÑÓÊ±
-        if (mod > 0)
-        {
+        if (mod > 0) {
             ret->nextHitTicks_ = Timers::getInstance()->calcDeadTicks(mod);
             ret->position_ = calcSlotIndex(mod);
-        }
-        else
-        {
+        } else {
             ret->nextHitTicks_ = Timers::getInstance()->calcDeadTicks(ret->intervalMillseconds_);
             ret->position_ = calcSlotIndex(ret->intervalMillseconds_);
         }
@@ -87,42 +75,30 @@ namespace Basic {
         return ret;
     }
 
-    void Timers::tick()
-    {
+    void Timers::tick() {
         int64_t delta = currentMillseconds() - startTime_ - ticksSinceTimersStart_ * kPrecision;
         int count = (int)std::floor((double)delta / kPrecision);
-        while (count)
-        {
+        while (count) {
             ticksSinceTimersStart_++;
             int level = 0;
-            while (level < kLevelCount)
-            {
+            while (level < kLevelCount) {
                 int cursor = cursor_[level];
                 ++cursor;
                 bool change = false;
-                if (cursor == kSlots[level])
-                {
+                if (cursor == kSlots[level]) {
                     cursor_[level] = 0;
                     change = true;
-                }
-                else
-                {
+                } else {
                     cursor_[level] = cursor;
                 }
-                if (level == 0)
-                {
+                if (level == 0) {
                     raise();
-                }
-                else
-                {
+                } else {
                     cascade(level);
                 }
-                if (!change)
-                {
+                if (!change) {
                     break;
-                }
-                else
-                {
+                } else {
                     ++level;
                 }
             }
@@ -130,65 +106,54 @@ namespace Basic {
         }
     }
 
-    int64_t Timers::calcDeadTicks(int64_t microseconds) const
-    {
+    int64_t Timers::calcDeadTicks(int64_t microseconds) const {
         return microseconds == -1 ? -1 : ticksSinceTimersStart_ + microseconds / Timers::kPrecision;
     }
 
-    int64_t Timers::currentMillseconds() const
-    {
+    int64_t Timers::currentMillseconds() const {
         auto clock = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now());
         auto now = std::chrono::duration_cast<std::chrono::milliseconds>(clock.time_since_epoch());
         return now.count();
     }
 
-    void Timers::cancel(Timer* timer, bool raiseEvent)
-    {
+    void Timers::cancel(Timer* timer, bool raiseEvent) {
         if (timer->onEnd_ != nullptr && raiseEvent)
             timer->onEnd_(timer);
-        if (timer->position_ > 0)
-        {
+        if (timer->position_ > 0) {
             auto timers = this->timers_[timer->position_];
             assert(timers != nullptr);
-            auto it = std::find_if(timers->begin(), timers->end(), [timer](const TimerPtr it)
-            {
+            auto it = std::find_if(timers->begin(), timers->end(), [timer](const TimerPtr it) {
                 return timer == it.get();
             });
             assert(it != timers->end());
             timers->erase(it);
-            delete timer;
+            //delete timer;
         }
     }
 
-    int64_t Timers::leftMicroseconds(const Timer* timer) const
-    {
+    int64_t Timers::leftMicroseconds(const Timer* timer) const {
         if (timer == nullptr)
             return -1;
         return timer->leftTruns_ == 0 ? 0 : (timer->leftTruns_ - 1) * timer->intervalMillseconds_
                + (timer->nextHitTicks_ - Timers::getInstance()->currentTicks()) * Timers::kPrecision;
     }
 
-    void Timers::addToTail(std::list<TimerPtr>** head, TimerPtr var)
-    {
+    void Timers::addToTail(std::list<TimerPtr>** head, TimerPtr var) {
         auto base = *head;
-        if (base == nullptr)
-        {
+        if (base == nullptr) {
             base = new std::list<TimerPtr>();
             *head = base;
         }
         base->push_back(var);
     }
 
-    int Timers::calcSlotIndex(int64_t microseconds)
-    {
+    int Timers::calcSlotIndex(int64_t microseconds) {
         int64_t ticks = microseconds / kPrecision;
         assert(ticks > 0);
         int64_t offset = 0;
         int lv = 0;
-        for (; lv < kLevelCount; ++lv)
-        {
-            if (ticks < kTicksInLevel[lv])
-            {
+        for (; lv < kLevelCount; ++lv) {
+            if (ticks < kTicksInLevel[lv]) {
                 offset = (ticks / kTicksPerSlot[lv] + cursor_[lv]) % kSlots[lv];
                 break;
             }
@@ -198,16 +163,13 @@ namespace Basic {
         return ret;
     }
 
-    void Timers::cascade(int level)
-    {
+    void Timers::cascade(int level) {
         assert(level >= 1 && level <= kLevelCount);
         //std::cout << "cascade:" << level << std::endl;
         int64_t base = kCalcSlotIndexBase[level] + cursor_[level];
         auto* timers = this->timers_[base];
-        if (timers != nullptr)
-        {
-            for (auto it = timers->begin(); it != timers->end(); ++it)
-            {
+        if (timers != nullptr) {
+            for (auto it = timers->begin(); it != timers->end(); ++it) {
                 auto timer = *it;
                 timer->position_ = calcSlotIndex(kPrecision * (timer->nextHitTicks_ - ticksSinceTimersStart_));
                 assert(base != timer->position_);
@@ -217,53 +179,40 @@ namespace Basic {
         }
     }
 
-    void Timers::raise()
-    {
+    void Timers::raise() {
         auto base = this->cursor_[0];
         auto timers = this->timers_[base];
-        if (timers != nullptr)
-        {
-            for (auto it = timers->begin(); it != timers->end();)
-            {
+        if (timers != nullptr) {
+            for (auto it = timers->begin(); it != timers->end();) {
                 auto timer = *it;
                 auto ret = processTimer(timer, base);
-                if (ret & ProcessRet::Remove)
-                {
+                if (ret & ProcessRet::Remove) {
                     it = timers->erase(it);
-                    if (ret == ProcessRet::Delete)
-                        delete timer.get();
-                }
-                else
-                {
+                    //if (ret == ProcessRet::Delete) {
+                    //    //delete timer.get();
+                    //}
+                } else {
                     ++it;
                 }
             }
         }
     }
-
-    Timers::ProcessRet Timers::processTimer(TimerPtr timer, int currentSlot)
-    {
+    Timers::ProcessRet Timers::processTimer(TimerPtr timer, int currentSlot) {
         ProcessRet ret = ProcessRet::None;
-        if (timer->position_ == currentSlot)
-        {
+        if (timer->position_ == currentSlot) {
             assert(timer->leftTruns_ > 0);
-            if (timer->onTimer_ != nullptr)
-            {
+            if (timer->onTimer_ != nullptr) {
                 timer->onTimer_(timer.get());
             }
             timer->leftTruns_--;
-            if (timer->leftTruns_ == 0)
-            {
+            if (timer->leftTruns_ == 0) {
                 if (timer->onEnd_ != nullptr)
                     timer->onEnd_(timer.get());
                 ret = ProcessRet::Delete;
-            }
-            else
-            {
+            } else {
                 timer->position_ = calcSlotIndex(timer->intervalMillseconds_);
                 timer->nextHitTicks_ = calcDeadTicks(timer->intervalMillseconds_);
-                if (timer->position_ != currentSlot)
-                {
+                if (timer->position_ != currentSlot) {
                     this->addToTail(&this->timers_[timer->position_], timer);
                     ret = ProcessRet::Remove;
                 }

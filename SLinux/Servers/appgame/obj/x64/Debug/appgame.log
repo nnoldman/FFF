@@ -3,9 +3,5 @@
   Copying sources remotely to '43.248.102.164'
   Starting remote build
   Compiling sources:
-  GameNetAgent.cpp
-D:\git\FFF\SLinux\Servers\appgame\..\appbase\stdafx.h(56,61): warning : backslash-newline at end of file [enabled by default]
-  GameUser.cpp
-D:\git\FFF\SLinux\Servers\appgame\..\appbase\stdafx.h(56,61): warning : backslash-newline at end of file [enabled by default]
+  Role.cpp
   Linking objects
-  appgame.vcxproj -> ..\bin\Debug\appgame.out

@@ -8,6 +8,9 @@
 #include "DBTableDefine.h"
 #include "DBExecuter.h"
 class DBDefine {
+  protected:
+    DBDefine() {
+    }
   public:
     int id;
     DBExecuter* execter;
@@ -34,7 +37,9 @@ class DBDefine {
     bool commitByKey1Key2(Basic::AnyValue key2value);
     bool insertByKey1();
     bool insertByKey1Key2(Basic::AnyValue key2value);
-    bool insertAndQuery(Basic::AnyValue keyvalue);
+    /*
+    For auto increment column table
+    */
     bool insertAndQuery(const char* key, Basic::AnyValue keyvalue);
     bool exist(const char* key, Basic::AnyValue value);
   public:

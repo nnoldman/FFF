@@ -12,7 +12,7 @@ ItemSystem::ItemSystem() {
     dMemoryZeroArray(this->objects_);
 }
 ItemSystem::~ItemSystem() {
-    if (this->testTimer_.lock())
+    if (!this->testTimer_.expired())
         this->testTimer_.lock()->cancel();
     dSafeDeleteArray(this->objects_);
 }
@@ -40,7 +40,7 @@ ItemDefine* ItemSystem::create(int itemID, int num, int cell, int position) {
     if (index == -1)
         return nullptr;
     assert(this->objects_[index] == nullptr);
-    auto ret = new ItemDefine();
+    auto ret = App::DataBase.createDefine<ItemDefine>();
     ret->id = this->role_->getDefine()->id;
     ret->dbID = this->idGenerator_.require();
     ret->cell = cell;
@@ -130,7 +130,7 @@ void ItemSystem::pullFromDB() {
 
 
 void ItemSystem::testSystem() {
-    if (this->testTimer_.lock())
+    if (!this->testTimer_.expired())
         this->testTimer_.lock()->cancel();
     this->testTimer_ = Timers::getInstance()->repeat(5000, &ItemSystem::onTimer, this, 15 * 1000, &ItemSystem::onTimerEnd);
 }

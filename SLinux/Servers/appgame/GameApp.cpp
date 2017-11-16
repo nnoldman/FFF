@@ -13,28 +13,23 @@
 GameApp::GameApp(int argc, char* argv[])
     : App(argc, argv)
     , netAgent_(nullptr)
-    , controllers_(nullptr)
-{
+    , controllers_(nullptr) {
 }
 
-GameApp::~GameApp()
-{
+GameApp::~GameApp() {
     dSafeDelete(netAgent_);
     dSafeDelete(controllers_);
 }
 
-const NetConfig& GameApp::getNetConfig()
-{
+const NetConfig& GameApp::getNetConfig() {
     return *Config.center.centers[serverID_];
 }
 
-const DBConfig& GameApp::getDataBaseConfig()
-{
+const DBConfig& GameApp::getDataBaseConfig() {
     return Config.center.db;
 }
 
-bool GameApp::parseCommandLine()
-{
+bool GameApp::parseCommandLine() {
     auto commandline = this->getCommandLine();
     commandline.get("serverID", serverID_);
     string serverID;
@@ -43,28 +38,23 @@ bool GameApp::parseCommandLine()
     return serverID_ > 0;
 }
 
-void GameApp::archive()
-{
+void GameApp::archive() {
 }
 
-bool GameApp::onInitializeEnd()
-{
+bool GameApp::onInitializeEnd() {
     controllers_ = new GameControllers();
     controllers_->start();
     return true;
 }
 
-bool GameApp::onInitializeNet()
-{
+bool GameApp::onInitializeNet() {
     netAgent_ = new GameNetAgent();
     netAgent_->initialize();
     return true;
 }
 
-const vector<const DBTableDefine*>& GameApp::getTableDefines() const
-{
-    static const vector<const DBTableDefine*> ret
-    {
+const vector<const DBTableDefine*>& GameApp::getTableDefines() const {
+    static const vector<const DBTableDefine*> ret {
         &GameUserDefine::GetDefine(),
         &GameRoleDefine::GetDefine(),
         &ItemDefine::GetDefine(),
@@ -73,16 +63,14 @@ const vector<const DBTableDefine*>& GameApp::getTableDefines() const
     return ret;
 }
 
-bool GameApp::loadGameConfig()
-{
+bool GameApp::loadGameConfig() {
     TimeTable::getInstance()->reload();
     ItemTable::getInstance()->reload();
     Language::getInstance()->reload();
     return true;
 }
 
-void GameApp::mainLoop()
-{
+void GameApp::mainLoop() {
     App::mainLoop();
     controllers_->update();
 }

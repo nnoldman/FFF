@@ -8,49 +8,45 @@
 #include "RoleSystems/ChatSystem.h"
 #include "RoleSystems/MailSystem.h"
 
-Role::Role()
-{
+Role::Role() {
 }
 
 
-Role::~Role()
-{
-    for (auto sys : systems_)
-    {
-        sys->archieve();
+Role::~Role() {
+    for (auto sys : systems_) {
+        if(sys)
+            sys->archieve();
         delete sys;
     }
+    printf("~Role()");
 }
 
-bool Role::initialize()
-{
-    systems_[ServerDefine::SystemType::SystemType_Level] = new LevelSystem();
-    systems_[ServerDefine::SystemType::SystemType_Item] = new ItemSystem();
-    systems_[ServerDefine::SystemType::SystemType_Task] = new TaskSystem();
-    systems_[ServerDefine::SystemType::SystemType_Chat] = new ChatSystem();
-    systems_[ServerDefine::SystemType::SystemType_Mail] = new MailSystem();
+bool Role::initialize() {
+    //systems_[ServerDefine::SystemType::SystemType_Level] = new LevelSystem();
+    //systems_[ServerDefine::SystemType::SystemType_Item] = new ItemSystem();
+    //systems_[ServerDefine::SystemType::SystemType_Task] = new TaskSystem();
+    //systems_[ServerDefine::SystemType::SystemType_Chat] = new ChatSystem();
+    //systems_[ServerDefine::SystemType::SystemType_Mail] = new MailSystem();
     return DBObject::initialize();
 }
 
 
-void Role::createDefine()
-{
-    this->dbInterface_ = new GameRoleDefine();
+void Role::createDefine() {
+    this->dbInterface_ = App::DataBase.createDefine<GameRoleDefine>();
 }
 
-GameRoleDefine* Role::getDefine() const
-{
+GameRoleDefine* Role::getDefine() const {
     return (GameRoleDefine*)this->dbInterface_;
 }
 
-void Role::syncToClient()
-{
+void Role::syncToClient() {
     for (auto sys : systems_)
-        sys->initialize(this);
+        if (sys)
+            sys->initialize(this);
 }
 
-void Role::onNet(Cmd::CLIENTID id, ProtocoBuffer * pb)
-{
+void Role::onNet(Cmd::CLIENTID id, ProtocoBuffer * pb) {
     for (auto sys : systems_)
-        sys->onNet(id, pb);
+        if (sys)
+            sys->onNet(id, pb);
 }

@@ -6,6 +6,7 @@ class DBDefine;
 class DBTableDefine;
 class DBExecuter {
   public:
+    virtual ~DBExecuter() {}
     typedef DBDefine* (*DBDefineCreator)(DBExecuter*);
 
     virtual bool initialize(const DBConfig& config);
@@ -34,13 +35,17 @@ class DBExecuter {
     拉取一条数据
     */
     bool pullByKey1Key2(DBDefine* def,Basic::AnyValue keyvalue);
+    //delete
+    bool commit(DBDefine* def);
+    //delete then insert
     bool commitByKey1(DBDefine* def);
+    //delete then insert
     bool commitByKey1Key2(DBDefine* def, Basic::AnyValue key2Value);
     bool deleteByKey1(DBDefine* def);
     bool deleteByKey1Key2(DBDefine* def, Basic::AnyValue key2Value);
 
-    bool insertAndQuery(Basic::AnyValue keyvalue, OUT DBDefine* def);
-    bool insertAndQuery(const char* key, Basic::AnyValue keyvalue, OUT DBDefine* def);
+    //bool insertAndQuery(Basic::AnyValue keyvalue, OUT DBDefine* def);
+    //bool insertAndQuery(const char* key, Basic::AnyValue keyvalue, OUT DBDefine* def);
 
     const DBConfig& config() const;
   private:

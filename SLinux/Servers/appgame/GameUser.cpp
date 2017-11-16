@@ -9,10 +9,15 @@ GameUser::GameUser() {
 
 
 GameUser::~GameUser() {
+    printf("~GameUser()");
+    //if (netInterface_) {
+    //    netInterface_->disconnect();
+    //    netInterface_ = nullptr;
+    //}
 }
 
 void GameUser::createDefine() {
-    this->dbInterface_ = new GameUserDefine();
+    this->dbInterface_ = App::DataBase.createDefine<GameUserDefine>();
 }
 
 bool GameUser::initialize() {
@@ -29,7 +34,7 @@ void GameUser::onEnterGate() {
             role_.getDefine()->pullByKey1();
         }
     } else {
-        auto ret = def->insertAndQuery(def->id);
+        auto ret = def->insertAndQuery(def->key(), def->id);
         assert(ret);
     }
 }

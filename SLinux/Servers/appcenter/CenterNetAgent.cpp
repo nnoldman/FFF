@@ -60,7 +60,7 @@ bool CenterNetAgent::on_rqLoginAccount(const string& user, const string& passwor
     } else {
         if (App::Config.login.db.autoCreateAccount) {
             def->password = password.c_str();
-            if (def->insertAndQuery(def->user.c_str())) {
+            if (def->insertAndQuery(def->key2(),def->user.c_str())) {
                 onLoginSucess(gateAccount, con);
             }
         } else {
@@ -87,7 +87,7 @@ bool CenterNetAgent::on_rqCreateAccount(const string& user, const string& passwo
     } else {
         def->user = user.c_str();
         def->password = password.c_str();
-        auto queryRet = def->insertAndQuery(user.c_str());
+        auto queryRet = def->insertAndQuery(def->key2(),user.c_str());
         assert(queryRet);
         gateAccount->setGlobalID(def->id);
         Cmd::RetAccountOperation ret;

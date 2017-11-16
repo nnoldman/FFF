@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "QueryNode.h"
 
-QueryNode::QueryNode(MYSQL* sql) : mysql_(sql) {
-
+QueryNode::QueryNode(MYSQL* sql)
+    : mysql_(sql)
+    , resource_(nullptr) {
 }
 
 QueryNode::~QueryNode() {
@@ -21,7 +22,7 @@ bool QueryNode::fetch(vector<string>& ret) {
             ret.push_back(row[i]);
         }
     }
-    return true;
+    return ret.size() > 0;
 }
 
 bool QueryNode::fetch(vector<vector<string>>& ret) {

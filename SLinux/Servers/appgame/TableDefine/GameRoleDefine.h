@@ -6,13 +6,10 @@
 #include "Default.h"
 
 class GameRoleDefine :
-    public DBDefineInterface<GameRoleDefine>
-{
-public:
-    static const DBTableDefine& GetDefine()
-    {
-        static const vector<DBColumn> columns =
-        {
+    public DBDefineInterface<GameRoleDefine> {
+  public:
+    static const DBTableDefine& GetDefine() {
+        static const vector<DBColumn> columns = {
             { "id", enum_field_types::MYSQL_TYPE_LONG, 0, true, false, 0 },
             { "name", enum_field_types::MYSQL_TYPE_VARCHAR, Default::NameSize, false, false, "" },
             { "vip", enum_field_types::MYSQL_TYPE_LONG, 0, false, false, 0 },
@@ -22,24 +19,17 @@ public:
             { "borntime", enum_field_types::MYSQL_TYPE_DATETIME, 0, false, false, 0 },
             { "functions", enum_field_types::MYSQL_TYPE_VARCHAR, GameDefine::Capcity::Function / 4, false, false, 0 },
         };
-        static const DBTableDefine TheTable =
-        {
+        static const DBTableDefine TheTable = {
             "game_role", false, "id", "name", columns,
         };
         return TheTable;
     }
-
-    virtual const char* table() override
-    {
-        return GetDefine().tableName();
-    }
-
-public://游戏基本系统
+  public://游戏基本系统
     RoleStat::Base base;
     RoleStat::Property property;
     RoleStat::Mail mail;
 
-public://游戏内容
+  public://游戏内容
     RoleStat::Env env;
     RoleStat::Member member;
     RoleStat::Group group;
@@ -48,17 +38,8 @@ public://游戏内容
     RoleStat::MileStone mileStone;
     RoleStat::Teachnology teachnology;
 
-public:
-    virtual const char* key() override
-    {
-        return GetDefine().key();
-    }
-    virtual const char* key2() override
-    {
-        return GetDefine().key2();
-    }
-    virtual void deserializeMe() override
-    {
+  public:
+    virtual void deserializeMe() override {
         stream() >> id;
         stream() >> base.name;
         stream() >> base.vip;
@@ -69,8 +50,7 @@ public:
         stream() >> base.functions;
     }
 
-    virtual void serializeMe() override
-    {
+    virtual void serializeMe() override {
         stream() << id;
         stream() << base.name;
         stream() << base.vip;

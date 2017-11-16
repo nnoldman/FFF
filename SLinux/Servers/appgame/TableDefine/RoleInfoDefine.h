@@ -2,10 +2,8 @@
 #include "GameDefine.pb.h"
 #include "CharBuffer.h"
 #include "Default.h"
-namespace RoleStat
-{
-    struct Base
-    {
+namespace RoleStat {
+    struct Base {
         Basic::CharBuffer<Default::NameSize> name;
         int vip;
         int level;
@@ -20,32 +18,28 @@ namespace RoleStat
     /*
     属性
     */
-    struct Property
-    {
+    struct Property {
         int values[GameDefine::ProertyCount];
     };
 
     /*
     邮件
     */
-    struct Mail
-    {
+    struct Mail {
         int uuids[GameDefine::Mail];
     };
 
     /*
     所有道具
     */
-    struct GameObjects
-    {
+    struct GameObjects {
 
     };
 
     /*
     环境
     */
-    struct Env
-    {
+    struct Env {
         //当前纪
         int trun;
         //适宜度
@@ -83,8 +77,7 @@ namespace RoleStat
     /*
     内因
     */
-    struct Gene
-    {
+    struct Gene {
         //基因量
         int geneQuantity;
         //突变子
@@ -94,8 +87,7 @@ namespace RoleStat
     /*
     部落
     */
-    struct Group
-    {
+    struct Group {
         ////纠错能力
         //int correction;
         //部落成员数量
@@ -115,8 +107,7 @@ namespace RoleStat
     /*
     成员
     */
-    struct Member
-    {
+    struct Member {
         //体重
         int weight;
         //食物需求
@@ -150,8 +141,7 @@ namespace RoleStat
     /*
     意识
     */
-    struct Awareness
-    {
+    struct Awareness {
         //内部电荷活动总量
         int innerElectrics;
     };
@@ -159,8 +149,7 @@ namespace RoleStat
     /*
     里程碑事件
     */
-    struct MileStone
-    {
+    struct MileStone {
         int id;
         int time;
         Basic::CharBuffer<Default::EventName>  name;
@@ -169,8 +158,7 @@ namespace RoleStat
     /*
     科技
     */
-    struct Teachnology
-    {
+    struct Teachnology {
         //生物
         int biology;
         //数学

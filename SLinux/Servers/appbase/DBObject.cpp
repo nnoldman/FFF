@@ -2,18 +2,16 @@
 #include "DBObject.h"
 #include "DBDefine.h"
 
-
 DBObject::DBObject()
-    : netInterface_(nullptr)
-    , dbInterface_(nullptr) {
+    :dbInterface_(nullptr)
+    , netInterface_(nullptr) {
+    printf("DBObject():%x",this);
 }
 
 DBObject::~DBObject() {
     dSafeDelete(dbInterface_);
-    if (netInterface_) {
-        netInterface_->disconnect();
-        netInterface_ = nullptr;
-    }
+    netInterface_ = nullptr;
+    printf("~DBObject():%x", this);
 }
 bool DBObject::initialize() {
     this->createDefine();
@@ -26,18 +24,5 @@ void DBObject::setGlobalID(int globalID) {
 }
 
 void DBObject::syncToClient() {
-
 }
-
-
-//bool DBObject::pull(Value keyValue)
-//{
-//    return this->dbInterface_->pull(keyValue);
-//}
-//
-//
-//bool DBObject::commit(Value keyValue)
-//{
-//    return this->dbInterface_->commit(keyValue);
-//}
 

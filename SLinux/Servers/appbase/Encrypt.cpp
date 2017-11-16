@@ -2,8 +2,7 @@
 #include "Encrypt.h"
 #include "md5.h"
 
-string Encrypt::makeLoginToken(int accountID,int time)
-{
+string Encrypt::makeLoginToken(int accountID,int time) {
     stringstream ss;
     ss << accountID;
     ss << time;

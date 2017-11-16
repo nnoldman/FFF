@@ -7,13 +7,10 @@
 #include "RoleInfoDefine.h"
 
 class MailDefine :
-    public DBDefineInterface<MailDefine>
-{
-public:
-    static const DBTableDefine& GetDefine()
-    {
-        static const vector<DBColumn> columns =
-        {
+    public DBDefineInterface<MailDefine> {
+  public:
+    static const DBTableDefine& GetDefine() {
+        static const vector<DBColumn> columns = {
             { "id", enum_field_types::MYSQL_TYPE_LONG, 0, false, false, 0 },
             { "dbID", enum_field_types::MYSQL_TYPE_LONG, 0, false, false, 0 },
             { "itemID", enum_field_types::MYSQL_TYPE_LONG, 0, false, false, 0 },
@@ -22,15 +19,14 @@ public:
             { "gold", enum_field_types::MYSQL_TYPE_LONG, 0, false, false, 0 },
             { "time", enum_field_types::MYSQL_TYPE_DATETIME, 0, false, false, 0 },
             { "sender", enum_field_types::MYSQL_TYPE_VARCHAR, Default::NameSize, false, false, "" },
-            { "content", enum_field_types::MYSQL_TYPE_DATETIME, Default::DataSize, false, false, "" },
+            { "content", enum_field_types::MYSQL_TYPE_VARCHAR, Default::DataSize, false, false, "" },
         };
-        static const DBTableDefine TheTable =
-        {
+        static const DBTableDefine TheTable = {
             "game_mail", false, "id", "dbID", columns,
         };
         return TheTable;
     }
-public:
+  public:
     int dbID;
     int itemID;
     int itemCount;
@@ -39,9 +35,8 @@ public:
     Basic::CharBuffer<Default::TimeSize> time;
     Basic::CharBuffer<Default::NameSize> sender;
     Basic::CharBuffer<Default::DataSize> content;
-public:
-    virtual void deserializeMe() override
-    {
+  public:
+    virtual void deserializeMe() override {
         stream() >> this->id;
         stream() >> this->dbID;
         stream() >> this->itemID;
@@ -52,8 +47,7 @@ public:
         stream() >> this->sender;
         stream() >> this->content;
     }
-    virtual void serializeMe() override
-    {
+    virtual void serializeMe() override {
         stream() << this->id;
         stream() << this->dbID;
         stream() << this->itemID;

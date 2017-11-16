@@ -13,7 +13,7 @@ void Connection::run() {
         buffer_.clear();
         while (!closed_) {
             if (ss.available() >= 0) {
-                int length = ss.receiveBytes(buffer_.getBuffer(), buffer_.length());
+                auto length = ss.receiveBytes(buffer_.getBuffer(), buffer_.length());
                 if (length > 0) {
                     while (buffer_.getPosition() < length) {
                         if (header_ == 0) {

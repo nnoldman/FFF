@@ -8,8 +8,8 @@
     #pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
 #endif
 
-int main(int argc, char* argv[])
-{
+
+int main(int argc, char* argv[]) {
     printf("ROLE DEFINE SIZE:%d B\n", sizeof(GameRoleDefine));
     GameApp app(argc, argv);
     app.run();

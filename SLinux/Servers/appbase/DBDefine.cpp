@@ -18,7 +18,6 @@ void DBDefine::serialize(stringstream& columns) {
     this->getValues(columns);
 }
 
-
 void DBDefine::set(vector<string>& values) {
     stream_.set(values);
 }
@@ -52,14 +51,9 @@ bool DBDefine::insertByKey1Key2(Basic::AnyValue key2value) {
 }
 
 //delete from global_account where user = '123';
-bool DBDefine::insertAndQuery(Basic::AnyValue keyvalue) {
-    if (this->execter->commitByKey1(this))
-        return pullByKey1();
-    return false;
-}
 
 bool DBDefine::insertAndQuery(const char* key, Basic::AnyValue keyvalue) {
-    if (this->execter->commitByKey1(this))
+    if (this->execter->commit(this))
         return this->execter->pull(key, keyvalue, this);
     return false;
 }

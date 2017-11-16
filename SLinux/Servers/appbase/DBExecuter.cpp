@@ -8,7 +8,7 @@ bool DBExecuter::initialize(const DBConfig & config) {
     return true;
 }
 bool DBExecuter::pullByKey1(OUT DBDefine* def) {
-    assert(def->key2() == nullptr || strlen(def->key2()) == 0);
+    //assert(def->key2() == nullptr || strlen(def->key2()) == 0);
     return this->pull(def->key(),def->id, def);
 }
 
@@ -32,13 +32,14 @@ bool DBExecuter::pullByKey1(const DBTableDefine& def, Basic::AnyValue keyvalue, 
     return query(ss.str().c_str(), ret, creator);
 }
 
+bool DBExecuter::commit(DBDefine* def) {
+    return insert(def);
+}
 
 bool DBExecuter::commitByKey1(DBDefine* def) {
     deleteByKey1(def);
     return insert(def);
 }
-
-
 bool DBExecuter::commitByKey1Key2(DBDefine* def, Basic::AnyValue key2Value) {
     deleteByKey1Key2(def, key2Value);
     return insert(def);
@@ -76,21 +77,21 @@ string DBExecuter::makeValue(const Basic::AnyValue& keyvalue) {
     return ret.str();
 }
 
-bool DBExecuter::insertAndQuery(Basic::AnyValue keyvalue, OUT DBDefine* def) {
-    bool ret = this->insert(def);
-    if (ret) {
-        ret = this->pull(def->key(),keyvalue, def);
-    }
-    return ret;
-}
-
-bool DBExecuter::insertAndQuery(const char* key, Basic::AnyValue keyvalue, OUT DBDefine* def) {
-    bool ret = this->insert(def);
-    if (ret) {
-        ret = this->pull(key, keyvalue, def);
-    }
-    return ret;
-}
+//bool DBExecuter::insertAndQuery(Basic::AnyValue keyvalue, OUT DBDefine* def) {
+//    bool ret = this->insert(def);
+//    if (ret) {
+//        ret = this->pull(def->key(),keyvalue, def);
+//    }
+//    return ret;
+//}
+//
+//bool DBExecuter::insertAndQuery(const char* key, Basic::AnyValue keyvalue, OUT DBDefine* def) {
+//    bool ret = this->insert(def);
+//    if (ret) {
+//        ret = this->pull(key, keyvalue, def);
+//    }
+//    return ret;
+//}
 
 const DBConfig& DBExecuter::config() const {
     return this->config_;

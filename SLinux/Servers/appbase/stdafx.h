@@ -20,13 +20,8 @@
 #include <typeinfo>
 
 #include "Basic.h"
-#include "Poco/Dynamic/Var.h"
-#include "Poco/Any.h"
 #include "Poco/Net/Socket.h"
 #include "Poco/Util/Application.h"
-#include "Poco/Util/Timer.h"
-#include "Poco/Util/TimerTask.h"
-#include "Poco/Util/TimerTaskAdapter.h"
 #include "Poco/Logger.h"
 #include "Default.h"
 

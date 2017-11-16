@@ -130,6 +130,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>../;../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CppLanguageStandard>c++11</CppLanguageStandard>
+      <PreprocessorDefinitions>POCO_ENABLE_CPP11</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\bin\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

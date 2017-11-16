@@ -4,29 +4,22 @@
 
 
 
-ChatSystem::ChatSystem()
-{
+ChatSystem::ChatSystem() {
 }
 
 
-ChatSystem::~ChatSystem()
-{
+ChatSystem::~ChatSystem() {
 }
 
-void ChatSystem::initialize(Role* role)
-{
+void ChatSystem::initialize(Role* role) {
     SystemBase::initialize(role);
 }
 
-void ChatSystem::onNet(Cmd::CLIENTID id, ProtocoBuffer* pb)
-{
-    switch (id)
-    {
-    case Cmd::RQChat:
-    {
+void ChatSystem::onNet(Cmd::CLIENTID id, ProtocoBuffer* pb) {
+    switch (id) {
+    case Cmd::RQChat: {
         auto req = pb->parse<Cmd::ReqChat>();
-        if (req->channel() == Cmd::MessageChannel::MessageChannel_User_World)
-        {
+        if (req->channel() == Cmd::MessageChannel::MessageChannel_User_World) {
             this->onWorldMessage(req.get());
         }
     }
@@ -36,15 +29,12 @@ void ChatSystem::onNet(Cmd::CLIENTID id, ProtocoBuffer* pb)
     }
 }
 
-void ChatSystem::onWorldMessage(Cmd::ReqChat* message)
-{
+void ChatSystem::onWorldMessage(Cmd::ReqChat* message) {
     MessageController::getInstance()->broadcast(Cmd::MessageChannel_User_World, message->content(), message->from());
 }
 
-void ChatSystem::onTimer(Basic::Timer* timer)
-{
+void ChatSystem::onTimer(Basic::Timer* timer) {
 }
 
-void ChatSystem::onTimerEnd(Basic::Timer* timer)
-{
+void ChatSystem::onTimerEnd(Basic::Timer* timer) {
 }

@@ -36,24 +36,19 @@ App::App(int narg, char* argv[])
     : Application(narg, argv)
     , commandLine_(narg, argv)
     , quiting_(false)
-    , isCenter_(false)
-{
+    , isCenter_(false) {
     this->setWorkDirectory(argv[0]);
     Instance = this;
 }
 
-App::~App()
-{
+App::~App() {
     Instance = nullptr;
     std::cout << "~App" << std::endl;
 }
 
-bool App::initialize()
-{
-    if (commandLine_.arg_count())
-    {
-        if (!parseCommandLine())
-        {
+bool App::initialize() {
+    if (commandLine_.arg_count()) {
+        if (!parseCommandLine()) {
             throw new std::logic_error("parseCommandLine Error");
             return false;
         }
@@ -66,33 +61,24 @@ bool App::initialize()
         return false;
     if (!Net.initialize(getNetConfig()))
         return false;
-    if (!onInitializeNet())
-    {
+    if (!onInitializeNet()) {
         LOG_INFO_A("Initialize Net Failed!");
         return false;
-    }
-    else
-    {
+    } else {
         LOG_INFO_A("Initialize Net Sucessfully!");
     }
-    if (!initializeDataBase())
-    {
+    if (!initializeDataBase()) {
         LOG_INFO_A("Initialize DataBase Failed!");
         return false;
-    }
-    else
-    {
+    } else {
         LOG_INFO_A("Initialize DataBase Sucessfully!");
     }
     if (!isCenter_ && !connectCenter())
         return false;
-    if (!loadGameConfig())
-    {
+    if (!loadGameConfig()) {
         LOG_INFO_A("LoadGameConfig Failed!");
         return false;
-    }
-    else
-    {
+    } else {
         LOG_INFO_A("LoadGameConfig Sucessfully!");
     }
     if (!World.initialize())
@@ -101,8 +87,7 @@ bool App::initialize()
         LOG_INFO_A("Initialize World Sucessfully!");
     return this->onInitializeEnd();
 }
-int App::main(const std::vector<std::string>& args)
-{
+int App::main(const std::vector<std::string>& args) {
     if (!initialize())
         return EXIT_CONFIG;
     int bIsCtrl = 0;
@@ -121,8 +106,7 @@ int App::main(const std::vector<std::string>& args)
     this->onQuit();
     return EXIT_OK;
 }
-void App::initialize(Application& app)
-{
+void App::initialize(Application& app) {
 //   try
 //   {
     //	//Util::Application::loadConfiguration("../env/center.json", PRIO_APPLICATION);
@@ -135,23 +119,19 @@ void App::initialize(Application& app)
     Util::Application::initialize(app);
 }
 
-void App::uninitialize()
-{
+void App::uninitialize() {
     return Poco::Util::Application::uninitialize();
 }
 
-void App::reinitialize(Application& app)
-{
+void App::reinitialize(Application& app) {
     return Poco::Util::Application::reinitialize(app);
 }
 
-bool App::loadGameConfig()
-{
+bool App::loadGameConfig() {
     return true;
 }
 
-void crash_dump(int signo)
-{
+void crash_dump(int signo) {
     char buf[1024];
     char cmd[1024];
     FILE *fh;
@@ -175,17 +155,14 @@ void crash_dump(int signo)
 
 const int MAX_STACK_FRAMES = 64;
 
-void OnCrashHandler(int signum)
-{
+void OnCrashHandler(int signum) {
     Basic::Platform::createDirectory("log");
     FILE* f = fopen("crash_app.txt", "at");
-    if (nullptr == f)
-    {
+    if (nullptr == f) {
         exit(1);
         return;
     }
-    try
-    {
+    try {
         char szLine[512] = { 0, };
         time_t t = time(nullptr);
         tm* now = localtime(&t);
@@ -208,15 +185,14 @@ void OnCrashHandler(int signum)
         size = backtrace(array, MAX_STACK_FRAMES);
         strings = (char**)backtrace_symbols(array, size);
         //fprintf(stderr, "oncrash;\n");
-        for (i = 0; i < size; ++i)
-        {
+        for (i = 0; i < size; ++i) {
 #if 1
             std::string symbol(strings[i]);
             std::string::size_type pos1 = symbol.find_first_of("[");
             std::string::size_type pos2 = symbol.find_last_of("]");
             std::string address = symbol.substr(pos1 + 1, pos2 - pos1 - 1);
             char cmd[128] = { 0, };
-            sprintf(cmd, "addr2line -e appgame %p", address.c_str());
+            sprintf(cmd, "addr2line -e appgame.out %p", address.c_str());
             system(cmd);
 #endif
             char szLine[512] = { 0, };
@@ -226,9 +202,7 @@ void OnCrashHandler(int signum)
         }
         free(strings);
 #endif // __linux
-    }
-    catch (...)
-    {
+    } catch (...) {
         //
     }
     fflush(f);
@@ -237,43 +211,33 @@ void OnCrashHandler(int signum)
     exit(1);
 }
 typedef void(*dump_handler)(int);
-void _initCrashDump(dump_handler handler)
-{
+void _initCrashDump(dump_handler handler) {
     signal(SIGSEGV, handler);
     signal(SIGFPE, handler);
     signal(SIGINT, handler);
     signal(SIGILL, handler);
     signal(SIGABRT, handler);
 }
-void App::initCrashDump()
-{
+
+void App::initCrashDump() {
     _initCrashDump(OnCrashHandler);
 }
 
-void App::mainLoop()
-{
+void App::mainLoop() {
     Net.prosess();
     World.process();
     Timers::getInstance()->tick();
 }
 
-bool App::initializeDataBase()
-{
-    if (!DataBase.initialize(getDataBaseConfig()))
-    {
+bool App::initializeDataBase() {
+    if (!DataBase.initialize(getDataBaseConfig())) {
         return false;
-    }
-    else
-    {
+    } else {
         auto ret = this->getTableDefines();
-        for (auto def : ret)
-        {
-            if (!this->DataBase.hasTable(def->tableName()))
-            {
+        for (auto def : ret) {
+            if (!this->DataBase.hasTable(def->tableName())) {
                 this->DataBase.createTable(def);
-            }
-            else
-            {
+            } else {
                 this->DataBase.checkForAlterTableColumns(def);
             }
         }
@@ -281,53 +245,44 @@ bool App::initializeDataBase()
     return true;
 }
 
-bool App::connectCenter()
-{
+bool App::connectCenter() {
     return true;
 }
 
-void App::setWorkDirectory(char* appName)
-{
+void App::setWorkDirectory(char* appName) {
     Poco::Path dir(appName);
     printf("Current working directory : %s\n", Poco::Path::current().c_str());
     Basic::Platform::setWorkDirectory(dir.makeParent().toString().c_str());
     printf("Current working directory : %s\n", Poco::Path::current().c_str());
 }
 
-void App::onQuit()
-{
+void App::onQuit() {
     archive();
 }
 
 
 
-void App::archive()
-{
+void App::archive() {
 }
 
-void App::quit()
-{
+void App::quit() {
     quiting_ = true;
 }
 
-bool App::isQuiting() const
-{
+bool App::isQuiting() const {
     return quiting_;
 }
 
-Basic::CommandLine& App::getCommandLine()
-{
+Basic::CommandLine& App::getCommandLine() {
     return commandLine_;
 }
 
-bool App::initializeLogger()
-{
+bool App::initializeLogger() {
     AutoPtr<FileChannel> fileChannel(new FileChannel());
     Poco::File file(PathConfiguration::appLoggerFile(ServerID::get()));
     Poco::Path path(file.path().c_str());
     Poco::File dir(path.parent());
-    if (!dir.exists())
-    {
+    if (!dir.exists()) {
         Basic::Platform::createDirectory(dir.path().c_str());
     }
     //指定日志路径及文件名
