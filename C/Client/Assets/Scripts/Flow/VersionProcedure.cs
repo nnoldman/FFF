@@ -138,7 +138,7 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
 
     public override IEnumerator Start()
     {
-#if UINTY_EDITOR
+#if UNITY_EDITOR
         yield return null;
 #else
         yield return DoUpdata();
@@ -241,209 +241,209 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
         {
             switch (state)
             {
-                case UpdateState.None:
+            case UpdateState.None:
+            {
+                if (Application.internetReachability == NetworkReachability.NotReachable)
                 {
-                    if (Application.internetReachability == NetworkReachability.NotReachable)
+                    mCheckNetReachedTimes++;
+                    if (mCheckNetReachedTimes > 3000)
                     {
-                        mCheckNetReachedTimes++;
-                        if (mCheckNetReachedTimes > 3000)
-                        {
-                            if (netWaring != null)
-                                netWaring.Invoke();
-                        }
-                        yield return null;
+                        if (netWaring != null)
+                            netWaring.Invoke();
                     }
-                    else
-                    {
-                        SetState(UpdateState.WaitForNet);
-                    }
+                    yield return null;
                 }
-                break;
-                case UpdateState.WaitForNet:
+                else
                 {
-                    if (Application.internetReachability != NetworkReachability.NotReachable)
-                        SetState(UpdateState.GetLocalAddressConfig);
-                    else
-                        yield return null;
+                    SetState(UpdateState.WaitForNet);
                 }
-                break;
-                case UpdateState.CheckWifi:
+            }
+            break;
+            case UpdateState.WaitForNet:
+            {
+                if (Application.internetReachability != NetworkReachability.NotReachable)
+                    SetState(UpdateState.GetLocalAddressConfig);
+                else
+                    yield return null;
+            }
+            break;
+            case UpdateState.CheckWifi:
+            {
+                if (Application.internetReachability != NetworkReachability.ReachableViaLocalAreaNetwork)
                 {
-                    if (Application.internetReachability != NetworkReachability.ReachableViaLocalAreaNetwork)
+                    mCheckWifiReachedTimes++;
+                    if (mCheckWifiReachedTimes > 3000)
                     {
-                        mCheckWifiReachedTimes++;
-                        if (mCheckWifiReachedTimes > 3000)
-                        {
-                            if (wifiWaring != null)
-                                wifiWaring.Invoke();
-                            SetState(UpdateState.WaitForWifi);
-                        }
-                        yield return null;
-                    }
-                    else
-                    {
+                        if (wifiWaring != null)
+                            wifiWaring.Invoke();
                         SetState(UpdateState.WaitForWifi);
                     }
+                    yield return null;
                 }
-                break;
-                case UpdateState.WaitForWifi:
+                else
                 {
-                    if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork || allowDownloadWithoutWifi)
-                    {
-                        SetState(UpdateState.DownloadIncrements);
-                    }
-                    else
-                    {
-                        yield return null;
-                    }
+                    SetState(UpdateState.WaitForWifi);
                 }
-                break;
-                case UpdateState.GetLocalAddressConfig:
+            }
+            break;
+            case UpdateState.WaitForWifi:
+            {
+                if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork || allowDownloadWithoutWifi)
                 {
-                    DoNowStep stepLoadResourceAddr = new DoNowStep();
-                    stepLoadResourceAddr.name = "加载本地配置";
-                    stepLoadResourceAddr.onEnd = TryGetAddressConfig;
-                    stepLoadResourceAddr.exit = () => string.IsNullOrEmpty(mRemoteAddress);
-                    stepLoadResourceAddr.errorCode = LoadingError.ResourceLoginServerAddressConfigNotExist;
-                    yield return DoNow(stepLoadResourceAddr);
-                    SetState(UpdateState.ReadRemoteConfig);
+                    SetState(UpdateState.DownloadIncrements);
                 }
-                break;
-                case UpdateState.ReadRemoteConfig:
+                else
                 {
-                    LoadOneStep stepGetRemoteConfig = new LoadOneStep();
-                    stepGetRemoteConfig.name = "获取服务器配置文件";
-                    stepGetRemoteConfig.getURL = () => mRemoteAddress;
-                    stepGetRemoteConfig.loadDelegate = TryGetRemoteURLConfig;
-                    stepGetRemoteConfig.exit = () => string.IsNullOrEmpty(mRemoteVersionFile);
-                    stepGetRemoteConfig.errorCode = LoadingError.RemoteURLConfigLoadFailedOrEmpty;
-                    yield return DoOneStep(stepGetRemoteConfig);
-                    if (mErrorCode == LoadingError.RemoteURLConfigLoadFailedOrEmpty)
-                    {
-                        Debug.LogWarning("Error URL Config!" + mRemoteVersionFile);
-                        SetState(UpdateState.ReadStreamingVersion);
-                    }
-                    else
-                    {
-                        SetState(UpdateState.ReadRemoteVersion);
-                    }
+                    yield return null;
                 }
-                break;
-                case UpdateState.ReadRemoteVersion:
+            }
+            break;
+            case UpdateState.GetLocalAddressConfig:
+            {
+                DoNowStep stepLoadResourceAddr = new DoNowStep();
+                stepLoadResourceAddr.name = "加载本地配置";
+                stepLoadResourceAddr.onEnd = TryGetAddressConfig;
+                stepLoadResourceAddr.exit = () => string.IsNullOrEmpty(mRemoteAddress);
+                stepLoadResourceAddr.errorCode = LoadingError.ResourceLoginServerAddressConfigNotExist;
+                yield return DoNow(stepLoadResourceAddr);
+                SetState(UpdateState.ReadRemoteConfig);
+            }
+            break;
+            case UpdateState.ReadRemoteConfig:
+            {
+                LoadOneStep stepGetRemoteConfig = new LoadOneStep();
+                stepGetRemoteConfig.name = "获取服务器配置文件";
+                stepGetRemoteConfig.getURL = () => mRemoteAddress;
+                stepGetRemoteConfig.loadDelegate = TryGetRemoteURLConfig;
+                stepGetRemoteConfig.exit = () => string.IsNullOrEmpty(mRemoteVersionFile);
+                stepGetRemoteConfig.errorCode = LoadingError.RemoteURLConfigLoadFailedOrEmpty;
+                yield return DoOneStep(stepGetRemoteConfig);
+                if (mErrorCode == LoadingError.RemoteURLConfigLoadFailedOrEmpty)
                 {
-                    LoadOneStep stepLoadRemoteVersion = new LoadOneStep();
-                    stepLoadRemoteVersion.name = "加载服务器版本信息";
-                    stepLoadRemoteVersion.getURL = () => mRemoteVersionFile;
-                    stepLoadRemoteVersion.loadDelegate = TryGetVersionFromRemote;
-                    stepLoadRemoteVersion.exit = () => mVersionRemote == null;
-                    stepLoadRemoteVersion.errorCode = LoadingError.RemoteVersionLoadFailedOrEmpty;
-                    yield return DoOneStep(stepLoadRemoteVersion);
-                    SetState(UpdateState.ReadRemoteIndex);
-                }
-                break;
-                case UpdateState.ReadRemoteIndex:
-                {
-                    LoadOneStep stepLoadRemoteIndex = new LoadOneStep();
-                    stepLoadRemoteIndex.name = "加载远程索引信息";
-                    stepLoadRemoteIndex.loadDelegate = TryGetRemoteIndex;
-                    stepLoadRemoteIndex.exit = () => false;
-                    stepLoadRemoteIndex.getURL = () => mRemoteIndexFileURL;
-                    stepLoadRemoteIndex.errorCode = LoadingError.RemoteIndexLoadFailedOrEmpty;
-                    yield return DoOneStep(stepLoadRemoteIndex);
+                    Debug.LogWarning("Error URL Config!" + mRemoteVersionFile);
                     SetState(UpdateState.ReadStreamingVersion);
                 }
-                break;
-                case UpdateState.ReadStreamingVersion:
+                else
                 {
-                    LoadOneStep stepLoadStreamingVersion = new LoadOneStep();
-                    stepLoadStreamingVersion.name = "加载Streaming版本信息";
-                    stepLoadStreamingVersion.loadDelegate = TryGetVersionFromStreamingAsset;
-                    stepLoadStreamingVersion.exit = () => false;
-                    stepLoadStreamingVersion.getURL = () => getStreamingVersionFile;
-                    yield return DoOneStep(stepLoadStreamingVersion);
-                    SetState(UpdateState.ReadStreamingIndex);
+                    SetState(UpdateState.ReadRemoteVersion);
                 }
-                break;
-                case UpdateState.ReadStreamingIndex:
-                {
-                    LoadOneStep stepLoadStreamingIndex = new LoadOneStep();
-                    stepLoadStreamingIndex.name = "加载Streaming索引信息";
-                    stepLoadStreamingIndex.loadDelegate = TryGetStreamingIndex;
-                    stepLoadStreamingIndex.exit = () => false;
-                    stepLoadStreamingIndex.getURL = () => getStreamingIndexFile;
-                    yield return DoOneStep(stepLoadStreamingIndex);
-                    SetState(UpdateState.ReadSD);
-                }
-                break;
-                case UpdateState.ReadSD:
-                {
-                    DoNowStep stepLoadSDInfo = new DoNowStep();
-                    stepLoadSDInfo.name = "加载SD版本信息";
-                    stepLoadSDInfo.onEnd = TryGetInfoFromSD;
-                    stepLoadSDInfo.exit = () => false;
-                    yield return DoNow(stepLoadSDInfo);
+            }
+            break;
+            case UpdateState.ReadRemoteVersion:
+            {
+                LoadOneStep stepLoadRemoteVersion = new LoadOneStep();
+                stepLoadRemoteVersion.name = "加载服务器版本信息";
+                stepLoadRemoteVersion.getURL = () => mRemoteVersionFile;
+                stepLoadRemoteVersion.loadDelegate = TryGetVersionFromRemote;
+                stepLoadRemoteVersion.exit = () => mVersionRemote == null;
+                stepLoadRemoteVersion.errorCode = LoadingError.RemoteVersionLoadFailedOrEmpty;
+                yield return DoOneStep(stepLoadRemoteVersion);
+                SetState(UpdateState.ReadRemoteIndex);
+            }
+            break;
+            case UpdateState.ReadRemoteIndex:
+            {
+                LoadOneStep stepLoadRemoteIndex = new LoadOneStep();
+                stepLoadRemoteIndex.name = "加载远程索引信息";
+                stepLoadRemoteIndex.loadDelegate = TryGetRemoteIndex;
+                stepLoadRemoteIndex.exit = () => false;
+                stepLoadRemoteIndex.getURL = () => mRemoteIndexFileURL;
+                stepLoadRemoteIndex.errorCode = LoadingError.RemoteIndexLoadFailedOrEmpty;
+                yield return DoOneStep(stepLoadRemoteIndex);
+                SetState(UpdateState.ReadStreamingVersion);
+            }
+            break;
+            case UpdateState.ReadStreamingVersion:
+            {
+                LoadOneStep stepLoadStreamingVersion = new LoadOneStep();
+                stepLoadStreamingVersion.name = "加载Streaming版本信息";
+                stepLoadStreamingVersion.loadDelegate = TryGetVersionFromStreamingAsset;
+                stepLoadStreamingVersion.exit = () => false;
+                stepLoadStreamingVersion.getURL = () => getStreamingVersionFile;
+                yield return DoOneStep(stepLoadStreamingVersion);
+                SetState(UpdateState.ReadStreamingIndex);
+            }
+            break;
+            case UpdateState.ReadStreamingIndex:
+            {
+                LoadOneStep stepLoadStreamingIndex = new LoadOneStep();
+                stepLoadStreamingIndex.name = "加载Streaming索引信息";
+                stepLoadStreamingIndex.loadDelegate = TryGetStreamingIndex;
+                stepLoadStreamingIndex.exit = () => false;
+                stepLoadStreamingIndex.getURL = () => getStreamingIndexFile;
+                yield return DoOneStep(stepLoadStreamingIndex);
+                SetState(UpdateState.ReadSD);
+            }
+            break;
+            case UpdateState.ReadSD:
+            {
+                DoNowStep stepLoadSDInfo = new DoNowStep();
+                stepLoadSDInfo.name = "加载SD版本信息";
+                stepLoadSDInfo.onEnd = TryGetInfoFromSD;
+                stepLoadSDInfo.exit = () => false;
+                yield return DoNow(stepLoadSDInfo);
 
-                    if (mVersionRemote.ProgramHigherThan(mVersionStreaming))
+                if (mVersionRemote.ProgramHigherThan(mVersionStreaming))
+                {
+                    SetState(UpdateState.DownloadPackage);
+                }
+                else
+                {
+                    if (mVersionSD == null)
                     {
-                        SetState(UpdateState.DownloadPackage);
+                        SetState(UpdateState.ExportToSD);
+                    }
+                    else if (mVersionRemote.HigherThan(mVersionSD))
+                    {
+                        SetState(UpdateState.DownloadIncrements);
+                        //SetState(UpdateState.CheckWifi);
+                    }
+                    else if (mVersionStreaming.HigherThan(mVersionSD))
+                    {
+                        SetState(UpdateState.ExportToSD);
                     }
                     else
                     {
-                        if (mVersionSD == null)
-                        {
-                            SetState(UpdateState.ExportToSD);
-                        }
-                        else if (mVersionRemote.HigherThan(mVersionSD))
-                        {
-                            SetState(UpdateState.DownloadIncrements);
-                            //SetState(UpdateState.CheckWifi);
-                        }
-                        else if (mVersionStreaming.HigherThan(mVersionSD))
-                        {
-                            SetState(UpdateState.ExportToSD);
-                        }
-                        else
-                        {
-                            SetState(UpdateState.Sucess);
-                        }
+                        SetState(UpdateState.Sucess);
                     }
                 }
+            }
+            break;
+            case UpdateState.ExportToSD:
+            {
+                LoadBeatchStep stepExportToSD = new LoadBeatchStep();
+                stepExportToSD.name = "解压文件中，请不要关闭游戏，此过程不消耗流量";
+                stepExportToSD.exit = () => false;
+                stepExportToSD.getURLs = GetStreamABURLs;
+                stepExportToSD.onEnd = SaveStreamingInfoToSD;
+                stepExportToSD.errorCode = LoadingError.SDSaveVersionOrIndexFailed;
+                stepExportToSD.loadDelegate = SaveFileToSD;
+                yield return LoadBeatch(stepExportToSD);
+                SetState(UpdateState.ReadSD);
+            }
+            break;
+            case UpdateState.DownloadIncrements:
+            {
+                LoadBeatchStep stepLoadIncrement = new LoadBeatchStep();
+                stepLoadIncrement.name = "更新中，请不要关闭游戏";
+                stepLoadIncrement.exit = () => false;
+                stepLoadIncrement.getURLs = GetIncrementABUrls;
+                stepLoadIncrement.onEnd = SaveRemoteInfoToSD;
+                stepLoadIncrement.errorCode = LoadingError.SDSaveVersionOrIndexFailed;
+                stepLoadIncrement.loadDelegate = SaveFileToSD;
+                yield return LoadBeatch(stepLoadIncrement);
+                SetState(UpdateState.Sucess);
+            }
+            break;
+            case UpdateState.DownloadPackage:
+            {
+                mErrorCode = LoadingError.PackageError;
+            }
+            break;
+            case UpdateState.Sucess:
                 break;
-                case UpdateState.ExportToSD:
-                {
-                    LoadBeatchStep stepExportToSD = new LoadBeatchStep();
-                    stepExportToSD.name = "解压文件中，请不要关闭游戏，此过程不消耗流量";
-                    stepExportToSD.exit = () => false;
-                    stepExportToSD.getURLs = GetStreamABURLs;
-                    stepExportToSD.onEnd = SaveStreamingInfoToSD;
-                    stepExportToSD.errorCode = LoadingError.SDSaveVersionOrIndexFailed;
-                    stepExportToSD.loadDelegate = SaveFileToSD;
-                    yield return LoadBeatch(stepExportToSD);
-                    SetState(UpdateState.ReadSD);
-                }
+            default:
                 break;
-                case UpdateState.DownloadIncrements:
-                {
-                    LoadBeatchStep stepLoadIncrement = new LoadBeatchStep();
-                    stepLoadIncrement.name = "更新中，请不要关闭游戏";
-                    stepLoadIncrement.exit = () => false;
-                    stepLoadIncrement.getURLs = GetIncrementABUrls;
-                    stepLoadIncrement.onEnd = SaveRemoteInfoToSD;
-                    stepLoadIncrement.errorCode = LoadingError.SDSaveVersionOrIndexFailed;
-                    stepLoadIncrement.loadDelegate = SaveFileToSD;
-                    yield return LoadBeatch(stepLoadIncrement);
-                    SetState(UpdateState.Sucess);
-                }
-                break;
-                case UpdateState.DownloadPackage:
-                {
-                    mErrorCode = LoadingError.PackageError;
-                }
-                break;
-                case UpdateState.Sucess:
-                    break;
-                default:
-                    break;
             }
 
             if (mErrorCode != LoadingError.Success && mErrorCode != LoadingError.RemoteURLConfigLoadFailedOrEmpty)
@@ -461,34 +461,34 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
         {
             switch (state)
             {
-                case UpdateState.None:
+            case UpdateState.None:
+            {
+                if (Application.internetReachability == NetworkReachability.NotReachable)
                 {
-                    if (Application.internetReachability == NetworkReachability.NotReachable)
+                    mCheckNetReachedTimes++;
+                    if (mCheckNetReachedTimes > 3000)
                     {
-                        mCheckNetReachedTimes++;
-                        if (mCheckNetReachedTimes > 3000)
-                        {
-                            if (netWaring != null)
-                                netWaring.Invoke();
-                        }
-                        yield return null;
+                        if (netWaring != null)
+                            netWaring.Invoke();
                     }
-                    else
-                    {
-                        SetState(UpdateState.WaitForNet);
-                    }
+                    yield return null;
                 }
-                break;
-                case UpdateState.WaitForNet:
+                else
                 {
-                    if (Application.internetReachability != NetworkReachability.NotReachable)
-                    {
-                        SetState(UpdateState.Sucess);
-                    }
-                    else
-                        yield return null;
+                    SetState(UpdateState.WaitForNet);
                 }
-                break;
+            }
+            break;
+            case UpdateState.WaitForNet:
+            {
+                if (Application.internetReachability != NetworkReachability.NotReachable)
+                {
+                    SetState(UpdateState.Sucess);
+                }
+                else
+                    yield return null;
+            }
+            break;
             }
 
             if (mErrorCode != LoadingError.Success)
@@ -691,22 +691,22 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
 
         switch (Application.platform)
         {
-            case RuntimePlatform.Android:
-            case RuntimePlatform.WindowsEditor:
-            {
-                platform = GamePlatform.android.ToString();
-            }
-            break;
-            case RuntimePlatform.IPhonePlayer:
-            {
-                platform = GamePlatform.ios.ToString();
-            }
-            break;
-            default:
-            {
-                throw new Exception("Unknown Platform!");
-            }
-            break;
+        case RuntimePlatform.Android:
+        case RuntimePlatform.WindowsEditor:
+        {
+            platform = GamePlatform.android.ToString();
+        }
+        break;
+        case RuntimePlatform.IPhonePlayer:
+        {
+            platform = GamePlatform.ios.ToString();
+        }
+        break;
+        default:
+        {
+            throw new Exception("Unknown Platform!");
+        }
+        break;
         }
         return platform;
     }

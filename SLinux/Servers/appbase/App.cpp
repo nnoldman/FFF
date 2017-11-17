@@ -220,7 +220,7 @@ void _initCrashDump(dump_handler handler) {
 }
 
 void App::initCrashDump() {
-    _initCrashDump(OnCrashHandler);
+    //_initCrashDump(OnCrashHandler);
 }
 
 void App::mainLoop() {

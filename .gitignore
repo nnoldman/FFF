@@ -51,3 +51,4 @@ TestLinux.tlog
 /SLinux/Test/TestLinux/bin/x64/Release/TestLinux.out
 *.apk
 /SLinux/Test/bin
+/SLinux/Test/TestLCPP/bin/x64/Debug/TestLCPP.out

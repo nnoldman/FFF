@@ -3,5 +3,6 @@
   Copying sources remotely to '43.248.102.164'
   Starting remote build
   Compiling sources:
-  Role.cpp
+  GameUser.cpp
   Linking objects
+  appgame.vcxproj -> ..\bin\Debug\appgame.out

@@ -2,10 +2,10 @@
 #define DBDefine_h__
 
 #include "DBStream.h"
-#include "Basic/Variable.h"
-#include "Basic/ServerID.h"
+#include "../Basic/Variable.h"
+#include "../Basic/ServerID.h"
 #include "DBTableDefine.h"
-#include "Basic/CharBuffer.h"
+#include "../Basic/CharBuffer.h"
 #include "DBExecuter.h"
 class DBDefine {
   public:

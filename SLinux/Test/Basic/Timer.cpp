@@ -12,33 +12,27 @@ namespace Basic {
         , intervalMillseconds_(0)
         , nextHitTicks_(0)
         , leftTruns_(0)
-        , position_(-1)
-    {
+        , position_(-1) {
     }
 
 
-    Timer::~Timer()
-    {
+    Timer::~Timer() {
         std::cout << "Timer>>" << lifeMillseconds_ << std::endl;
     }
 
-    void Timer::cancel(bool raise /*= false*/)
-    {
+    void Timer::cancel(bool raise /*= false*/) {
         Timers::getInstance()->cancel(this, raise);
     }
 
-    int64_t Timer::leftMillseconds() const
-    {
+    int64_t Timer::leftMillseconds() const {
         return Timers::getInstance()->leftMicroseconds(this);
     }
 
-    int Timer::leftSeconds() const
-    {
+    int Timer::leftSeconds() const {
         return (int)(leftMillseconds() * 0.001);
     }
 
-    std::chrono::milliseconds Timer::life() const
-    {
+    std::chrono::milliseconds Timer::life() const {
         return milliseconds(this->lifeMillseconds_);
     }
 }

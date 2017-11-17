@@ -38,7 +38,7 @@ namespace Basic {
       private:
         Timers();
         int64_t calcDeadTicks(int64_t microseconds) const;
-        void addToTail(std::list<TimerPtr>** head, TimerPtr var);
+        void addToTail(std::list<TimerPtr>** head, TimerPtr& var);
         int calcSlotIndex(int64_t microseconds);
         void cascade(int level);
         void raise();

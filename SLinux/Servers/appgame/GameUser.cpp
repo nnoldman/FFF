@@ -10,10 +10,10 @@ GameUser::GameUser() {
 
 GameUser::~GameUser() {
     printf("~GameUser()");
-    //if (netInterface_) {
-    //    netInterface_->disconnect();
-    //    netInterface_ = nullptr;
-    //}
+    if (netInterface_) {
+        netInterface_->disconnect();
+        netInterface_ = nullptr;
+    }
 }
 
 void GameUser::createDefine() {

@@ -2,8 +2,8 @@
 #define BaseObject_h__
 #include "Connection.h"
 #include "DBDefine.h"
-
-class COREAPI DBObject {
+#include "IObject.h"
+class COREAPI DBObject:IObject {
   public:
     DBObject();
     virtual ~DBObject();

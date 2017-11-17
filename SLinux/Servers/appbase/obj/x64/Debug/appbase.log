@@ -1,8 +1,50 @@
-﻿  Validating architecture
+﻿  Cleaning remote project directory
+  Validating architecture
   Validating sources
   Copying sources remotely to '43.248.102.164'
   Starting remote build
   Compiling sources:
+  App.cpp
+D:\git\FFF\SLinux\Servers\appbase\App.cpp(145,33): warning : multi-character character constant [-Wmultichar]
+D:\git\FFF\SLinux\Servers\appbase\App.cpp(146,32): warning : multi-character character constant [-Wmultichar]
+D:\git\FFF\SLinux\Servers\appbase\App.cpp(93,9): warning : unused variable ‘bIsCtrl’ [-Wunused-variable]
+D:\git\FFF\SLinux\Servers\appbase\App.cpp(146,30): warning : overflow in implicit constant conversion [-Woverflow]
+D:\git\FFF\SLinux\Servers\appbase\App.cpp(186,56): warning : conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\appbase\App.cpp(169,13): warning : unused variable ‘nLen1’ [-Wunused-variable]
+D:\git\FFF\SLinux\Servers\appbase\App.cpp(183,19): warning : unused variable ‘j’ [-Wunused-variable]
+  Bundle.cpp
+D:\git\FFF\SLinux\Servers\appbase\Bundle.cpp(58,99): warning : conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\appbase\Bundle.cpp(58,17): warning : unused variable ‘ret’ [-Wunused-variable]
+  Connection.cpp
+D:\git\FFF\SLinux\Servers\appbase\Connection.cpp(16,83): warning : conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\appbase\Connection.cpp(18,52): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+  Core.cpp
+  DataBase.cpp
+D:\git\FFF\SLinux\Servers\appbase\DataBase.cpp(67,23): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+D:\git\FFF\SLinux\Servers\appbase\DataBase.cpp(77,23): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+  DataLoader.cpp
+  DBConfig.cpp
+  DBDefine.cpp
+  DBExecuter.cpp
   DBObject.cpp
+  DBReturn.cpp
+  DBStream.cpp
+  DBTable.cpp
+  DBTableDefine.cpp
+  Encrypt.cpp
+  EnvironmentConfig.cpp
+  Gate.cpp
+  IObject.cpp
+  MySqlExecuter.cpp
+  NetWork.cpp
+D:\git\FFF\SLinux\Servers\appbase\NetWork.cpp(31,61): warning : conversion to ‘Poco::UInt16 {aka short unsigned int}’ from ‘u32 {aka unsigned int}’ may alter its value [-Wconversion]
+D:\git\FFF\SLinux\Servers\appbase\NetWork.cpp(40,41): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+D:\git\FFF\SLinux\Servers\appbase\NetWork.cpp(49,39): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+D:\git\FFF\SLinux\Servers\appbase\NetWork.cpp(52,60): warning : conversion to ‘u16 {aka short unsigned int}’ from ‘u32 {aka unsigned int}’ may alter its value [-Wconversion]
+  ProtocoBuffer.cpp
+  QueryNode.cpp
+  SQLHelper.cpp
+  stdafx.cpp
+  World.cpp
   Archiving objects
   appbase.vcxproj -> ..\bin\Debug\libappbase.a

@@ -83,6 +83,7 @@
     <ClCompile Include="Encrypt.cpp" />
     <ClCompile Include="EnvironmentConfig.cpp" />
     <ClCompile Include="Gate.cpp" />
+    <ClCompile Include="IObject.cpp" />
     <ClCompile Include="MySqlExecuter.cpp" />
     <ClCompile Include="NetWork.cpp" />
     <ClCompile Include="ProtocoBuffer.cpp" />
@@ -109,6 +110,7 @@
     <ClInclude Include="Encrypt.h" />
     <ClInclude Include="EnvironmentConfig.h" />
     <ClInclude Include="Gate.h" />
+    <ClInclude Include="IObject.h" />
     <ClInclude Include="MySqlExecuter.h" />
     <ClInclude Include="NetWork.h" />
     <ClInclude Include="ProtocoBuffer.h" />

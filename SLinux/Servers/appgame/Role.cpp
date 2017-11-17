@@ -9,6 +9,7 @@
 #include "RoleSystems/MailSystem.h"
 
 Role::Role() {
+    dMemoryZeroArray(this->systems_);
 }
 
 
@@ -22,11 +23,11 @@ Role::~Role() {
 }
 
 bool Role::initialize() {
-    //systems_[ServerDefine::SystemType::SystemType_Level] = new LevelSystem();
-    //systems_[ServerDefine::SystemType::SystemType_Item] = new ItemSystem();
-    //systems_[ServerDefine::SystemType::SystemType_Task] = new TaskSystem();
-    //systems_[ServerDefine::SystemType::SystemType_Chat] = new ChatSystem();
-    //systems_[ServerDefine::SystemType::SystemType_Mail] = new MailSystem();
+    systems_[ServerDefine::SystemType::SystemType_Level] = new LevelSystem();
+    systems_[ServerDefine::SystemType::SystemType_Item] = new ItemSystem();
+    systems_[ServerDefine::SystemType::SystemType_Task] = new TaskSystem();
+    systems_[ServerDefine::SystemType::SystemType_Chat] = new ChatSystem();
+    systems_[ServerDefine::SystemType::SystemType_Mail] = new MailSystem();
     return DBObject::initialize();
 }
 

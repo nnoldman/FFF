@@ -55,8 +55,8 @@ void LevelSystem::calcTimeLine() {
             currentTrunLeftTime_ = eclipseTime - delta;
             if (!this->timeLineTimer_.expired())
                 this->timeLineTimer_.lock()->cancel();
-            this->timeLineTimer_ = Timers::getInstance()->repeat(
-                                       5000, &LevelSystem::onTimer, this, currentTrunLeftTime_ * 1000, &::LevelSystem::onTimeLineEnd );
+            this->timeLineTimer_ = Timers::getInstance()->repeat(5000, &LevelSystem::onTimer, this, currentTrunLeftTime_ * 1000, &::LevelSystem::onTimeLineEnd);
+
             break;
         }
     }

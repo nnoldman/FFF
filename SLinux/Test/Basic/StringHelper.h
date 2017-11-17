@@ -79,7 +79,7 @@ namespace Basic {
 
     inline void StringHelper::setValue(const char* val, unsigned int* var) {
         assert(val);
-#if WIN32
+#ifdef WIN32
         sscanf_s(val, "%u", var);
 #elif __GNUC__
         sscanf(val, "%u", var);

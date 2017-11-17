@@ -1,20 +1,22 @@
 #include "base.h"
 #include "Math.h"
+#include "RapidxmlLoader.h"
 #include <assert.h>
-namespace Basic
-{
-    int Math::dRound(double src, int base /*= 1*/)
-    {
+namespace Basic {
+    int Math::dRound(double src, int base /*= 1*/) {
         int d = (int)src / base * base;
         if (src + base * 0.5 > d + base)
             return int(d + base);
         return d;
     }
 
-    void Math::toHEX(unsigned char* arr, size_t count, std::string& stream)
-    {
-        static const char* byte_array[] =
-        {
+    bool load() {
+        xml_load("ff");
+        xml_get_node("ss");
+    }
+
+    void Math::toHEX(unsigned char* arr, size_t count, std::string& stream) {
+        static const char* byte_array[] = {
             "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "0A", "0B", "0C", "0D", "0E", "0F",
             "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "1A", "1B", "1C", "1D", "1E", "1F",
             "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "2A", "2B", "2C", "2D", "2E", "2F",
@@ -34,19 +36,15 @@ namespace Basic
         };
         assert(arr);
         stream.clear();
-        for (size_t i = 0; i < count; ++i)
-        {
+        for (size_t i = 0; i < count; ++i) {
             stream.append(byte_array[*arr]);
             ++arr;
         }
     }
 
-    void Math::fromHEX(unsigned char* arr, size_t count, const std::string& instream)
-    {
-        static auto getValue = [](const char& ch) -> unsigned char
-        {
-            switch (ch)
-            {
+    void Math::fromHEX(unsigned char* arr, size_t count, const std::string& instream) {
+        static auto getValue = [](const char& ch) -> unsigned char {
+            switch (ch) {
             case 'a':
             case 'A':
                 return 10;
@@ -73,8 +71,7 @@ namespace Basic
         assert(arr);
         auto len = instream.length();
         assert(len % 2 == 0);
-        for (int i = 0; i < len;)
-        {
+        for (int i = 0; i < len;) {
             *arr = getValue(instream[i]) * 16 + getValue(instream[i + 1]);
             arr++;
             i += 2;

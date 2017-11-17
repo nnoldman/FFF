@@ -138,7 +138,7 @@ namespace Basic {
                + (timer->nextHitTicks_ - Timers::getInstance()->currentTicks()) * Timers::kPrecision;
     }
 
-    void Timers::addToTail(std::list<TimerPtr>** head, TimerPtr var) {
+    void Timers::addToTail(std::list<TimerPtr>** head, TimerPtr& var) {
         auto base = *head;
         if (base == nullptr) {
             base = new std::list<TimerPtr>();
