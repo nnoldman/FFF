@@ -1,11 +1,8 @@
 #pragma once
-#include "Connection.h"
-#include "DBDefine.h"
-#include "DBObject.h"
+#include "GameEntity.h"
 #include "GlobalAccountDefine.h"
-class Account : public DBObject
-{
-public:
+class Account : public GameEntity {
+  public:
     Account();
     ~Account();
 
@@ -21,7 +18,6 @@ public:
 
     inline	GlobalAccountDefine* getDefine() const;
 };
-inline GlobalAccountDefine * Account::getDefine() const
-{
+inline GlobalAccountDefine * Account::getDefine() const {
     return (GlobalAccountDefine*)this->dbInterface_;
 }

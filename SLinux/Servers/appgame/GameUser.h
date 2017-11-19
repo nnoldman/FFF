@@ -1,17 +1,12 @@
 #pragma once
-#include "DBObject.h"
+#include "GameEntity.h"
 #include "TableDefine/GameUserDefine.h"
 #include "Role.h"
-class GameUser: public DBObject
-{
-    //DeclareObjectPool(GameUser);
-public:
+class GameUser: public GameEntity {
+  public:
     GameUser();
     ~GameUser();
-
-    // Í¨¹ý BaseObject ¼Ì³Ð
     virtual void createDefine() override;
-
     virtual bool initialize() override;
 
     inline GameUserDefine* getDefine() const;
@@ -22,13 +17,12 @@ public:
 
     void activeRole();
 
-private:
+  private:
     Role role_;
 };
 
 
-inline GameUserDefine* GameUser::getDefine() const
-{
+inline GameUserDefine* GameUser::getDefine() const {
     return (GameUserDefine*)this->dbInterface_;
 }
 

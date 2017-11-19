@@ -1,6 +1,6 @@
 #ifndef Platform_h__
 #define Platform_h__
-
+#include "base.h"
 namespace Basic {
     class Platform {
       public:

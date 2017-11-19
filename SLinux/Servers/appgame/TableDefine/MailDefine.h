@@ -1,8 +1,5 @@
 #ifndef MailDefine_h__
 #define MailDefine_h__
-
-#include "DBDefine.h"
-#include "DBTableDefine.h"
 #include "GameDefine.pb.h"
 #include "RoleInfoDefine.h"
 

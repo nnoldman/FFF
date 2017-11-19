@@ -1,4 +1,4 @@
-#include "../stdafx.h"
+#include "../appgame.h"
 #include "ItemSystem.h"
 #include "TableDefine/GameRoleDefine.h"
 #include "TableDefine/ItemDefine.h"
@@ -40,7 +40,7 @@ ItemDefine* ItemSystem::create(int itemID, int num, int cell, int position) {
     if (index == -1)
         return nullptr;
     assert(this->objects_[index] == nullptr);
-    auto ret = App::DataBase.createDefine<ItemDefine>();
+    auto ret = DBService::get()->createDefine<ItemDefine>();
     ret->id = this->role_->getDefine()->id;
     ret->dbID = this->idGenerator_.require();
     ret->cell = cell;
@@ -111,8 +111,8 @@ void ItemSystem::syncToClient() {
 }
 void ItemSystem::pullFromDB() {
     std::vector<DBDefine*> records;
-    App::DataBase.executer().pullByKey1(ItemDefine::GetDefine(), this->role_->getDefine()->id,
-                                        ItemDefine::Create, records);
+    DBService::get()->executer().pullByKey1(ItemDefine::GetDefine(), this->role_->getDefine()->id,
+                                            ItemDefine::Create, records);
     for (auto it : records) {
         auto def = (ItemDefine*)it;
         auto index = getIndex((GameDefine::ObjectCellType)def->cell, def->position);

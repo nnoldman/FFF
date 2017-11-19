@@ -1,56 +1,23 @@
-#include "stdafx.h"
+#include "appgame.h"
 #include "GameApp.h"
 #include "GameNetAgent.h"
 #include "TableDefine/GameUserDefine.h"
 #include "TableDefine/GameRoleDefine.h"
 #include "Config/TimeTable.h"
 #include "Config/Language.h"
-#include "GameSystems/GameControllers.h"
+#include "GameSystems/ControllerService.h"
 #include "TableDefine/ItemDefine.h"
 #include "Config/ItemTable.h"
 #include "TableDefine/MailDefine.h"
 
 GameApp::GameApp(int argc, char* argv[])
-    : App(argc, argv)
-    , netAgent_(nullptr)
-    , controllers_(nullptr) {
+    : App(argc, argv) {
 }
 
 GameApp::~GameApp() {
-    dSafeDelete(netAgent_);
-    dSafeDelete(controllers_);
-}
-
-const NetConfig& GameApp::getNetConfig() {
-    return *Config.center.centers[serverID_];
-}
-
-const DBConfig& GameApp::getDataBaseConfig() {
-    return Config.center.db;
-}
-
-bool GameApp::parseCommandLine() {
-    auto commandline = this->getCommandLine();
-    commandline.get("serverID", serverID_);
-    string serverID;
-    commandline.get("serverID", serverID);
-    ServerID::set(serverID.c_str());
-    return serverID_ > 0;
 }
 
 void GameApp::archive() {
-}
-
-bool GameApp::onInitializeEnd() {
-    controllers_ = new GameControllers();
-    controllers_->start();
-    return true;
-}
-
-bool GameApp::onInitializeNet() {
-    netAgent_ = new GameNetAgent();
-    netAgent_->initialize();
-    return true;
 }
 
 const vector<const DBTableDefine*>& GameApp::getTableDefines() const {
@@ -72,5 +39,9 @@ bool GameApp::loadGameConfig() {
 
 void GameApp::mainLoop() {
     App::mainLoop();
-    controllers_->update();
+}
+
+void GameApp::addExternServices() {
+    addController<GameNetAgent>();
+    addController<ControllerService>();
 }

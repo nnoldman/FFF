@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "appgame.h"
 #include "Role.h"
 #include "TableDefine/GameRoleDefine.h"
 #include "RoleSystems/SystemBase.h"
@@ -28,12 +28,12 @@ bool Role::initialize() {
     systems_[ServerDefine::SystemType::SystemType_Task] = new TaskSystem();
     systems_[ServerDefine::SystemType::SystemType_Chat] = new ChatSystem();
     systems_[ServerDefine::SystemType::SystemType_Mail] = new MailSystem();
-    return DBObject::initialize();
+    return GameEntity::initialize();
 }
 
 
 void Role::createDefine() {
-    this->dbInterface_ = App::DataBase.createDefine<GameRoleDefine>();
+    this->dbInterface_ = DBService::get()->createDefine<GameRoleDefine>();
 }
 
 GameRoleDefine* Role::getDefine() const {

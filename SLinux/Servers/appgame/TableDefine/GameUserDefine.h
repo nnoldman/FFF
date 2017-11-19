@@ -1,7 +1,7 @@
-#pragma once
-#include "DBDefine.h"
+#ifndef GameUserDefine_h__
+#define GameUserDefine_h__
+
 #include "CharBuffer.h"
-#include "DBTableDefine.h"
 #include "ServerID.h"
 
 class GameUserDefine :
@@ -29,3 +29,4 @@ class GameUserDefine :
         stream() >> role;
     }
 };
+#endif // GameUserDefine_h__

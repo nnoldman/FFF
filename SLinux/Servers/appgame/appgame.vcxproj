@@ -70,7 +70,7 @@
     <ClCompile Include="RoleSystems\ChatSystem.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameSystems\GameControllerBase.cpp" />
-    <ClCompile Include="GameSystems\GameControllers.cpp" />
+    <ClCompile Include="GameSystems\ControllerService.cpp" />
     <ClCompile Include="GameUser.cpp" />
     <ClCompile Include="RoleSystems\RewardSystem.cpp" />
     <ClCompile Include="RoleSystems\LevelSystem.cpp" />
@@ -78,7 +78,7 @@
     <ClCompile Include="Role.cpp" />
     <ClCompile Include="RoleSystems\ItemSystem.cpp" />
     <ClCompile Include="RoleSystems\PaySystem.cpp" />
-    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="appgame.cpp" />
     <ClCompile Include="RoleSystems\SystemBase.cpp" />
     <ClCompile Include="RoleSystems\TaskSystem.cpp" />
     <ClCompile Include="GameSystems\MessageController.cpp" />
@@ -89,7 +89,7 @@
     <ClInclude Include="Config\ItemTable.h" />
     <ClInclude Include="Config\Language.h" />
     <ClInclude Include="GameSystems\GameControllerBase.h" />
-    <ClInclude Include="GameSystems\GameControllers.h" />
+    <ClInclude Include="GameSystems\ControllerService.h" />
     <ClInclude Include="RoleSystems\RewardSystem.h" />
     <ClInclude Include="GameSystems\MessageController.h" />
     <ClInclude Include="GameNetAgent.h" />
@@ -106,7 +106,7 @@
     <ClInclude Include="RoleSystems\ItemSystem.h" />
     <ClInclude Include="RoleSystems\PaySystem.h" />
     <ClInclude Include="ServerDefine.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="appgame.h" />
     <ClInclude Include="RoleSystems\SystemBase.h" />
     <ClInclude Include="RoleSystems\TaskSystem.h" />
   </ItemGroup>

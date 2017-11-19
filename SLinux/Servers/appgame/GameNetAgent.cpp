@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "appgame.h"
 #include "GameNetAgent.h"
 #include "Command.pb.h"
 #include "Cmd.pb.h"
@@ -8,22 +8,27 @@
 #include "Role.h"
 
 GameNetAgent::GameNetAgent() {
+    this->dynamic_ = false;
 }
 
 
 GameNetAgent::~GameNetAgent() {
-    App::Net.onMessage.remove(&::GameNetAgent::onMessage, this);
-    App::Net.onDisconnect.remove(&::GameNetAgent::onDisconnect, this);
+    NetService::get()->onMessage.remove(&::GameNetAgent::onMessage, this);
+    NetService::get()->onDisconnect.remove(&::GameNetAgent::onDisconnect, this);
 }
 
-bool GameNetAgent::initialize() {
-    App::Net.onMessage.add(&::GameNetAgent::onMessage, this);
-    App::Net.onDisconnect.add(&::GameNetAgent::onDisconnect, this);
+bool GameNetAgent::start() {
+    NetService::get()->onMessage.add(&::GameNetAgent::onMessage, this);
+    NetService::get()->onDisconnect.add(&::GameNetAgent::onDisconnect, this);
     return true;
 }
 
+const char* GameNetAgent::name() {
+    return "GameNetAgent";
+}
+
 void GameNetAgent::onDisconnect(Connection* connection) {
-    App::World.reclaimAccount(connection);
+    WorldService::get()->reclaimAccount(connection);
 }
 
 void GameNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect) {
@@ -51,7 +56,7 @@ void GameNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect) {
                 gameRole->set_sex(def->base.sex);
                 gameRole->set_name(def->base.name.c_str());
             }
-            App::World.onEnterWorld(connect, user);
+            WorldService::get()->onEnterWorld(connect, user);
             ret.set_error(Cmd::LoginGameError::LoginGameSucess);
         }
         SendProtoBuffer(connect, Cmd::RTLoginGame, ret);
@@ -59,7 +64,7 @@ void GameNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect) {
     break;
     case Cmd::CLIENTID::RQCreateRole: {
         auto req = pb->parse<Cmd::ReqCreateRole>();
-        auto user = (GameUser*)App::World.get(connect);
+        auto user = (GameUser*)WorldService::get()->getAccount(connect);
         if (user) {
             auto role = user->getRole();
             if (role) {
@@ -99,14 +104,14 @@ void GameNetAgent::onMessage(ProtocoBuffer* pb, Connection* connect) {
     }
     break;
     case Cmd::CLIENTID::RQEnterGame: {
-        auto user = (GameUser*)App::World.get(connect);
+        auto user = (GameUser*)WorldService::get()->getAccount(connect);
         if(user)
             user->activeRole();
     }
     break;
     default: {
         if (pb->opcode > Cmd::RQRoleBaseOperation && pb->opcode < Cmd::RQRoleBaseOperationEnd) {
-            auto user = (GameUser*)App::World.get(connect);
+            auto user = (GameUser*)WorldService::get()->getAccount(connect);
             auto activerole = user->getRole();
             if (activerole != nullptr) {
                 activerole->onNet((Cmd::CLIENTID)pb->opcode, pb);

@@ -1,7 +1,5 @@
 #pragma once
-#include "DBDefine.h"
 #include "CharBuffer.h"
-#include "DBTableDefine.h"
 
 class GlobalAccountDefine :
     public DBDefineInterface<GlobalAccountDefine> {

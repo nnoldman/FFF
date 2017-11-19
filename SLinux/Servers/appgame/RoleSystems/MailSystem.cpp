@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "../appgame.h"
 #include "MailSystem.h"
 #include "App.h"
 
@@ -32,6 +32,6 @@ void MailSystem::onTimerEnd(Basic::Timer* timer) {
 
 void MailSystem::pullFromDB() {
     std::vector<DBDefine*> records;
-    App::DataBase.executer().pullByKey1(MailDefine::GetDefine(), this->role_->getDefine()->id,
-                                        MailDefine::Create, records);
+    DBService::get()->executer().pullByKey1(MailDefine::GetDefine(), this->role_->getDefine()->id,
+                                            MailDefine::Create, records);
 }

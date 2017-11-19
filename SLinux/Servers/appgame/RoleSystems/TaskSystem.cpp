@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "../appgame.h"
 #include "TaskSystem.h"
 
 TaskSystem::TaskSystem()

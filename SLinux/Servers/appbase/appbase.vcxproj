@@ -67,58 +67,71 @@
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
-    <ClCompile Include="Bundle.cpp" />
-    <ClCompile Include="Connection.cpp" />
+    <ClCompile Include="services\LoggerService.cpp" />
+    <ClCompile Include="services\OptionService.cpp" />
+    <ClCompile Include="services\DumpService.cpp" />
+    <ClCompile Include="db\DBOption.cpp" />
+    <ClCompile Include="SerializerInterface.cpp" />
+    <ClCompile Include="json\JsonReader.cpp" />
+    <ClCompile Include="json\JsonWriter.cpp" />
+    <ClCompile Include="net\Bundle.cpp" />
+    <ClCompile Include="net\Connection.cpp" />
+    <ClCompile Include="services\IService.cpp" />
     <ClCompile Include="Core.cpp" />
-    <ClCompile Include="DataBase.cpp" />
-    <ClCompile Include="DataLoader.cpp" />
-    <ClCompile Include="DBConfig.cpp" />
-    <ClCompile Include="DBDefine.cpp" />
-    <ClCompile Include="DBExecuter.cpp" />
-    <ClCompile Include="DBObject.cpp" />
-    <ClCompile Include="DBReturn.cpp" />
-    <ClCompile Include="DBStream.cpp" />
-    <ClCompile Include="DBTable.cpp" />
-    <ClCompile Include="DBTableDefine.cpp" />
-    <ClCompile Include="Encrypt.cpp" />
-    <ClCompile Include="EnvironmentConfig.cpp" />
-    <ClCompile Include="Gate.cpp" />
+    <ClCompile Include="services\DBService.cpp" />
+    <ClCompile Include="config\DataLoader.cpp" />
+    <ClCompile Include="db\DBConfig.cpp" />
+    <ClCompile Include="db\DBDefine.cpp" />
+    <ClCompile Include="db\DBExecuter.cpp" />
+    <ClCompile Include="GameEntity.cpp" />
+    <ClCompile Include="db\DBStream.cpp" />
+    <ClCompile Include="db\DBTable.cpp" />
+    <ClCompile Include="db\DBTableDefine.cpp" />
+    <ClCompile Include="net\NetOption.cpp" />
+    <ClCompile Include="security\Encrypt.cpp" />
     <ClCompile Include="IObject.cpp" />
-    <ClCompile Include="MySqlExecuter.cpp" />
-    <ClCompile Include="NetWork.cpp" />
-    <ClCompile Include="ProtocoBuffer.cpp" />
-    <ClCompile Include="QueryNode.cpp" />
-    <ClCompile Include="SQLHelper.cpp" />
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="World.cpp" />
+    <ClCompile Include="db\MySqlExecuter.cpp" />
+    <ClCompile Include="services\NetService.cpp" />
+    <ClCompile Include="net\ProtocoBuffer.cpp" />
+    <ClCompile Include="db\QueryNode.cpp" />
+    <ClCompile Include="db\SQLHelper.cpp" />
+    <ClCompile Include="appbase.cpp" />
+    <ClCompile Include="services\WorldService.cpp" />
+    <ClCompile Include="services\TimeService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
-    <ClInclude Include="Bundle.h" />
-    <ClInclude Include="Connection.h" />
+    <ClInclude Include="services\DBService.h" />
+    <ClInclude Include="services\LoggerService.h" />
+    <ClInclude Include="services\OptionService.h" />
+    <ClInclude Include="services\DumpService.h" />
+    <ClInclude Include="db\DBOption.h" />
+    <ClInclude Include="SerializerInterface.h" />
+    <ClInclude Include="json\JsonReader.h" />
+    <ClInclude Include="json\JsonWriter.h" />
+    <ClInclude Include="net\Bundle.h" />
+    <ClInclude Include="net\Connection.h" />
+    <ClInclude Include="services\IService.h" />
     <ClInclude Include="Core.h" />
-    <ClInclude Include="DataBase.h" />
-    <ClInclude Include="DataLoader.h" />
-    <ClInclude Include="DBConfig.h" />
-    <ClInclude Include="DBDefine.h" />
-    <ClInclude Include="DBExecuter.h" />
-    <ClInclude Include="DBObject.h" />
-    <ClInclude Include="DBReturn.h" />
-    <ClInclude Include="DBStream.h" />
-    <ClInclude Include="DBTable.h" />
-    <ClInclude Include="DBTableDefine.h" />
-    <ClInclude Include="Encrypt.h" />
-    <ClInclude Include="EnvironmentConfig.h" />
-    <ClInclude Include="Gate.h" />
+    <ClInclude Include="config\DataLoader.h" />
+    <ClInclude Include="db\DBConfig.h" />
+    <ClInclude Include="db\DBDefine.h" />
+    <ClInclude Include="db\DBExecuter.h" />
+    <ClInclude Include="GameEntity.h" />
+    <ClInclude Include="db\DBStream.h" />
+    <ClInclude Include="db\DBTable.h" />
+    <ClInclude Include="db\DBTableDefine.h" />
+    <ClInclude Include="net\NetOption.h" />
+    <ClInclude Include="security\Encrypt.h" />
     <ClInclude Include="IObject.h" />
-    <ClInclude Include="MySqlExecuter.h" />
-    <ClInclude Include="NetWork.h" />
-    <ClInclude Include="ProtocoBuffer.h" />
-    <ClInclude Include="QueryNode.h" />
-    <ClInclude Include="SQLHelper.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="World.h" />
+    <ClInclude Include="db\MySqlExecuter.h" />
+    <ClInclude Include="services\NetService.h" />
+    <ClInclude Include="net\ProtocoBuffer.h" />
+    <ClInclude Include="db\QueryNode.h" />
+    <ClInclude Include="db\SQLHelper.h" />
+    <ClInclude Include="appbase.h" />
+    <ClInclude Include="services\WorldService.h" />
+    <ClInclude Include="services\TimeService.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -130,7 +143,7 @@
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../;../../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CppLanguageStandard>c++11</CppLanguageStandard>
       <PreprocessorDefinitions>POCO_ENABLE_CPP11</PreprocessorDefinitions>
     </ClCompile>

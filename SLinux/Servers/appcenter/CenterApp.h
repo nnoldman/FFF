@@ -1,26 +1,13 @@
-#pragma once
-class CenterNetAgent;
-class HServer;
-class CenterApp :
-    public App
-{
-public:
+#ifndef CenterApp_h__
+#define CenterApp_h__
+class CenterApp : public App {
+  public:
     CenterApp(int narg, char* argv[]);
     ~CenterApp();
-    virtual const NetConfig& getNetConfig() override;
-    virtual const DBConfig& getDataBaseConfig() override;
-    virtual bool parseCommandLine() override;
-private:
-    CenterNetAgent* mNetAgent;
-    HServer* hServer_;
-protected:
+  private:
     virtual void archive() override;
-
-    virtual bool onInitializeEnd() override;
-
-    virtual bool onInitializeNet() override;
-
+    virtual void addExternServices() override;
     virtual const vector<const DBTableDefine*>& getTableDefines() const override;
-
 };
 
+#endif // CenterApp_h__

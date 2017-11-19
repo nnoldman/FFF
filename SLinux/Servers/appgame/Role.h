@@ -1,5 +1,5 @@
 #pragma once
-#include "DBObject.h"
+#include "GameEntity.h"
 #include "TableDefine/GameRoleDefine.h"
 #include "Cmd.pb.h"
 #include "Command.pb.h"
@@ -9,10 +9,9 @@ class LevelSystem;
 class ItemSystem;
 class TaskSystem;
 class SystemBase;
-class Role: public DBObject
-{
+class Role: public GameEntity {
 
-public:
+  public:
     Role();
     ~Role();
 
@@ -25,12 +24,11 @@ public:
 
     virtual void syncToClient() override;
     void onNet(Cmd::CLIENTID id, ProtocoBuffer* pb);
-public:
+  public:
     SystemBase* systems_[ServerDefine::SystemType_Count];
 };
 
-inline bool Role::valid() const
-{
+inline bool Role::valid() const {
     return getDefine()->id > 0;
 }
 

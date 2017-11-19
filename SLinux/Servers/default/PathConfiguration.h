@@ -6,7 +6,7 @@
 class PathConfiguration {
   public:
     static const std::string appConfigurationFile(std::string serverID) {
-        return "../env/config.xml";
+        return "../env/config.json";
     }
     static const std::string appLoggerFile(std::string serverID) {
         std::stringstream ret;

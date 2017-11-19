@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "appgame.h"
 #include "GameUser.h"
 #include "TableDefine/GameUserDefine.h"
 
@@ -17,11 +17,11 @@ GameUser::~GameUser() {
 }
 
 void GameUser::createDefine() {
-    this->dbInterface_ = App::DataBase.createDefine<GameUserDefine>();
+    this->dbInterface_ = DBService::get()->createDefine<GameUserDefine>();
 }
 
 bool GameUser::initialize() {
-    return DBObject::initialize();
+    return GameEntity::initialize();
 }
 
 void GameUser::onEnterGate() {

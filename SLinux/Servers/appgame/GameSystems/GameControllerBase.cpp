@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "../appgame.h"
 #include "GameControllerBase.h"
 
 GameControllerBase::GameControllerBase()

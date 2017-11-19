@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "appcenter.h"
 #include "CenterApp.h"
 
 #ifdef WIN32
@@ -13,6 +13,7 @@ BOOL WINAPI onControl(DWORD CtrlType) {
 }
 #pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
 #endif
+
 
 int main(int narg, char* argv[]) {
     string exception;

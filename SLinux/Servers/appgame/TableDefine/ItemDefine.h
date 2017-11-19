@@ -1,8 +1,6 @@
 #ifndef ItemDefine_h__
 #define ItemDefine_h__
 
-#include "DBDefine.h"
-#include "DBTableDefine.h"
 #include "GameDefine.pb.h"
 #include "RoleInfoDefine.h"
 

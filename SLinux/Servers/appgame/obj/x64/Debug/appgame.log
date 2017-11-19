@@ -1,8 +1,219 @@
-﻿  Validating architecture
-  Validating sources
-  Copying sources remotely to '43.248.102.164'
-  Starting remote build
-  Compiling sources:
-  GameUser.cpp
-  Linking objects
-  appgame.vcxproj -> ..\bin\Debug\appgame.out
+﻿生成启动时间为 2017/11/19 21:13:55。
+     1>项目“D:\git\FFF\SLinux\Servers\appgame\appgame.vcxproj”在节点 2 上(Build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“D:\git\FFF\SLinux\Servers\appgame\obj\x64\Debug\appgame.tlog\unsuccessfulbuild”执行 Touch 任务。
+       CreateRecipeFile:
+       正在跳过目标“CreateRecipeFile”，因为所有输出文件相对于输入文件而言都是最新的。
+       _ValidateValidArchitecture:
+         Validating architecture
+         Current project architecture 'x64' is compatible with the remote system architecture 'x64' ('x64').
+       _ValidateSources:
+         Validating sources
+       _CopySources:
+         Copying sources remotely to '43.248.102.164'
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\GameNetAgent.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\MailSystem.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\ChatSystem.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\GameApp.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\GameSystems\GameControllerBase.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\GameSystems\ControllerService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\GameUser.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\RewardSystem.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\LevelSystem.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\main.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\Role.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\ItemSystem.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\PaySystem.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\appgame.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\SystemBase.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\TaskSystem.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\GameSystems\MessageController.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\MailSystem.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\ChatSystem.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\Config\ItemTable.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\Config\Language.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\GameSystems\GameControllerBase.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\GameSystems\ControllerService.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\RewardSystem.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\GameSystems\MessageController.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\GameNetAgent.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\Config\TimeTable.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\GameApp.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\TableDefine\GameRoleDefine.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\GameUser.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\TableDefine\GameUserDefine.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\LevelSystem.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\Role.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\TableDefine\ItemDefine.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\TableDefine\MailDefine.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\TableDefine\RoleInfoDefine.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\ItemSystem.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\PaySystem.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\ServerDefine.h', as it is up to date.
+         Copying file 'D:\git\FFF\SLinux\Servers\appgame\appgame.h' to '/root/projects/appgame/appgame.h'
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\SystemBase.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\TaskSystem.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\Config\ItemTable.inl', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\Config\Language.inl', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appgame\Config\TimeTable.inl', as it is up to date.
+       ClCompile:
+         Starting remote build
+         Compiling sources:
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/GameNetAgent.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/GameNetAgent.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         GameNetAgent.cpp
+         Done compiling '/root/projects/appgame/GameNetAgent.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/RoleSystems/MailSystem.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/MailSystem.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         MailSystem.cpp
+         Done compiling '/root/projects/appgame/RoleSystems/MailSystem.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/RoleSystems/ChatSystem.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/ChatSystem.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         ChatSystem.cpp
+         Done compiling '/root/projects/appgame/RoleSystems/ChatSystem.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/GameApp.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/GameApp.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         GameApp.cpp
+         In file included from /root/projects/appgame/GameApp.cpp:6:0:
+         /root/projects/appgame/Config/TimeTable.h: In static member function ‘static void TimeTableRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
+         /root/projects/appgame/Config/TimeTable.h:23:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                  for (int i = 0; i < columns.size(); ++i) {
+                                                   ^
+         In file included from /root/projects/appgame/GameApp.cpp:6:0:
+         /root/projects/appgame/Config/TimeTable.h: In static member function ‘static void TimeTableRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
+         /root/projects/appgame/Config/TimeTable.h:23:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                  for (int i = 0; i < columns.size(); ++i) {
+                                                   ^
+         In file included from /root/projects/appgame/GameApp.cpp:7:0:
+         /root/projects/appgame/Config/Language.h: In static member function ‘static void LanguageRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
+         /root/projects/appgame/Config/Language.h:20:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                  for (int i = 0; i < columns.size(); ++i) {
+                                                   ^
+         In file included from /root/projects/appgame/GameApp.cpp:7:0:
+         /root/projects/appgame/Config/Language.h: In static member function ‘static void LanguageRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
+         /root/projects/appgame/Config/Language.h:20:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                  for (int i = 0; i < columns.size(); ++i) {
+                                                   ^
+         In file included from /root/projects/appgame/GameApp.cpp:10:0:
+         /root/projects/appgame/Config/ItemTable.h: In static member function ‘static void ItemTableRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
+         /root/projects/appgame/Config/ItemTable.h:57:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                  for (int i = 0; i < columns.size(); ++i) {
+                                                   ^
+         In file included from /root/projects/appgame/GameApp.cpp:10:0:
+         /root/projects/appgame/Config/ItemTable.h: In static member function ‘static void ItemTableRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
+         /root/projects/appgame/Config/ItemTable.h:57:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                  for (int i = 0; i < columns.size(); ++i) {
+                                                   ^
+         
+     1>D:\git\FFF\SLinux\Servers\appgame\Config\TimeTable.h(23,42): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+     1>D:\git\FFF\SLinux\Servers\appgame\Config\Language.h(20,42): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+     1>D:\git\FFF\SLinux\Servers\appgame\Config\ItemTable.h(57,42): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+         Done compiling '/root/projects/appgame/GameApp.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/GameSystems/GameControllerBase.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/GameControllerBase.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         GameControllerBase.cpp
+         Done compiling '/root/projects/appgame/GameSystems/GameControllerBase.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/GameSystems/ControllerService.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/ControllerService.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         ControllerService.cpp
+         Done compiling '/root/projects/appgame/GameSystems/ControllerService.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/GameUser.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/GameUser.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         GameUser.cpp
+         Done compiling '/root/projects/appgame/GameUser.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/RoleSystems/RewardSystem.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/RewardSystem.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         RewardSystem.cpp
+         Done compiling '/root/projects/appgame/RoleSystems/RewardSystem.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/RoleSystems/LevelSystem.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/LevelSystem.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         LevelSystem.cpp
+         In file included from /root/projects/appgame/RoleSystems/LevelSystem.cpp:3:0:
+         /root/projects/appgame/Config/TimeTable.h: In static member function ‘static void TimeTableRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
+         /root/projects/appgame/Config/TimeTable.h:23:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                  for (int i = 0; i < columns.size(); ++i) {
+                                                   ^
+         In file included from /root/projects/appgame/RoleSystems/LevelSystem.cpp:3:0:
+         /root/projects/appgame/Config/TimeTable.h: In static member function ‘static void TimeTableRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
+         /root/projects/appgame/Config/TimeTable.h:23:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                  for (int i = 0; i < columns.size(); ++i) {
+                                                   ^
+         /root/projects/appgame/RoleSystems/LevelSystem.cpp: In member function ‘void LevelSystem::calcTimeLine()’:
+         /root/projects/appgame/RoleSystems/LevelSystem.cpp:48:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+              for (auto i = 0; i < allrecords.size() - 1; ++i) {
+                                                       ^
+         /root/projects/appgame/RoleSystems/LevelSystem.cpp: In member function ‘void LevelSystem::calcTimeLine()’:
+         /root/projects/appgame/RoleSystems/LevelSystem.cpp:48:46: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+              for (auto i = 0; i < allrecords.size() - 1; ++i) {
+                                                       ^
+         
+     1>D:\git\FFF\SLinux\Servers\appgame\Config\TimeTable.h(23,42): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+     1>D:\git\FFF\SLinux\Servers\appgame\RoleSystems\LevelSystem.cpp(48,46): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+         Done compiling '/root/projects/appgame/RoleSystems/LevelSystem.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/main.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/main.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         main.cpp
+         Done compiling '/root/projects/appgame/main.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/Role.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/Role.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         Role.cpp
+         Done compiling '/root/projects/appgame/Role.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/RoleSystems/ItemSystem.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/ItemSystem.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         ItemSystem.cpp
+         In file included from /root/projects/appgame/RoleSystems/ItemSystem.cpp:5:0:
+         /root/projects/appgame/Config/ItemTable.h: In static member function ‘static void ItemTableRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
+         /root/projects/appgame/Config/ItemTable.h:57:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                  for (int i = 0; i < columns.size(); ++i) {
+                                                   ^
+         In file included from /root/projects/appgame/RoleSystems/ItemSystem.cpp:5:0:
+         /root/projects/appgame/Config/ItemTable.h: In static member function ‘static void ItemTableRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
+         /root/projects/appgame/Config/ItemTable.h:57:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                  for (int i = 0; i < columns.size(); ++i) {
+                                                   ^
+         
+     1>D:\git\FFF\SLinux\Servers\appgame\Config\ItemTable.h(57,42): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+         Done compiling '/root/projects/appgame/RoleSystems/ItemSystem.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/RoleSystems/PaySystem.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/PaySystem.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         PaySystem.cpp
+         Done compiling '/root/projects/appgame/RoleSystems/PaySystem.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/appgame.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/appgame.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         appgame.cpp
+         Done compiling '/root/projects/appgame/appgame.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/RoleSystems/SystemBase.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/SystemBase.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         SystemBase.cpp
+         Done compiling '/root/projects/appgame/RoleSystems/SystemBase.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/RoleSystems/TaskSystem.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/TaskSystem.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         TaskSystem.cpp
+         Done compiling '/root/projects/appgame/RoleSystems/TaskSystem.cpp'
+         Invoking g++
+         g++ -c -x c++ /root/projects/appgame/GameSystems/MessageController.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/MessageController.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         MessageController.cpp
+         In file included from /root/projects/appgame/GameSystems/MessageController.cpp:5:0:
+         /root/projects/appgame/Config/Language.h: In static member function ‘static void LanguageRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
+         /root/projects/appgame/Config/Language.h:20:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                  for (int i = 0; i < columns.size(); ++i) {
+                                                   ^
+         In file included from /root/projects/appgame/GameSystems/MessageController.cpp:5:0:
+         /root/projects/appgame/Config/Language.h: In static member function ‘static void LanguageRecord::initColumnIndices(const std::vector<std::basic_string<char> >&)’:
+         /root/projects/appgame/Config/Language.h:20:42: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+                  for (int i = 0; i < columns.size(); ++i) {
+                                                   ^
+         
+     1>D:\git\FFF\SLinux\Servers\appgame\Config\Language.h(20,42): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+         Done compiling '/root/projects/appgame/GameSystems/MessageController.cpp'
+       Link:
+         Linking objects
+         Invoking ld
+         g++ -o "/root/projects/appgame/../bin/Debug/appgame.out" -Wl,--no-undefined -Wl,-L/root/projects/third_lib2 -Wl,-L/root/projects/bin/Debug -Wl,-L/usr/lib64 -Wl,-L/usr/lib64/mysql -Wl,-L/root/projects/bin/debug -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /root/projects/appgame/obj/x64/Debug/GameNetAgent.o /root/projects/appgame/obj/x64/Debug/MailSystem.o /root/projects/appgame/obj/x64/Debug/ChatSystem.o /root/projects/appgame/obj/x64/Debug/GameApp.o /root/projects/appgame/obj/x64/Debug/GameControllerBase.o /root/projects/appgame/obj/x64/Debug/ControllerService.o /root/projects/appgame/obj/x64/Debug/GameUser.o /root/projects/appgame/obj/x64/Debug/RewardSystem.o /root/projects/appgame/obj/x64/Debug/LevelSystem.o /root/projects/appgame/obj/x64/Debug/main.o /root/projects/appgame/obj/x64/Debug/Role.o /root/projects/appgame/obj/x64/Debug/ItemSystem.o /root/projects/appgame/obj/x64/Debug/PaySystem.o /root/projects/appgame/obj/x64/Debug/appgame.o /root/projects/appgame/obj/x64/Debug/SystemBase.o /root/projects/appgame/obj/x64/Debug/TaskSystem.o /root/projects/appgame/obj/x64/Debug/MessageController.o -lappbase -lPocoXMLd -lPocoJSONd -lPocoUtild -lPocoNetd -lPocoFoundationd -lmysqlclient -lpkg -l"protobuf-lite" -lbasic
+         Done linking, output file name: '/root/projects/appgame/../bin/Debug/appgame.out'
+         Copying file '/root/projects/appgame/../bin/Debug/appgame.out' to '..\bin\Debug\appgame.out'
+         appgame.vcxproj -> ..\bin\Debug\appgame.out
+       FinalizeBuildStatus:
+         正在删除文件“D:\git\FFF\SLinux\Servers\appgame\obj\x64\Debug\appgame.tlog\unsuccessfulbuild”。
+         正在对“D:\git\FFF\SLinux\Servers\appgame\obj\x64\Debug\appgame.tlog\appgame.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\git\FFF\SLinux\Servers\appgame\appgame.vcxproj”(Build 个目标)的操作。

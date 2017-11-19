@@ -1,21 +1,18 @@
+#include "../appgame.h"
 #include "RewardSystem.h"
 
 
 
-RewardSystem::RewardSystem()
-{
+RewardSystem::RewardSystem() {
 }
 
 
-RewardSystem::~RewardSystem()
-{
+RewardSystem::~RewardSystem() {
 }
 
-void RewardSystem::initialize(Role* role)
-{
+void RewardSystem::initialize(Role* role) {
     SystemBase::initialize(role);
 }
 
-void RewardSystem::onNet(Cmd::CLIENTID id, ProtocoBuffer* pb)
-{
+void RewardSystem::onNet(Cmd::CLIENTID id, ProtocoBuffer* pb) {
 }

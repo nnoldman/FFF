@@ -8,9 +8,9 @@ namespace Basic {
         FileLoader(void);
         ~FileLoader(void);
 
-        bool	open(const char* name);
+        bool open(const char* name);
         u32	GetBufferSize();
-        void	Close();
+        void Close();
         char* getBuffer() const;
       protected:
         u32 mFileSize;

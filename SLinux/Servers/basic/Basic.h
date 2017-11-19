@@ -36,6 +36,9 @@
 #include "StringHelper.h"
 #include "Variable.h"
 #include "AnyValue.h"
+#include "FileLoader.h"
+#include "ServerID.h"
+#include "Platform.h"
 
 namespace Basic {
     /** @brief 查找一个数组或vector中cur之后的第一个符合条件的元素 **/

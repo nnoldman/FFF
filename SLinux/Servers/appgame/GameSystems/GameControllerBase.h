@@ -1,27 +1,24 @@
 #ifndef GameControllerBase_h__
 #define GameControllerBase_h__
-class GameControllerBase
-{
-public:
+class GameControllerBase {
+  public:
     GameControllerBase();
     virtual ~GameControllerBase();
-public:
+  public:
     virtual void start();
     virtual void update();
 };
 
 template<typename T>
-class GameController: public GameControllerBase
-{
-public:
-    static T* getInstance()
-    {
+class GameController: public GameControllerBase {
+  public:
+    static T* getInstance() {
         return instance_;
     }
-private:
+  private:
     static T* instance_;
 
-    friend class GameControllers;
+    friend class ControllerService;
 };
 
 template<typename T>

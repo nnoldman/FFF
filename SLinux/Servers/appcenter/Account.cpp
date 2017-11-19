@@ -1,7 +1,6 @@
-#include "stdafx.h"
+#include "appcenter.h"
 #include "Account.h"
 #include "App.h"
-#include "Bundle.h"
 #include "GlobalAccountDefine.h"
 Account::Account() {
 }
@@ -24,13 +23,13 @@ void Account::enterWorld() {
 
 
 void Account::createDefine() {
-    this->dbInterface_ = App::DataBase.createDefine<GlobalAccountDefine>();
+    this->dbInterface_ = DBService::get()->createDefine<GlobalAccountDefine>();
 }
 
 
 
 bool Account::initialize() {
-    if (!DBObject::initialize())
+    if (!GameEntity::initialize())
         return false;
     return true;
 }

@@ -62,25 +62,25 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\appbase;..\basic;..\pkg;..\third_lib;..\default;..\third_lib\Mysql;$(IncludePath)</IncludePath>
+    <IncludePath>../appbase;..\basic;..\pkg;..\third_lib;..\default;..\third_lib\Mysql;$(IncludePath)</IncludePath>
     <OutDir>..\bin\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
+    <ClCompile Include="appcenter.cpp" />
     <ClCompile Include="CenterApp.cpp" />
-    <ClCompile Include="HServer.cpp" />
-    <ClCompile Include="CenterNetAgent.cpp" />
+    <ClCompile Include="HttpService.cpp" />
+    <ClCompile Include="CenterNetService.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
+    <ClInclude Include="appcenter.h" />
     <ClInclude Include="CenterApp.h" />
     <ClInclude Include="GlobalAccountDefine.h" />
     <ClInclude Include="GlobalRoleDefine.h" />
-    <ClInclude Include="HServer.h" />
-    <ClInclude Include="CenterNetAgent.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="HttpService.h" />
+    <ClInclude Include="CenterNetService.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>

@@ -1,4 +1,4 @@
-#include "../stdafx.h"
+#include "../appgame.h"
 #include "ChatSystem.h"
 #include "GameSystems/MessageController.h"
 

@@ -1,9 +1,10 @@
-#pragma once
+#ifndef GameRoleDefine_h__
+#define GameRoleDefine_h__
+
 #include "CharBuffer.h"
-#include "DBTableDefine.h"
 #include "RoleInfoDefine.h"
-#include "DBDefine.h"
 #include "Default.h"
+#include "../../appbase/db/DBDefine.h"
 
 class GameRoleDefine :
     public DBDefineInterface<GameRoleDefine> {
@@ -63,3 +64,4 @@ class GameRoleDefine :
 };
 
 
+#endif // GameRoleDefine_h__

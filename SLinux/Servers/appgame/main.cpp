@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "appgame.h"
 #include "GameApp.h"
 #include "App.h"
 #include "Poco/File.h"
