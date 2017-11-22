@@ -7,55 +7,44 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class EarthView : View
-{
+public class EarthView : View {
     Earth.EarthMainView window_;
 
 
-    WindowTemplete windowFrame
-    {
-        get
-        {
+    WindowTemplete windowFrame {
+        get {
             return (WindowTemplete)window_.frame_;
         }
     }
 
-    protected override string GetPackageName()
-    {
+    protected override string GetPackageName() {
         return "Earth/EarthMainView";
     }
 
-    protected override void OnCreate()
-    {
+    protected override void OnCreate() {
         this.window_ = (Earth.EarthMainView)this.contentPane;
         this.windowFrame.title_.text = "星体";
-        this.windowFrame.close_.onClick.Add(() => UIController.Instance.GoBack());
+        this.windowFrame.close_.onClick.Add(() => UIs.Instance.GoBack());
         InitPropertyNames();
     }
 
-    void InitPropertyNames()
-    {
+    void InitPropertyNames() {
         this.window_.propertyList_.RemoveChildrenToPool();
-        for (var id = RolePropertyID.FitNess; id <= RolePropertyID.Botany; ++id)
-        {
+        for (var id = RolePropertyID.FitNess; id <= RolePropertyID.Botany; ++id) {
             var item = (Common.CommonProperty)this.window_.propertyList_.AddItemFromPool();
             item.name_.text = Language.Instance.GetPropertyName(id);
         }
     }
 
-    protected override void OnCommand(EventContext context)
-    {
+    protected override void OnCommand(EventContext context) {
         base.OnCommand(context);
-        if (context.sender == this.windowFrame.close_)
-        {
+        if (context.sender == this.windowFrame.close_) {
         }
     }
-    protected override void OnShowMe()
-    {
+    protected override void OnShowMe() {
         UpdateBase();
     }
 
-    void UpdateBase()
-    {
+    void UpdateBase() {
     }
 }

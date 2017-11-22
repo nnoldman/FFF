@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Message
-{
-    public class MessageBoxParam
-    {
+public class Message {
+    public class MessageBoxParam {
         public string content;
         public object data;
         public string leftButtonText = string.Empty;
@@ -14,8 +12,7 @@ public class Message
         public Action<object> leftButtonCallback;
         public Action<object> rightButtonCallback;
     }
-    public static void ShowBox(MessageBoxParam param)
-    {
-        GameFrame.UIController.Instance.Get<MessageBoxView>().Open(param);
+    public static void ShowBox(MessageBoxParam param) {
+        GameFrame.UIs.Instance.Get<MessageBoxView>().Open(param);
     }
 }

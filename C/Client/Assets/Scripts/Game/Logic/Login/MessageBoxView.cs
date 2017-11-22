@@ -7,56 +7,47 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class MessageBoxView : View
-{
+public class MessageBoxView : View {
     private MessageBox.MessageBox window;
 
     private Message.MessageBoxParam param_;
 
-    protected override string GetPackageName()
-    {
+    protected override string GetPackageName() {
         return "MessageBox/MessageBox";
     }
-    protected override void OnCreate()
-    {
+    protected override void OnCreate() {
         window = (MessageBox.MessageBox)this.contentPane;
         this.modal = true;
         this.window.cancel_.onClick.Add(OnLeftButtonClick);
         this.window.ok_.onClick.Add(OnRightButtonClick);
     }
 
-    protected override void OnShowMe()
-    {
+    protected override void OnShowMe() {
         this.Center();
         //GRoot.inst.ShowModalWait();
     }
-    protected override void OnHideMe()
-    {
+    protected override void OnHideMe() {
         //GRoot.inst.CloseModalWait();
     }
 
-    public void Open(Message.MessageBoxParam param)
-    {
+    public void Open(Message.MessageBoxParam param) {
         this.param_ = param;
         this.UpdateStates();
         this.ShowWindow(false);
     }
 
-    void OnLeftButtonClick()
-    {
-        UIController.Instance.GoBack();
+    void OnLeftButtonClick() {
+        UIs.Instance.GoBack();
         if (this.param_.leftButtonCallback != null)
             this.param_.leftButtonCallback(this.param_.data);
     }
-    void OnRightButtonClick()
-    {
-        UIController.Instance.GoBack();
+    void OnRightButtonClick() {
+        UIs.Instance.GoBack();
         if (this.param_.rightButtonCallback != null)
             this.param_.rightButtonCallback(this.param_.data);
     }
 
-    void UpdateStates()
-    {
+    void UpdateStates() {
         if (this.param_.leftButtonText.Length > 0)
             this.window.cancel_.title = this.param_.leftButtonText;
         else

@@ -6,75 +6,62 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
-{
+public class ResourceService : GameFrame.Service<ResourceService> {
     Dictionary<string, ABTaker> takerMap_ = new Dictionary<string, ABTaker>();
 
-    public override string GetTipText()
-    {
+    public override string GetTipText() {
         return "处理资源中。。。";
     }
 
-    public int AddRef(string abName)
-    {
-        if(string.IsNullOrEmpty(abName))
-        {
+    public int AddRef(string abName) {
+        if(string.IsNullOrEmpty(abName)) {
             Debug.LogError("Empty AB");
             return 0;
         }
 
         ABTaker mainTaker;
-        if(!takerMap_.TryGetValue(abName, out mainTaker))
-        {
+        if(!takerMap_.TryGetValue(abName, out mainTaker)) {
             Debug.LogError("Error AB:" + abName);
             return 0;
         }
         return mainTaker.AddReference();
     }
 
-    public int GetRef(string abName)
-    {
+    public int GetRef(string abName) {
         ABTaker taker;
         if (takerMap_.TryGetValue(abName, out taker))
             return taker.reference;
         return 0;
     }
 
-    public int DecRef(string abName)
-    {
-        if (string.IsNullOrEmpty(abName))
-        {
+    public int DecRef(string abName) {
+        if (string.IsNullOrEmpty(abName)) {
             Debug.LogError("Empty AB");
             return 0;
         }
 
         ABTaker mainTaker;
-        if (!takerMap_.TryGetValue(abName, out mainTaker))
-        {
+        if (!takerMap_.TryGetValue(abName, out mainTaker)) {
             Debug.LogError("Error AB:" + abName);
             return 0;
         }
         return mainTaker.DecReference();
     }
 
-    public void UnloadGarbage(string abName)
-    {
+    public void UnloadGarbage(string abName) {
         ABTaker taker;
-        if (!takerMap_.TryGetValue(abName, out taker))
-        {
+        if (!takerMap_.TryGetValue(abName, out taker)) {
             Debug.LogError("Empty AB");
             return;
         }
-        if (taker.isGarbage)
-        {
+        if (taker.isGarbage) {
             taker.Destroy();
             takerMap_.Remove(abName);
         }
     }
 
-    public void UnloadAsset(string pathfile)
-    {
-        string abName = VersionProcedure.Instance.GetABName(pathfile);
+    public void UnloadAsset(string pathfile) {
+        string abName = VersionService.Instance.GetABName(pathfile);
         if (string.IsNullOrEmpty(abName))
             return;
         UnloadGarbage(abName);
@@ -89,21 +76,17 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
     //    Resources.UnloadUnusedAssets();
     //}
 
-    public void UnloadAllGarbage()
-    {
+    public void UnloadAllGarbage() {
         List<string> garbages = new List<string>();
-        foreach (var kv in takerMap_)
-        {
+        foreach (var kv in takerMap_) {
             ABTaker taker = kv.Value;
-            if (taker.isGarbage)
-            {
+            if (taker.isGarbage) {
                 garbages.Add(kv.Key);
             }
         }
         if (garbages.Count == 0)
             return;
-        for (int i = 0; i < garbages.Count; ++i)
-        {
+        for (int i = 0; i < garbages.Count; ++i) {
             var name = garbages[i];
             ABTaker taker = takerMap_[name];
             taker.Destroy();
@@ -114,32 +97,24 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
 
     static object mCacheLocker = new object();
 
-    public T Create<T>(string path) where T : UnityEngine.Object
-    {
+    public T Create<T>(string path) where T : UnityEngine.Object {
         var prefab = Load<T>(path);
         if (prefab)
             return (T)UnityEngine.Object.Instantiate(prefab);
         return default(T);
     }
 
-    public T Load<T>(string pathfile) where T : UnityEngine.Object
-    {
+    public T Load<T>(string pathfile) where T : UnityEngine.Object {
 #if LOAD_FROM_AB
-        if(Application.isPlaying)
-        {
-            string abName = VersionProcedure.Instance.GetABName(pathfile);
-            if(string.IsNullOrEmpty(abName))
-            {
+        if(Application.isPlaying) {
+            string abName = VersionService.Instance.GetABName(pathfile);
+            if(string.IsNullOrEmpty(abName)) {
                 string path = Basic.Assist.TrimExtension(pathfile);
                 return Resources.Load<T>(path);
-            }
-            else
-            {
+            } else {
                 return LoadInner<T>(abName, pathfile);
             }
-        }
-        else
-        {
+        } else {
             return LoadFromAsset<T>(pathfile);
         }
 #else
@@ -147,37 +122,28 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
 #endif
     }
 
-    public T LoadFromAsset<T>(string pathfile) where T : UnityEngine.Object
-    {
+    public T LoadFromAsset<T>(string pathfile) where T : UnityEngine.Object {
         string assetName = GameConfig.BuildOption.Path2AssetName(pathfile);
         string path = Basic.Assist.CombineWithSlash(Path.GetDirectoryName(Application.dataPath), assetName);
 
-        if(File.Exists(path))
-        {
+        if(File.Exists(path)) {
             return LoadAsset<T>(assetName);
-        }
-        else
-        {
+        } else {
             path = Basic.Assist.TrimExtension(pathfile);
             return Resources.Load<T>(path);
         }
     }
 
-    void CacheAB(string name, ABTaker ab)
-    {
-        try
-        {
+    void CacheAB(string name, ABTaker ab) {
+        try {
             takerMap_.Add(name, ab);
-        }
-        catch (System.Exception ex)
-        {
+        } catch (System.Exception ex) {
             Debug.LogError(ex.Message);
         }
         //Debug.Log("ADD AB:" + name);
     }
 
-    T LoadAsset<T>(string assetPath) where T : UnityEngine.Object
-    {
+    T LoadAsset<T>(string assetPath) where T : UnityEngine.Object {
         UnityEngine.Object obj = null;
 #if UNITY_EDITOR
         obj = UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(assetPath); ;
@@ -186,14 +152,10 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
         return Resources.Load<T>(assetPath);
 #endif
     }
-    T CreateObjectFromAB<T>(ABTaker abtaker, string assetName) where T : UnityEngine.Object
-    {
-        if (abtaker.ab)
-        {
-            try
-            {
-                if (!abtaker.ab.isStreamedSceneAssetBundle)
-                {
+    T CreateObjectFromAB<T>(ABTaker abtaker, string assetName) where T : UnityEngine.Object {
+        if (abtaker.ab) {
+            try {
+                if (!abtaker.ab.isStreamedSceneAssetBundle) {
                     //if (abtaker.obj)
                     //    return (T)abtaker.obj;
                     //string name = Basic.Assist.TrimExtension(Path.GetFileName(assetName));
@@ -205,15 +167,11 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
                     //Gen.ResetShader(ret);
                     abtaker.obj = ret;
                     return ret;
-                }
-                else
-                {
+                } else {
                     //string[] scenePath = abtaker.ab.GetAllScenePaths();
                     //UnityEngine.Object myScene = ab.LoadAsset(scenePath[0]);
                 }
-            }
-            catch (Exception exc)
-            {
+            } catch (Exception exc) {
                 Debug.LogError(exc.Message);
                 return null;
             }
@@ -221,10 +179,8 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
         return null;
     }
 
-    public ABTaker LoadDependenceFromDisk(string abName)
-    {
-        if (string.IsNullOrEmpty(abName))
-        {
+    public ABTaker LoadDependenceFromDisk(string abName) {
+        if (string.IsNullOrEmpty(abName)) {
             Debug.LogError("Empty ab:");
             return null;
         }
@@ -233,21 +189,17 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
             return abtaker;
 
         string fullPath = Basic.Assist.CombineWithSlash(GameConfig.BuildOption.sdABFloder, abName);
-        if (File.Exists(fullPath))
-        {
-            try
-            {
+        if (File.Exists(fullPath)) {
+            try {
                 Basic.Assist.BeginWatch(abName);
                 var data = File.ReadAllBytes(fullPath);
                 abtaker = new ABTaker();
                 //Debug.LogWarning("ABNAME:" + abName);
                 abtaker.ab = AssetBundle.LoadFromMemory(data);
-            }
-            catch (Exception exc)
-            {
+            } catch (Exception exc) {
                 Debug.LogError(exc.Message);
             }
-            AB info = VersionProcedure.Instance.GetAB(abName);
+            AB info = VersionService.Instance.GetAB(abName);
             abtaker.name = abName;
             abtaker.persistent = info.persistent;
             if (abtaker.persistent)
@@ -260,8 +212,7 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
         return null;
     }
 
-    public void OnSceneClose()
-    {
+    public void OnSceneClose() {
         foreach (var kv in takerMap_)
             if (kv.Value.isScene)
                 kv.Value.DecReference();
@@ -269,33 +220,26 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
         UnloadAllGarbage();
     }
 
-    void MakeChildren(ABTaker taker)
-    {
-        AB info = VersionProcedure.Instance.GetAB(taker.name);
+    void MakeChildren(ABTaker taker) {
+        AB info = VersionService.Instance.GetAB(taker.name);
 
-        for (int i = 0; i < info.children.Count; ++i)
-        {
+        for (int i = 0; i < info.children.Count; ++i) {
             var name = info.children[i];
 
             ABTaker child = null;
-            if (takerMap_.TryGetValue(name, out child))
-            {
+            if (takerMap_.TryGetValue(name, out child)) {
                 taker.AddChild(child);
-            }
-            else
-            {
+            } else {
                 Debug.Assert(child != null);
             }
         }
     }
 
-    void LoadDependence(string abName)
-    {
+    void LoadDependence(string abName) {
         List<string> abNames = new List<string>();
         GetAllDependencies(ref abNames, abName);
 
-        for (int i = 0; i < abNames.Count; ++i)
-        {
+        for (int i = 0; i < abNames.Count; ++i) {
             string name = abNames[i];
             if (takerMap_.ContainsKey(name))
                 continue;
@@ -303,14 +247,12 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
         }
     }
 
-    T LoadInner<T>(string abName, string assetName) where T : UnityEngine.Object
-    {
+    T LoadInner<T>(string abName, string assetName) where T : UnityEngine.Object {
         if (string.IsNullOrEmpty(abName))
             return null;
 
         ABTaker abtaker;
-        if (!takerMap_.TryGetValue(abName, out abtaker) || abtaker.ab == null)
-        {
+        if (!takerMap_.TryGetValue(abName, out abtaker) || abtaker.ab == null) {
             if (abtaker != null && abtaker.ab == null)
                 takerMap_.Remove(abName);
             LoadDependence(abName);
@@ -321,79 +263,59 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
         return ret;
     }
 
-    public void AddReferenceCounter<T>(T resource, ABTaker abTaker) where T : UnityEngine.Object
-    {
+    public void AddReferenceCounter<T>(T resource, ABTaker abTaker) where T : UnityEngine.Object {
         Type resourceType = resource.GetType();
-        if (resourceType == typeof(GameObject))
-        {
+        if (resourceType == typeof(GameObject)) {
             ABReference abref = (resource as GameObject).TryGetComponent<ABReference>();
             abref.abName = abTaker.name;
-        }
-        else if (resourceType == typeof(Texture2D))
-        {
+        } else if (resourceType == typeof(Texture2D)) {
             abTaker.persistent = true;
-        }
-        else if (resourceType == typeof(TextAsset))
-        {
+        } else if (resourceType == typeof(TextAsset)) {
             //abTaker.persistent = true;
-        }
-        else if (resourceType == typeof(AudioClip))
-        {
+        } else if (resourceType == typeof(AudioClip)) {
             //abTaker.persistent = true;
-        }
-        else
-        {
+        } else {
             Debug.LogError("Error Resource Type:" + resourceType.Name);
         }
     }
 
-    public void GetAllDependencies(ref List<string> names, string abName)
-    {
+    public void GetAllDependencies(ref List<string> names, string abName) {
         if (string.IsNullOrEmpty(abName))
             return;
         if (names.Contains(abName) || takerMap_.ContainsKey(abName))
             return;
 
-        AB info = VersionProcedure.Instance.GetAB(abName);
-        if (info != null)
-        {
-            for (int i = 0; i < info.children.Count; ++i)
-            {
+        AB info = VersionService.Instance.GetAB(abName);
+        if (info != null) {
+            for (int i = 0; i < info.children.Count; ++i) {
                 GetAllDependencies(ref names, info.children[i]);
             }
         }
         names.Add(abName);
     }
 
-    public bool IsABInMemory(string abName)
-    {
+    public bool IsABInMemory(string abName) {
         return takerMap_.ContainsKey(abName);
     }
 
-    public void LoadAsync(IProgressBar owner, string tips, AsyncTasks tasks, Action onEnd = null)
-    {
+    public void LoadAsync(IProgressBar owner, string tips, AsyncTasks tasks, Action onEnd = null) {
         Progress.Instance.Operator(tips, true);
         owner.Show();
         Debug.Assert(false);
         //owner.StartCoroutine(InnerLoadAsync(tasks, onEnd));
     }
 
-    IEnumerator InnerLoadAsync(AsyncTasks tasks, Action onEnd = null)
-    {
+    IEnumerator InnerLoadAsync(AsyncTasks tasks, Action onEnd = null) {
         Basic.Assist.BeginWatch("LoadAsync");
 
         int len = 0;
 
-        for (int i = 0; i < tasks.Count; ++i)
-        {
-            try
-            {
+        for (int i = 0; i < tasks.Count; ++i) {
+            try {
                 var task = tasks[i];
                 task.CalcTargetCount();
                 len += task.targetCount;
-            }
-            catch (System.Exception ex)
-            {
+            } catch (System.Exception ex) {
                 Debug.LogError(ex.Message);
             }
         }
@@ -401,11 +323,9 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
         Debug.Log("Load AB Count: " + len.ToString());
 
         int cursor = 0;
-        for (int i = 0; i < tasks.Count; ++i)
-        {
+        for (int i = 0; i < tasks.Count; ++i) {
             var task = tasks[i];
-            for (int j = 0; j < task.targetCount; ++j)
-            {
+            for (int j = 0; j < task.targetCount; ++j) {
                 task.DoStep(j);
                 cursor++;
                 Progress.Instance.Update(cursor, len);
@@ -413,8 +333,7 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
             }
         }
 
-        if(len == 0)
-        {
+        if(len == 0) {
             Progress.Instance.Update(1, 1);
             yield return 0;
         }
@@ -423,6 +342,6 @@ public class ResourceProcedure : GameFrame.Procedure<ResourceProcedure>
             onEnd();
         Basic.Assist.EndWatch();
         yield return 0;
-        GateUIInterfaceProcedure.progressBar.Hide();
+        GateUIService.progressBar.Hide();
     }
 }

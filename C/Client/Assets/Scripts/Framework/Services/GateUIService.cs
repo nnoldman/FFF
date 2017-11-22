@@ -4,31 +4,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class GateUIInterfaceProcedure :  GameFrame.Procedure<GateUIInterfaceProcedure>
-{
-    public static IProgressBar progressBar
-    {
-        get
-        {
+public class GateUIService :  GameFrame.Service<GateUIService> {
+    public static IProgressBar progressBar {
+        get {
             if(currentProgressBar_ == null)
                 currentProgressBar_ = GateWindow.Instance;
             return currentProgressBar_;
         }
-        set
-        {
+        set {
             currentProgressBar_ = value;
         }
     }
 
     static IProgressBar currentProgressBar_;
 
-    public override IEnumerator Start()
-    {
+    public override IEnumerator Start() {
         return base.Start();
     }
 
-    public override string GetTipText()
-    {
+    public override string GetTipText() {
         return "加载内部资源";
     }
 }

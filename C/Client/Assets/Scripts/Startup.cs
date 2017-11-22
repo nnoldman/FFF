@@ -6,54 +6,49 @@ using System.Reflection;
 using System;
 using System.Collections.Generic;
 
-public class Startup : MonoBehaviour
-{
+public class Startup : MonoBehaviour {
     Startup mInstance;
     Game game_ = new Game();
 
-    void Awake()
-    {
+    void Awake() {
         Debug.Assert(mInstance == null);
         mInstance = this;
 
-        GateUIInterfaceProcedure.progressBar.Show();
-        Flow.Instance.onProcess += GateUIInterfaceProcedure.progressBar.SetProgress;
-        Flow.Instance.onTip += GateUIInterfaceProcedure.progressBar.SetText;
+        GateUIService.progressBar.Show();
+        Flow.Instance.onProcess += GateUIService.progressBar.SetProgress;
+        Flow.Instance.onTip += GateUIService.progressBar.SetText;
 
         Flow.Instance.Clear();
-        Flow.Instance.AddProcedure<GateUIInterfaceProcedure>();
-        Flow.Instance.AddProcedure<NetProcedure>();
-        Flow.Instance.AddProcedure<VersionProcedure>();
-        Flow.Instance.AddProcedure<ResourceProcedure>();
-        Flow.Instance.AddProcedure<ConfigProcedure>();
-        Flow.Instance.AddProcedure<PreloadProcedure>();
-        Flow.Instance.AddProcedure<GameSystemsProcedure>();
-        Flow.Instance.AddProcedure<LoginProcedure>();
+        Flow.Instance.AddService<GateUIService>();
+        Flow.Instance.AddService<NetService>();
+        Flow.Instance.AddService<VersionService>();
+        Flow.Instance.AddService<ResourceService>();
+        Flow.Instance.AddService<ConfigService>();
+        Flow.Instance.AddService<PreloadService>();
+        Flow.Instance.AddService<GameSystemsServie>();
+        Flow.Instance.AddService<LoginService>();
         Flow.Instance.onStartEnd += OnStartEnd;
 
         StartCoroutine(Flow.Instance.Start());
     }
 
-    IEnumerator OnStartEnd()
-    {
+    IEnumerator OnStartEnd() {
         this.game_.AddController<Nets>();
-        this.game_.AddController<GameFrame.IconManager>();
-        this.game_.AddController<UIController>();
+        this.game_.AddController<GameFrame.Icons>();
+        this.game_.AddController<UIs>();
         this.game_.AddController<GameFrame.Cameras>();
         yield return this.game_.Start();
-        UIController.Instance.Show<HomePageWindow>();
-        GateUIInterfaceProcedure.progressBar.Hide();
+        UIs.Instance.Show<HomePageWindow>();
+        GateUIService.progressBar.Hide();
         GameFrame.Cameras.Instance.enableUGUICamera = false;
         yield return null;
     }
-    void Update()
-    {
+    void Update() {
         if (Nets.Instance != null)
             Nets.Instance.Update();
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy() {
         this.game_.Quit();
     }
 }

@@ -57,7 +57,7 @@ public class AsyncLoadGameObject: AsyncLoadTask
 
     public override void CalcTargetCount()
     {
-        var updater = VersionProcedure.Instance;
+        var updater = VersionService.Instance;
         string abName = updater.GetABName(fileName);
         if(string.IsNullOrEmpty(abName) )
         {
@@ -73,7 +73,7 @@ public class AsyncLoadGameObject: AsyncLoadTask
         {
             loaderType = AsyncLoaderType.Extern;
             mABNames = new List<string>();
-            ResourceProcedure.Instance.GetAllDependencies(ref mABNames, abName);
+            ResourceService.Instance.GetAllDependencies(ref mABNames, abName);
             mTargetCount = mABNames.Count;
         }
     }
@@ -88,7 +88,7 @@ public class AsyncLoadGameObject: AsyncLoadTask
         else if(loaderType == AsyncLoaderType.InnerObject)
         {
             string assetname = System.IO.Path.GetFileName(fileName).ToLower();
-            var obj = ResourceProcedure.Instance.Load<UnityEngine.Object>(fileName);
+            var obj = ResourceService.Instance.Load<UnityEngine.Object>(fileName);
             onAssetLoaded(fileName.ToLower(), obj);
         }
         else if (loaderType == AsyncLoaderType.Extern)
@@ -97,7 +97,7 @@ public class AsyncLoadGameObject: AsyncLoadTask
             if (mTargetCount == 0)
                 return;
 
-            ABTaker abtaker = ResourceProcedure.Instance.LoadDependenceFromDisk(mABNames[i]);
+            ABTaker abtaker = ResourceService.Instance.LoadDependenceFromDisk(mABNames[i]);
             Debug.Assert(abtaker != null);
             if (abtaker == null)
                 return;
@@ -113,7 +113,7 @@ public class AsyncLoadGameObject: AsyncLoadTask
                     {
                         string assetname = System.IO.Path.GetFileName(fileName).ToLower();
                         var obj = abtaker.ab.LoadAsset<UnityEngine.Object>(assetname);
-                        ResourceProcedure.Instance.AddReferenceCounter(obj, abtaker);
+                        ResourceService.Instance.AddReferenceCounter(obj, abtaker);
                         onAssetLoaded(fileName.ToLower(), obj);
                     }
                 }

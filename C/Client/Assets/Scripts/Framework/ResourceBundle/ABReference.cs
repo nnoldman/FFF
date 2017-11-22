@@ -13,22 +13,22 @@ public class ABReference : MonoBehaviour
     [ContextMenu("CalReference")]
     public void CalReference()
     {
-        reference = ResourceProcedure.Instance.GetRef(abName);
+        reference = ResourceService.Instance.GetRef(abName);
     }
 #endif
 
 #if LOAD_FROM_AB
     void Awake()
     {
-        ResourceProcedure.Instance.AddRef(abName);
+        ResourceService.Instance.AddRef(abName);
     }
 
     void OnDestroy()
     {
-        if (ResourceProcedure.Instance.DecRef(abName) == 0)
+        if (ResourceService.Instance.DecRef(abName) == 0)
         {
             //Debug.LogWarning("Unload AB:" + abName);
-            ResourceProcedure.Instance.UnloadGarbage(abName);
+            ResourceService.Instance.UnloadGarbage(abName);
         }
     }
 #endif

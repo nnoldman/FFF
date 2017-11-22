@@ -8,8 +8,7 @@ using System.IO;
 using System.Collections;
 using System.Threading;
 
-public enum UpdateState
-{
+public enum UpdateState {
     None,
     WaitForNet,
     CheckWifi,
@@ -27,29 +26,23 @@ public enum UpdateState
     Sucess,
 }
 
-public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
-{
-    public override string GetTipText()
-    {
+public class VersionService: GameFrame.Service<VersionService> {
+    public override string GetTipText() {
         return "版本检测中。。。";
     }
 
     public bool running = true;
     public bool allowDownloadWithoutWifi = false;
 
-    public string errorContent
-    {
+    public string errorContent {
         get;
         private set;
     }
-    public LoadingError errorCode
-    {
-        get
-        {
+    public LoadingError errorCode {
+        get {
             return mErrorCode;
         }
-        set
-        {
+        set {
             mErrorCode = value;
         }
     }
@@ -62,8 +55,7 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
     private int mCheckWifiReachedTimes = 0;
     public LoadingError mErrorCode = LoadingError.Success;
 
-    public UpdateState state
-    {
+    public UpdateState state {
         get;
         set;
     }
@@ -90,54 +82,41 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
 
     private Dictionary<string, ResourceIndex> mIndexMap = new Dictionary<string, ResourceIndex>();
 
-    public string appURL
-    {
-        get
-        {
+    public string appURL {
+        get {
             return mURLApp;
         }
     }
 
-    public string loginServersURL
-    {
-        get
-        {
+    public string loginServersURL {
+        get {
             return mURLLoginServers;
         }
     }
 
-    public string latelyServerURL
-    {
-        get
-        {
+    public string latelyServerURL {
+        get {
             return mURLLatelyServer;
         }
     }
 
-    public string localVersion
-    {
-        get
-        {
+    public string localVersion {
+        get {
             return mVersionSD == null ? mVersionStreaming.ToString() : mVersionSD.ToString();
         }
     }
-    public string remoteVersion
-    {
-        get
-        {
+    public string remoteVersion {
+        get {
             return mVersionRemote.ToString();
         }
     }
-    public string cdnURL
-    {
-        get
-        {
+    public string cdnURL {
+        get {
             return mURLCDN;
         }
     }
 
-    public override IEnumerator Start()
-    {
+    public override IEnumerator Start() {
 #if UNITY_EDITOR
         yield return null;
 #else
@@ -145,32 +124,26 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
 #endif
     }
 
-    public string DownLoadText(string url)
-    {
-        try
-        {
+    public string DownLoadText(string url) {
+        try {
             WWW sync = new WWW(url);
             byte[] data = sync.bytes;
             if (data != null)
                 return Encoding.UTF8.GetString(data);
             return string.Empty;
-        }
-        catch (WebException exc)
-        {
+        } catch (WebException exc) {
             Debug.LogError(exc.Message);
             return String.Empty;
         }
     }
 
-    public string GetABName(string pathfile)
-    {
+    public string GetABName(string pathfile) {
         string ret;
         mIndexSD.indexMap.TryGetValue(pathfile.ToLower(), out ret);
         return ret;
     }
 
-    public static string GetFirstLine(string content)
-    {
+    public static string GetFirstLine(string content) {
         int linepos = content.IndexOf("\r\n");
         if (linepos != -1)
             return content.Substring(0, linepos);
@@ -178,128 +151,97 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
         return content.Substring(0, linepos);
     }
 
-    public string getStreamingVersionFile
-    {
-        get
-        {
+    public string getStreamingVersionFile {
+        get {
             var url = GetStreamPath(GameConfig.BuildOption.abVersionFile);
             return url;
         }
     }
-    public string getStreamingIndexFile
-    {
-        get
-        {
+    public string getStreamingIndexFile {
+        get {
             var url = GetStreamPath(GameConfig.BuildOption.abIndexFile);
             return url;
         }
     }
 
 
-    void Error(string msg, LoadingError error)
-    {
+    void Error(string msg, LoadingError error) {
         this.mErrorCode = error;
         this.errorContent = msg;
-        if(error != LoadingError.RemoteURLConfigLoadFailedOrEmpty)
-        {
-            if (errorHandler != null)
-            {
+        if(error != LoadingError.RemoteURLConfigLoadFailedOrEmpty) {
+            if (errorHandler != null) {
                 errorHandler(msg, error);
             }
         }
     }
 
-    bool Success(bool ok, LoadingError error)
-    {
-        if (!ok)
-        {
+    bool Success(bool ok, LoadingError error) {
+        if (!ok) {
             Error(errorCode.ToString(), error);
         }
         return ok;
     }
 
-    void SetState(UpdateState state)
-    {
+    void SetState(UpdateState state) {
         this.state = state;
     }
 
-    public void RetryNet()
-    {
+    public void RetryNet() {
         mCheckNetReachedTimes = 0;
         SetState(UpdateState.None);
     }
 
-    public void RetryWifi()
-    {
+    public void RetryWifi() {
         mCheckWifiReachedTimes = 0;
         SetState(UpdateState.CheckWifi);
     }
 
-    public IEnumerator DoUpdata()
-    {
-        while (state != UpdateState.Sucess)
-        {
-            switch (state)
-            {
-            case UpdateState.None:
-            {
-                if (Application.internetReachability == NetworkReachability.NotReachable)
-                {
+    public IEnumerator DoUpdata() {
+        while (state != UpdateState.Sucess) {
+            switch (state) {
+            case UpdateState.None: {
+                if (Application.internetReachability == NetworkReachability.NotReachable) {
                     mCheckNetReachedTimes++;
-                    if (mCheckNetReachedTimes > 3000)
-                    {
+                    if (mCheckNetReachedTimes > 3000) {
                         if (netWaring != null)
                             netWaring.Invoke();
                     }
                     yield return null;
-                }
-                else
-                {
+                } else {
                     SetState(UpdateState.WaitForNet);
                 }
             }
             break;
-            case UpdateState.WaitForNet:
-            {
+            case UpdateState.WaitForNet: {
                 if (Application.internetReachability != NetworkReachability.NotReachable)
                     SetState(UpdateState.GetLocalAddressConfig);
                 else
                     yield return null;
             }
             break;
-            case UpdateState.CheckWifi:
-            {
-                if (Application.internetReachability != NetworkReachability.ReachableViaLocalAreaNetwork)
-                {
+            case UpdateState.CheckWifi: {
+                if (Application.internetReachability != NetworkReachability.ReachableViaLocalAreaNetwork) {
                     mCheckWifiReachedTimes++;
-                    if (mCheckWifiReachedTimes > 3000)
-                    {
+                    if (mCheckWifiReachedTimes > 3000) {
                         if (wifiWaring != null)
                             wifiWaring.Invoke();
                         SetState(UpdateState.WaitForWifi);
                     }
                     yield return null;
-                }
-                else
-                {
+                } else {
                     SetState(UpdateState.WaitForWifi);
                 }
             }
             break;
-            case UpdateState.WaitForWifi:
-            {
-                if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork || allowDownloadWithoutWifi)
-                {
+            case UpdateState.WaitForWifi: {
+                if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork || allowDownloadWithoutWifi) {
                     SetState(UpdateState.DownloadIncrements);
-                }
-                else
-                {
+                } else {
                     yield return null;
                 }
             }
             break;
-            case UpdateState.GetLocalAddressConfig:
-            {
+            case UpdateState.GetLocalAddressConfig: {
                 DoNowStep stepLoadResourceAddr = new DoNowStep();
                 stepLoadResourceAddr.name = "加载本地配置";
                 stepLoadResourceAddr.onEnd = TryGetAddressConfig;
@@ -309,8 +251,7 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
                 SetState(UpdateState.ReadRemoteConfig);
             }
             break;
-            case UpdateState.ReadRemoteConfig:
-            {
+            case UpdateState.ReadRemoteConfig: {
                 LoadOneStep stepGetRemoteConfig = new LoadOneStep();
                 stepGetRemoteConfig.name = "获取服务器配置文件";
                 stepGetRemoteConfig.getURL = () => mRemoteAddress;
@@ -318,19 +259,15 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
                 stepGetRemoteConfig.exit = () => string.IsNullOrEmpty(mRemoteVersionFile);
                 stepGetRemoteConfig.errorCode = LoadingError.RemoteURLConfigLoadFailedOrEmpty;
                 yield return DoOneStep(stepGetRemoteConfig);
-                if (mErrorCode == LoadingError.RemoteURLConfigLoadFailedOrEmpty)
-                {
+                if (mErrorCode == LoadingError.RemoteURLConfigLoadFailedOrEmpty) {
                     Debug.LogWarning("Error URL Config!" + mRemoteVersionFile);
                     SetState(UpdateState.ReadStreamingVersion);
-                }
-                else
-                {
+                } else {
                     SetState(UpdateState.ReadRemoteVersion);
                 }
             }
             break;
-            case UpdateState.ReadRemoteVersion:
-            {
+            case UpdateState.ReadRemoteVersion: {
                 LoadOneStep stepLoadRemoteVersion = new LoadOneStep();
                 stepLoadRemoteVersion.name = "加载服务器版本信息";
                 stepLoadRemoteVersion.getURL = () => mRemoteVersionFile;
@@ -341,8 +278,7 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
                 SetState(UpdateState.ReadRemoteIndex);
             }
             break;
-            case UpdateState.ReadRemoteIndex:
-            {
+            case UpdateState.ReadRemoteIndex: {
                 LoadOneStep stepLoadRemoteIndex = new LoadOneStep();
                 stepLoadRemoteIndex.name = "加载远程索引信息";
                 stepLoadRemoteIndex.loadDelegate = TryGetRemoteIndex;
@@ -353,8 +289,7 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
                 SetState(UpdateState.ReadStreamingVersion);
             }
             break;
-            case UpdateState.ReadStreamingVersion:
-            {
+            case UpdateState.ReadStreamingVersion: {
                 LoadOneStep stepLoadStreamingVersion = new LoadOneStep();
                 stepLoadStreamingVersion.name = "加载Streaming版本信息";
                 stepLoadStreamingVersion.loadDelegate = TryGetVersionFromStreamingAsset;
@@ -364,8 +299,7 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
                 SetState(UpdateState.ReadStreamingIndex);
             }
             break;
-            case UpdateState.ReadStreamingIndex:
-            {
+            case UpdateState.ReadStreamingIndex: {
                 LoadOneStep stepLoadStreamingIndex = new LoadOneStep();
                 stepLoadStreamingIndex.name = "加载Streaming索引信息";
                 stepLoadStreamingIndex.loadDelegate = TryGetStreamingIndex;
@@ -375,42 +309,30 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
                 SetState(UpdateState.ReadSD);
             }
             break;
-            case UpdateState.ReadSD:
-            {
+            case UpdateState.ReadSD: {
                 DoNowStep stepLoadSDInfo = new DoNowStep();
                 stepLoadSDInfo.name = "加载SD版本信息";
                 stepLoadSDInfo.onEnd = TryGetInfoFromSD;
                 stepLoadSDInfo.exit = () => false;
                 yield return DoNow(stepLoadSDInfo);
 
-                if (mVersionRemote.ProgramHigherThan(mVersionStreaming))
-                {
+                if (mVersionRemote.ProgramHigherThan(mVersionStreaming)) {
                     SetState(UpdateState.DownloadPackage);
-                }
-                else
-                {
-                    if (mVersionSD == null)
-                    {
+                } else {
+                    if (mVersionSD == null) {
                         SetState(UpdateState.ExportToSD);
-                    }
-                    else if (mVersionRemote.HigherThan(mVersionSD))
-                    {
+                    } else if (mVersionRemote.HigherThan(mVersionSD)) {
                         SetState(UpdateState.DownloadIncrements);
                         //SetState(UpdateState.CheckWifi);
-                    }
-                    else if (mVersionStreaming.HigherThan(mVersionSD))
-                    {
+                    } else if (mVersionStreaming.HigherThan(mVersionSD)) {
                         SetState(UpdateState.ExportToSD);
-                    }
-                    else
-                    {
+                    } else {
                         SetState(UpdateState.Sucess);
                     }
                 }
             }
             break;
-            case UpdateState.ExportToSD:
-            {
+            case UpdateState.ExportToSD: {
                 LoadBeatchStep stepExportToSD = new LoadBeatchStep();
                 stepExportToSD.name = "解压文件中，请不要关闭游戏，此过程不消耗流量";
                 stepExportToSD.exit = () => false;
@@ -422,8 +344,7 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
                 SetState(UpdateState.ReadSD);
             }
             break;
-            case UpdateState.DownloadIncrements:
-            {
+            case UpdateState.DownloadIncrements: {
                 LoadBeatchStep stepLoadIncrement = new LoadBeatchStep();
                 stepLoadIncrement.name = "更新中，请不要关闭游戏";
                 stepLoadIncrement.exit = () => false;
@@ -435,8 +356,7 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
                 SetState(UpdateState.Sucess);
             }
             break;
-            case UpdateState.DownloadPackage:
-            {
+            case UpdateState.DownloadPackage: {
                 mErrorCode = LoadingError.PackageError;
             }
             break;
@@ -446,8 +366,7 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
                 break;
             }
 
-            if (mErrorCode != LoadingError.Success && mErrorCode != LoadingError.RemoteURLConfigLoadFailedOrEmpty)
-            {
+            if (mErrorCode != LoadingError.Success && mErrorCode != LoadingError.RemoteURLConfigLoadFailedOrEmpty) {
                 Error(errorContent, errorCode);
                 SetState(UpdateState.None);
                 yield break;
@@ -455,44 +374,32 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
         }
     }
 
-    public IEnumerator DoUpdataWithOutCheckResource()
-    {
-        while (state != UpdateState.Sucess)
-        {
-            switch (state)
-            {
-            case UpdateState.None:
-            {
-                if (Application.internetReachability == NetworkReachability.NotReachable)
-                {
+    public IEnumerator DoUpdataWithOutCheckResource() {
+        while (state != UpdateState.Sucess) {
+            switch (state) {
+            case UpdateState.None: {
+                if (Application.internetReachability == NetworkReachability.NotReachable) {
                     mCheckNetReachedTimes++;
-                    if (mCheckNetReachedTimes > 3000)
-                    {
+                    if (mCheckNetReachedTimes > 3000) {
                         if (netWaring != null)
                             netWaring.Invoke();
                     }
                     yield return null;
-                }
-                else
-                {
+                } else {
                     SetState(UpdateState.WaitForNet);
                 }
             }
             break;
-            case UpdateState.WaitForNet:
-            {
-                if (Application.internetReachability != NetworkReachability.NotReachable)
-                {
+            case UpdateState.WaitForNet: {
+                if (Application.internetReachability != NetworkReachability.NotReachable) {
                     SetState(UpdateState.Sucess);
-                }
-                else
+                } else
                     yield return null;
             }
             break;
             }
 
-            if (mErrorCode != LoadingError.Success)
-            {
+            if (mErrorCode != LoadingError.Success) {
                 Error(errorContent, errorCode);
                 SetState(UpdateState.None);
                 mErrorCode = LoadingError.Success;
@@ -500,15 +407,13 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
             }
         }
     }
-    IEnumerator DoNow(DoNowStep current)
-    {
+    IEnumerator DoNow(DoNowStep current) {
         Progress.Instance.Operator(current.name, true);
         Progress.Instance.Update(0, 1);
         yield return null;
         if (current.onEnd != null)
             current.onEnd.Invoke();
-        if (current.exit != null && current.exit())
-        {
+        if (current.exit != null && current.exit()) {
             Error(current.name, current.errorCode);
             yield break;
         }
@@ -516,8 +421,7 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
         yield return null;
     }
 
-    IEnumerator DoOneStep(LoadOneStep current)
-    {
+    IEnumerator DoOneStep(LoadOneStep current) {
         Progress.Instance.Operator(current.name, false);
         yield return 0;
         LoadOneStep theStep = (LoadOneStep)current;
@@ -525,14 +429,12 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
         Debug.Log(url);
         Progress.Instance.SetUpdateState(true);
         WWW www = new WWW(url);
-        while (!www.isDone)
-        {
+        while (!www.isDone) {
             Progress.Instance.Update((int)(www.progress * 100), 100);
             Thread.Sleep(1);
             yield return null;
         }
-        if (!string.IsNullOrEmpty(www.error))
-        {
+        if (!string.IsNullOrEmpty(www.error)) {
             Error(www.error, current.errorCode);
             yield break;
         }
@@ -540,16 +442,14 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
         theStep.loadDelegate(www);
         www.Dispose();
 
-        if (current.exit != null && current.exit())
-        {
+        if (current.exit != null && current.exit()) {
             Error(current.name, current.errorCode);
             yield break;
         }
         yield return null;
     }
 
-    IEnumerator LoadBeatch(LoadBeatchStep current)
-    {
+    IEnumerator LoadBeatch(LoadBeatchStep current) {
         Progress.Instance.SetUpdateState(true);
         Progress.Instance.Operator(current.name, true);
         yield return null;
@@ -559,20 +459,17 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
         int totalSize = 0;
         urlFiles.ForEach((item) => totalSize += item.size);
         int curSize = 0;
-        for (int i = 0; i < len; ++i)
-        {
+        for (int i = 0; i < len; ++i) {
             string url = urlFiles[i].url;
             int size = urlFiles[i].size;
             Debug.Log(url);
             WWW www = new WWW(url);
-            while (!www.isDone)
-            {
+            while (!www.isDone) {
                 Progress.Instance.Update(curSize + (int)(size * www.progress), totalSize, false, i + 1, len, true);
                 Thread.Sleep(1);
                 yield return null;
             }
-            if (!string.IsNullOrEmpty(www.error))
-            {
+            if (!string.IsNullOrEmpty(www.error)) {
                 Error(www.error, current.errorCode);
                 yield break;
             }
@@ -584,8 +481,7 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
             if (current.onEnd != null)
                 current.onEnd();
 
-            if (current.exit != null && current.exit())
-            {
+            if (current.exit != null && current.exit()) {
                 Error(current.name, current.errorCode);
                 yield break;
             }
@@ -593,11 +489,9 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
         }
     }
 
-    public List<URLFile> GetStreamABURLs()
-    {
+    public List<URLFile> GetStreamABURLs() {
         var urls = new List<URLFile>();
-        foreach (var info in mIndexStreaming.abs)
-        {
+        foreach (var info in mIndexStreaming.abs) {
             URLFile url = new URLFile();
             url.url = GetStreamPath(Basic.Assist.CombineWithSlash(GameConfig.BuildOption.abFloder, info.name));
             url.size = info.size;
@@ -606,104 +500,84 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
         return urls;
     }
 
-    void SaveFileToSD(WWW www)
-    {
-        try
-        {
+    void SaveFileToSD(WWW www) {
+        try {
             string fileName = Path.GetFileName(www.url);
             string sdFile = Basic.Assist.CombineWithSlash(GameConfig.BuildOption.sdABFloder, fileName);
-            if (www.bytes != null && www.bytes.Length != 0)
-            {
+            if (www.bytes != null && www.bytes.Length != 0) {
                 string path = Path.GetDirectoryName(sdFile);
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
                 File.WriteAllBytes(sdFile, www.bytes);
                 //Zip7Helper.DecompressFileLZMA(www.bytes, sdFile);
             }
-        }
-        catch (Exception exc)
-        {
+        } catch (Exception exc) {
             Error(exc.Message, LoadingError.SDSaveVersionOrIndexFailed);
         }
     }
 
-    void SaveStreamingInfoToSD()
-    {
+    void SaveStreamingInfoToSD() {
         mIndexSD = mIndexStreaming;
         Basic.Assist.SaveJsonObject(mIndexSD, GetSDFile(GameConfig.BuildOption.abIndexFile), GameConfig.BuildOption.abIndexCompressed);
         mVersionSD = mVersionStreaming;
         Basic.Assist.SaveJsonObject(mVersionSD, GetSDFile(GameConfig.BuildOption.abVersionFile));
     }
 
-    void SaveRemoteInfoToSD()
-    {
+    void SaveRemoteInfoToSD() {
         mIndexSD = mIndexRemote;
         Basic.Assist.SaveJsonObject(mIndexSD, GetSDFile(GameConfig.BuildOption.abIndexFile), GameConfig.BuildOption.abIndexCompressed);
         mVersionSD = mVersionRemote;
         Basic.Assist.SaveJsonObject(mVersionSD, GetSDFile(GameConfig.BuildOption.abVersionFile));
     }
 
-    public void GoToUpdatePackage()
-    {
+    public void GoToUpdatePackage() {
         Application.OpenURL(GameConfig.Audit.appURL);
     }
 
-    public URLInfo GetUrlInfo(string name)
-    {
-        for (int i = 0; i < mURLInfos.infos.Count; ++i)
-        {
-            if (mURLInfos.infos[i].name == name)
-            {
+    public URLInfo GetUrlInfo(string name) {
+        for (int i = 0; i < mURLInfos.infos.Count; ++i) {
+            if (mURLInfos.infos[i].name == name) {
                 return mURLInfos.infos[i];
             }
         }
         return null;
     }
 
-    string GetResourceFileContent(string fileName)
-    {
+    string GetResourceFileContent(string fileName) {
         string filename = Basic.Assist.EnsureNameWithOutExtenision(fileName);
         TextAsset textasset = Resources.Load<TextAsset>(filename);
         return textasset == null ? string.Empty : textasset.text;
     }
 
-    static string GetSDFile(string fileName)
-    {
+    static string GetSDFile(string fileName) {
         return Basic.Assist.CombineWithSlash(Application.persistentDataPath, fileName);
     }
 
-    public string GetStreamPath(string fileName)
-    {
+    public string GetStreamPath(string fileName) {
         var Path = Basic.Assist.CombineWithSlash(false, Application.streamingAssetsPath, fileName);
         if (Application.platform != RuntimePlatform.Android)
             Path = String.Concat(GameConfig.BuildOption.ASSET_FILE_HEAD, Path);
         return Path;
     }
 
-    string GetRemoteFileContent(string url)
-    {
+    string GetRemoteFileContent(string url) {
         return DownLoadText(url);
     }
 
-    string GetPlatformString()
-    {
+    string GetPlatformString() {
         string platform = string.Empty;
 
-        switch (Application.platform)
-        {
+        switch (Application.platform) {
         case RuntimePlatform.Android:
-        case RuntimePlatform.WindowsEditor:
-        {
+        case RuntimePlatform.WindowsEditor: {
             platform = GamePlatform.android.ToString();
         }
         break;
-        case RuntimePlatform.IPhonePlayer:
-        {
+        case RuntimePlatform.IPhonePlayer: {
             platform = GamePlatform.ios.ToString();
         }
         break;
-        default:
-        {
+        default: {
             throw new Exception("Unknown Platform!");
         }
         break;
@@ -711,46 +585,37 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
         return platform;
     }
 
-    void TryGetVersionFromRemote(WWW www)
-    {
+    void TryGetVersionFromRemote(WWW www) {
         mVersionRemote = JsonUtility.FromJson<GameVersion>(www.text);
         Success(mVersionRemote != null, LoadingError.RemoteVersionLoadFailedOrEmpty);
     }
 
-    void TryGetInfoFromSD()
-    {
+    void TryGetInfoFromSD() {
         Debug.Log("TryGetVersionFromSD:");
         mVersionSD = Basic.Assist.LoadJsonObject<GameVersion>(GetSDFile(GameConfig.BuildOption.abVersionFile));
         mIndexSD = Basic.Assist.LoadJsonObject<ABIndex>(GetSDFile(GameConfig.BuildOption.abIndexFile), GameConfig.BuildOption.abIndexCompressed);
     }
 
-    void TryGetVersionFromStreamingAsset(WWW www)
-    {
+    void TryGetVersionFromStreamingAsset(WWW www) {
         mVersionStreaming = JsonUtility.FromJson<GameVersion>(www.text);
         Success(mVersionStreaming != null, LoadingError.StreamingLoadVersionError);
     }
 
-    void TryGetAddressConfig()
-    {
+    void TryGetAddressConfig() {
         mRemoteAddress = GameConfig.Updata.ConfigURL;
         //string url = GetResourceFileContent(GameConfig.remoteURLConfigFile);
         //mRemoteAddress = GetFirstLine(url);
     }
 
-    void TryGetRemoteURLConfig(WWW www)
-    {
+    void TryGetRemoteURLConfig(WWW www) {
         var urlConfigContent = www.text;
         Debug.Log("URLConfig:" + www.text);
-        try
-        {
+        try {
             mURLInfos = JsonUtility.FromJson<URLInfoList>(urlConfigContent);
-        }
-        catch (Exception exc)
-        {
+        } catch (Exception exc) {
             Debug.LogWarning(exc.Message);
         }
-        if (Success(mURLInfos != null && mURLInfos.infos.Count > 0, LoadingError.RemoteURLConfigLoadFailedOrEmpty))
-        {
+        if (Success(mURLInfos != null && mURLInfos.infos.Count > 0, LoadingError.RemoteURLConfigLoadFailedOrEmpty)) {
             mURLCDN = GetUrlInfo(GameConfig.BuildOption.URL_CDNKey).url;
             Debug.Log("mURLCDN:" + mURLCDN);
             mURLApp = GetUrlInfo(GameConfig.BuildOption.URL_App).url;
@@ -770,29 +635,24 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
     }
 
 
-    void TryGetRemoteIndex(WWW www)
-    {
+    void TryGetRemoteIndex(WWW www) {
         mIndexRemote = Basic.Assist.FromJsonWithZip<ABIndex>(www.bytes, GameConfig.BuildOption.abIndexCompressed);
         Success(mIndexRemote != null, LoadingError.RemoteIndexLoadFailedOrEmpty);
     }
-    void TryGetStreamingIndex(WWW www)
-    {
+    void TryGetStreamingIndex(WWW www) {
         mIndexStreaming = Basic.Assist.FromJsonWithZip<ABIndex>(www.bytes, GameConfig.BuildOption.abIndexCompressed);
         Success(mIndexStreaming != null, LoadingError.StreamingLoadIndexError);
     }
 
-    bool SaveVersionToSD()
-    {
+    bool SaveVersionToSD() {
         mVersionSD = mVersionRemote;
         return Basic.Assist.SaveJsonObject(mVersionSD, GameConfig.BuildOption.sdVersionFile);
     }
 
-    List<URLFile> GetIncrementABUrls()
-    {
+    List<URLFile> GetIncrementABUrls() {
         ABIndex incrementList = GetIncrementResourceList(mIndexSD, mIndexRemote);
         List<URLFile> ret = new List<URLFile>();
-        for (int i = 0; i < incrementList.abs.Count; ++i)
-        {
+        for (int i = 0; i < incrementList.abs.Count; ++i) {
             var info = incrementList.abs[i];
             URLFile urlFile = new URLFile();
             urlFile.url = Basic.Assist.CombineWithSlash(false, mRemoteABFloderURL, info.name);
@@ -802,8 +662,7 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
         return ret;
     }
 
-    public ABIndex GetIncrementResourceList(ABIndex list0, ABIndex list1)
-    {
+    public ABIndex GetIncrementResourceList(ABIndex list0, ABIndex list1) {
         if (list1 == null)
             return null;
 
@@ -812,20 +671,17 @@ public class VersionProcedure: GameFrame.Procedure<VersionProcedure>
 
         ABIndex incremetList = new ABIndex();
 
-        foreach (var data in map1)
-        {
+        foreach (var data in map1) {
             AB info = null;
 
-            if (map0 == null || !map0.TryGetValue(data.Key, out info) || info.hash != data.Value.hash)
-            {
+            if (map0 == null || !map0.TryGetValue(data.Key, out info) || info.hash != data.Value.hash) {
                 incremetList.abs.Add(data.Value);
             }
         }
         return incremetList;
     }
 
-    public AB GetAB(string abName)
-    {
+    public AB GetAB(string abName) {
         AB info;
         mIndexSD.abMap.TryGetValue(abName, out info);
         return info;

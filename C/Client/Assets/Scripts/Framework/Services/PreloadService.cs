@@ -5,15 +5,12 @@ using System.Linq;
 using System.Text;
 using GameFrame;
 
-public class PreloadProcedure : GameFrame.Procedure<PreloadProcedure>
-{
-    public override string GetTipText()
-    {
+public class PreloadService : GameFrame.Service<PreloadService> {
+    public override string GetTipText() {
         return "资源预加载。。。";
     }
 
-    public override IEnumerator Start()
-    {
+    public override IEnumerator Start() {
         yield return null;
     }
 }
