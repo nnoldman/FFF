@@ -12,8 +12,6 @@ class GameApp :
   protected:
     virtual void archive() override;
     virtual const vector<const DBTableDefine*>& getTableDefines() const override;
-    virtual bool loadGameConfig() override;
-
     virtual void mainLoop() override;
     virtual void addExternServices() override;
 };

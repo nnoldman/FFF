@@ -41,6 +41,14 @@ using namespace Basic;
 #define LOG_TRACE_A(...) Poco::Util::Application::instance().logger().trace(__VA_ARGS__)
 #define LOG_WARNING_A(...) Poco::Util::Application::instance().logger().warning(__VA_ARGS__)
 
+
 #define FORMAT_TEXT(buffer,fmt,...) char buffer[2048] = {0};\
-    snprintf(buffer, 2048, fmt, __VA_ARGS__);
+    try\
+    {\
+        snprintf(buffer, 2048, fmt, __VA_ARGS__);\
+    }\
+    catch(...)\
+    {\
+        LOG_ERROR_A(fmt);\
+    }
 #endif // appbase_h__

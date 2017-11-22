@@ -65,7 +65,8 @@
     <OutDir>..\bin\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="GameNetAgent.cpp" />
+    <ClCompile Include="services\GameContentService.cpp" />
+    <ClCompile Include="services\GameNetAgent.cpp" />
     <ClCompile Include="RoleSystems\MailSystem.cpp" />
     <ClCompile Include="RoleSystems\ChatSystem.cpp" />
     <ClCompile Include="GameApp.cpp" />
@@ -84,6 +85,7 @@
     <ClCompile Include="GameSystems\MessageController.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="services\GameContentService.h" />
     <ClInclude Include="RoleSystems\MailSystem.h" />
     <ClInclude Include="RoleSystems\ChatSystem.h" />
     <ClInclude Include="Config\ItemTable.h" />
@@ -92,7 +94,7 @@
     <ClInclude Include="GameSystems\ControllerService.h" />
     <ClInclude Include="RoleSystems\RewardSystem.h" />
     <ClInclude Include="GameSystems\MessageController.h" />
-    <ClInclude Include="GameNetAgent.h" />
+    <ClInclude Include="services\GameNetAgent.h" />
     <ClInclude Include="Config\TimeTable.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="TableDefine\GameRoleDefine.h" />

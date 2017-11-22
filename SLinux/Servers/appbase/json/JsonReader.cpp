@@ -9,34 +9,42 @@ namespace Serializer {
 
 
     void JsonReader::read(Value* var, int& value) {
-        value = var->GetInt();
+        if (var->IsInt())
+            value = var->GetInt();
     }
 
     void JsonReader::read(Value* var, bool& value) {
-        value = var->GetBool();
+        if (var->IsBool())
+            value = var->GetBool();
     }
 
     void JsonReader::read(Value* var, char& value) {
-        value = (char) var->GetInt();
+        if (var->IsInt())
+            value = (char) var->GetInt();
     }
 
     void JsonReader::read(Value* var, unsigned int& value) {
-        value = var->GetUint();
+        if (var->IsUint())
+            value = var->GetUint();
     }
 
     void JsonReader::read(Value* var, int64_t& value) {
-        value = var->GetInt64();
+        if (var->IsInt64())
+            value = var->GetInt64();
     }
 
     void JsonReader::read(Value* var, uint64_t& value) {
-        value = var->GetUint64();
+        if (var->IsUint64())
+            value = var->GetUint64();
     }
 
     void JsonReader::read(Value* var, double& value) {
-        value = var->GetDouble();
+        if (var->IsDouble())
+            value = var->GetDouble();
     }
 
     void JsonReader::read(Value* var, string& value) {
-        value = var->GetString();
+        if(var->IsString())
+            value = var->GetString();
     }
 }

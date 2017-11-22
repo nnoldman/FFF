@@ -29,7 +29,6 @@ class COREAPI App : public Poco::Util::Application {
     virtual void initialize(Application& app) override;
     virtual void uninitialize() override;
     virtual void reinitialize(Application& app) override;
-    virtual bool loadGameConfig();
     virtual void mainLoop();
   private:
     virtual bool initializeCommandLine();

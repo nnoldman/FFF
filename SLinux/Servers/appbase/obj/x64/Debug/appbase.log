@@ -1,7 +1,7 @@
-﻿生成启动时间为 2017/11/19 20:59:44。
+﻿生成启动时间为 2017/11/22 17:33:34。
      1>项目“D:\git\FFF\SLinux\Servers\appbase\appbase.vcxproj”在节点 2 上(Build 个目标)。
      1>InitializeBuildStatus:
-         正在对“D:\git\FFF\SLinux\Servers\appbase\obj\x64\Debug\appbase.tlog\unsuccessfulbuild”执行 Touch 任务。
+         正在创建“D:\git\FFF\SLinux\Servers\appbase\obj\x64\Debug\appbase.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        CreateRecipeFile:
        正在跳过目标“CreateRecipeFile”，因为所有输出文件相对于输入文件而言都是最新的。
        _ValidateValidArchitecture:
@@ -11,329 +11,104 @@
          Validating sources
        _CopySources:
          Copying sources remotely to '43.248.102.164'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\App.cpp' to '/root/projects/appbase/App.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\LoggerService.cpp' to '/root/projects/appbase/services/LoggerService.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\OptionService.cpp' to '/root/projects/appbase/services/OptionService.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\DumpService.cpp' to '/root/projects/appbase/services/DumpService.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBOption.cpp' to '/root/projects/appbase/db/DBOption.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\SerializerInterface.cpp' to '/root/projects/appbase/SerializerInterface.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\json\JsonReader.cpp' to '/root/projects/appbase/json/JsonReader.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\json\JsonWriter.cpp' to '/root/projects/appbase/json/JsonWriter.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\net\Bundle.cpp' to '/root/projects/appbase/net/Bundle.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\net\Connection.cpp' to '/root/projects/appbase/net/Connection.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\IService.cpp' to '/root/projects/appbase/services/IService.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\Core.cpp' to '/root/projects/appbase/Core.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\DBService.cpp' to '/root/projects/appbase/services/DBService.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\config\DataLoader.cpp' to '/root/projects/appbase/config/DataLoader.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBConfig.cpp' to '/root/projects/appbase/db/DBConfig.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBDefine.cpp' to '/root/projects/appbase/db/DBDefine.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBExecuter.cpp' to '/root/projects/appbase/db/DBExecuter.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\GameEntity.cpp' to '/root/projects/appbase/GameEntity.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBStream.cpp' to '/root/projects/appbase/db/DBStream.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBTable.cpp' to '/root/projects/appbase/db/DBTable.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBTableDefine.cpp' to '/root/projects/appbase/db/DBTableDefine.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\net\NetOption.cpp' to '/root/projects/appbase/net/NetOption.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\security\Encrypt.cpp' to '/root/projects/appbase/security/Encrypt.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\IObject.cpp' to '/root/projects/appbase/IObject.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\MySqlExecuter.cpp' to '/root/projects/appbase/db/MySqlExecuter.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\NetService.cpp' to '/root/projects/appbase/services/NetService.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\net\ProtocoBuffer.cpp' to '/root/projects/appbase/net/ProtocoBuffer.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\QueryNode.cpp' to '/root/projects/appbase/db/QueryNode.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\SQLHelper.cpp' to '/root/projects/appbase/db/SQLHelper.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\appbase.cpp' to '/root/projects/appbase/appbase.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\WorldService.cpp' to '/root/projects/appbase/services/WorldService.cpp'
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\App.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\LoggerService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\OptionService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\DumpService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBOption.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\SerializerInterface.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\json\JsonReader.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\json\JsonWriter.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\net\Bundle.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\net\Connection.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\IService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\Core.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\DBService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\config\DataLoader.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBConfig.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBDefine.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBExecuter.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\GameEntity.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBStream.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBTable.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBTableDefine.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\net\NetOption.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\security\Encrypt.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\IObject.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\MySqlExecuter.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\NetService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\net\ProtocoBuffer.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\QueryNode.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\SQLHelper.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\appbase.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\WorldService.cpp', as it is up to date.
          Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\TimeService.cpp' to '/root/projects/appbase/services/TimeService.cpp'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\App.h' to '/root/projects/appbase/App.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\DBService.h' to '/root/projects/appbase/services/DBService.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\LoggerService.h' to '/root/projects/appbase/services/LoggerService.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\OptionService.h' to '/root/projects/appbase/services/OptionService.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\DumpService.h' to '/root/projects/appbase/services/DumpService.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBOption.h' to '/root/projects/appbase/db/DBOption.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\SerializerInterface.h' to '/root/projects/appbase/SerializerInterface.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\json\JsonReader.h' to '/root/projects/appbase/json/JsonReader.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\json\JsonWriter.h' to '/root/projects/appbase/json/JsonWriter.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\net\Bundle.h' to '/root/projects/appbase/net/Bundle.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\net\Connection.h' to '/root/projects/appbase/net/Connection.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\IService.h' to '/root/projects/appbase/services/IService.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\Core.h' to '/root/projects/appbase/Core.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\config\DataLoader.h' to '/root/projects/appbase/config/DataLoader.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBConfig.h' to '/root/projects/appbase/db/DBConfig.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBDefine.h' to '/root/projects/appbase/db/DBDefine.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBExecuter.h' to '/root/projects/appbase/db/DBExecuter.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\GameEntity.h' to '/root/projects/appbase/GameEntity.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBStream.h' to '/root/projects/appbase/db/DBStream.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBTable.h' to '/root/projects/appbase/db/DBTable.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\DBTableDefine.h' to '/root/projects/appbase/db/DBTableDefine.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\net\NetOption.h' to '/root/projects/appbase/net/NetOption.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\security\Encrypt.h' to '/root/projects/appbase/security/Encrypt.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\IObject.h' to '/root/projects/appbase/IObject.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\MySqlExecuter.h' to '/root/projects/appbase/db/MySqlExecuter.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\NetService.h' to '/root/projects/appbase/services/NetService.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\net\ProtocoBuffer.h' to '/root/projects/appbase/net/ProtocoBuffer.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\QueryNode.h' to '/root/projects/appbase/db/QueryNode.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\db\SQLHelper.h' to '/root/projects/appbase/db/SQLHelper.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\appbase.h' to '/root/projects/appbase/appbase.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\WorldService.h' to '/root/projects/appbase/services/WorldService.h'
-         Copying file 'D:\git\FFF\SLinux\Servers\appbase\services\TimeService.h' to '/root/projects/appbase/services/TimeService.h'
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\App.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\DBService.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\LoggerService.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\OptionService.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\DumpService.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBOption.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\SerializerInterface.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\json\JsonReader.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\json\JsonWriter.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\net\Bundle.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\net\Connection.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\IService.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\Core.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\config\DataLoader.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBConfig.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBDefine.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBExecuter.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\GameEntity.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBStream.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBTable.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBTableDefine.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\net\NetOption.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\security\Encrypt.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\IObject.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\MySqlExecuter.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\NetService.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\net\ProtocoBuffer.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\QueryNode.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\SQLHelper.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\appbase.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\WorldService.h', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\TimeService.h', as it is up to date.
        ClCompile:
          Starting remote build
          Compiling sources:
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/App.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/App.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         App.cpp
-         Done compiling '/root/projects/appbase/App.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/services/LoggerService.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/LoggerService.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         LoggerService.cpp
-         Done compiling '/root/projects/appbase/services/LoggerService.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/services/OptionService.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/OptionService.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         OptionService.cpp
-         Done compiling '/root/projects/appbase/services/OptionService.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/services/DumpService.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/DumpService.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         DumpService.cpp
-         /root/projects/appbase/services/DumpService.cpp:31:33: warning: multi-character character constant [-Wmultichar]
-              if (buf[strlen(buf) - 1] == '/n')
-                                          ^
-         /root/projects/appbase/services/DumpService.cpp:32:32: warning: multi-character character constant [-Wmultichar]
-                  buf[strlen(buf) - 1] = '/0';
-                                         ^
-         /root/projects/appbase/services/DumpService.cpp:31:33: warning: multi-character character constant [-Wmultichar]
-              if (buf[strlen(buf) - 1] == '/n')
-                                          ^
-         /root/projects/appbase/services/DumpService.cpp:32:32: warning: multi-character character constant [-Wmultichar]
-                  buf[strlen(buf) - 1] = '/0';
-                                         ^
-         
-         /root/projects/appbase/services/DumpService.cpp: In function ‘void crash_dump(int)’:
-         /root/projects/appbase/services/DumpService.cpp:32:30: warning: overflow in implicit constant conversion [-Woverflow]
-                  buf[strlen(buf) - 1] = '/0';
-                                       ^
-         /root/projects/appbase/services/DumpService.cpp: In function ‘void OnCrashHandler(int)’:
-         /root/projects/appbase/services/DumpService.cpp:72:56: warning: conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
-                  strings = (char**)backtrace_symbols(array, size);
-                                                                 ^
-         /root/projects/appbase/services/DumpService.cpp: In function ‘void crash_dump(int)’:
-         /root/projects/appbase/services/DumpService.cpp:32:30: warning: overflow in implicit constant conversion [-Woverflow]
-                  buf[strlen(buf) - 1] = '/0';
-                                       ^
-         /root/projects/appbase/services/DumpService.cpp: In function ‘void OnCrashHandler(int)’:
-         /root/projects/appbase/services/DumpService.cpp:72:56: warning: conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
-                  strings = (char**)backtrace_symbols(array, size);
-                                                                 ^
-         /root/projects/appbase/services/DumpService.cpp:55:13: warning: unused variable ‘nLen1’ [-Wunused-variable]
-                  int nLen1 = sprintf(szLine
-                      ^
-         /root/projects/appbase/services/DumpService.cpp:69:19: warning: unused variable ‘j’ [-Wunused-variable]
-                  size_t i, j;
-                            ^
-         /root/projects/appbase/services/DumpService.cpp:55:13: warning: unused variable ‘nLen1’ [-Wunused-variable]
-                  int nLen1 = sprintf(szLine
-                      ^
-         /root/projects/appbase/services/DumpService.cpp:69:19: warning: unused variable ‘j’ [-Wunused-variable]
-                  size_t i, j;
-                            ^
-         
-     1>D:\git\FFF\SLinux\Servers\appbase\services\DumpService.cpp(31,33): warning : multi-character character constant [-Wmultichar]
-     1>D:\git\FFF\SLinux\Servers\appbase\services\DumpService.cpp(32,32): warning : multi-character character constant [-Wmultichar]
-     1>D:\git\FFF\SLinux\Servers\appbase\services\DumpService.cpp(32,30): warning : overflow in implicit constant conversion [-Woverflow]
-     1>D:\git\FFF\SLinux\Servers\appbase\services\DumpService.cpp(72,56): warning : conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
-     1>D:\git\FFF\SLinux\Servers\appbase\services\DumpService.cpp(55,13): warning : unused variable ‘nLen1’ [-Wunused-variable]
-     1>D:\git\FFF\SLinux\Servers\appbase\services\DumpService.cpp(69,19): warning : unused variable ‘j’ [-Wunused-variable]
-         Done compiling '/root/projects/appbase/services/DumpService.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/db/DBOption.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/DBOption.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         DBOption.cpp
-         Done compiling '/root/projects/appbase/db/DBOption.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/SerializerInterface.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/SerializerInterface.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         SerializerInterface.cpp
-         Done compiling '/root/projects/appbase/SerializerInterface.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/json/JsonReader.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/JsonReader.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         JsonReader.cpp
-         Done compiling '/root/projects/appbase/json/JsonReader.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/json/JsonWriter.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/JsonWriter.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         JsonWriter.cpp
-         Done compiling '/root/projects/appbase/json/JsonWriter.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/net/Bundle.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/Bundle.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         Bundle.cpp
-         /root/projects/appbase/net/Bundle.cpp: In member function ‘void BundleSender::sendProtoBuffer(u32, google::protobuf::MessageLite*, Connection*)’:
-         /root/projects/appbase/net/Bundle.cpp:58:99: warning: conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
-                      int ret = connection_->getSocket().sendBytes(mBuffer.getBuffer(), mBuffer.getPosition());
-                                                                                                            ^
-         /root/projects/appbase/net/Bundle.cpp:58:17: warning: unused variable ‘ret’ [-Wunused-variable]
-                      int ret = connection_->getSocket().sendBytes(mBuffer.getBuffer(), mBuffer.getPosition());
-                          ^
-         /root/projects/appbase/net/Bundle.cpp: In member function ‘void BundleSender::sendProtoBuffer(u32, google::protobuf::MessageLite*, Connection*)’:
-         /root/projects/appbase/net/Bundle.cpp:58:99: warning: conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
-                      int ret = connection_->getSocket().sendBytes(mBuffer.getBuffer(), mBuffer.getPosition());
-                                                                                                            ^
-         /root/projects/appbase/net/Bundle.cpp:58:17: warning: unused variable ‘ret’ [-Wunused-variable]
-                      int ret = connection_->getSocket().sendBytes(mBuffer.getBuffer(), mBuffer.getPosition());
-                          ^
-         
-     1>D:\git\FFF\SLinux\Servers\appbase\net\Bundle.cpp(58,99): warning : conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
-     1>D:\git\FFF\SLinux\Servers\appbase\net\Bundle.cpp(58,17): warning : unused variable ‘ret’ [-Wunused-variable]
-         Done compiling '/root/projects/appbase/net/Bundle.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/net/Connection.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/Connection.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         Connection.cpp
-         /root/projects/appbase/net/Connection.cpp: In member function ‘virtual void Connection::run()’:
-         /root/projects/appbase/net/Connection.cpp:15:83: warning: conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
-                          auto length = ss.receiveBytes(buffer_.getBuffer(), buffer_.length());
-                                                                                            ^
-         /root/projects/appbase/net/Connection.cpp:17:52: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-                              while (buffer_.getPosition() < length) {
-                                                             ^
-         /root/projects/appbase/net/Connection.cpp: In member function ‘virtual void Connection::run()’:
-         /root/projects/appbase/net/Connection.cpp:15:83: warning: conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
-                          auto length = ss.receiveBytes(buffer_.getBuffer(), buffer_.length());
-                                                                                            ^
-         /root/projects/appbase/net/Connection.cpp:17:52: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-                              while (buffer_.getPosition() < length) {
-                                                             ^
-         
-     1>D:\git\FFF\SLinux\Servers\appbase\net\Connection.cpp(15,83): warning : conversion to ‘int’ from ‘size_t {aka long unsigned int}’ may alter its value [-Wconversion]
-     1>D:\git\FFF\SLinux\Servers\appbase\net\Connection.cpp(17,52): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
-         Done compiling '/root/projects/appbase/net/Connection.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/services/IService.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/IService.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         IService.cpp
-         Done compiling '/root/projects/appbase/services/IService.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/Core.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/Core.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         Core.cpp
-         Done compiling '/root/projects/appbase/Core.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/services/DBService.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/DBService.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         DBService.cpp
-         /root/projects/appbase/services/DBService.cpp: In member function ‘void DBService::make_alter_columns(const std::vector<std::basic_string<char> >&, const std::vector<std::basic_string<char> >&, std::vector<std::basic_string<char> >&, std::vector<std::tuple<std::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&)’:
-         /root/projects/appbase/services/DBService.cpp:93:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-                  if (index == -1) {
-                                ^
-         /root/projects/appbase/services/DBService.cpp: In member function ‘void DBService::make_alter_columns(const std::vector<std::basic_string<char> >&, const std::vector<std::basic_string<char> >&, std::vector<std::basic_string<char> >&, std::vector<std::tuple<std::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&)’:
-         /root/projects/appbase/services/DBService.cpp:93:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-                  if (index == -1) {
-                                ^
-         /root/projects/appbase/services/DBService.cpp:103:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-                  if (index == -1) {
-                                ^
-         /root/projects/appbase/services/DBService.cpp:103:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-                  if (index == -1) {
-                                ^
-         
-     1>D:\git\FFF\SLinux\Servers\appbase\services\DBService.cpp(93,23): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
-     1>D:\git\FFF\SLinux\Servers\appbase\services\DBService.cpp(103,23): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
-         Done compiling '/root/projects/appbase/services/DBService.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/config/DataLoader.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/DataLoader.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         DataLoader.cpp
-         Done compiling '/root/projects/appbase/config/DataLoader.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/db/DBConfig.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/DBConfig.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         DBConfig.cpp
-         Done compiling '/root/projects/appbase/db/DBConfig.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/db/DBDefine.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/DBDefine.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         DBDefine.cpp
-         Done compiling '/root/projects/appbase/db/DBDefine.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/db/DBExecuter.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/DBExecuter.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         DBExecuter.cpp
-         Done compiling '/root/projects/appbase/db/DBExecuter.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/GameEntity.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/GameEntity.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         GameEntity.cpp
-         Done compiling '/root/projects/appbase/GameEntity.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/db/DBStream.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/DBStream.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         DBStream.cpp
-         Done compiling '/root/projects/appbase/db/DBStream.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/db/DBTable.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/DBTable.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         DBTable.cpp
-         Done compiling '/root/projects/appbase/db/DBTable.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/db/DBTableDefine.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/DBTableDefine.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         DBTableDefine.cpp
-         Done compiling '/root/projects/appbase/db/DBTableDefine.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/net/NetOption.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/NetOption.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         NetOption.cpp
-         Done compiling '/root/projects/appbase/net/NetOption.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/security/Encrypt.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/Encrypt.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         Encrypt.cpp
-         Done compiling '/root/projects/appbase/security/Encrypt.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/IObject.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/IObject.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         IObject.cpp
-         Done compiling '/root/projects/appbase/IObject.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/db/MySqlExecuter.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/MySqlExecuter.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         MySqlExecuter.cpp
-         Done compiling '/root/projects/appbase/db/MySqlExecuter.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/services/NetService.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/NetService.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         NetService.cpp
-         /root/projects/appbase/services/NetService.cpp: In member function ‘bool NetService::initialize(const NetOption&)’:
-         /root/projects/appbase/services/NetService.cpp:25:61: warning: conversion to ‘Poco::UInt16 {aka short unsigned int}’ from ‘u32 {aka unsigned int}’ may alter its value [-Wconversion]
-                                                 , config.port, params);
-                                                                      ^
-         /root/projects/appbase/services/NetService.cpp: In member function ‘virtual void NetService::tick()’:
-         /root/projects/appbase/services/NetService.cpp:33:41: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-              for (int i = 0; i < mDataArray.size(); ++i) {
-                                                  ^
-         /root/projects/appbase/services/NetService.cpp:41:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-              for (int i = 0; i < pktArray.size(); ++i) {
-                                                ^
-         /root/projects/appbase/services/NetService.cpp:43:60: warning: conversion to ‘u16 {aka short unsigned int}’ from ‘u32 {aka unsigned int}’ may alter its value [-Wconversion]
-                  BundleReceiver bundle(pkt->con, pkt->data, pkt->len);
-                                                                     ^
-         /root/projects/appbase/services/NetService.cpp: In member function ‘bool NetService::initialize(const NetOption&)’:
-         /root/projects/appbase/services/NetService.cpp:25:61: warning: conversion to ‘Poco::UInt16 {aka short unsigned int}’ from ‘u32 {aka unsigned int}’ may alter its value [-Wconversion]
-                                                 , config.port, params);
-                                                                      ^
-         /root/projects/appbase/services/NetService.cpp: In member function ‘virtual void NetService::tick()’:
-         /root/projects/appbase/services/NetService.cpp:33:41: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-              for (int i = 0; i < mDataArray.size(); ++i) {
-                                                  ^
-         /root/projects/appbase/services/NetService.cpp:41:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
-              for (int i = 0; i < pktArray.size(); ++i) {
-                                                ^
-         /root/projects/appbase/services/NetService.cpp:43:60: warning: conversion to ‘u16 {aka short unsigned int}’ from ‘u32 {aka unsigned int}’ may alter its value [-Wconversion]
-                  BundleReceiver bundle(pkt->con, pkt->data, pkt->len);
-                                                                     ^
-         
-     1>D:\git\FFF\SLinux\Servers\appbase\services\NetService.cpp(25,61): warning : conversion to ‘Poco::UInt16 {aka short unsigned int}’ from ‘u32 {aka unsigned int}’ may alter its value [-Wconversion]
-     1>D:\git\FFF\SLinux\Servers\appbase\services\NetService.cpp(33,41): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
-     1>D:\git\FFF\SLinux\Servers\appbase\services\NetService.cpp(41,39): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
-     1>D:\git\FFF\SLinux\Servers\appbase\services\NetService.cpp(43,60): warning : conversion to ‘u16 {aka short unsigned int}’ from ‘u32 {aka unsigned int}’ may alter its value [-Wconversion]
-         Done compiling '/root/projects/appbase/services/NetService.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/net/ProtocoBuffer.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/ProtocoBuffer.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         ProtocoBuffer.cpp
-         Done compiling '/root/projects/appbase/net/ProtocoBuffer.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/db/QueryNode.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/QueryNode.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         QueryNode.cpp
-         Done compiling '/root/projects/appbase/db/QueryNode.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/db/SQLHelper.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/SQLHelper.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         SQLHelper.cpp
-         Done compiling '/root/projects/appbase/db/SQLHelper.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/appbase.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/appbase.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         appbase.cpp
-         Done compiling '/root/projects/appbase/appbase.cpp'
-         Invoking g++
-         g++ -c -x c++ /root/projects/appbase/services/WorldService.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/WorldService.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
-         WorldService.cpp
-         Done compiling '/root/projects/appbase/services/WorldService.cpp'
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\App.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\LoggerService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\OptionService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\DumpService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBOption.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\SerializerInterface.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\json\JsonReader.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\json\JsonWriter.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\net\Bundle.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\net\Connection.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\IService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\Core.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\DBService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\config\DataLoader.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBConfig.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBDefine.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBExecuter.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\GameEntity.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBStream.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBTable.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\DBTableDefine.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\net\NetOption.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\security\Encrypt.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\IObject.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\MySqlExecuter.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\NetService.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\net\ProtocoBuffer.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\QueryNode.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\db\SQLHelper.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\appbase.cpp', as it is up to date.
+         Skipping 'D:\git\FFF\SLinux\Servers\appbase\services\WorldService.cpp', as it is up to date.
          Invoking g++
          g++ -c -x c++ /root/projects/appbase/services/TimeService.cpp -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../../Servers -I /root/projects/appbase/../basic -I /root/projects/appbase/../third_lib -I /root/projects/appbase/../default -I /root/projects/appbase/../pkg -I /root/projects/appbase/../third_lib/Mysql -g2 -gdwarf-2 -o "/root/projects/appbase/obj/x64/Debug/TimeService.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -DPOCO_ENABLE_CPP11 -fthreadsafe-statics -fexceptions -frtti -std=c++11
          TimeService.cpp

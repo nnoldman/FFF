@@ -1,4 +1,4 @@
-﻿生成启动时间为 2017/11/19 20:56:29。
+﻿生成启动时间为 2017/11/22 14:30:49。
      1>项目“D:\git\FFF\SLinux\Servers\pkg\pkg.vcxproj”在节点 2 上(Rebuild 个目标)。
      1>_PrepareForClean:
          正在删除文件“D:\git\FFF\SLinux\Servers\pkg\obj\x64\Debug\pkg.tlog\pkg.lastbuildstate”。
@@ -30,6 +30,18 @@
          Invoking g++
          g++ -c -x c++ /root/projects/pkg/Cmd.pb.cc -I /root/projects/pkg/../default -I /root/projects/pkg/../basic -I /root/projects/pkg/../third_lib -I /root/projects/pkg/../appbase -g2 -gdwarf-2 -o "/root/projects/pkg/obj/x64/Debug/Cmd.pb.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
          Cmd.pb.cc
+         In file included from /root/projects/pkg/Cmd.pb.cc:13:0:
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)7u; google::protobuf::uint32 = unsigned int]’:
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:310:1:   required from here
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+              const int per_value_size = tag_size + sizeof(value);
+                                                                ^
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = long unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)6u; google::protobuf::uint32 = unsigned int]’:
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:311:1:   required from here
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)15u; google::protobuf::uint32 = unsigned int]’:
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:312:1:   required from here
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
          In file included from /root/projects/pkg/Cmd.pb.cc:13:0:
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)7u; google::protobuf::uint32 = unsigned int]’:
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:310:1:   required from here
@@ -99,18 +111,6 @@
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:351:51: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
             const int new_bytes = new_entries * sizeof(CType);
                                                             ^
-         In file included from /root/projects/pkg/Cmd.pb.cc:13:0:
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)7u; google::protobuf::uint32 = unsigned int]’:
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:310:1:   required from here
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
-              const int per_value_size = tag_size + sizeof(value);
-                                                                ^
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = long unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)6u; google::protobuf::uint32 = unsigned int]’:
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:311:1:   required from here
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)15u; google::protobuf::uint32 = unsigned int]’:
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:312:1:   required from here
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = long int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)16u; google::protobuf::uint32 = unsigned int]’:
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:313:1:   required from here
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
@@ -207,6 +207,10 @@
          /root/projects/pkg/Command.pb.cc:1488:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
                        ^
+         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::GameRole::ByteSize() const’:
+         /root/projects/pkg/Command.pb.cc:1992:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+            total_size += unknown_fields().size();
+                       ^
          /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RetAccountOperation::ByteSize() const’:
          /root/projects/pkg/Command.pb.cc:987:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
@@ -223,10 +227,6 @@
          /root/projects/pkg/Command.pb.cc:2473:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
                        ^
-         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::GameRole::ByteSize() const’:
-         /root/projects/pkg/Command.pb.cc:1992:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
-            total_size += unknown_fields().size();
-                       ^
          /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RetLoginGameServer::ByteSize() const’:
          /root/projects/pkg/Command.pb.cc:2473:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
@@ -239,6 +239,10 @@
          /root/projects/pkg/Command.pb.cc:3238:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
                        ^
+         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RTMainUser::ByteSize() const’:
+         /root/projects/pkg/Command.pb.cc:3682:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+            total_size += unknown_fields().size();
+                       ^
          /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::ReqCreateRole::ByteSize() const’:
          /root/projects/pkg/Command.pb.cc:2859:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
@@ -255,8 +259,12 @@
          /root/projects/pkg/Command.pb.cc:4149:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
                        ^
-         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RTMainUser::ByteSize() const’:
-         /root/projects/pkg/Command.pb.cc:3682:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::ItemObject::ByteSize() const’:
+         /root/projects/pkg/Command.pb.cc:4595:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+            total_size += unknown_fields().size();
+                       ^
+         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RetObjectAdd::ByteSize() const’:
+         /root/projects/pkg/Command.pb.cc:4955:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
                        ^
          /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RetTimeLine::ByteSize() const’:
@@ -275,12 +283,12 @@
          /root/projects/pkg/Command.pb.cc:5204:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
                        ^
-         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::ItemObject::ByteSize() const’:
-         /root/projects/pkg/Command.pb.cc:4595:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RetObjectDelete::ByteSize() const’:
+         /root/projects/pkg/Command.pb.cc:5458:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
                        ^
-         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RetObjectAdd::ByteSize() const’:
-         /root/projects/pkg/Command.pb.cc:4955:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RetObjectMove::ByteSize() const’:
+         /root/projects/pkg/Command.pb.cc:5790:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
                        ^
          /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RetObjectSync::ByteSize() const’:
@@ -299,12 +307,12 @@
          /root/projects/pkg/Command.pb.cc:6142:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
                        ^
-         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RetObjectDelete::ByteSize() const’:
-         /root/projects/pkg/Command.pb.cc:5458:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RetMessage::ByteSize() const’:
+         /root/projects/pkg/Command.pb.cc:6537:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
                        ^
-         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RetObjectMove::ByteSize() const’:
-         /root/projects/pkg/Command.pb.cc:5790:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
+         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::ReqChat::ByteSize() const’:
+         /root/projects/pkg/Command.pb.cc:7083:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
                        ^
          /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::ReqUseObject::ByteSize() const’:
@@ -319,14 +327,21 @@
          /root/projects/pkg/Command.pb.cc:7083:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
             total_size += unknown_fields().size();
                        ^
-         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::RetMessage::ByteSize() const’:
-         /root/projects/pkg/Command.pb.cc:6537:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
-            total_size += unknown_fields().size();
-                       ^
-         /root/projects/pkg/Command.pb.cc: In member function ‘virtual int Cmd::ReqChat::ByteSize() const’:
-         /root/projects/pkg/Command.pb.cc:7083:14: warning: conversion to ‘int’ from ‘std::basic_string<char>::size_type {aka long unsigned int}’ may alter its value [-Wconversion]
-            total_size += unknown_fields().size();
-                       ^
+         In file included from /root/projects/pkg/Command.pb.cc:13:0:
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)7u; google::protobuf::uint32 = unsigned int]’:
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:310:1:   required from here
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+              const int per_value_size = tag_size + sizeof(value);
+                                                                ^
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = long unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)6u; google::protobuf::uint32 = unsigned int]’:
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:311:1:   required from here
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)15u; google::protobuf::uint32 = unsigned int]’:
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:312:1:   required from here
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = long int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)16u; google::protobuf::uint32 = unsigned int]’:
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:313:1:   required from here
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
          In file included from /root/projects/pkg/Command.pb.cc:13:0:
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)7u; google::protobuf::uint32 = unsigned int]’:
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:310:1:   required from here
@@ -396,21 +411,6 @@
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:351:51: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
             const int new_bytes = new_entries * sizeof(CType);
                                                             ^
-         In file included from /root/projects/pkg/Command.pb.cc:13:0:
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)7u; google::protobuf::uint32 = unsigned int]’:
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:310:1:   required from here
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
-              const int per_value_size = tag_size + sizeof(value);
-                                                                ^
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = long unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)6u; google::protobuf::uint32 = unsigned int]’:
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:311:1:   required from here
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)15u; google::protobuf::uint32 = unsigned int]’:
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:312:1:   required from here
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = long int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)16u; google::protobuf::uint32 = unsigned int]’:
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:313:1:   required from here
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = float; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)2u; google::protobuf::uint32 = unsigned int]’:
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:314:1:   required from here
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
@@ -520,20 +520,6 @@
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = long int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)16u; google::protobuf::uint32 = unsigned int]’:
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:313:1:   required from here
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = float; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)2u; google::protobuf::uint32 = unsigned int]’:
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:314:1:   required from here
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = double; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)1u; google::protobuf::uint32 = unsigned int]’:
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:315:1:   required from here
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadPackedFixedSizePrimitive(google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)7u]’:
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:415:1:   required from here
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:350:48: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
-            const int new_entries = length / sizeof(CType);
-                                                         ^
-         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:351:51: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
-            const int new_bytes = new_entries * sizeof(CType);
-                                                            ^
          In file included from /root/projects/pkg/GameDefine.pb.cc:13:0:
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)7u; google::protobuf::uint32 = unsigned int]’:
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:310:1:   required from here
@@ -597,6 +583,20 @@
                                                             ^
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadPackedFixedSizePrimitive(google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = double; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)1u]’:
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:420:1:   required from here
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:350:48: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+            const int new_entries = length / sizeof(CType);
+                                                         ^
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:351:51: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+            const int new_bytes = new_entries * sizeof(CType);
+                                                            ^
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = float; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)2u; google::protobuf::uint32 = unsigned int]’:
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:314:1:   required from here
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadRepeatedFixedSizePrimitive(int, google::protobuf::uint32, google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = double; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)1u; google::protobuf::uint32 = unsigned int]’:
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:315:1:   required from here
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:275:55: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h: In instantiation of ‘static bool google::protobuf::internal::WireFormatLite::ReadPackedFixedSizePrimitive(google::protobuf::io::CodedInputStream*, google::protobuf::RepeatedField<Element>*) [with CType = unsigned int; google::protobuf::internal::WireFormatLite::FieldType DeclaredType = (google::protobuf::internal::WireFormatLite::FieldType)7u]’:
+         /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:415:1:   required from here
          /root/projects/pkg/../third_lib/google/protobuf/wire_format_lite_inl.h:350:48: warning: conversion to ‘int’ from ‘long unsigned int’ may alter its value [-Wconversion]
             const int new_entries = length / sizeof(CType);
                                                          ^

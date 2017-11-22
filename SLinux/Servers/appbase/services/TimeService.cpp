@@ -5,7 +5,6 @@
 TimeService::TimeService() {
 }
 
-
 TimeService::~TimeService() {
 }
 
@@ -14,7 +13,7 @@ void TimeService::tick() {
 }
 
 bool TimeService::start() {
-    return false;
+    return true;
 }
 
 const char * TimeService::name() {

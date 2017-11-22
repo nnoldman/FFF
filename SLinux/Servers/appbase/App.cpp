@@ -6,6 +6,7 @@
 #include "services/WorldService.h"
 #include "services/OptionService.h"
 #include "services/NetService.h"
+#include "services/TimeService.h"
 
 #ifdef WIN32
     #pragma comment(lib,"User32.lib")
@@ -27,12 +28,20 @@ App::~App() {
     Instance = nullptr;
     std::cout << "~App" << std::endl;
 }
+void App::addInnerServices() {
+    addController<LoggerService>();
+    addController<OptionService>();
+    addController<NetService>();
+    addController<DBService>();
+    addController<WorldService>();
+    addController<TimeService>();
+}
 
 bool App::initialize() {
-    LOG_INFO_A("=====================Start Application=====================");
+    LOG_INFO_A("%s",string("=====================Start Application====================="));
 
     if (!initializeCommandLine()) {
-        LOG_INFO_A("initializeCommandLine Failed !");
+        LOG_INFO_A("InitializeCommandLine Failed !");
         return false;
     }
 
@@ -41,9 +50,9 @@ bool App::initialize() {
 
     for (auto it : this->serivces_) {
         if (it->start()) {
-            LOG_INFO_A("Service Start %s Sucessfully!",it->name());
+            LOG_INFO_A("Service Start %s Successfully!", string(it->name()));
         } else {
-            LOG_INFO_A("Service Start %s Failed!", it->name());
+            LOG_INFO_A("Service Start %s Failed!", string(it->name()));
             return false;
         }
     }
@@ -79,9 +88,6 @@ void App::uninitialize() {
 void App::reinitialize(Application& app) {
     return Poco::Util::Application::reinitialize(app);
 }
-bool App::loadGameConfig() {
-    return true;
-}
 
 bool App::initializeCommandLine() {
     if (commandLine_.arg_count()) {
@@ -101,13 +107,7 @@ void App::mainLoop() {
     }
 }
 
-void App::addInnerServices() {
-    addController<OptionService>();
-    addController<LoggerService>();
-    addController<NetService>();
-    addController<DBService>();
-    addController<WorldService>();
-}
+
 
 bool App::connectCenter() {
     return true;

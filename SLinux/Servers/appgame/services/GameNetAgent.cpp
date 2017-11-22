@@ -1,4 +1,4 @@
-#include "appgame.h"
+#include "../appgame.h"
 #include "GameNetAgent.h"
 #include "Command.pb.h"
 #include "Cmd.pb.h"

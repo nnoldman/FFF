@@ -1,13 +1,13 @@
 #include "appgame.h"
 #include "GameApp.h"
-#include "GameNetAgent.h"
+#include "services/GameNetAgent.h"
+#include "services/GameContentService.h"
+
+#include "GameSystems/ControllerService.h"
+
 #include "TableDefine/GameUserDefine.h"
 #include "TableDefine/GameRoleDefine.h"
-#include "Config/TimeTable.h"
-#include "Config/Language.h"
-#include "GameSystems/ControllerService.h"
 #include "TableDefine/ItemDefine.h"
-#include "Config/ItemTable.h"
 #include "TableDefine/MailDefine.h"
 
 GameApp::GameApp(int argc, char* argv[])
@@ -30,18 +30,12 @@ const vector<const DBTableDefine*>& GameApp::getTableDefines() const {
     return ret;
 }
 
-bool GameApp::loadGameConfig() {
-    TimeTable::getInstance()->reload();
-    ItemTable::getInstance()->reload();
-    Language::getInstance()->reload();
-    return true;
-}
-
 void GameApp::mainLoop() {
     App::mainLoop();
 }
 
 void GameApp::addExternServices() {
     addController<GameNetAgent>();
+    addController<GameContentService>();
     addController<ControllerService>();
 }

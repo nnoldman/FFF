@@ -1,8 +1,7 @@
 #ifndef TimeService_h__
 #define TimeService_h__
-
 #include "IService.h"
-class TimeService :IService<TimeService> {
+class TimeService :public IService<TimeService> {
   public:
     TimeService();
     ~TimeService();

@@ -1,5 +1,5 @@
-﻿生成启动时间为 2017/11/19 20:47:03。
-     1>项目“D:\git\FFF\SLinux\Servers\third_lib\third_lib.vcxproj”在节点 3 上(Rebuild 个目标)。
+﻿生成启动时间为 2017/11/21 19:19:42。
+     1>项目“D:\git\FFF\SLinux\Servers\third_lib\third_lib.vcxproj”在节点 2 上(Build 个目标)。
      1>_ValidateSources:
          Validating sources
        _CopySources:
@@ -696,8 +696,6 @@
          Copying file 'D:\git\FFF\SLinux\Servers\third_lib\Rapidxml\rapidxml_iterators.hpp' to '/root/projects/third_lib/Rapidxml/rapidxml_iterators.hpp'
          Copying file 'D:\git\FFF\SLinux\Servers\third_lib\Rapidxml\rapidxml_print.hpp' to '/root/projects/third_lib/Rapidxml/rapidxml_print.hpp'
          Copying file 'D:\git\FFF\SLinux\Servers\third_lib\Rapidxml\rapidxml_utils.hpp' to '/root/projects/third_lib/Rapidxml/rapidxml_utils.hpp'
-     1>D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Application Type\Linux\1.0\Linux.Makefile.Targets(162,5): warning : Clean command not configured. Skipping...
-     1>D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Application Type\Linux\1.0\Linux.Makefile.Targets(164,5): warning : Remote clean command not configured. Skipping...
-     1>D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Application Type\Linux\1.0\Linux.Makefile.Targets(145,5): warning : Rebuild command not configured. Skipping...
-     1>D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Application Type\Linux\1.0\Linux.Makefile.Targets(147,5): warning : Remote rebuild command not configured. Skipping...
-     1>已完成生成项目“D:\git\FFF\SLinux\Servers\third_lib\third_lib.vcxproj”(Rebuild 个目标)的操作。
+     1>D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Application Type\Linux\1.0\Linux.Makefile.Targets(128,5): warning : Build command not configured. Skipping...
+     1>D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Application Type\Linux\1.0\Linux.Makefile.Targets(130,5): warning : Remote build command not configured. Skipping...
+     1>已完成生成项目“D:\git\FFF\SLinux\Servers\third_lib\third_lib.vcxproj”(Build 个目标)的操作。

@@ -24,7 +24,11 @@ class OptionService:public IService<OptionService> {
 
 template<typename T>
 bool OptionService::getOption(const char* type, T& ret) {
-    Serializer::JsonReader::read(&root_[type], ret);
+    auto& categroy = root_[type];
+    if (categroy.IsObject()) {
+        Serializer::JsonReader::read(&root_[type], ret);
+        return true;
+    }
     return true;
 }
 
@@ -35,7 +39,14 @@ bool OptionService::getOption(const char* type, int index, T& ret) {
 
 template<typename T>
 bool OptionService::getOption(const char* type, const char* name, T& ret) {
-    Serializer::JsonReader::read(&root_[type][name], ret);
+    auto& categroy = root_[type];
+    if (categroy.IsObject()) {
+        auto& option = categroy[name];
+        if (option.IsObject()) {
+            Serializer::JsonReader::read(&option, ret);
+            return true;
+        }
+    }
     return true;
 }
 #endif // OptionService_h__

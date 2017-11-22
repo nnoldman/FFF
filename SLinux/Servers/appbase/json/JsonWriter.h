@@ -3,6 +3,7 @@
 
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
+#include "rapidjson/error/en.h"
 #include <vector>
 #include <list>
 #include <string>

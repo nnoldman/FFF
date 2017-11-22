@@ -3,6 +3,7 @@
 #include "rapidjson/rapidjson.h"
 #include "rapidjson/reader.h"
 #include "rapidjson/document.h"
+#include "rapidjson/error/en.h"
 #include <sstream>
 #include <string>
 #include <vector>
@@ -51,16 +52,19 @@ namespace Serializer {
 
     template<typename T, int N>
     void Serializer::JsonReader::read(Value* var, T(&value)[N]) {
-        auto& arr = var->GetArray();
-        for (auto i = 0U; i < N && i < arr.Size(); ++i) {
-            auto& it = arr[i];
-            read(&it, value[i]);
+        if (var->IsArray()) {
+            auto& arr = var->GetArray();
+            for (auto i = 0U; i < N && i < arr.Size(); ++i) {
+                auto& it = arr[i];
+                read(&it, value[i]);
+            }
         }
     }
 
     template<typename T>
     void Serializer::JsonReader::read(Value* var, T& value) {
-        value.fromText(var);
+        if(var->IsObject())
+            value.fromText(var);
     }
 
     template<typename T>
