@@ -149,7 +149,9 @@ namespace Basic {
 
     int Timers::calcSlotIndex(int64_t microseconds) {
         int64_t ticks = microseconds / kPrecision;
-        assert(ticks > 0);
+        if (ticks <= 0) {
+            assert(false);
+        }
         int64_t offset = 0;
         int lv = 0;
         for (; lv < kLevelCount; ++lv) {

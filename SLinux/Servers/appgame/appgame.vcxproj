@@ -123,7 +123,7 @@
       <LibraryDependencies>appbase;PocoXMLd;PocoJSONd;PocoUtild;PocoNetd;PocoFoundationd;mysqlclient;pkg;protobuf-lite;basic;%(LibraryDependencies)</LibraryDependencies>
     </Link>
     <ClCompile>
-      <AdditionalOptions>-Wno-conversion %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-Wno-conversion -g %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

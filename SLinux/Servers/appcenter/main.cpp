@@ -7,13 +7,12 @@ BOOL WINAPI onControl(DWORD CtrlType) {
     if (CTRL_CLOSE_EVENT == CtrlType) {
         App::Instance->quit();
         while (App::Instance)
-            Platform::sleep(5);
+            Environment::sleep(5);
     }
     return TRUE;
 }
 #pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
 #endif
-
 
 int main(int narg, char* argv[]) {
     string exception;

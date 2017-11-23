@@ -19,7 +19,7 @@ bool LoggerService::start() {
     Poco::Path path(file.path().c_str());
     Poco::File dir(path.parent());
     if (!dir.exists()) {
-        Basic::Platform::createDirectory(dir.path().c_str());
+        Basic::Environment::createDirectory(dir.path().c_str());
     }
     //指定日志路径及文件名
     fileChannel->setProperty("path", file.path().c_str());

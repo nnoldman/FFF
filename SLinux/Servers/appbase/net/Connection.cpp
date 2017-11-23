@@ -31,7 +31,7 @@ void Connection::run() {
                     closed_ = true;
                 }
             } else {
-                Platform::sleep(5);
+                Environment::sleep(5);
             }
         }
     } catch (Poco::Net::NetException& exc) {

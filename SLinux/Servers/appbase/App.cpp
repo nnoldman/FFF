@@ -39,6 +39,7 @@ void App::addInnerServices() {
 
 bool App::initialize() {
     LOG_INFO_A("%s",string("=====================Start Application====================="));
+    Environment::start();
 
     if (!initializeCommandLine()) {
         LOG_INFO_A("InitializeCommandLine Failed !");
@@ -69,7 +70,7 @@ int App::main(const std::vector<std::string>& args) {
 #endif
     {
         mainLoop();
-        Platform::sleep(5);
+        Environment::sleep(5);
 #ifdef WIN32
         bIsCtrl = (::GetAsyncKeyState(VK_RETURN) & 0x8000);
 #endif
@@ -116,7 +117,7 @@ bool App::connectCenter() {
 void App::setWorkDirectory(char* appName) {
     Poco::Path dir(appName);
     printf("Current working directory : %s\n", Poco::Path::current().c_str());
-    Basic::Platform::setWorkDirectory(dir.makeParent().toString().c_str());
+    Basic::Environment::setCurrentWorkDirectory(dir.makeParent().toString().c_str());
     printf("Current working directory : %s\n", Poco::Path::current().c_str());
 }
 

@@ -93,6 +93,7 @@
     <ClCompile>
       <CppLanguageStandard>c++11</CppLanguageStandard>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <AdditionalOptions>-g %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

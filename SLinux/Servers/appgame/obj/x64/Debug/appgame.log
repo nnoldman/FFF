@@ -1,4 +1,4 @@
-﻿生成启动时间为 2017/11/22 17:36:31。
+﻿生成启动时间为 2017/11/23 20:54:42。
      1>项目“D:\git\FFF\SLinux\Servers\appgame\appgame.vcxproj”在节点 2 上(Build 个目标)。
      1>InitializeBuildStatus:
          正在创建“D:\git\FFF\SLinux\Servers\appgame\obj\x64\Debug\appgame.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
@@ -72,7 +72,7 @@
          Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\RewardSystem.cpp', as it is up to date.
          Skipping 'D:\git\FFF\SLinux\Servers\appgame\RoleSystems\LevelSystem.cpp', as it is up to date.
          Invoking g++
-         g++ -c -x c++ /root/projects/appgame/main.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/main.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion 
+         g++ -c -x c++ /root/projects/appgame/main.cpp -I /root/projects/appgame/../appbase -I /root/projects/appgame/../basic -I /root/projects/appgame/../pkg -I /root/projects/appgame/../third_lib -I /root/projects/appgame/../default -I /root/projects/appgame/../third_lib/Mysql -I /root/projects/appgame -g2 -gdwarf-2 -o "/root/projects/appgame/obj/x64/Debug/main.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11 -Wno-conversion -g 
          main.cpp
          Done compiling '/root/projects/appgame/main.cpp'
          Skipping 'D:\git\FFF\SLinux\Servers\appgame\Role.cpp', as it is up to date.
