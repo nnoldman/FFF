@@ -85,10 +85,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="handy\codec.h" />
+    <ClInclude Include="handy\conf.h" />
+    <ClInclude Include="handy\conn.h" />
+    <ClInclude Include="handy\daemon.h" />
+    <ClInclude Include="handy\event_base.h" />
+    <ClInclude Include="handy\file.h" />
+    <ClInclude Include="handy\handy-imp.h" />
+    <ClInclude Include="handy\handy.h" />
+    <ClInclude Include="handy\http.h" />
+    <ClInclude Include="handy\logging.h" />
+    <ClInclude Include="handy\net.h" />
+    <ClInclude Include="handy\poller.h" />
+    <ClInclude Include="handy\port_posix.h" />
+    <ClInclude Include="handy\slice.h" />
+    <ClInclude Include="handy\stat-svr.h" />
+    <ClInclude Include="handy\status.h" />
+    <ClInclude Include="handy\threads.h" />
+    <ClInclude Include="handy\udp.h" />
+    <ClInclude Include="handy\util.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="handy\codec.cc" />
+    <ClCompile Include="handy\conf.cc" />
+    <ClCompile Include="handy\conn.cc" />
+    <ClCompile Include="handy\daemon.cc" />
+    <ClCompile Include="handy\event_base.cc" />
+    <ClCompile Include="handy\file.cc" />
+    <ClCompile Include="handy\http.cc" />
+    <ClCompile Include="handy\logging.cc" />
+    <ClCompile Include="handy\net.cc" />
+    <ClCompile Include="handy\poller.cc" />
+    <ClCompile Include="handy\port_posix.cc" />
+    <ClCompile Include="handy\stat-svr.cc" />
+    <ClCompile Include="handy\threads.cc" />
+    <ClCompile Include="handy\udp.cc" />
+    <ClCompile Include="handy\util.cc" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

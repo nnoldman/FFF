@@ -153,6 +153,7 @@
     <ClInclude Include="Random.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Test_templete.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IDGenerator.cpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="Test_Patch.cpp" />
     <ClCompile Include="Test_PureCall.cpp" />
     <ClCompile Include="Test_stringstream.cpp" />
+    <ClCompile Include="Test_templete.cpp" />
     <ClCompile Include="test_wake_ptr.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

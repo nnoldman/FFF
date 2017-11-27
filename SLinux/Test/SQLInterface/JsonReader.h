@@ -7,11 +7,9 @@
 
 using namespace rapidjson;
 
-namespace Serializer
-{
-    class JsonReader
-    {
-    public:
+namespace Serializer {
+    class JsonReader {
+      public:
         JsonReader();
         ~JsonReader();
         template<typename T>
@@ -39,12 +37,10 @@ namespace Serializer
     };
 
     template<typename T>
-    void Serializer::JsonReader::read(Value* var, std::vector<T>& value)
-    {
+    void Serializer::JsonReader::read(Value* var, std::vector<T>& value) {
         value.clear();
         auto& arr = var->GetArray();
-        for (auto i = 0U; i < arr.Size(); ++i)
-        {
+        for (auto i = 0U; i < arr.Size(); ++i) {
             auto& it = arr[i];
             T t;
             read(&it, t);
@@ -53,25 +49,21 @@ namespace Serializer
     }
 
     template<typename T, int N>
-    void Serializer::JsonReader::read(Value* var, T(&value)[N])
-    {
+    void Serializer::JsonReader::read(Value* var, T(&value)[N]) {
         auto& arr = var->GetArray();
-        for (auto i = 0U; i < N && i < arr.Size(); ++i)
-        {
+        for (auto i = 0U; i < N && i < arr.Size(); ++i) {
             auto& it = arr[i];
             read(&it, value[i]);
         }
     }
 
     template<typename T>
-    void Serializer::JsonReader::read(Value* var, T& value)
-    {
+    void Serializer::JsonReader::read(Value* var, T& value) {
         value.fromText(var);
     }
 
     template<typename T>
-    bool Serializer::JsonReader::fromText(string text, T& ret)
-    {
+    bool Serializer::JsonReader::fromText(string text, T& ret) {
         Document doc;
         doc.Parse<0>(text.c_str());
         read(&doc, ret);
@@ -79,8 +71,7 @@ namespace Serializer
     }
 
     template<typename T>
-    inline void JsonReader::read(Value * serializer, const char * key, T & value)
-    {
+    inline void JsonReader::read(Value * serializer, const char * key, T & value) {
         JsonReader::read(&((*serializer)[key]), value);
     }
 

@@ -1,1 +1,39 @@
-﻿LINK : fatal error LNK1104: 无法打开文件“PocoFoundationd.lib”
+﻿生成启动时间为 2017/11/27 11:40:46。
+     1>项目“D:\git\FFF\SLinux\Test\Test\Test.vcxproj”在节点 2 上(Build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“Debug\Test.tlog\unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         所有输出均为最新。
+         D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /I"D:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\UnitTest\include" /I../../servers/third_lib /I"d:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /diagnostics:classic /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\Test.pch" /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TP /analyze- /FC /errorReport:prompt handy\codec.cc handy\conf.cc handy\conn.cc handy\daemon.cc handy\event_base.cc handy\file.cc handy\http.cc handy\logging.cc handy\net.cc handy\poller.cc handy\port_posix.cc "handy\stat-svr.cc" handy\threads.cc handy\udp.cc handy\util.cc
+         util.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\util.cc”: No such file or directory
+         udp.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\udp.cc”: No such file or directory
+         threads.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\threads.cc”: No such file or directory
+         stat-svr.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\stat-svr.cc”: No such file or directory
+         port_posix.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\port_posix.cc”: No such file or directory
+         poller.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\poller.cc”: No such file or directory
+         net.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\net.cc”: No such file or directory
+         logging.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\logging.cc”: No such file or directory
+         http.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\http.cc”: No such file or directory
+         file.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\file.cc”: No such file or directory
+         event_base.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\event_base.cc”: No such file or directory
+         daemon.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\daemon.cc”: No such file or directory
+         conn.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\conn.cc”: No such file or directory
+         conf.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\conf.cc”: No such file or directory
+         codec.cc
+     1>c1xx : fatal error C1083: 无法打开源文件: “handy\codec.cc”: No such file or directory
+         正在生成代码...
+     1>已完成生成项目“D:\git\FFF\SLinux\Test\Test\Test.vcxproj”(Build 个目标)的操作 - 失败。

@@ -5,11 +5,9 @@
 #include "rapidjson/stringbuffer.h"
 #include <vector>
 #include <list>
-namespace Serializer
-{
-    class JsonWriter
-    {
-    public:
+namespace Serializer {
+    class JsonWriter {
+      public:
         JsonWriter();
         ~JsonWriter();
 
@@ -39,19 +37,18 @@ namespace Serializer
 
         JsonWriter& key(const char* var);
         const char* text();
-    private:
+      private:
         bool startObject();
         bool endObject();
         bool startArray();
         bool endArray();
-    private:
+      private:
         rapidjson::StringBuffer buffer_;
         rapidjson::Writer<rapidjson::StringBuffer> writer_;
     };
 
     template<typename T>
-    void Serializer::JsonWriter::write(const std::list<T>& arr)
-    {
+    void Serializer::JsonWriter::write(const std::list<T>& arr) {
         this->startArray();
         for (auto& it : arr)
             this->write(it);
@@ -59,8 +56,7 @@ namespace Serializer
     }
 
     template<typename T>
-    void Serializer::JsonWriter::write(const std::vector<T>& arr)
-    {
+    void Serializer::JsonWriter::write(const std::vector<T>& arr) {
         this->startArray();
         for (auto& it : arr)
             this->write(it);
@@ -68,23 +64,19 @@ namespace Serializer
     }
 
     template<typename T, int N>
-    void Serializer::JsonWriter::write(const T(&arr)[N])
-    {
+    void Serializer::JsonWriter::write(const T(&arr)[N]) {
         this->startArray();
         for (int i = 0; i < N; ++i)
             this->write(arr[i]);
         this->endArray();
     }
     template<typename T>
-    inline void JsonWriter::write(JsonWriter & serializer, const char * key, const T & value)
-    {
+    inline void JsonWriter::write(JsonWriter & serializer, const char * key, const T & value) {
         serializer.key(key).write(value);
     }
     template<typename T>
-    void Serializer::JsonWriter::write(const T& obj)
-    {
-        if (this->startObject())
-        {
+    void Serializer::JsonWriter::write(const T& obj) {
+        if (this->startObject()) {
             obj.toText(*this);
             this->endObject();
         }

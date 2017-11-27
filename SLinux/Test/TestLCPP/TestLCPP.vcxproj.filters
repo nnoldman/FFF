@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Environment.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Test_Env.cpp" />
+    <ClCompile Include="handy\codec.cc" />
+    <ClCompile Include="handy\conf.cc" />
+    <ClCompile Include="handy\conn.cc" />
+    <ClCompile Include="handy\daemon.cc" />
+    <ClCompile Include="handy\event_base.cc" />
+    <ClCompile Include="handy\file.cc" />
+    <ClCompile Include="handy\http.cc" />
+    <ClCompile Include="handy\logging.cc" />
+    <ClCompile Include="handy\net.cc" />
+    <ClCompile Include="handy\poller.cc" />
+    <ClCompile Include="handy\port_posix.cc" />
+    <ClCompile Include="handy\stat-svr.cc" />
+    <ClCompile Include="handy\threads.cc" />
+    <ClCompile Include="handy\udp.cc" />
+    <ClCompile Include="handy\util.cc" />
+    <ClCompile Include="ServerExecuter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Environment.h" />
+    <ClInclude Include="Test_Env.h" />
+    <ClInclude Include="IServerHandler.h">
+      <Filter>TcpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\codec.h" />
+    <ClInclude Include="handy\conf.h" />
+    <ClInclude Include="handy\conn.h" />
+    <ClInclude Include="handy\daemon.h" />
+    <ClInclude Include="handy\event_base.h" />
+    <ClInclude Include="handy\file.h" />
+    <ClInclude Include="handy\handy.h" />
+    <ClInclude Include="handy\handy-imp.h" />
+    <ClInclude Include="handy\http.h" />
+    <ClInclude Include="handy\logging.h" />
+    <ClInclude Include="handy\net.h" />
+    <ClInclude Include="handy\poller.h" />
+    <ClInclude Include="handy\port_posix.h" />
+    <ClInclude Include="handy\slice.h" />
+    <ClInclude Include="handy\stat-svr.h" />
+    <ClInclude Include="handy\status.h" />
+    <ClInclude Include="handy\threads.h" />
+    <ClInclude Include="handy\udp.h" />
+    <ClInclude Include="handy\util.h" />
+    <ClInclude Include="ServerExecuter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="TcpServer">
+      <UniqueIdentifier>{32a06a2a-eede-4ea9-ba35-834cafa7b2d1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

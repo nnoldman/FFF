@@ -148,6 +148,7 @@
     <ClInclude Include="JsonReader.h" />
     <ClInclude Include="JsonWriter.h" />
     <ClInclude Include="Objects.h" />
+    <ClInclude Include="OptionService.h" />
     <ClInclude Include="rapidjson\allocators.h" />
     <ClInclude Include="rapidjson\cursorstreamwrapper.h" />
     <ClInclude Include="rapidjson\document.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="JsonReader.cpp" />
     <ClCompile Include="JsonWriter.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OptionService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

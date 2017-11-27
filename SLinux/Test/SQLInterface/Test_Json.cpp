@@ -7,24 +7,20 @@
 #include "rapidjson/stringbuffer.h"
 #include "JsonReader.h"
 #include <iostream>
-Test_Json::Test_Json()
-{
+Test_Json::Test_Json() {
     this->test_write();
 }
 
 
-Test_Json::~Test_Json()
-{
+Test_Json::~Test_Json() {
 }
 
-void Test_Json::test_write()
-{
+void Test_Json::test_write() {
     {
         Objects::Role role;
         role.id = 5;
         role.name = "10";
-        for (int i = 0; i < 4; ++i)
-        {
+        for (int i = 0; i < 4; ++i) {
             role.equips[i].id = i + 1;
             role.equips[i].name = "ff";
         }

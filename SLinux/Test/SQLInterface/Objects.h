@@ -53,10 +53,8 @@
     }
 
 using namespace Serializer;
-namespace Objects
-{
-    struct Equip
-    {
+namespace Objects {
+    struct Equip {
         int id;
         string name;
         char quality;
@@ -79,14 +77,12 @@ namespace Objects
         //__IOMember(name)
         //__IOMember(quality)
         //__IOEnd
-        void toText(Serializer::JsonWriter& serializer) const
-        {
+        void toText(Serializer::JsonWriter& serializer) const {
             JsonWriter::write(serializer, "id", this->id);
             JsonWriter::write(serializer, "name", this->name);
             JsonWriter::write(serializer, "quality", this->quality);
         }
-        void fromText(Value* serializer)
-        {
+        void fromText(Value* serializer) {
             JsonReader::read(serializer, "id", this->id);
             JsonReader::read(serializer, "name", this->name);
             JsonReader::read(serializer, "quality", this->quality);
@@ -149,15 +145,13 @@ namespace Objects
 
 #define dMemoryZeroArray(arr) memset(arr,0,sizeof(arr))
 
-    struct Role
-    {
+    struct Role {
         int id;
         string name;
         Equip equips[4];
         int ids[8];
         vector<Equip> equips2;
-        Role()
-        {
+        Role() {
             dMemoryZeroArray(ids);
         }
         //__IOBegin
@@ -168,16 +162,14 @@ namespace Objects
         //__IOMember(equips2)
         //__IOEnd
 
-        void toText(Serializer::JsonWriter& serializer) const
-        {
+        void toText(Serializer::JsonWriter& serializer) const {
             JsonWriter::write(serializer, "id", this->id);
             JsonWriter::write(serializer, "name", this->name);
             JsonWriter::write(serializer, "equips", this->equips);
             JsonWriter::write(serializer, "ids", this->ids);
             JsonWriter::write(serializer, "equips2", this->equips2);
         }
-        void fromText(Value* serializer)
-        {
+        void fromText(Value* serializer) {
             JsonReader::read(serializer, "id", this->id);
             JsonReader::read(serializer, "name", this->name);
             JsonReader::read(serializer, "equips", this->equips);

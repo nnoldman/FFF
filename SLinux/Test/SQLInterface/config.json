@@ -1,0 +1,47 @@
+{
+    "0": {
+        "db": {
+            "dbname": "ff",
+            "user": "root",
+            "passwrod": "ni2handan",
+            "host": "localhost",
+            "port": 3306,
+            "autoCreateAccount": "true"
+        },
+        "net": {
+            "ip": "127.0.0.1",
+            "port": 15299,
+            "threadCount": 4
+        }
+    },
+    "1": {
+        "db": {
+            "dbname": "ff",
+            "user": "root",
+            "passwrod": "ni2handan",
+            "host": "localhost",
+            "port": 3306,
+            "autoCreateAccount": "true"
+        },
+        "net": {
+            "ip": "127.0.0.1",
+            "port": 15299,
+            "threadCount": 4
+        }
+    },
+    "2": {
+        "db": {
+            "dbname": "ff",
+            "user": "root",
+            "passwrod": "ni2handan",
+            "host": "localhost",
+            "port": 3306,
+            "autoCreateAccount": "true"
+        },
+        "net": {
+            "ip": "127.0.0.1",
+            "port": 7800,
+            "threadCount": 4
+        }
+    }
+}

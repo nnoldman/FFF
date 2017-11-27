@@ -4,16 +4,14 @@
 //#include <sphelper.h>
 #pragma comment(lib,"ole32.lib") //CoInitialize CoCreateInstance需要调用ole32.dll   
 #pragma comment(lib,"sapi.lib") //sapi.lib在SDK的lib目录,必需正确配置  
-void TestVoice()
-{
+void TestVoice() {
     ISpVoice * pVoice = NULL;
     //COM初始化：
     if (FAILED(::CoInitialize(NULL)))
         return;
     //获取ISpVoice接口：
     HRESULT hr = CoCreateInstance(CLSID_SpVoice, NULL, CLSCTX_ALL, IID_ISpVoice, (void **)&pVoice);
-    if (SUCCEEDED(hr))
-    {
+    if (SUCCEEDED(hr)) {
         ISpObjectToken * pSpObjectToken = NULL;
         //if (SUCCEEDED(SpFindBestToken(SPCAT_VOICES, L"language=804", NULL, &pSpObjectToken)))	//	其中409英语，804汉语，411日语
         {
@@ -34,12 +32,10 @@ void TestVoice()
     ::CoUninitialize();
     return;
 }
-Voice::Voice()
-{
+Voice::Voice() {
     TestVoice();
 }
 
 
-Voice::~Voice()
-{
+Voice::~Voice() {
 }

@@ -21,6 +21,63 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="handy\codec.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\conf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\conn.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\daemon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\event_base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\file.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\handy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\handy-imp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\http.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\logging.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\net.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\poller.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\port_posix.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\slice.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\stat-svr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\status.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\threads.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\udp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="handy\util.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -30,6 +87,51 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="test_poco_file.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\codec.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\conf.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\conn.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\daemon.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\event_base.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\file.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\http.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\logging.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\net.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\poller.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\port_posix.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\stat-svr.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\threads.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\udp.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="handy\util.cc">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
