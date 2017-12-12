@@ -6,9 +6,9 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 
-public class GameSystemsServie: GameFrame.Service<GameSystemsServie> {
-    public override IEnumerator Start() {
-        return InitSystems();
+public class GameSystemsServie: Frame.Service<GameSystemsServie> {
+    protected override IEnumerator OnStart() {
+        yield return InitSystems();
     }
     public override string GetTipText() {
         return "初始化游戏系统";

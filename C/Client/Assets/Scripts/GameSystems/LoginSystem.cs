@@ -128,7 +128,7 @@ public class LoginSystem: SystemBase {
         this.lateServerIDs.AddRange(ret.late_serverids);
         foreach(var id in this.lateServerIDs) {
             if (id != 0) {
-                currentServer = GameConfig.GetServer(id);
+                currentServer = GameOption.GetServer(id);
                 break;
             }
         }

@@ -4,53 +4,42 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-public class BuildLog
-{
+public class BuildLog {
     static FileStream mLogger;
-    static FileStream Logger
-    {
-        get
-        {
-            if (mLogger == null)
-            {
+    static FileStream Logger {
+        get {
+            if (mLogger == null) {
                 mLogger = new FileStream(LogFile, FileMode.Append);
             }
             return mLogger;
         }
     }
 
-    static string LogFile
-    {
-        get
-        {
-            return Path.Combine(GameConfig.BuildOption.build_floder, "log.txt");
+    static string LogFile {
+        get {
+            return Path.Combine(GameOption.BuildOption.build_floder, "log.txt");
         }
     }
 
     static UTF8Encoding mEncoding = new UTF8Encoding(false);
 
-    static public void WriteLine(string content)
-    {
+    static public void WriteLine(string content) {
         string ret = DateTime.Now.ToString() + "::" + content + "\n";
         WriteInner(ret);
     }
-    static void WriteInner(string content)
-    {
+    static void WriteInner(string content) {
         var data = mEncoding.GetBytes(content);
         Logger.Write(data, 0, data.Length);
     }
-    static public void Write(string content)
-    {
+    static public void Write(string content) {
         WriteInner(content);
     }
-    static public void WriteWithTime(string content)
-    {
+    static public void WriteWithTime(string content) {
         string ret = DateTime.Now.ToString() + content;
         WriteInner(ret);
     }
 
-    public static void OutPut()
-    {
+    public static void OutPut() {
         Logger.Close();
         Basic.Assist.OpenText(LogFile);
         mLogger = null;

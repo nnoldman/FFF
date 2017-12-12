@@ -14,22 +14,25 @@ public class Startup : MonoBehaviour {
         Debug.Assert(mInstance == null);
         mInstance = this;
 
-        GateUIService.progressBar.Show();
-        Flow.Instance.onProcess += GateUIService.progressBar.SetProgress;
-        Flow.Instance.onTip += GateUIService.progressBar.SetText;
+        Frame.Executer.SetProgressBar(GateWindow.Instance);
+        Frame.Executer.SetMessageBox(GateBox.Instance);
+        Frame.Executer.ShowProgressBar();
 
-        Flow.Instance.Clear();
-        Flow.Instance.AddService<GateUIService>();
-        Flow.Instance.AddService<NetService>();
-        Flow.Instance.AddService<VersionService>();
-        Flow.Instance.AddService<ResourceService>();
-        Flow.Instance.AddService<ConfigService>();
-        Flow.Instance.AddService<PreloadService>();
-        Flow.Instance.AddService<GameSystemsServie>();
-        Flow.Instance.AddService<LoginService>();
-        Flow.Instance.onStartEnd += OnStartEnd;
+        Frame.Services.Instance.onProcess += Frame.Executer.SetProgress;
+        Frame.Services.Instance.onTip += Frame.Executer.SetProgressText;
 
-        StartCoroutine(Flow.Instance.Start());
+        Frame.Services.Instance.Clear();
+        Frame.Services.Instance.AddService<GateUIService>();
+        Frame.Services.Instance.AddService<Frame.VersionService>();
+        Frame.Services.Instance.AddService<NetService>();
+        Frame.Services.Instance.AddService<ResourceService>();
+        Frame.Services.Instance.AddService<ConfigService>();
+        Frame.Services.Instance.AddService<PreloadService>();
+        Frame.Services.Instance.AddService<GameSystemsServie>();
+        Frame.Services.Instance.AddService<LoginService>();
+        Frame.Services.Instance.onStartEnd += OnStartEnd;
+
+        StartCoroutine(Frame.Services.Instance.Start());
     }
 
     IEnumerator OnStartEnd() {
@@ -39,7 +42,9 @@ public class Startup : MonoBehaviour {
         this.game_.AddController<GameFrame.Cameras>();
         yield return this.game_.Start();
         UIs.Instance.Show<HomePageWindow>();
-        GateUIService.progressBar.Hide();
+
+        Frame.Executer.HideProgressBar();
+
         GameFrame.Cameras.Instance.enableUGUICamera = false;
         yield return null;
     }

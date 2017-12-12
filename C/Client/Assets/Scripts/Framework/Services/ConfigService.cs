@@ -6,11 +6,12 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 
-public class ConfigService: GameFrame.Service<ConfigService> {
-    public override IEnumerator Start() {
+public class ConfigService: Frame.Service<ConfigService> {
+    protected override IEnumerator OnStart() {
         CSVParser.loader = LoadConfig;
         yield return LoadConfigs();
     }
+
     public override string GetTipText() {
         return "加载配置文件";
     }

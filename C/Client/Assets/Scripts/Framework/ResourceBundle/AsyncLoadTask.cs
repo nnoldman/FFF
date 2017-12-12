@@ -5,48 +5,39 @@ using System.Linq;
 using System.Text;
 using UnityEngine.SceneManagement;
 
-public class AsyncLoadTask
-{
+public class AsyncLoadTask {
     public string fileName;
 
-    public int targetCount
-    {
-        get
-        {
+    public int targetCount {
+        get {
             return mTargetCount;
         }
     }
 
     protected int mTargetCount = 0;
 
-    public virtual void DoStep(int i)
-    {
+    public virtual void DoStep(int i) {
     }
 
-    public virtual void CalcTargetCount()
-    {
+    public virtual void CalcTargetCount() {
         mTargetCount = 1;
     }
 }
 
-public class AsyncRequireLuaFile : AsyncLoadTask
-{
-    public override void DoStep(int i)
-    {
+public class AsyncRequireLuaFile : AsyncLoadTask {
+    public override void DoStep(int i) {
         //App.Instance.LuaManager.MainState.DoString(String.Format("require '{0}'", fileName));
     }
 }
 
-public enum AsyncLoaderType
-{
+public enum AsyncLoaderType {
     None,
     InnerScene,
     InnerObject,
     Extern,
 }
 
-public class AsyncLoadGameObject: AsyncLoadTask
-{
+public class AsyncLoadGameObject: AsyncLoadTask {
     public delegate void OnAssetLoaded(string name, UnityEngine.Object obj);
 
     public OnAssetLoaded onAssetLoaded;
@@ -55,22 +46,17 @@ public class AsyncLoadGameObject: AsyncLoadTask
 
     bool isInnerScene = false;
 
-    public override void CalcTargetCount()
-    {
-        var updater = VersionService.Instance;
+    public override void CalcTargetCount() {
+        var updater = VersionService2.Instance;
         string abName = updater.GetABName(fileName);
-        if(string.IsNullOrEmpty(abName) )
-        {
+        if (string.IsNullOrEmpty(abName)) {
             if (fileName.ToLower().EndsWith(".unity"))
                 loaderType = AsyncLoaderType.InnerScene;
-            else
-            {
+            else {
                 loaderType = AsyncLoaderType.InnerObject;
                 mTargetCount = 1;
             }
-        }
-        else
-        {
+        } else {
             loaderType = AsyncLoaderType.Extern;
             mABNames = new List<string>();
             ResourceService.Instance.GetAllDependencies(ref mABNames, abName);
@@ -78,21 +64,15 @@ public class AsyncLoadGameObject: AsyncLoadTask
         }
     }
 
-    public override void DoStep(int i)
-    {
+    public override void DoStep(int i) {
 
-        if(loaderType == AsyncLoaderType.InnerScene)
-        {
+        if(loaderType == AsyncLoaderType.InnerScene) {
 
-        }
-        else if(loaderType == AsyncLoaderType.InnerObject)
-        {
+        } else if(loaderType == AsyncLoaderType.InnerObject) {
             string assetname = System.IO.Path.GetFileName(fileName).ToLower();
             var obj = ResourceService.Instance.Load<UnityEngine.Object>(fileName);
             onAssetLoaded(fileName.ToLower(), obj);
-        }
-        else if (loaderType == AsyncLoaderType.Extern)
-        {
+        } else if (loaderType == AsyncLoaderType.Extern) {
 
             if (mTargetCount == 0)
                 return;
@@ -101,16 +81,11 @@ public class AsyncLoadGameObject: AsyncLoadTask
             Debug.Assert(abtaker != null);
             if (abtaker == null)
                 return;
-            if (i == mTargetCount - 1)
-            {
-                if (abtaker.ab)
-                {
-                    if (abtaker.ab.isStreamedSceneAssetBundle)
-                    {
+            if (i == mTargetCount - 1) {
+                if (abtaker.ab) {
+                    if (abtaker.ab.isStreamedSceneAssetBundle) {
                         abtaker.AddReference();
-                    }
-                    else if (onAssetLoaded != null)
-                    {
+                    } else if (onAssetLoaded != null) {
                         string assetname = System.IO.Path.GetFileName(fileName).ToLower();
                         var obj = abtaker.ab.LoadAsset<UnityEngine.Object>(assetname);
                         ResourceService.Instance.AddReferenceCounter(obj, abtaker);
@@ -122,6 +97,5 @@ public class AsyncLoadGameObject: AsyncLoadTask
     }
 }
 
-public class AsyncTasks : List<AsyncLoadTask>
-{
+public class AsyncTasks : List<AsyncLoadTask> {
 }

@@ -6,11 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using Frame;
 
-public class MessageBoxView : View {
+public class MessageBoxView : View, Frame.IMessageBox {
     private MessageBox.MessageBox window;
 
-    private Message.MessageBoxParam param_;
+    private Frame.MessageBoxParam param_;
 
     protected override string GetPackageName() {
         return "MessageBox/MessageBox";
@@ -30,7 +31,7 @@ public class MessageBoxView : View {
         //GRoot.inst.CloseModalWait();
     }
 
-    public void Open(Message.MessageBoxParam param) {
+    public void Open(Frame.MessageBoxParam param) {
         this.param_ = param;
         this.UpdateStates();
         this.ShowWindow(false);
@@ -57,5 +58,11 @@ public class MessageBoxView : View {
         else
             this.window.ok_.title = ClientDefine.ConstString.MessageBox.OK;
         this.window.content_.text = this.param_.content;
+    }
+
+    public void ShowBox(MessageBoxParam param) {
+        this.param_ = param;
+        this.UpdateStates();
+        this.ShowWindow(false);
     }
 }

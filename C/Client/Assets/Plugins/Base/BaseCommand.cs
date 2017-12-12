@@ -4,46 +4,53 @@ using System.Collections.Generic;
 using System.Text;
 using System;
 using System.IO;
+namespace Frame {
+    public class Packet {
+        public static readonly int HeaderLength = 12;
 
-public class ProtocoBuffer {
-    private static byte[] s4ByteBuffer = new byte[4];
-    private byte[] sPara = new byte[4];
+        public int size;
+        public int id;//消息编号
+        public byte[] data;
 
-    public uint id;//消息编号
-    public uint size;
-    public byte[] data;
+        Packet() {
+            size = 0;
+            id = 0;
+        }
+        public static Packet From(byte[] data) {
+            return null;
+        }
+        public static Packet ToPacket(int id) {
+            return ToPacket(id, null);
+        }
+        public static Packet ToPacket(int id, byte[] data) {
+            Packet ret = new Packet();
+            ret.id = id;
+            ret.size = HeaderLength;
+            if (data != null) {
+                ret.size += data.Length;
+                ret.data = new byte[data.Length];
+                Array.Copy(ret.data, data, data.Length);
+            }
+            return ret;
+        }
+        private void WriteHeader(Frame.Buffer buffer) {
+            buffer.Write(id);
+            buffer.Write(size);
+        }
 
-    public ProtocoBuffer() {
-        id = 0;
-        size = 0;
-    }
+        protected Frame.Packet Write(Frame.Buffer buffer) {
+            buffer.Write(data);
+            return this;
+        }
+        public void Serialize(Frame.Buffer buffer) {
+            WriteHeader(buffer);
+            Write(buffer);
+        }
 
-    void writeHeader(MemoryStream stream) {
-        s4ByteBuffer = BitConverter.GetBytes(size);
-        stream.Write(s4ByteBuffer, 0, s4ByteBuffer.Length);
-    }
-    protected virtual ProtocoBuffer write(MemoryStream stream) {
-        s4ByteBuffer = BitConverter.GetBytes(id);
-        stream.Write(s4ByteBuffer, 0, s4ByteBuffer.Length);
-        if (data != null)
-            stream.Write(data, 0, (int)size);
-        return this;
-    }
-    public virtual void serialize(MemoryStream stream) {
-        writeHeader(stream);
-        write(stream);
-    }
-
-    public virtual void deserialize(MemoryStream stream) {
-        stream.Read(s4ByteBuffer, 0, 4);
-        size = BitConverter.ToUInt32(s4ByteBuffer, 0);
-        stream.Read(s4ByteBuffer, 0, 4);
-        id = BitConverter.ToUInt32(s4ByteBuffer, 0);
-        try {
-            data = new byte[size];
-            stream.Read(data, 0, (int)size);
-        } catch (Exception ex) {
-            Debug.LogError(ex.Message);
+        public virtual void Deserialize(Frame.Buffer buffer) {
+            buffer.Read(ref size);
+            buffer.Read(ref id);
+            buffer.Read(ref data, (int)size - 8);
         }
     }
 }

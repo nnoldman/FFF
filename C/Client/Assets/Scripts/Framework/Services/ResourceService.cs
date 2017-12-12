@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class ResourceService : GameFrame.Service<ResourceService> {
+public class ResourceService : Frame.Service<ResourceService> {
     Dictionary<string, ABTaker> takerMap_ = new Dictionary<string, ABTaker>();
 
     public override string GetTipText() {
@@ -61,7 +61,7 @@ public class ResourceService : GameFrame.Service<ResourceService> {
     }
 
     public void UnloadAsset(string pathfile) {
-        string abName = VersionService.Instance.GetABName(pathfile);
+        string abName = VersionService2.Instance.GetABName(pathfile);
         if (string.IsNullOrEmpty(abName))
             return;
         UnloadGarbage(abName);
@@ -107,7 +107,7 @@ public class ResourceService : GameFrame.Service<ResourceService> {
     public T Load<T>(string pathfile) where T : UnityEngine.Object {
 #if LOAD_FROM_AB
         if(Application.isPlaying) {
-            string abName = VersionService.Instance.GetABName(pathfile);
+            string abName = VersionService2.Instance.GetABName(pathfile);
             if(string.IsNullOrEmpty(abName)) {
                 string path = Basic.Assist.TrimExtension(pathfile);
                 return Resources.Load<T>(path);
@@ -123,7 +123,7 @@ public class ResourceService : GameFrame.Service<ResourceService> {
     }
 
     public T LoadFromAsset<T>(string pathfile) where T : UnityEngine.Object {
-        string assetName = GameConfig.BuildOption.Path2AssetName(pathfile);
+        string assetName = GameOption.BuildOption.Path2AssetName(pathfile);
         string path = Basic.Assist.CombineWithSlash(Path.GetDirectoryName(Application.dataPath), assetName);
 
         if(File.Exists(path)) {
@@ -159,7 +159,7 @@ public class ResourceService : GameFrame.Service<ResourceService> {
                     //if (abtaker.obj)
                     //    return (T)abtaker.obj;
                     //string name = Basic.Assist.TrimExtension(Path.GetFileName(assetName));
-                    string name = Basic.Assist.CombineWithSlash(GameConfig.BuildOption.abResourceAssetFloder, assetName).ToLower();
+                    string name = Basic.Assist.CombineWithSlash(GameOption.BuildOption.abResourceAssetFloder, assetName).ToLower();
                     T ret = (T)abtaker.ab.LoadAsset(name);
                     //if(ret == null) {
                     //    Debug.LogWarning(string.Format("Asset Error:({0} , {1})", assetName, name));
@@ -188,7 +188,7 @@ public class ResourceService : GameFrame.Service<ResourceService> {
         if (takerMap_.TryGetValue(abName, out abtaker))
             return abtaker;
 
-        string fullPath = Basic.Assist.CombineWithSlash(GameConfig.BuildOption.sdABFloder, abName);
+        string fullPath = Basic.Assist.CombineWithSlash(Frame.FrameOption.Files.sdABFloder, abName);
         if (File.Exists(fullPath)) {
             try {
                 Basic.Assist.BeginWatch(abName);
@@ -199,7 +199,7 @@ public class ResourceService : GameFrame.Service<ResourceService> {
             } catch (Exception exc) {
                 Debug.LogError(exc.Message);
             }
-            AB info = VersionService.Instance.GetAB(abName);
+            Frame.ABFile info = VersionService2.Instance.GetAB(abName);
             abtaker.name = abName;
             abtaker.persistent = info.persistent;
             if (abtaker.persistent)
@@ -221,7 +221,7 @@ public class ResourceService : GameFrame.Service<ResourceService> {
     }
 
     void MakeChildren(ABTaker taker) {
-        AB info = VersionService.Instance.GetAB(taker.name);
+        Frame.ABFile info = VersionService2.Instance.GetAB(taker.name);
 
         for (int i = 0; i < info.children.Count; ++i) {
             var name = info.children[i];
@@ -285,7 +285,7 @@ public class ResourceService : GameFrame.Service<ResourceService> {
         if (names.Contains(abName) || takerMap_.ContainsKey(abName))
             return;
 
-        AB info = VersionService.Instance.GetAB(abName);
+        Frame.ABFile info = VersionService2.Instance.GetAB(abName);
         if (info != null) {
             for (int i = 0; i < info.children.Count; ++i) {
                 GetAllDependencies(ref names, info.children[i]);
@@ -298,8 +298,8 @@ public class ResourceService : GameFrame.Service<ResourceService> {
         return takerMap_.ContainsKey(abName);
     }
 
-    public void LoadAsync(IProgressBar owner, string tips, AsyncTasks tasks, Action onEnd = null) {
-        Progress.Instance.Operator(tips, true);
+    public void LoadAsync(Frame.IProgressBar owner, string tips, AsyncTasks tasks, Action onEnd = null) {
+        Frame.Executer.SetProgressText(tips);
         owner.Show();
         Debug.Assert(false);
         //owner.StartCoroutine(InnerLoadAsync(tasks, onEnd));
@@ -328,13 +328,13 @@ public class ResourceService : GameFrame.Service<ResourceService> {
             for (int j = 0; j < task.targetCount; ++j) {
                 task.DoStep(j);
                 cursor++;
-                Progress.Instance.Update(cursor, len);
+                Frame.Executer.SetProgress(cursor, len);
                 yield return 0;
             }
         }
 
         if(len == 0) {
-            Progress.Instance.Update(1, 1);
+            Frame.Executer.SetProgress(1, 1);
             yield return 0;
         }
 
@@ -342,6 +342,6 @@ public class ResourceService : GameFrame.Service<ResourceService> {
             onEnd();
         Basic.Assist.EndWatch();
         yield return 0;
-        GateUIService.progressBar.Hide();
+        Frame.Executer.HideProgressBar();
     }
 }

@@ -16,6 +16,7 @@ public class RoleView: View
     {
         this.goBackWhenClickBG = false;
         this.window = (Login.RolePanel)this.contentPane;
+        this.window.enterGame2.enabled = true;
         this.window.enterGame2.onClick.Add(OnCommand);
     }
 
@@ -26,6 +27,7 @@ public class RoleView: View
             if(LoginSystem.Instance.HasRole())
             {
                 Nets.Send(Cmd.CLIENTID.RQEnterGame);
+                this.window.enterGame2.enabled = false;
             }
             else
             {

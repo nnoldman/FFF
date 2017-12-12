@@ -61,11 +61,7 @@ public class ABDefineSet {
 
 
 
-[System.Serializable]
-public class ResourceIndex {
-    public string k = string.Empty;
-    public string v = string.Empty;
-}
+
 
 
 public class ResourceNode {

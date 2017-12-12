@@ -5,17 +5,7 @@ using System.IO;
 using System.Threading;
 using UnityEngine;
 
-[Serializable]
-public class URLInfo {
-    public int id;
-    public string name;
-    public string url;
-}
 
-[Serializable]
-public class URLInfoList {
-    public List<URLInfo> infos = new List<URLInfo>();
-}
 
 public class NextStep {
     public System.Func<bool> condtion;
@@ -66,10 +56,7 @@ public class Step {
 public class DoNowStep: Step {
 }
 
-public class URLFile {
-    public string url;
-    public int size;
-}
+
 
 public class LoadOneStep : Step {
     public Func<string> getURL;
@@ -77,6 +64,6 @@ public class LoadOneStep : Step {
 }
 
 public class LoadBeatchStep : Step {
-    public Func<List<URLFile>> getURLs;
+    public Func<List<Frame.URLFile>> getURLs;
     public Action<WWW> loadDelegate;
 }

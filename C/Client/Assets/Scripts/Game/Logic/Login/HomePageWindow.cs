@@ -19,11 +19,13 @@ public class HomePageWindow: View
     {
         this.goBackWhenClickBG = false;
         window = (Login.LoginPlant)this.contentPane;
+        window.login.enabled = true;
         window.login.onClick.Add(LoginPlant);
     }
 
     void LoginPlant()
     {
         LoginSystem.Instance.LoginPlant(host, ip, window.user.text, window.psw.text);
+        window.login.enabled = false;
     }
 }

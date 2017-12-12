@@ -31,7 +31,7 @@ public class ViewBase : Window {
         var elements = text.Split('/');
         var package = elements[0];
         var name = elements[1];
-        UIPackage.AddPackage(GameConfig.FairyGUIOption.PackagePath + package);
+        UIPackage.AddPackage(GameOption.FairyGUIOption.PackagePath + package);
         this.contentPane = UIPackage.CreateObject(package, name).asCom;
         this.contentPane.onClick.Add(OnCommand);
         this.OnCreate();

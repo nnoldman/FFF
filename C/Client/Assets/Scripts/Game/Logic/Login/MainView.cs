@@ -24,7 +24,7 @@ public class MainView : View {
         if (context.sender == this.window.bm1_) {
             UIs.Instance.Show<EarthView>(false);
         } else if (context.sender == this.window.bm2_) {
-            var param = new Message.MessageBoxParam();
+            var param = new Frame.MessageBoxParam();
             param.content = "FFFFFFFFFFFFFFFFFFFFFFFF";
             Message.ShowBox(param);
         } else if (context.sender == this.window.bm3_) {
