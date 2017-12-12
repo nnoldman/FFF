@@ -117,15 +117,15 @@ public class BuildStudio : EditorWindow {
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("打开资源目录")) {
             var path = Path.Combine(Path.GetDirectoryName(Application.dataPath), GameOption.BuildOption.localABFloder).Replace("/", "\\");
-            Basic.Assist.OpenFloder(path);
+            Frame.Helper.OpenFloder(path);
         }
         if (GUILayout.Button("打开SD目录")) {
             var path = Application.persistentDataPath.Replace("/", "\\");
-            Basic.Assist.OpenFloder(path);
+            Frame.Helper.OpenFloder(path);
         }
         if (GUILayout.Button("打开APK目录")) {
-            var path = Basic.Assist.CombineWithBSlash(Path.GetDirectoryName(Application.dataPath), "output");
-            Basic.Assist.OpenFloder(path);
+            var path = Frame.Helper.CombineWithBSlash(Path.GetDirectoryName(Application.dataPath), "output");
+            Frame.Helper.OpenFloder(path);
         }
         GUILayout.EndHorizontal();
     }
@@ -155,22 +155,22 @@ public class BuildStudio : EditorWindow {
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("重新生成资源")) {
             ClearAssetBundlesNames();
-            Basic.Assist.Watch(ABExporter.OneKeyExportAB);
+            Frame.Helper.Watch(ABExporter.OneKeyExportAB);
             ExportABVersion();
         }
         if (GUILayout.Button("增量生成资源")) {
-            Basic.Assist.Watch(ABExporter.OneKeyExportAB);
+            Frame.Helper.Watch(ABExporter.OneKeyExportAB);
             ExportABVersion();
         }
         if (GUILayout.Button("一键生成APP")) {
-            Basic.Assist.BeginWatch("AllTime");
-            Basic.Assist.Watch(ABExporter.OneKeyExportAB);
+            Frame.Helper.BeginWatch("AllTime");
+            Frame.Helper.Watch(ABExporter.OneKeyExportAB);
             ExportABVersion();
-            Basic.Assist.Watch(CopyToStreamingAssets);
+            Frame.Helper.Watch(CopyToStreamingAssets);
             PushDefinations();
-            Basic.Assist.Watch(DoBuildPlayer);
+            Frame.Helper.Watch(DoBuildPlayer);
             PopDefinations();
-            Basic.Assist.EndWatch();
+            Frame.Helper.EndWatch();
         }
         mIsGoogleAndroidProject = EditorGUILayout.Toggle("生成谷歌工程", mIsGoogleAndroidProject);
         GUILayout.EndHorizontal();
@@ -178,15 +178,15 @@ public class BuildStudio : EditorWindow {
     void BuildPlayer() {
 
         string[] scenenames = new string[] {
-            Basic.Assist.CombineWithSlash(Application.dataPath, "Scenes/Startup.unity"),
+            Frame.Helper.CombineWithSlash(Application.dataPath, "Scenes/Startup.unity"),
         };
 
-        var dir = Basic.Assist.CombineWithSlash(Path.GetDirectoryName(Application.dataPath), "output");
+        var dir = Frame.Helper.CombineWithSlash(Path.GetDirectoryName(Application.dataPath), "output");
 
         if (!string.IsNullOrEmpty(dir)) {
-            string path = Basic.Assist.CombineWithSlash(dir, ABExporter.GetPlatformString());
+            string path = Frame.Helper.CombineWithSlash(dir, ABExporter.GetPlatformString());
 
-            Basic.Assist.CreateDirectoryIfNotExist(path);
+            Frame.Helper.CreateDirectoryIfNotExist(path);
 
             BuildOptions options = BuildOptions.AllowDebugging | BuildOptions.ConnectWithProfiler;
 
@@ -204,7 +204,7 @@ public class BuildStudio : EditorWindow {
 
             BuildPipeline.BuildPlayer(scenenames, path, ABExporter.buildTarget, options);
         }
-        Basic.Assist.OpenFloder(Basic.Assist.CombineWithBSlash(Path.GetDirectoryName(Application.dataPath), "output"));
+        Frame.Helper.OpenFloder(Frame.Helper.CombineWithBSlash(Path.GetDirectoryName(Application.dataPath), "output"));
     }
 
     void DoBuildPlayer() {
@@ -246,12 +246,9 @@ public class BuildStudio : EditorWindow {
     }
 
     static void ExportABVersion() {
+        ABExporter.abIndex.version = mCurrentVersion;
+        ABExporter.ExportIndex();
         mCurrentVersion.time = System.DateTime.Now.ToString();
-        throw new Exception();
-        //string srcPath = GetServerFloder() + "/" + Frame.FrameOption.Files.cdnVersionFile;
-        //string dstPath = GetServerFloder() + "/" + "indexs.json";
-        //string src1Path = GetServerFloder() + "/" + "indexsd.json";
-        //bool ret = Basic.Assist.SaveJsonObject(mCurrentVersion, dstPath);
     }
 
     static string GetSelectFloder() {
@@ -283,11 +280,11 @@ public class BuildStudio : EditorWindow {
         string path = GetServerFloder();
         if (!Directory.Exists(Application.streamingAssetsPath))
             Directory.CreateDirectory(Application.streamingAssetsPath);
-        Basic.Assist.CopyFloder(path, Application.streamingAssetsPath, true, true, true, new string[] { ".manifest" });
+        Frame.Helper.CopyFloder(path, Application.streamingAssetsPath, true, true, true, new string[] { ".manifest" });
     }
 
     void ClearStreamingAssets() {
-        Basic.Assist.DeleteFolder(Application.streamingAssetsPath);
+        Frame.Helper.DeleteFolder(Application.streamingAssetsPath);
     }
 
     void SetResourceFromNet() {
@@ -309,20 +306,20 @@ public class BuildStudio : EditorWindow {
         //    ClearUnuseAB(GetABFloder_Compressed());
         //}
         if (GUILayout.Button("拷贝到流资源目录下")) {
-            Basic.Assist.Watch(CopyToStreamingAssets);
+            Frame.Helper.Watch(CopyToStreamingAssets);
         }
         if (GUILayout.Button("生成APK")) {
-            Basic.Assist.Watch(DoBuildPlayer);
+            Frame.Helper.Watch(DoBuildPlayer);
         }
         GUILayout.EndHorizontal();
     }
     static void ClearSDVersionInfo() {
         string path = Application.persistentDataPath;
-        Basic.Assist.DeleteFolder(path);
+        Frame.Helper.DeleteFolder(path);
     }
 
     static string GetServerFloder() {
-        return Basic.Assist.CombineWithSlash(GameOption.BuildOption.localABFloder, ABExporter. GetPlatformString());
+        return Frame.Helper.CombineWithSlash(GameOption.BuildOption.localABFloder, ABExporter. GetPlatformString());
     }
     static string GetStreamingABFloder() {
         return Application.streamingAssetsPath;

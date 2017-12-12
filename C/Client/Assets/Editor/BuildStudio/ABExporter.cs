@@ -51,10 +51,10 @@ public static class ABExporter {
     static HashSet<string> mResourceExtensionSet;
 
 
-    static Frame.AssetBundleIndex abIndex {
+    public static Frame.AssetBundleIndex abIndex {
         get {
             if(mABIndex == null) {
-                mABIndex = Basic.Assist.LoadJsonObject<Frame.AssetBundleIndex>(GetIndexFileWithTarget(), Frame.FrameOption.Files.abIndexCompressed);
+                mABIndex = Frame.Helper.LoadJsonObject<Frame.AssetBundleIndex>(GetIndexFileWithTarget(), Frame.FrameOption.Files.abIndexCompressed);
             }
             if (mABIndex == null) {
                 mABIndex = new Frame.AssetBundleIndex();
@@ -108,9 +108,9 @@ public static class ABExporter {
     }
 
     static void CopyToCDN() {
-        string dest =  Basic.Assist.CombineWithBSlash(cdnAddress, GetPlatformString());
-        string src = Basic.Assist.CombineWithBSlash(GameOption.BuildOption.localABFloder, GetPlatformString());
-        Basic.Assist.CopyFloder(src, dest, true, true, true, new string[] { ".manifest" });
+        string dest =  Frame.Helper.CombineWithBSlash(cdnAddress, GetPlatformString());
+        string src = Frame.Helper.CombineWithBSlash(GameOption.BuildOption.localABFloder, GetPlatformString());
+        Frame.Helper.CopyFloder(src, dest, true, true, true, new string[] { ".manifest" });
     }
 
     public static void ClearGarbageAB() {
@@ -178,8 +178,8 @@ public static class ABExporter {
     }
 
     public static string GetABFloder() {
-        string ret = Basic.Assist.CombineWithBSlash(GameOption.BuildOption.localABFloder, GetPlatformString(), Frame.FrameOption.Files.abFloder);
-        Basic.Assist.CreateDirectoryIfNotExist(ret);
+        string ret = Frame.Helper.CombineWithBSlash(GameOption.BuildOption.localABFloder, GetPlatformString(), Frame.FrameOption.Files.abFloder);
+        Frame.Helper.CreateDirectoryIfNotExist(ret);
         return ret;
     }
 
@@ -198,7 +198,7 @@ public static class ABExporter {
 
     static void SaveABIndex() {
         CheckInvalidResource();
-        Basic.Assist.SaveJsonObject(mABIndex, GetIndexFileWithTarget(), Frame.FrameOption.Files.abIndexCompressed);
+        Frame.Helper.SaveJsonObject(mABIndex, GetIndexFileWithTarget(), Frame.FrameOption.Files.abIndexCompressed);
     }
 
     public static string GetNameFromGame(string pathOrABName) {
@@ -326,7 +326,7 @@ public static class ABExporter {
         List<string> garbages = new List<string>();
 
         foreach (var abName in names) {
-            FileInfo fileInfo = new FileInfo(Basic.Assist.CombineWithSlash(GetABFloder(), abName));
+            FileInfo fileInfo = new FileInfo(Frame.Helper.CombineWithSlash(GetABFloder(), abName));
             if(!fileInfo.Exists) {
                 List<string> srcfiles = GetErrorABSource(abName);
                 if(srcfiles.Count > 0) {
@@ -382,8 +382,8 @@ public static class ABExporter {
 
         int len = GameOption.BuildOption.abResourceAssetFloder.Length;
         foreach (var file in files) {
-            if (Basic.Assist.WithExtension(file.Name, resourceExtensionSet)) {
-                string path = Basic.Assist.ConvertToPathStartWithAsset(file.FullName);
+            if (Frame.Helper.WithExtension(file.Name, resourceExtensionSet)) {
+                string path = Frame.Helper.ConvertToPathStartWithAsset(file.FullName);
                 AssetImporter importer = AssetImporter.GetAtPath(path);
                 var index = new Frame.ResourceIndex();
                 index.k = path.Remove(0, len);
@@ -401,7 +401,7 @@ public static class ABExporter {
 
 
     static string GetIndexFileWithTarget() {
-        string ret = Basic.Assist.CombineWithBSlash(GameOption.BuildOption.localABFloder, GetPlatformString(), Frame.FrameOption.Files.cdnIndexFile);
+        string ret = Frame.Helper.CombineWithBSlash(GameOption.BuildOption.localABFloder, GetPlatformString(), Frame.FrameOption.Files.cdnIndexFile);
         return ret;
     }
 
@@ -452,7 +452,7 @@ public static class ABExporter {
     //    for (int i = 0; i < len; ++i) {
     //        EditorUtility.DisplayProgressBar(string.Format("ADD({0}/{1})", i, len), "Add reference", (float)i / len);
     //        var file = files[i];
-    //        string assetpath = Basic.Assist.ConvertToPathStartWithAsset(file.FullName);
+    //        string assetpath = Frame.Helper.ConvertToPathStartWithAsset(file.FullName);
     //        GameObject obj = AssetDatabase.LoadAssetAtPath<GameObject>(assetpath);
     //        var abref = obj.GetComponent<ABReference>();
     //        if (abref)
@@ -475,7 +475,7 @@ public static class ABExporter {
         for(int i = 0; i < len; ++i) {
             EditorUtility.DisplayProgressBar(string.Format("ADD({0}/{1})", i, len), "Add reference", (float)i / len);
             var file = files[i];
-            string assetpath = Basic.Assist.ConvertToPathStartWithAsset(file.FullName);
+            string assetpath = Frame.Helper.ConvertToPathStartWithAsset(file.FullName);
 
             AssetImporter importer = AssetImporter.GetAtPath(assetpath);
             GameObject obj = AssetDatabase.LoadAssetAtPath<GameObject>(assetpath);
@@ -503,8 +503,8 @@ public static class ABExporter {
         string parentFloder = Path.GetDirectoryName(Application.dataPath);
 
         foreach (var file in files) {
-            if (Basic.Assist.WithExtension(file.Name, ABExporter.resourceExtensionSet)) {
-                string path = Basic.Assist.ConvertToPathStartWithAsset(file.FullName);
+            if (Frame.Helper.WithExtension(file.Name, ABExporter.resourceExtensionSet)) {
+                string path = Frame.Helper.ConvertToPathStartWithAsset(file.FullName);
                 string curguid = AssetDatabase.AssetPathToGUID(path);
                 if (allresources.ContainsKey(curguid))
                     continue;
@@ -542,8 +542,8 @@ public static class ABExporter {
         string parentFloder = Path.GetDirectoryName(Application.dataPath);
 
         foreach (var file in files) {
-            if (Basic.Assist.WithExtension(file.Name, ABExporter.resourceExtensionSet)) {
-                string path = Basic.Assist.ConvertToPathStartWithAsset(file.FullName);
+            if (Frame.Helper.WithExtension(file.Name, ABExporter.resourceExtensionSet)) {
+                string path = Frame.Helper.ConvertToPathStartWithAsset(file.FullName);
                 string curguid = AssetDatabase.AssetPathToGUID(path);
                 if (allresources.ContainsKey(curguid))
                     continue;
@@ -555,13 +555,13 @@ public static class ABExporter {
         foreach (var item in allresources) {
             rs.resources.Add(item.Value);
         }
-        Basic.Assist.CreateDirectoryIfNotExist(Path.GetDirectoryName(GameOption.BuildOption.abDependenceFile));
+        Frame.Helper.CreateDirectoryIfNotExist(Path.GetDirectoryName(GameOption.BuildOption.abDependenceFile));
         string content = JsonUtility.ToJson(rs, true);
         File.WriteAllText(GameOption.BuildOption.abDependenceFile, content);
     }
 
     static void AddDepend(FileInfo file, Dictionary<string, OneResource> allresources) {
-        string path = Basic.Assist.ConvertToPathStartWithAsset(file.FullName);
+        string path = Frame.Helper.ConvertToPathStartWithAsset(file.FullName);
         string curguid = AssetDatabase.AssetPathToGUID(path);
         OneResource current = TryGetOneResource(curguid, path, allresources);
         string[] dependencies = AssetDatabase.GetDependencies(path);

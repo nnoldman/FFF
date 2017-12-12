@@ -41,7 +41,7 @@ public class BuildLog {
 
     public static void OutPut() {
         Logger.Close();
-        Basic.Assist.OpenText(LogFile);
+        Frame.Helper.OpenText(LogFile);
         mLogger = null;
     }
 }

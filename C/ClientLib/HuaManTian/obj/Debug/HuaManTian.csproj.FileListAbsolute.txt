@@ -1,0 +1,6 @@
+D:\git\FFF\C\Client\Assets\Plugins\HuaManTian.xml
+D:\git\FFF\C\Client\Assets\Plugins\HuaManTian.dll
+D:\git\FFF\C\Client\Assets\Plugins\HuaManTian.pdb
+D:\git\FFF\C\ClientLib\HuaManTian\obj\Debug\HuaManTian.csproj.CoreCompileInputs.cache
+D:\git\FFF\C\ClientLib\HuaManTian\obj\Debug\HuaManTian.dll
+D:\git\FFF\C\ClientLib\HuaManTian\obj\Debug\HuaManTian.pdb

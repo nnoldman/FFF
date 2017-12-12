@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D73DBAB6-FD4C-4852-87F0-57B8A92C023E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Frame</RootNamespace>
+    <AssemblyName>HuaManTian</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Client\Assets\Plugins\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Client\Assets\Plugins\HuaManTian.xml</DocumentationFile>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\Dep\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="7zip\Common\CommandLineParser.cs" />
+    <Compile Include="7zip\Common\CRC.cs" />
+    <Compile Include="7zip\Common\InBuffer.cs" />
+    <Compile Include="7zip\Common\OutBuffer.cs" />
+    <Compile Include="7zip\Compress\LZMA\LzmaBase.cs" />
+    <Compile Include="7zip\Compress\LZMA\LzmaDecoder.cs" />
+    <Compile Include="7zip\Compress\LZMA\LzmaEncoder.cs" />
+    <Compile Include="7zip\Compress\LZ\IMatchFinder.cs" />
+    <Compile Include="7zip\Compress\LZ\LzBinTree.cs" />
+    <Compile Include="7zip\Compress\LZ\LzInWindow.cs" />
+    <Compile Include="7zip\Compress\LZ\LzOutWindow.cs" />
+    <Compile Include="7zip\Compress\RangeCoder\RangeCoder.cs" />
+    <Compile Include="7zip\Compress\RangeCoder\RangeCoderBit.cs" />
+    <Compile Include="7zip\Compress\RangeCoder\RangeCoderBitTree.cs" />
+    <Compile Include="7zip\ICoder.cs" />
+    <Compile Include="Frame\AB.cs" />
+    <Compile Include="Frame\DownLoadFileProcedure.cs" />
+    <Compile Include="Frame\DownloadFilesProcedure.cs" />
+    <Compile Include="Frame\DownLoadPackage.cs" />
+    <Compile Include="Frame\DownloadRemoteRootOptionProcedure.cs" />
+    <Compile Include="Frame\FrameOption.cs" />
+    <Compile Include="Frame\Helper.cs" />
+    <Compile Include="Frame\IBoolObject.cs" />
+    <Compile Include="Frame\IEvent.cs" />
+    <Compile Include="Frame\ISerializer.cs" />
+    <Compile Include="Frame\JsonSeriazlier.cs" />
+    <Compile Include="Frame\RemoteOption.cs" />
+    <Compile Include="Frame\Services.cs" />
+    <Compile Include="Frame\ServiceBase.cs" />
+    <Compile Include="Frame\GameVersion.cs" />
+    <Compile Include="Frame\IErrorInterface.cs" />
+    <Compile Include="Frame\IMessageBox.cs" />
+    <Compile Include="Frame\IProgressBar.cs" />
+    <Compile Include="Frame\Option.cs" />
+    <Compile Include="Frame\Procedure.cs" />
+    <Compile Include="Frame\Executer.cs" />
+    <Compile Include="Frame\ReadSDProcedure.cs" />
+    <Compile Include="Frame\ReadStreamingProcedure.cs" />
+    <Compile Include="Frame\WaitForNetProcedure.cs" />
+    <Compile Include="Frame\WaitForWifiProcedure.cs" />
+    <Compile Include="Frame\WriteSDProcedure.cs" />
+    <Compile Include="Frame\Zip7Helper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

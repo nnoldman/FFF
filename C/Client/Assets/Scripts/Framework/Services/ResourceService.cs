@@ -109,7 +109,7 @@ public class ResourceService : Frame.Service<ResourceService> {
         if(Application.isPlaying) {
             string abName = VersionService2.Instance.GetABName(pathfile);
             if(string.IsNullOrEmpty(abName)) {
-                string path = Basic.Assist.TrimExtension(pathfile);
+                string path = Frame.Helper.TrimExtension(pathfile);
                 return Resources.Load<T>(path);
             } else {
                 return LoadInner<T>(abName, pathfile);
@@ -124,12 +124,12 @@ public class ResourceService : Frame.Service<ResourceService> {
 
     public T LoadFromAsset<T>(string pathfile) where T : UnityEngine.Object {
         string assetName = GameOption.BuildOption.Path2AssetName(pathfile);
-        string path = Basic.Assist.CombineWithSlash(Path.GetDirectoryName(Application.dataPath), assetName);
+        string path = Frame.Helper.CombineWithSlash(Path.GetDirectoryName(Application.dataPath), assetName);
 
         if(File.Exists(path)) {
             return LoadAsset<T>(assetName);
         } else {
-            path = Basic.Assist.TrimExtension(pathfile);
+            path = Frame.Helper.TrimExtension(pathfile);
             return Resources.Load<T>(path);
         }
     }
@@ -158,8 +158,8 @@ public class ResourceService : Frame.Service<ResourceService> {
                 if (!abtaker.ab.isStreamedSceneAssetBundle) {
                     //if (abtaker.obj)
                     //    return (T)abtaker.obj;
-                    //string name = Basic.Assist.TrimExtension(Path.GetFileName(assetName));
-                    string name = Basic.Assist.CombineWithSlash(GameOption.BuildOption.abResourceAssetFloder, assetName).ToLower();
+                    //string name = Frame.Helper.TrimExtension(Path.GetFileName(assetName));
+                    string name = Frame.Helper.CombineWithSlash(GameOption.BuildOption.abResourceAssetFloder, assetName).ToLower();
                     T ret = (T)abtaker.ab.LoadAsset(name);
                     //if(ret == null) {
                     //    Debug.LogWarning(string.Format("Asset Error:({0} , {1})", assetName, name));
@@ -188,10 +188,10 @@ public class ResourceService : Frame.Service<ResourceService> {
         if (takerMap_.TryGetValue(abName, out abtaker))
             return abtaker;
 
-        string fullPath = Basic.Assist.CombineWithSlash(Frame.FrameOption.Files.sdABFloder, abName);
+        string fullPath = Frame.Helper.CombineWithSlash(Frame.FrameOption.Files.sdABFloder, abName);
         if (File.Exists(fullPath)) {
             try {
-                Basic.Assist.BeginWatch(abName);
+                Frame.Helper.BeginWatch(abName);
                 var data = File.ReadAllBytes(fullPath);
                 abtaker = new ABTaker();
                 //Debug.LogWarning("ABNAME:" + abName);
@@ -205,7 +205,7 @@ public class ResourceService : Frame.Service<ResourceService> {
             if (abtaker.persistent)
                 abtaker.ab.LoadAllAssets();
             MakeChildren(abtaker);
-            Basic.Assist.EndWatch();
+            Frame.Helper.EndWatch();
             CacheAB(abName, abtaker);
             return abtaker;
         }
@@ -306,7 +306,7 @@ public class ResourceService : Frame.Service<ResourceService> {
     }
 
     IEnumerator InnerLoadAsync(AsyncTasks tasks, Action onEnd = null) {
-        Basic.Assist.BeginWatch("LoadAsync");
+        Frame.Helper.BeginWatch("LoadAsync");
 
         int len = 0;
 
@@ -340,7 +340,7 @@ public class ResourceService : Frame.Service<ResourceService> {
 
         if (onEnd != null)
             onEnd();
-        Basic.Assist.EndWatch();
+        Frame.Helper.EndWatch();
         yield return 0;
         Frame.Executer.HideProgressBar();
     }
